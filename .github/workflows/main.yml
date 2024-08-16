@@ -1,7 +1,7 @@
 name: "Godot CI/CD"
 
 env:
-  GODOT_VERSION: 4.2.2
+  GODOT_VERSION: 4.3
   PROJECT_NAME: 'gmtk-2024'
 
 on:
@@ -16,7 +16,7 @@ jobs:
     permissions:
       contents: write
     container:
-      image: barichello/godot-ci:4.2.2
+      image: barichello/godot-ci:4.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
