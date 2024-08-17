@@ -1,31 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=3 format=3 uid="uid://bt2ju64bl0yrp"]
 
-[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="1_jg8lq"]
-[ext_resource type="Script" path="res://scripts/entities/type_entity.gd" id="2_021hw"]
-[ext_resource type="Texture2D" uid="uid://cfawm8u4nsf5y" path="res://assets/sprites/apple-pie.png" id="2_po2d8"]
+[ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="1_ehpew"]
 [ext_resource type="Script" path="res://scripts/input/input_debugger.gd" id="4_mjtn7"]
 
 [node name="MainScene" type="Node2D"]
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(584, 326)
-texture = ExtResource("1_jg8lq")
+[node name="Tuna" parent="." instance=ExtResource("1_ehpew")]
 
-[node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("2_021hw")
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-scale = Vector2(3, 3)
-texture = ExtResource("2_po2d8")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Node2D"]
-offset_left = -36.0
-offset_top = 27.0
-offset_right = 44.0
-offset_bottom = 58.0
-bbcode_enabled = true
-text = "Apple Pie"
-scroll_active = false
+[node name="Tuna2" parent="." instance=ExtResource("1_ehpew")]
+position = Vector2(805, 287)
+target = "Tulip"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

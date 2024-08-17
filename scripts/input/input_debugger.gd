@@ -10,7 +10,6 @@ func _ready() -> void:
 	InputManager.on_backspace.connect(_on_backspace)
 	
 func _on_key_pressed(key: String) -> void:
-	print(str('Key Pressed: ', key))
 	input += key
 	display.text = input
 
