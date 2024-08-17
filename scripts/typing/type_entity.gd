@@ -83,11 +83,11 @@ func update_state() -> void:
 	var remainder_input := "" if overflow >= 0 else target.right(target.length() - total)
 	var overflow_input := "" if overflow < 0 else input.right(overflow)
 	
-	var correct = str('[color=FOREST_GREEN]', correct_input, '[/color]')
-	var incorrect = str('[color=ORANGE_RED]', incorrect_input, '[/color]')
-	var remainder = str('[color=WHITE]', remainder_input, '[/color]')
-	var overflow_string = str('[color=DARK_RED]', overflow_input, '[/color]')
-	var final = str(correct, incorrect, remainder, overflow_string)
+	var correct_str = str('[color=FOREST_GREEN]', correct_input, '[/color]')
+	var incorrect_str = str('[color=ORANGE_RED]', incorrect_input, '[/color]')
+	var remainder_str = str('[color=WHITE]', remainder_input, '[/color]')
+	var overflow_str = str('[color=DARK_RED]', overflow_input, '[/color]')
+	var final = str(correct_str, incorrect_str, remainder_str, overflow_str)
 	display.text = str('[center]', final,'[/center]')
 	state_display.text = TypeState.keys()[state]
 	target_display.text = target

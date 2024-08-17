@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://cpwt2a2pobxi3"]
+
+[ext_resource type="Script" path="res://scripts/entities/laser.gd" id="1_5v4yh"]
+[ext_resource type="Texture2D" uid="uid://br5ic46rudy6p" path="res://assets/textures/glowing_circle.png" id="1_22hw7"]
+
+[sub_resource type="Gradient" id="Gradient_xw7vm"]
+offsets = PackedFloat32Array(0, 0.623274, 0.727811, 0.871795)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.896825, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_76lyb"]
+gradient = SubResource("Gradient_xw7vm")
+
+[sub_resource type="Curve" id="Curve_skqm7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.516814, 0.996116), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_78qwo"]
+curve = SubResource("Curve_skqm7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mww0r"]
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_78qwo")
+color = Color(1, 1, 2, 1)
+color_ramp = SubResource("GradientTexture1D_76lyb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gt78k"]
+emission_shape_scale = Vector3(53.23, 16.46, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_78qwo")
+color_ramp = SubResource("GradientTexture1D_76lyb")
+
+[node name="Laser" type="RayCast2D"]
+target_position = Vector2(1000, 0)
+script = ExtResource("1_5v4yh")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 100, 0)
+default_color = Color(0.643, 1, 68.817, 1)
+
+[node name="CastingParticles" type="GPUParticles2D" parent="."]
+visible = false
+use_parent_material = true
+process_material = SubResource("ParticleProcessMaterial_mww0r")
+texture = ExtResource("1_22hw7")
+lifetime = 0.3
+
+[node name="CollisionParticles" type="GPUParticles2D" parent="."]
+visible = false
+use_parent_material = true
+process_material = SubResource("ParticleProcessMaterial_mww0r")
+texture = ExtResource("1_22hw7")
+lifetime = 0.3
+
+[node name="BeamParticles" type="GPUParticles2D" parent="."]
+visible = false
+use_parent_material = true
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_gt78k")
+texture = ExtResource("1_22hw7")

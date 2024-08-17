@@ -7,9 +7,9 @@ extends Node2D
 var game_state: GameState
 var damage := 1.0
 
-func init(game_state: GameState, word: String, damage: float) -> void:
-	self.game_state = game_state
-	self.damage = damage
+func init(state: GameState, word: String, dmg: float) -> void:
+	self.game_state = state
+	self.damage = dmg
 	type_entity.init(word)
 	type_entity.on_complete.connect(_on_complete)
 

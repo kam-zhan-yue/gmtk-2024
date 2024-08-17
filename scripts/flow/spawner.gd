@@ -7,8 +7,8 @@ const random = ["Apple Pie", "Tuna", "Oreo", "Broccoli"]
 
 var game_state: GameState
 
-func init(game_state: GameState) -> void:
-	self.game_state = game_state
+func init(state: GameState) -> void:
+	self.game_state = state
 	BeatManager.on_beat.connect(_on_beat)
 
 func _on_beat(beat: int) -> void:

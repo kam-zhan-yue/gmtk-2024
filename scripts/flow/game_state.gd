@@ -3,5 +3,5 @@ extends Node
 
 var player: Player
 
-func _init(player: Player = null) -> void:
-	self.player = player
+func _init(p: Player = null) -> void:
+	self.player = p

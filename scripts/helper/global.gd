@@ -19,23 +19,23 @@ func to_blue() -> Vector2:
 func to_red() -> Vector2:
 	return Vector2(1.0, -0.5).normalized()
 
-func active(node: Node, active: bool) -> void:
+func active(node: Node, is_active: bool) -> void:
 	# Set visibility
-	node.visible = active
+	node.visible = is_active
 	
 	# Set general processing
-	node.set_process(active)
+	node.set_process(is_active)
 	
 	# Set physics processing
-	node.set_physics_process(active)
+	node.set_physics_process(is_active)
 	
 	# Optionally, set input processing if needed
 	if node.has_method("set_process_input"):
-		node.set_process_input(active)
+		node.set_process_input(is_active)
 	
 	# Optionally, set unhandled input processing if needed
 	if node.has_method("set_process_unhandled_input"):
-		node.set_process_unhandled_input(active)
+		node.set_process_unhandled_input(is_active)
 
 func ease_out_quart(x: float) -> float:
 	return 1 - pow(1 - x, 4)
