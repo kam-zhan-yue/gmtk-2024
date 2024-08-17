@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0en8pevtc4do"]
+
+[ext_resource type="Script" path="res://scripts/entities/type_entity.gd" id="1_l5q5b"]
+[ext_resource type="Texture2D" uid="uid://cfawm8u4nsf5y" path="res://assets/sprites/apple-pie.png" id="2_ftkn4"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(404, 287)
+scale = Vector2(2, 2)
+script = ExtResource("1_l5q5b")
+target = "Tuna"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_ftkn4")
+
+[node name="Display" type="RichTextLabel" parent="."]
+offset_left = -36.0
+offset_top = 56.0
+offset_right = 44.0
+offset_bottom = 87.0
+bbcode_enabled = true
+text = "Apple Pie"
+scroll_active = false
+
+[node name="Target" type="RichTextLabel" parent="."]
+offset_left = -36.0
+offset_top = 27.0
+offset_right = 44.0
+offset_bottom = 58.0
+bbcode_enabled = true
+text = "Apple Pie"
+scroll_active = false
+
+[node name="State" type="RichTextLabel" parent="."]
+offset_left = -36.0
+offset_top = 85.0
+offset_right = 146.0
+offset_bottom = 116.0
+bbcode_enabled = true
+text = "State"
+scroll_active = false
+
+[node name="Index" type="RichTextLabel" parent="."]
+offset_left = -36.0
+offset_top = 112.0
+offset_right = 44.0
+offset_bottom = 143.0
+bbcode_enabled = true
+text = "State"
+scroll_active = false

@@ -14,3 +14,12 @@ config/name="Core-godot"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+InputManager="*res://scripts/input/input_manager.gd"
+Global="*res://scripts/helper/global.gd"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
