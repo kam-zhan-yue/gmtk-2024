@@ -14,6 +14,8 @@ var state := TypeState.INACTIVE
 var index := 0
 var incorrect := 0
 
+signal on_complete
+
 func _ready() -> void:
 	InputManager.on_key_pressed.connect(_on_key_pressed)
 	InputManager.on_backspace.connect(_on_backspace);
@@ -73,7 +75,20 @@ func _on_backspace() -> void:
 
 
 func update_state() -> void:
-	display.text = input
+	var total = index + incorrect
+	var overflow = total - target.length()
+	
+	var correct_input := target.left(index)
+	var incorrect_input := target.right(len(target)-index) if overflow >= 0 else target.substr(index, incorrect)
+	var remainder_input := "" if overflow >= 0 else target.right(target.length() - total)
+	var overflow_input := "" if overflow < 0 else input.right(overflow)
+	
+	var correct = str('[color=FOREST_GREEN]', correct_input, '[/color]')
+	var incorrect = str('[color=ORANGE_RED]', incorrect_input, '[/color]')
+	var remainder = str('[color=WHITE]', remainder_input, '[/color]')
+	var overflow_string = str('[color=DARK_RED]', overflow_input, '[/color]')
+	var final = str(correct, incorrect, remainder, overflow_string)
+	display.text = str('[center]', final,'[/center]')
 	state_display.text = TypeState.keys()[state]
 	target_display.text = target
 	index_display.text = str(index)
@@ -81,4 +96,4 @@ func update_state() -> void:
 func check_complete() -> void:
 	if index == target.length():
 		state = TypeState.COMPLETED
-		queue_free()
+		on_complete.emit()
