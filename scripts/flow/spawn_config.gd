@@ -12,6 +12,8 @@ func beat() -> float:
 
 func spawn(current_beat: int) -> SpawnGroup:
 	var path := str(PREFIX, current_beat, ".tscn")
+	if not ResourceLoader.exists(path):
+		return
 	var resource := load(path)
 	if resource:
 		var scene = resource.instantiate() as SpawnGroup
