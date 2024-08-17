@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2ee0urw0h25j"]
+
+[ext_resource type="Script" path="res://scenes/enemies/shark.gd" id="1_kfhs4"]
+[ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/enemies/type_entity.tscn" id="1_ug8yd"]
+[ext_resource type="Texture2D" uid="uid://bqko507q16dd8" path="res://assets/textures/white_ring.png" id="2_eka2d"]
+
+[node name="Shark" type="Node2D"]
+script = ExtResource("1_kfhs4")
+
+[node name="TypeEntity" parent="." instance=ExtResource("1_ug8yd")]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_eka2d")

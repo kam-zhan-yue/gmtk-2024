@@ -9,3 +9,6 @@ func _ready() -> void:
 
 func _on_dead() -> void:
 	print("Player is dead")
+
+func damage(amount: float) -> void:
+	health.damage(amount)
