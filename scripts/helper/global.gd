@@ -36,3 +36,6 @@ func active(node: Node, active: bool) -> void:
 	# Optionally, set unhandled input processing if needed
 	if node.has_method("set_process_unhandled_input"):
 		node.set_process_unhandled_input(active)
+
+func ease_out_quart(x: float) -> float:
+	return 1 - pow(1 - x, 4)

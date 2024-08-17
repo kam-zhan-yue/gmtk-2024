@@ -23,10 +23,11 @@ func _process(delta: float) -> void:
 func _on_complete() -> void:
 	queue_free()
 
-
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is not Health:
 		return
 	var health = area as Health
+	type_entity.on_complete.disconnect(_on_complete)
 	health.damage(damage)
+	queue_free()
 	
