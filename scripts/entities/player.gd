@@ -5,3 +5,7 @@ extends Node2D
 
 func _ready() -> void:
 	health.init()
+	health.on_dead.connect(_on_dead)
+
+func _on_dead() -> void:
+	print("Player is dead")

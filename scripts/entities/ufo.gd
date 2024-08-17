@@ -14,4 +14,4 @@ func shoot_async() -> void:
 func spawn_rocket() -> void:
 	var rocket = ROCKET.instantiate() as Rocket
 	add_child(rocket)
-	rocket.init(game_state, "Rocket")
+	rocket.init(game_state, "Rocket", 10.0)
