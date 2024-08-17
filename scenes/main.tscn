@@ -65,7 +65,6 @@ text = "INput Debugger
 "
 
 [node name="Laser" parent="." instance=ExtResource("5_ubpky")]
-position = Vector2(-143, -154)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bgy46")

@@ -5,6 +5,8 @@ extends Enemy
 @export var orbit_period := 10.0
 @export var speed := 200.0
 
+const LASER = preload("res://scenes/projectiles/laser.tscn")
+
 func _ready() -> void:
 	on_init.connect(_on_init)
 	
@@ -44,4 +46,6 @@ func orbit_async() -> void:
 func shoot_async() -> void:
 	while(true):
 		await Global.seconds(1.0)
-		#print(str("Laser Player!"))
+		var laser := LASER.instantiate() as Laser
+		add_child(laser)
+		laser.activate(self, game_state.player, 0.2)
