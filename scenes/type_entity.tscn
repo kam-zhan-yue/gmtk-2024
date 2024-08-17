@@ -6,16 +6,8 @@
 script = ExtResource("1_l5q5b")
 target = "Tuna"
 
-[node name="Display" type="RichTextLabel" parent="."]
-offset_left = -36.0
-offset_top = 56.0
-offset_right = 44.0
-offset_bottom = 87.0
-bbcode_enabled = true
-text = "Apple Pie"
-scroll_active = false
-
 [node name="Target" type="RichTextLabel" parent="."]
+visible = false
 offset_left = -36.0
 offset_top = 27.0
 offset_right = 44.0
@@ -24,7 +16,18 @@ bbcode_enabled = true
 text = "Apple Pie"
 scroll_active = false
 
+[node name="Display" type="RichTextLabel" parent="."]
+offset_left = -92.0
+offset_top = 15.0
+offset_right = 92.0
+offset_bottom = 98.0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Text[/center]"
+scroll_active = false
+
 [node name="State" type="RichTextLabel" parent="."]
+visible = false
 offset_left = -36.0
 offset_top = 85.0
 offset_right = 146.0
@@ -34,6 +37,7 @@ text = "State"
 scroll_active = false
 
 [node name="Index" type="RichTextLabel" parent="."]
+visible = false
 offset_left = -36.0
 offset_top = 112.0
 offset_right = 44.0
