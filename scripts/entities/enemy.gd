@@ -1,7 +1,9 @@
 class_name Enemy
-extends Node
+extends Node2D
 
+@export var speed := 0.1
 @onready var type_entity := %TypeEntity as TypeEntity
+@onready var path_follow := $"." as PathFollow2D
 
 var game_state: GameState
 

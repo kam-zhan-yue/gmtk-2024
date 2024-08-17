@@ -1,7 +1,7 @@
 class_name UFO 
 extends Enemy
 
-const ROCKET = preload("res://scenes/rocket.tscn")
+const ROCKET = preload("res://scenes/projectiles/rocket.tscn")
 
 func _ready() -> void:
 	shoot_async()

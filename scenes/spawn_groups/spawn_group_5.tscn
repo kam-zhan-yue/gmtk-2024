@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://1jb7hd26ku1f"]
+
+[ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_1knir"]
+[ext_resource type="PackedScene" uid="uid://ckrlsacuunj2h" path="res://scenes/enemies/ufo.tscn" id="1_ae3so"]
+
+[node name="SpawnGroup" type="Node2D"]
+script = ExtResource("1_1knir")
+
+[node name="UFO" parent="." instance=ExtResource("1_ae3so")]
+position = Vector2(-252, -135)
+
+[node name="UFO2" parent="." instance=ExtResource("1_ae3so")]
+position = Vector2(291, -255)
+
+[node name="UFO3" parent="." instance=ExtResource("1_ae3so")]
+position = Vector2(-190, 197)
+
+[node name="UFO4" parent="." instance=ExtResource("1_ae3so")]
+position = Vector2(363, 194)

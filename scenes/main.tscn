@@ -44,6 +44,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Display" type="RichTextLabel" parent="UI/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

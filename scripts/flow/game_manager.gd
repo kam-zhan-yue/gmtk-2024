@@ -9,5 +9,5 @@ var game_state: GameState
 func _ready() -> void:
 	game_state = GameState.new(player)
 	spawner.init(game_state)
-	spawner.spawn_async()
-	
+	#spawner.spawn_async()
+	BeatManager.start()
