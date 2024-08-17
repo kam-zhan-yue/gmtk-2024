@@ -14,6 +14,8 @@ var state := TypeState.INACTIVE
 var index := 0
 var incorrect := 0
 
+signal on_complete
+
 func _ready() -> void:
 	InputManager.on_key_pressed.connect(_on_key_pressed)
 	InputManager.on_backspace.connect(_on_backspace);
@@ -81,4 +83,4 @@ func update_state() -> void:
 func check_complete() -> void:
 	if index == target.length():
 		state = TypeState.COMPLETED
-		queue_free()
+		on_complete.emit()

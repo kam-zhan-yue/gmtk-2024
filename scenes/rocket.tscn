@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bthmweqs237mx"]
+
+[ext_resource type="Script" path="res://scripts/entities/rocket.gd" id="1_lpaad"]
+[ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="2_to3rs"]
+[ext_resource type="Texture2D" uid="uid://2mu4jj0ntgtx" path="res://assets/sprites/bread.png" id="3_ker6o"]
+
+[node name="Rocket" type="Node2D"]
+script = ExtResource("1_lpaad")
+
+[node name="TypeEntity" parent="." instance=ExtResource("2_to3rs")]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_ker6o")

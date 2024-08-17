@@ -1,17 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0en8pevtc4do"]
+[gd_scene load_steps=2 format=3 uid="uid://d0en8pevtc4do"]
 
-[ext_resource type="Script" path="res://scripts/entities/type_entity.gd" id="1_l5q5b"]
-[ext_resource type="Texture2D" uid="uid://cfawm8u4nsf5y" path="res://assets/sprites/apple-pie.png" id="2_ftkn4"]
+[ext_resource type="Script" path="res://scripts/typing/type_entity.gd" id="1_l5q5b"]
 
-[node name="Node2D" type="Node2D"]
-position = Vector2(404, 287)
-scale = Vector2(2, 2)
+[node name="TypeEntity" type="Node2D"]
 script = ExtResource("1_l5q5b")
 target = "Tuna"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("2_ftkn4")
 
 [node name="Display" type="RichTextLabel" parent="."]
 offset_left = -36.0

@@ -1,13 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=5 format=3 uid="uid://bt2ju64bl0yrp"]
 
-[ext_resource type="Script" path="res://scripts/entities/spawner.gd" id="3_b1w3c"]
-[ext_resource type="Script" path="res://scripts/input/input_debugger.gd" id="4_mjtn7"]
+[ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
+[ext_resource type="Script" path="res://scripts/flow/spawner.gd" id="3_b1w3c"]
+[ext_resource type="PackedScene" uid="uid://gwlgluwanmdk" path="res://scenes/player.tscn" id="3_h8ik1"]
+[ext_resource type="Script" path="res://scripts/typing/input_debugger.gd" id="4_mjtn7"]
 
 [node name="MainScene" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("1_vt02a")
+
+[node name="Spawner" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_b1w3c")
+
+[node name="Player" parent="." instance=ExtResource("3_h8ik1")]
+unique_name_in_owner = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_mjtn7")
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control"]
+[node name="CenterContainer" type="CenterContainer" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -29,7 +43,7 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Display" type="RichTextLabel" parent="CanvasLayer/Control"]
+[node name="Display" type="RichTextLabel" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -40,6 +54,3 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "INput Debugger
 "
-
-[node name="Spawner" type="Node2D" parent="."]
-script = ExtResource("3_b1w3c")
