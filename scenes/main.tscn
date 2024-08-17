@@ -1,15 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bt2ju64bl0yrp"]
 
-[ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="1_ehpew"]
+[ext_resource type="Script" path="res://scripts/entities/spawner.gd" id="3_b1w3c"]
 [ext_resource type="Script" path="res://scripts/input/input_debugger.gd" id="4_mjtn7"]
 
 [node name="MainScene" type="Node2D"]
-
-[node name="Tuna" parent="." instance=ExtResource("1_ehpew")]
-
-[node name="Tuna2" parent="." instance=ExtResource("1_ehpew")]
-position = Vector2(805, 287)
-target = "Tulip"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -46,3 +40,6 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "INput Debugger
 "
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("3_b1w3c")

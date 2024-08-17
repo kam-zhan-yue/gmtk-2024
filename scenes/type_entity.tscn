@@ -33,9 +33,9 @@ scroll_active = false
 
 [node name="State" type="RichTextLabel" parent="."]
 offset_left = -36.0
-offset_top = 84.5
-offset_right = 44.0
-offset_bottom = 115.5
+offset_top = 85.0
+offset_right = 146.0
+offset_bottom = 116.0
 bbcode_enabled = true
 text = "State"
 scroll_active = false
