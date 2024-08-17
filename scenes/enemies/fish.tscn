@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuu4wvac46q6j"]
+
+[ext_resource type="Script" path="res://scenes/enemies/fish.gd" id="1_o6y6s"]
+[ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/enemies/type_entity.tscn" id="1_vkt2a"]
+[ext_resource type="Texture2D" uid="uid://c7orveas36s2l" path="res://assets/sprites/apple.png" id="2_b6bis"]
+
+[node name="Fish" type="PathFollow2D"]
+script = ExtResource("1_o6y6s")
+
+[node name="TypeEntity" parent="." instance=ExtResource("1_vkt2a")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_b6bis")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://crm36gr4t0nin"]
+
+[ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/enemies/type_entity.tscn" id="1_0wodp"]
+[ext_resource type="Script" path="res://scenes/enemies/satellite.gd" id="1_2opui"]
+[ext_resource type="Texture2D" uid="uid://3rakhvmpqeni" path="res://assets/sprites/bowl.png" id="2_ar35k"]
+
+[node name="Satellite" type="Node2D"]
+script = ExtResource("1_2opui")
+
+[node name="TypeEntity" parent="." instance=ExtResource("1_0wodp")]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_ar35k")

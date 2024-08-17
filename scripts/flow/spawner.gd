@@ -1,20 +1,27 @@
 class_name Spawner
 extends Node2D
 
-const ENTITY = preload("res://scenes/ufo.tscn")
+const CONFIG = preload("res://resources/spawn_config.tres")
+const ENTITY = preload("res://scenes/enemies/ufo.tscn")
 const random = ["Apple Pie", "Tuna", "Oreo", "Broccoli"]
 
 var game_state: GameState
 
 func init(game_state: GameState) -> void:
 	self.game_state = game_state
+	BeatManager.on_beat.connect(_on_beat)
+
+func _on_beat(beat: int) -> void:
+	var spawn_group = CONFIG.spawn(beat)
+	if spawn_group:
+		add_child(spawn_group)
+		spawn_group.init(game_state)
 
 func spawn_async() -> void:
 	while(true):
 		var time = randf_range(0.2, 1.0)
 		await Global.seconds(time)
 		spawn()
-
 
 func spawn() -> void:
 	var entity = ENTITY.instantiate() as Enemy
