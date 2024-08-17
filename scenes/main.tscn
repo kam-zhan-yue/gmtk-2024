@@ -1,9 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=5 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="1_jg8lq"]
+[ext_resource type="Script" path="res://scripts/entities/type_entity.gd" id="2_021hw"]
+[ext_resource type="Texture2D" uid="uid://cfawm8u4nsf5y" path="res://assets/sprites/apple-pie.png" id="2_po2d8"]
+[ext_resource type="Script" path="res://scripts/input/input_debugger.gd" id="4_mjtn7"]
 
-[node name="Node2D" type="Node2D"]
+[node name="MainScene" type="Node2D"]
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(584, 326)
 texture = ExtResource("1_jg8lq")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("2_021hw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_po2d8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D"]
+offset_left = -36.0
+offset_top = 27.0
+offset_right = 44.0
+offset_bottom = 58.0
+bbcode_enabled = true
+text = "Apple Pie"
+scroll_active = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_mjtn7")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -79.0
+offset_right = -4.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Display" type="RichTextLabel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "INput Debugger
+"
