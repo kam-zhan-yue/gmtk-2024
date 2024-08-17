@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://brlklr1gc4igq"]
+
+[ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_s7i4o"]
+[ext_resource type="PackedScene" uid="uid://crm36gr4t0nin" path="res://scenes/enemies/satellite.tscn" id="2_a0xxx"]
+
+[node name="SpawnGroup" type="Node2D"]
+script = ExtResource("1_s7i4o")
+
+[node name="Satellite" parent="." instance=ExtResource("2_a0xxx")]
+position = Vector2(-719, 322)
+
+[node name="Satellite2" parent="." instance=ExtResource("2_a0xxx")]
+position = Vector2(-764, -498)
+
+[node name="Satellite3" parent="." instance=ExtResource("2_a0xxx")]
+position = Vector2(967, -507)
+
+[node name="Satellite4" parent="." instance=ExtResource("2_a0xxx")]
+position = Vector2(740, 531)

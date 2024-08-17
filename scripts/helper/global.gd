@@ -39,3 +39,6 @@ func active(node: Node, active: bool) -> void:
 
 func ease_out_quart(x: float) -> float:
 	return 1 - pow(1 - x, 4)
+
+func ease_out_sin(x: float) -> float:
+	return sin((x * PI) / 2);
