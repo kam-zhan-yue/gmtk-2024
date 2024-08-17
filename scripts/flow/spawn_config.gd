@@ -10,8 +10,8 @@ const PREFIX = "res://scenes/spawn_groups/spawn_group_"
 func beat() -> float:
 	return 60 / bpm
 
-func spawn(beat: int) -> SpawnGroup:
-	var path := str(PREFIX, beat, ".tscn")
+func spawn(current_beat: int) -> SpawnGroup:
+	var path := str(PREFIX, current_beat, ".tscn")
 	var resource := load(path)
 	if resource:
 		var scene = resource.instantiate() as SpawnGroup
