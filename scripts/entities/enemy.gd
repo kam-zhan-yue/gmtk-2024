@@ -11,6 +11,8 @@ func init(state: GameState) -> void:
 	self.game_state = state
 	type_entity.init(data.name)
 	type_entity.on_complete.connect(_on_complete)
+	
+	game_state.init_type_entity(type_entity)
 	on_init.emit()
 	
 func _on_complete() -> void:
