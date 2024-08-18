@@ -6,10 +6,10 @@ const BALLOON_BEAT = 100
 
 @onready var player := %Player as Player
 @onready var spawner := %Spawner as Spawner
-@onready var entity_popup := %EntityPopup as EntityPopup
 @onready var camera_controller := $"../CameraController" as CameraController
 @onready var submarine := %Submarine as Marker2D
 @onready var balloon := %HotAirBalloon as Marker2D
+@onready var ui := %UI as UI
 
 var game_state: GameState
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 	game_state = GameState.new(player)
 	camera_controller.init(game_state)
 	spawner.init(game_state)
-	entity_popup.init(game_state)
+	ui.init(game_state)
 	BeatManager.on_beat.connect(_on_beat)
 	BeatManager.start()
 	submarine_setup()

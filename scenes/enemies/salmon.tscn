@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://dixxj28sb0gs3"]
+
+[ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_dnixm"]
+[ext_resource type="Script" path="res://scripts/entities/fish.gd" id="2_4u07c"]
+[ext_resource type="Resource" uid="uid://ciweeoojx2i6c" path="res://resources/ocean/salmon.tres" id="3_pj77m"]
+[ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="4_l4buw"]
+[ext_resource type="Texture2D" uid="uid://lp1pybhxsg78" path="res://assets/sprites/fish.png" id="5_v3o83"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p64ym"]
+size = Vector2(26, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fg2gp"]
+radius = 45.0
+
+[node name="Salmon" type="Node2D"]
+script = ExtResource("1_dnixm")
+
+[node name="TunaBody" type="Node2D" parent="."]
+script = ExtResource("2_4u07c")
+data = ExtResource("3_pj77m")
+
+[node name="TypeEntity" parent="TunaBody" instance=ExtResource("4_l4buw")]
+
+[node name="Sprite2D" type="Sprite2D" parent="TunaBody"]
+unique_name_in_owner = true
+texture = ExtResource("5_v3o83")
+
+[node name="Visible" type="Area2D" parent="TunaBody"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TunaBody/Visible"]
+shape = SubResource("RectangleShape2D_p64ym")
+debug_color = Color(0.817852, 3.85046e-07, 0.414628, 0.42)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_fg2gp")
+
+[connection signal="on_complete" from="TunaBody/TypeEntity" to="TunaBody" method="_on_type_entity_on_complete"]

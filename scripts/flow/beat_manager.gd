@@ -8,7 +8,7 @@ signal on_beat(num: int)
 	
 func start() -> void:
 	while(beats <= CONFIG.end_beat):
-		print(str("Beat: ", beats))
+		#print(str("Beat: ", beats))
 		on_beat.emit(beats)
 		beats += 1
 		await Global.seconds(CONFIG.beat())

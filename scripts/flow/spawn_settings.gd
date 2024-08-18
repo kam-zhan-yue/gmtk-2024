@@ -17,6 +17,5 @@ func spawn(current_beat: int) -> SpawnGroup:
 	var resource := load(path)
 	if resource:
 		var scene = resource.instantiate() as SpawnGroup
-		print(str("Spawning: ", path, " Scene: ", scene))
 		return scene
 	return null

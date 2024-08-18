@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://cytkq8vljbki0"]
+
+[ext_resource type="Script" path="res://scenes/ui/score_popup.gd" id="1_wa7u0"]
+[ext_resource type="Theme" uid="uid://d2jinjaboiehf" path="res://resources/ui/text.tres" id="2_g1ptw"]
+
+[node name="ScorePopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wa7u0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 500.0
+offset_bottom = 500.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_g1ptw")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Score"
+fit_content = true
+
+[node name="ComboLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_g1ptw")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Score"
+fit_content = true

@@ -1,14 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=18 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
 [ext_resource type="Script" path="res://scripts/flow/spawner.gd" id="3_b1w3c"]
 [ext_resource type="PackedScene" uid="uid://gwlgluwanmdk" path="res://scenes/player.tscn" id="3_h8ik1"]
-[ext_resource type="Script" path="res://scripts/ui/game_popup.gd" id="4_ppoco"]
-[ext_resource type="PackedScene" uid="uid://batev7ywylosh" path="res://scenes/ui/pause_popup.tscn" id="5_pbgb8"]
-[ext_resource type="PackedScene" uid="uid://ctyl0s7l3md6s" path="res://scenes/ui/debugger_popup.tscn" id="6_he2se"]
-[ext_resource type="Script" path="res://scripts/ui/entity_popup.gd" id="6_mm841"]
 [ext_resource type="AudioStream" uid="uid://u7jl40fk83o4" path="res://audio/music/bgm.mp3" id="8_1hva6"]
+[ext_resource type="PackedScene" uid="uid://beiyw255u1oxm" path="res://scenes/ui/ui.tscn" id="8_uw3fq"]
 [ext_resource type="Shader" path="res://scripts/shaders/distortion.gdshader" id="12_cd0p2"]
 [ext_resource type="PackedScene" uid="uid://dtbawr3acmc0s" path="res://scenes/background.tscn" id="12_dvr37"]
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="13_pujpn"]
@@ -51,15 +48,26 @@ polygon = PackedVector2Array(144.72, 124.327, 88.7338, 118.2, 25.7001, 133.058, 
 [node name="MainScene" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("12_dvr37")]
-position = Vector2(1, -674)
+position = Vector2(1, -934)
+
+[node name="Submarine" type="Marker2D" parent="Background"]
+unique_name_in_owner = true
+position = Vector2(-1, -19)
+
+[node name="HotAirBalloon" type="Marker2D" parent="Background"]
+unique_name_in_owner = true
+position = Vector2(-1, -228)
+
+[node name="UI" parent="." instance=ExtResource("8_uw3fq")]
+unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
 [node name="Distortion" type="Sprite2D" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_f1hch")
-position = Vector2(1.5, -261)
-scale = Vector2(4.71094, 8.04688)
+position = Vector2(1.5, -391.5)
+scale = Vector2(4.71094, 6.00781)
 texture = ExtResource("13_pujpn")
 
 [node name="GameManager" type="Node2D" parent="."]
@@ -69,14 +77,6 @@ script = ExtResource("1_vt02a")
 unique_name_in_owner = true
 script = ExtResource("3_b1w3c")
 
-[node name="Submarine" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(0, -687)
-
-[node name="HotAirBalloon" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(0, -896)
-
 [node name="CameraController" type="Camera2D" parent="."]
 position = Vector2(0, 167)
 zoom = Vector2(3.21, 3.21)
@@ -84,36 +84,7 @@ script = ExtResource("2_ra8cm")
 
 [node name="Player" parent="." instance=ExtResource("3_h8ik1")]
 unique_name_in_owner = true
-position = Vector2(0, 167)
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="GamePopup" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_ppoco")
-
-[node name="DebuggerPopup" parent="UI/GamePopup" instance=ExtResource("6_he2se")]
-unique_name_in_owner = true
-layout_mode = 1
-
-[node name="EntityPopup" type="Control" parent="UI/GamePopup"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("6_mm841")
-
-[node name="PausePopup" parent="UI/GamePopup" instance=ExtResource("5_pbgb8")]
-unique_name_in_owner = true
-layout_mode = 1
+position = Vector2(0, -70)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bgy46")
