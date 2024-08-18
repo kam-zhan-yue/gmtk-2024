@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BoidSettings" load_steps=2 format=3 uid="uid://cbymqmfjvuc0t"]
+
+[ext_resource type="Script" path="res://scripts/boids/boid_settings.gd" id="1_5ygn5"]
+
+[resource]
+script = ExtResource("1_5ygn5")
+min_speed = 100.0
+max_speed = 200.0
+max_steer_force = 500.0
+separation_weight = 0.8
+alignment_weight = 1.0
+cohesion_weight = 1.0
+obstacle_weight = 80.0
+avoidance_weight = 1.0
+separation = true
+alignment = true
+cohesion = true

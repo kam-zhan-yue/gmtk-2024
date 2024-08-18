@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6nqvsmyh3jsa"]
+
+[ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="1_h2aun"]
+
+[node name="BoidTest" type="Node2D"]
+
+[node name="BoidSpawner" type="Node2D" parent="."]
+position = Vector2(-375, -354)
+script = ExtResource("1_h2aun")
+start_direction = Vector2(1, 1)
+
+[node name="BoidSpawner2" type="Node2D" parent="."]
+position = Vector2(379, 347)
+script = ExtResource("1_h2aun")
+start_direction = Vector2(-1, -1)
+
+[node name="Camera2D" type="Camera2D" parent="."]

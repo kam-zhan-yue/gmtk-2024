@@ -6,3 +6,4 @@
 script = ExtResource("1_ou7i2")
 name = "bird"
 score = 10.0
+damage = 10.0

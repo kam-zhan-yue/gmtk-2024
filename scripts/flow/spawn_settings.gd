@@ -1,4 +1,4 @@
-class_name SpawnConfig
+class_name SpawnSettings
 extends Resource
 
 @export var start_beat := 0

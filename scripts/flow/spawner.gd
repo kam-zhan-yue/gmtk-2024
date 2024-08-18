@@ -1,7 +1,7 @@
 class_name Spawner
 extends Node2D
 
-const CONFIG = preload("res://resources/spawn_config.tres")
+const CONFIG = preload("res://resources/spawn_settings.tres")
 const ENTITY = preload("res://scenes/enemies/ufo.tscn")
 const random = ["Apple Pie", "Tuna", "Oreo", "Broccoli"]
 

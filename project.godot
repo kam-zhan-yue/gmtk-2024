@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 InputManager="*res://scripts/typing/input_manager.gd"
 Global="*res://scripts/helper/global.gd"
 BeatManager="*res://scripts/flow/beat_manager.gd"
+BoidManager="*res://scripts/boids/boid_manager.gd"
 
 [display]
 
