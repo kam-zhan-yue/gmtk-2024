@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=21 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -6,12 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://gwlgluwanmdk" path="res://scenes/player.tscn" id="3_h8ik1"]
 [ext_resource type="Script" path="res://scripts/ui/game_popup.gd" id="4_ppoco"]
 [ext_resource type="PackedScene" uid="uid://batev7ywylosh" path="res://scenes/ui/pause_popup.tscn" id="5_pbgb8"]
-[ext_resource type="PackedScene" uid="uid://cpwt2a2pobxi3" path="res://scenes/projectiles/laser.tscn" id="5_ubpky"]
 [ext_resource type="PackedScene" uid="uid://ctyl0s7l3md6s" path="res://scenes/ui/debugger_popup.tscn" id="6_he2se"]
 [ext_resource type="Script" path="res://scripts/ui/entity_popup.gd" id="6_mm841"]
 [ext_resource type="AudioStream" uid="uid://u7jl40fk83o4" path="res://audio/music/bgm.mp3" id="8_1hva6"]
-[ext_resource type="Texture2D" uid="uid://dqs5ehgjusgtc" path="res://assets/background/background.png" id="9_vjgvk"]
 [ext_resource type="Shader" path="res://scripts/shaders/distortion.gdshader" id="12_cd0p2"]
+[ext_resource type="PackedScene" uid="uid://dtbawr3acmc0s" path="res://scenes/background.tscn" id="12_dvr37"]
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="13_pujpn"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_jf1mw"]
@@ -29,7 +28,7 @@ noise = SubResource("FastNoiseLite_aaysv")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f1hch"]
 shader = ExtResource("12_cd0p2")
-shader_parameter/distortion_strength = 0.01
+shader_parameter/distortion_strength = 0.00500005
 shader_parameter/offset1 = Vector2(0.1, 0.1)
 shader_parameter/offset2 = Vector2(0.2, 0.2)
 shader_parameter/noise_texture1 = SubResource("NoiseTexture2D_auxj2")
@@ -54,7 +53,7 @@ polygon = PackedVector2Array(144.72, 124.327, 88.7338, 118.2, 25.7001, 133.058, 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+[node name="Distortion" type="Sprite2D" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_f1hch")
 position = Vector2(1.5, -261)
 scale = Vector2(4.71094, 8.04688)
@@ -113,8 +112,6 @@ script = ExtResource("6_mm841")
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="Laser" parent="." instance=ExtResource("5_ubpky")]
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bgy46")
 
@@ -124,10 +121,7 @@ volume_db = -20.0
 autoplay = true
 bus = &"Music"
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(0, -674)
-texture = ExtResource("9_vjgvk")
+[node name="Background" parent="." instance=ExtResource("12_dvr37")]
 
 [node name="Lights" type="Node2D" parent="."]
 visible = false

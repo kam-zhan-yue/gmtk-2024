@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtbawr3acmc0s"]
+
+[ext_resource type="Texture2D" uid="uid://dqs5ehgjusgtc" path="res://assets/background/background.png" id="1_k10ia"]
+[ext_resource type="Script" path="res://scripts/entities/visible.gd" id="2_ybn17"]
+
+[node name="Background" type="Sprite2D"]
+z_index = -1
+position = Vector2(0, -674)
+texture = ExtResource("1_k10ia")
+
+[node name="VisibleAreas" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="VisibleAreas"]
+position = Vector2(0, 674)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("2_ybn17")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisibleAreas/Area2D"]
+polygon = PackedVector2Array(-27, 117, 23, 56, 39, 48, 33, -35, 31, -59, 83, -116, 94, -172, 53, -211, 48, -233, 58, -250, 87, -264, 131, -313, 136, -334, 127, -345, 96, -363, 66, -425, 48, -457, 65, -548, 80, -627, 107, -647, 212, -679, 244, -686, 276, -685, 299, -685, 302, -1606, -298, -1607, -301, -700, -101, -640, -61, -553, -54, -468, -62, -422, -74, -395, -71, -338, -57, -268, -67, -219, -36, -138, -65, -91, -85, -65, -82, -30, -52, 3, -38, 33, -44, 77)
+
+[connection signal="area_entered" from="VisibleAreas/Area2D" to="VisibleAreas/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="VisibleAreas/Area2D" to="VisibleAreas/Area2D" method="_on_area_exited"]

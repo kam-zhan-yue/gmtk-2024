@@ -8,10 +8,6 @@
 
 [node name="UFO" type="Node2D"]
 script = ExtResource("1_85c3s")
-orbit_radius = null
-speed = null
-time_between_rockets = null
-rocket_speed = null
 rocket_data = ExtResource("2_03o4g")
 data = ExtResource("2_r3p7u")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4unria6tgwpq"]
+[gd_scene load_steps=4 format=3 uid="uid://cne4yq3qce3fj"]
 
 [ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="1_3gu8f"]
 [ext_resource type="Script" path="res://scripts/entities/enemy.gd" id="1_de61x"]
@@ -8,7 +8,6 @@
 script = ExtResource("1_de61x")
 
 [node name="TypeEntity" parent="." instance=ExtResource("1_3gu8f")]
-unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)

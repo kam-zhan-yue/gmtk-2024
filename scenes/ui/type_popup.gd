@@ -6,12 +6,16 @@ var entity: TypeEntity
 @onready var rich_text_label := $RichTextLabel as RichTextLabel
 var completed := false
 
+func _ready() -> void:
+	Global.set_inactive(rich_text_label)
+
 func init(type_entity: TypeEntity) -> void:
 	position = Vector2(-100, -100)
 	entity = type_entity
 	rich_text_label.text = str('\n', entity.get_display_string())
 	entity.on_update.connect(_on_update)
 	entity.on_complete.connect(_on_complete)
+	entity.on_active.connect(_on_active)
 
 func _process(delta: float) -> void:
 	if completed: return
@@ -28,6 +32,12 @@ func _process(delta: float) -> void:
 func get_screen_center() -> Vector2:
 	var rect := get_viewport_rect().size * 0.5
 	return Vector2(rect.x - size.x * 0.5, rect.y - size.y * 0.5)
+
+func _on_active(active: bool) -> void:
+	if active:
+		Global.set_active(rich_text_label)
+	else:
+		Global.set_inactive(rich_text_label)
 
 func _on_update(text: String) -> void:
 	rich_text_label.text = str('\n', text)

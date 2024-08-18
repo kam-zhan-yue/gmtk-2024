@@ -5,11 +5,13 @@ extends Node2D
 
 var input: String = ""
 
-enum TypeState {INACTIVE, ACTIVE, WRONG, COMPLETED}
+enum TypeState { INACTIVE, ACTIVE, WRONG, COMPLETED}
 var state := TypeState.INACTIVE
 var index := 0
 var incorrect := 0
+var active := false
 
+signal on_active(active: bool)
 signal on_update(text: String)
 signal on_complete
 
@@ -22,7 +24,20 @@ func init(word: String) -> void:
 	input = ""
 	update_state()
 
+func activate() -> void:
+	active = true
+	on_active.emit(true)
+
+func deactivate() -> void:
+	input = ""
+	index = 0
+	incorrect = 0
+	state = TypeState.INACTIVE
+	active = false
+	on_active.emit(false)
+
 func _on_key_pressed(key: String) -> void:
+	if not active: return
 	if index >= target.length() || state == TypeState.COMPLETED:
 		return
 	if state == TypeState.INACTIVE and key == target[0]:
@@ -56,6 +71,7 @@ func _on_key_pressed(key: String) -> void:
 	check_complete()
 
 func _on_backspace() -> void:
+	if not active: return
 	if state == TypeState.ACTIVE and index > 0:
 		input = input.left(input.length() - 1)
 		index -= 1

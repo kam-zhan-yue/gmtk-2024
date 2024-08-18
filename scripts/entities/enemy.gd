@@ -17,3 +17,9 @@ func init(state: GameState) -> void:
 	
 func _on_complete() -> void:
 	queue_free()
+
+func activate_type() -> void:
+	type_entity.activate()
+
+func deactivate_type() -> void:
+	type_entity.deactivate()
