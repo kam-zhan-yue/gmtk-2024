@@ -17,8 +17,9 @@ func _on_beat(beat: int) -> void:
 		if spawn_group.parent_to_player:
 			game_state.player.add_child(spawn_group)
 		else:
-			add_child(spawn_group)
+			get_tree().root.add_child(spawn_group)
 		spawn_group.init(game_state)
+		spawn_group.position += game_state.player.position
 
 func spawn_async() -> void:
 	while(true):

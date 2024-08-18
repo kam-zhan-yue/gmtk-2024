@@ -20,7 +20,6 @@ data = ExtResource("3_5aanl")
 
 [node name="Sprite2D" type="Sprite2D" parent="FishEnemy"]
 unique_name_in_owner = true
-scale = Vector2(3, 3)
 texture = ExtResource("5_mibqo")
 
 [node name="Area2D" type="Area2D" parent="."]
