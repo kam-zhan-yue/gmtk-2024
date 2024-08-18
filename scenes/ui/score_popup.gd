@@ -18,5 +18,6 @@ func _on_combo(value: int) -> void:
 		Global.set_inactive(combo_label)
 	else:
 		Global.set_active(combo_label)
-		combo_label.text = str("Combo: ", value, "x")
-	pass
+		var combo = str("Combo: ", value, "x")
+		var shake = str("[shake rate=",value," level=10 connected=1]", combo, "[/shake]")
+		combo_label.text = shake
