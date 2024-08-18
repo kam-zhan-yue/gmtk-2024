@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_4w5d4")
-name = "rocket"
+name = "eagle"
 score = 10.0
+damage = 10.0
