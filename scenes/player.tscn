@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://gwlgluwanmdk"]
+[gd_scene load_steps=15 format=3 uid="uid://gwlgluwanmdk"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_fga61"]
-[ext_resource type="Texture2D" uid="uid://5vsmn04besc8" path="res://assets/sprites/cookie.png" id="2_5ig5h"]
 [ext_resource type="Script" path="res://scripts/entities/health.gd" id="3_dgs54"]
+[ext_resource type="Texture2D" uid="uid://b2wagc5foi73g" path="res://assets/sheets/diver.png" id="3_rx357"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2561x"]
 size = Vector2(12, 12.1)
@@ -10,12 +10,72 @@ size = Vector2(12, 12.1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_j5h8s"]
 radius = 30.0167
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmhv6"]
+atlas = ExtResource("3_rx357")
+region = Rect2(0, 0, 18, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlbgi"]
+atlas = ExtResource("3_rx357")
+region = Rect2(18, 0, 18, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf4pg"]
+atlas = ExtResource("3_rx357")
+region = Rect2(36, 0, 18, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdc05"]
+atlas = ExtResource("3_rx357")
+region = Rect2(54, 0, 18, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3fnp"]
+atlas = ExtResource("3_rx357")
+region = Rect2(72, 0, 18, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f5fq"]
+atlas = ExtResource("3_rx357")
+region = Rect2(90, 0, 18, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6wts"]
+atlas = ExtResource("3_rx357")
+region = Rect2(108, 0, 18, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nates"]
+atlas = ExtResource("3_rx357")
+region = Rect2(126, 0, 18, 47)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4d37c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmhv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlbgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf4pg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdc05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3fnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f5fq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6wts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nates")
+}],
+"loop": true,
+"name": &"diver_swim",
+"speed": 12.0
+}]
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_fga61")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("2_5ig5h")
 
 [node name="Health" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -27,9 +87,14 @@ scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_2561x")
 
 [node name="Body" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
 shape = SubResource("CircleShape2D_j5h8s")
 debug_color = Color(0.925347, 4.20663e-05, 0.676581, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4d37c")
+animation = &"diver_swim"
+frame_progress = 0.878717

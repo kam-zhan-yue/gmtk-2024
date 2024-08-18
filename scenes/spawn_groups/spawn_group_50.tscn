@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://1jb7hd26ku1f"]
+[gd_scene load_steps=3 format=3 uid="uid://c0svp52oq2dud"]
 
 [ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_fv2po"]
 [ext_resource type="PackedScene" uid="uid://ckrlsacuunj2h" path="res://scenes/enemies/ufo.tscn" id="2_4s2yb"]

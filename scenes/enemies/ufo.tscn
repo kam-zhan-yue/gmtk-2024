@@ -19,5 +19,4 @@ data = ExtResource("2_r3p7u")
 unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
 texture = ExtResource("3_qcx0j")

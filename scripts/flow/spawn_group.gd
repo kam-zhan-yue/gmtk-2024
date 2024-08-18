@@ -1,6 +1,8 @@
 class_name SpawnGroup
 extends Node2D
 
+@export var parent_to_player := false
+
 func init(game_state: GameState) -> void:
 	init_recursive(self, game_state)
 

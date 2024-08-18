@@ -1,46 +1,57 @@
 class_name Shark
 extends Enemy
 
-@export var attack_range := 100.0
+@export var bite_range := 100.0
 @export var speed := 100.0
-@export var time_between_bites := 2.0
+@export var bite_time := 2.0
 @export var bite_damage := 10.0
 @onready var audio := $AudioStreamPlayer2D as AudioStreamPlayer2D
 @onready var sprite := $Sprite2D as Sprite2D
 
-func _ready() -> void:
-	on_init.connect(_on_init)
-	
-func _on_init() -> void:
-	await lerp_async()
-	bite_async()
+enum State {SWIMMING, BITING, RETREATING}
+var state := State.SWIMMING
 
-func lerp_async() -> void:
+func _process(delta: float) -> void:
+	if not game_state:
+		return
+	if state == State.SWIMMING:
+		swim()
+	elif state == State.BITING:
+		bite()
+	elif state == State.RETREATING:
+		retreat()
+
+func swim() -> void:
 	var start_pos := global_position
 	var player_pos := game_state.player.global_position
-	var direction := (player_pos - start_pos).normalized()
-	var target_pos := player_pos - direction * attack_range
-	var time_to_target := (start_pos - target_pos).length() / speed
-	var timer := 0.0
-	
+	var difference := player_pos - start_pos
+	if difference.length() <= bite_range:
+		bite_async()
+		return
+	move_to_player()
+
+func move_to_player() -> void:
+	var start_pos := global_position
+	var player_pos := game_state.player.global_position
+	var difference := player_pos - start_pos
+	var direction := difference.normalized()
+	if difference.length() <= bite_range:
+		return
+	global_position += difference.normalized() * speed * get_process_delta_time()
 	var angle := atan2(direction.y, direction.x)
 	sprite.rotation = angle
 	sprite.flip_v = Global.flip_v(angle)
-	
-	while timer < time_to_target:
-		var time := timer / time_to_target
-		global_position = start_pos.lerp(target_pos, Global.ease_out_sin(time))
-		timer += get_process_delta_time()
-		await Global.frame()
-	
-	global_position = target_pos
 
 func bite_async() -> void:
-	while(true):
-		await Global.seconds(time_between_bites)
-		bite()
-
-func bite() -> void:
+	state = State.BITING
+	await Global.seconds(bite_time)
 	print("Bite Player!")
 	game_state.player.damage(bite_damage)
 	audio.play()
+	state = State.RETREATING
+
+func bite() -> void:
+	move_to_player()
+
+func retreat() -> void:
+	pass

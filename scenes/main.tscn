@@ -6,23 +6,18 @@
 [ext_resource type="Script" path="res://scripts/ui/game_popup.gd" id="4_ppoco"]
 [ext_resource type="PackedScene" uid="uid://batev7ywylosh" path="res://scenes/ui/pause_popup.tscn" id="5_pbgb8"]
 [ext_resource type="PackedScene" uid="uid://cpwt2a2pobxi3" path="res://scenes/projectiles/laser.tscn" id="5_ubpky"]
-[ext_resource type="AudioStream" uid="uid://mslsyewum0vl" path="res://audio/music/Rolemusic - The White Frame.mp3" id="6_0ta0t"]
 [ext_resource type="PackedScene" uid="uid://ctyl0s7l3md6s" path="res://scenes/ui/debugger_popup.tscn" id="6_he2se"]
+[ext_resource type="AudioStream" uid="uid://u7jl40fk83o4" path="res://audio/music/bgm.mp3" id="8_1hva6"]
 [ext_resource type="Texture2D" uid="uid://dqs5ehgjusgtc" path="res://assets/background/background.png" id="9_vjgvk"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
 glow_enabled = true
 glow_strength = 1.21
-glow_bloom = 0.2
 glow_blend_mode = 0
-glow_hdr_threshold = 0.5
 glow_hdr_luminance_cap = 3.0
 
 [node name="MainScene" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_vt02a")
@@ -33,6 +28,11 @@ script = ExtResource("3_b1w3c")
 
 [node name="Player" parent="." instance=ExtResource("3_h8ik1")]
 unique_name_in_owner = true
+position = Vector2(0, 167)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(2, 0)
+zoom = Vector2(1.5, 1.5)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -59,7 +59,7 @@ layout_mode = 1
 environment = SubResource("Environment_bgy46")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_0ta0t")
+stream = ExtResource("8_1hva6")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"

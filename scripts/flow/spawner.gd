@@ -14,7 +14,10 @@ func init(state: GameState) -> void:
 func _on_beat(beat: int) -> void:
 	var spawn_group = CONFIG.spawn(beat)
 	if spawn_group:
-		add_child(spawn_group)
+		if spawn_group.parent_to_player:
+			game_state.player.add_child(spawn_group)
+		else:
+			add_child(spawn_group)
 		spawn_group.init(game_state)
 
 func spawn_async() -> void:
