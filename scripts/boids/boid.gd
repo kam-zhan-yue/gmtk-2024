@@ -9,7 +9,8 @@ var alignment: Vector2
 var cohesion: Vector2
 
 func can_see(pos: Vector2) -> bool:
-	return true
+	var difference = (pos - global_position).length()
+	return difference <= BoidManager.SETTINGS.vision_radius
 
 func init() -> void:
 	var min := BoidManager.SETTINGS.min_speed
