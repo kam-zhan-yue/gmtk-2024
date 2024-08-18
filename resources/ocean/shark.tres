@@ -6,3 +6,4 @@
 script = ExtResource("1_xwhdn")
 name = "Shark"
 score = 10.0
+damage = 10.0

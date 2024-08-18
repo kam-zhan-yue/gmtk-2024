@@ -6,3 +6,4 @@
 script = ExtResource("1_6v77i")
 name = "eagle"
 score = 10.0
+damage = 10.0

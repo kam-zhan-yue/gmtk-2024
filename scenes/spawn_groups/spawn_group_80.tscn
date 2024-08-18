@@ -8,20 +8,12 @@ script = ExtResource("1_f2mwe")
 
 [node name="UFO" parent="." instance=ExtResource("1_vnomc")]
 position = Vector2(-298, -110)
-distance_from_player = null
-speed = null
 
 [node name="UFO2" parent="." instance=ExtResource("1_vnomc")]
 position = Vector2(-149, 146)
-distance_from_player = null
-speed = null
 
 [node name="UFO3" parent="." instance=ExtResource("1_vnomc")]
 position = Vector2(171, -250)
-distance_from_player = null
-speed = null
 
 [node name="UFO4" parent="." instance=ExtResource("1_vnomc")]
 position = Vector2(213, 210)
-distance_from_player = null
-speed = null

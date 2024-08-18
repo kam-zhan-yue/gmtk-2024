@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="SpawnConfig" load_steps=2 format=3 uid="uid://dyqjgvi82j70g"]
-
-[ext_resource type="Script" path="res://scripts/flow/spawn_config.gd" id="1_eb7yf"]
-
-[resource]
-script = ExtResource("1_eb7yf")
-start_beat = null
-end_beat = null
-bpm = null

@@ -6,3 +6,4 @@
 script = ExtResource("1_cjvk2")
 name = "gooperglop"
 score = 10.0
+damage = 10.0

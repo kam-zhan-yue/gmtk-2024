@@ -1,16 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://gwlgluwanmdk"]
+[gd_scene load_steps=6 format=3 uid="uid://gwlgluwanmdk"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_fga61"]
 [ext_resource type="Texture2D" uid="uid://5vsmn04besc8" path="res://assets/sprites/cookie.png" id="2_5ig5h"]
 [ext_resource type="Script" path="res://scripts/entities/health.gd" id="3_dgs54"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2561x"]
+size = Vector2(12, 12.1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5h8s"]
+radius = 30.0167
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_fga61")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("2_5ig5h")
 
 [node name="Health" type="Area2D" parent="."]
@@ -18,5 +22,14 @@ unique_name_in_owner = true
 script = ExtResource("3_dgs54")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Health"]
+position = Vector2(2.01948e-28, -1.05879e-22)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_2561x")
+
+[node name="Body" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+shape = SubResource("CircleShape2D_j5h8s")
+debug_color = Color(0.925347, 4.20663e-05, 0.676581, 0.42)

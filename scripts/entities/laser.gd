@@ -24,13 +24,13 @@ var is_casting: bool = false :
 func _ready():
 	is_casting = false
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if not is_casting:
-			is_casting = true
-			update_laser(Vector2.ZERO, get_global_mouse_position())
-			await Global.seconds(1.0)
-			is_casting = false
+#func _input(event):
+	#if event is InputEventMouseButton:
+		#if not is_casting:
+			#is_casting = true
+			#update_laser(Vector2.ZERO, get_global_mouse_position())
+			#await Global.seconds(1.0)
+			#is_casting = false
 
 #func _physics_process(delta: float) -> void:
 	#var cast_point := target_position

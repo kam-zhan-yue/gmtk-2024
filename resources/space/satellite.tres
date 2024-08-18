@@ -6,3 +6,4 @@
 script = ExtResource("1_v8wi4")
 name = "portumeister"
 score = 10.0
+damage = 10.0

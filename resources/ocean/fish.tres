@@ -6,3 +6,4 @@
 script = ExtResource("1_tpbwa")
 name = "fish"
 score = 10.0
+damage = 10.0

@@ -12,5 +12,4 @@ data = ExtResource("2_4edq1")
 [node name="TypeEntity" parent="." instance=ExtResource("1_6e1fg")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
 texture = ExtResource("2_le2sg")

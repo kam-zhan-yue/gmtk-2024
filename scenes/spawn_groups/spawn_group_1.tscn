@@ -1,9 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://d12p1oj0k7sxg"]
+[gd_scene load_steps=4 format=3 uid="uid://vcymjov5urr2"]
 
 [ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_dvd3a"]
-[ext_resource type="PackedScene" uid="uid://b6tdx7n4gfhfr" path="res://scenes/patterns/flock.tscn" id="2_qbpcl"]
+[ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="2_w7vs4"]
+[ext_resource type="PackedScene" uid="uid://cuu4wvac46q6j" path="res://scenes/enemies/fish.tscn" id="3_t0n4x"]
 
 [node name="SpawnGroup" type="Node2D"]
 script = ExtResource("1_dvd3a")
 
-[node name="Flock" parent="." instance=ExtResource("2_qbpcl")]
+[node name="BoidSpawner" type="Node2D" parent="."]
+position = Vector2(-510, 253)
+script = ExtResource("2_w7vs4")
+boid_scene = ExtResource("3_t0n4x")
+start_direction = Vector2(1, 0)
+spawn_radius = 200.0
+spawn_count = 25
+
+[node name="BoidSpawner2" type="Node2D" parent="."]
+position = Vector2(617, 127)
+script = ExtResource("2_w7vs4")
+boid_scene = ExtResource("3_t0n4x")
+start_direction = Vector2(-1, 0)
+spawn_radius = 200.0
+spawn_count = 25
