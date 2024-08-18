@@ -12,3 +12,6 @@ func start() -> void:
 		on_beat.emit(beats)
 		beats += 1
 		await Global.seconds(CONFIG.beat())
+
+func beats_to_seconds(beat: int) -> float:
+	return beat * CONFIG.beat()

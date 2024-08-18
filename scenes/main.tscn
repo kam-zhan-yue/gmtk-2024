@@ -31,6 +31,14 @@ polygon = PackedVector2Array(144.72, 124.327, 88.7338, 118.2, 25.7001, 133.058, 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_vt02a")
 
+[node name="Submarine" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -687)
+
+[node name="HotAirBalloon" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -896)
+
 [node name="CameraController" type="Camera2D" parent="."]
 position = Vector2(0, 167)
 zoom = Vector2(3.21, 3.21)
