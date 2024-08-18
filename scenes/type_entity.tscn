@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0en8pevtc4do"]
+[gd_scene load_steps=3 format=3 uid="uid://d0en8pevtc4do"]
 
 [ext_resource type="Script" path="res://scripts/typing/type_entity.gd" id="1_l5q5b"]
+[ext_resource type="RichTextEffect" uid="uid://bd55040ck41xd" path="res://scripts/ui/ghost_effect.tres" id="2_7jdg8"]
 
 [node name="TypeEntity" type="Node2D"]
 script = ExtResource("1_l5q5b")
@@ -21,10 +22,12 @@ offset_left = -250.0
 offset_top = 12.0
 offset_right = 249.0
 offset_bottom = 68.0
-theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "[center]Test[/center]"
+fit_content = true
 scroll_active = false
+custom_effects = [ExtResource("2_7jdg8")]
 
 [node name="State" type="RichTextLabel" parent="."]
 visible = false

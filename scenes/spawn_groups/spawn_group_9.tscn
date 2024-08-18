@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_6wqdh"]
 [ext_resource type="PackedScene" uid="uid://ckrlsacuunj2h" path="res://scenes/enemies/ufo.tscn" id="2_5y02q"]
 
-[node name="SpawnGroup" type="Node2D"]
+[node name="SpawnGroup2" type="Node2D"]
 script = ExtResource("1_6wqdh")
 
 [node name="UFO" parent="." instance=ExtResource("2_5y02q")]

@@ -8,9 +8,3 @@ script = ExtResource("1_efrf8")
 
 [node name="Shark" parent="." instance=ExtResource("2_eq5m1")]
 position = Vector2(-393, 603)
-
-[node name="Shark2" parent="." instance=ExtResource("2_eq5m1")]
-position = Vector2(1225, -7)
-
-[node name="Shark3" parent="." instance=ExtResource("2_eq5m1")]
-position = Vector2(531, -623)

@@ -42,3 +42,8 @@ func ease_out_quart(x: float) -> float:
 
 func ease_out_sin(x: float) -> float:
 	return sin((x * PI) / 2);
+
+func flip_v(rotation: float) -> bool:
+	var left_rotate = rotation > -PI*1.5 and rotation <-PI*0.5
+	var right_rotate = rotation > PI*0.5 and rotation < PI*1.5
+	return left_rotate or right_rotate

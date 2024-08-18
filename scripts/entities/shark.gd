@@ -6,6 +6,7 @@ extends Enemy
 @export var time_between_bites := 2.0
 @export var bite_damage := 10.0
 @onready var audio := $AudioStreamPlayer2D as AudioStreamPlayer2D
+@onready var sprite := $Sprite2D as Sprite2D
 
 func _ready() -> void:
 	on_init.connect(_on_init)
@@ -22,6 +23,10 @@ func lerp_async() -> void:
 	var time_to_target := (start_pos - target_pos).length() / speed
 	var timer := 0.0
 	
+	var angle := atan2(direction.y, direction.x)
+	sprite.rotation = angle
+	sprite.flip_v = Global.flip_v(angle)
+	
 	while timer < time_to_target:
 		var time := timer / time_to_target
 		global_position = start_pos.lerp(target_pos, Global.ease_out_sin(time))
@@ -29,7 +34,6 @@ func lerp_async() -> void:
 		await Global.frame()
 	
 	global_position = target_pos
-
 
 func bite_async() -> void:
 	while(true):

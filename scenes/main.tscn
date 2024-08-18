@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=11 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/spawner.gd" id="3_b1w3c"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cpwt2a2pobxi3" path="res://scenes/projectiles/laser.tscn" id="5_ubpky"]
 [ext_resource type="AudioStream" uid="uid://mslsyewum0vl" path="res://audio/music/Rolemusic - The White Frame.mp3" id="6_0ta0t"]
 [ext_resource type="PackedScene" uid="uid://ctyl0s7l3md6s" path="res://scenes/ui/debugger_popup.tscn" id="6_he2se"]
+[ext_resource type="Texture2D" uid="uid://dqs5ehgjusgtc" path="res://assets/background/background.png" id="9_vjgvk"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
@@ -21,6 +22,7 @@ glow_hdr_luminance_cap = 3.0
 [node name="MainScene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_vt02a")
@@ -61,3 +63,8 @@ stream = ExtResource("6_0ta0t")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -674)
+texture = ExtResource("9_vjgvk")

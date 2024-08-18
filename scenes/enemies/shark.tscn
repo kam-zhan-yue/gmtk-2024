@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/entities/shark.gd" id="1_kfhs4"]
 [ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="1_ug8yd"]
 [ext_resource type="Resource" uid="uid://d1jegsr6206oa" path="res://resources/ocean/shark.tres" id="2_0qhvb"]
-[ext_resource type="Texture2D" uid="uid://bqko507q16dd8" path="res://assets/textures/white_ring.png" id="2_eka2d"]
+[ext_resource type="Texture2D" uid="uid://67fd3qx1r467" path="res://assets/sprites/shark.png" id="4_c8eml"]
 [ext_resource type="AudioStream" uid="uid://jhtmfyxpx8oo" path="res://audio/effects/crate_break.wav" id="4_rkr32"]
 
 [node name="Shark" type="Node2D"]
@@ -14,7 +14,7 @@ data = ExtResource("2_0qhvb")
 unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_eka2d")
+texture = ExtResource("4_c8eml")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_rkr32")

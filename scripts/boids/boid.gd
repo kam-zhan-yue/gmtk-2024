@@ -10,6 +10,7 @@ var cohesion: Vector2
 var obstacle: Vector2
 
 @onready var obstacle_view: Area2D = $Area2D
+@onready var sprite: Sprite2D = %Sprite2D
 
 func can_see(pos: Vector2) -> bool:
 	var difference = (pos - global_position).length()
@@ -47,7 +48,12 @@ func steer_towards(target: Vector2) -> Vector2:
 	return v.clampf(-BoidManager.SETTINGS.max_steer_force, BoidManager.SETTINGS.max_steer_force)
 
 func update_rotation() -> void:
-	rotation = atan2(velocity.y, velocity.x) + PI * 0.5
+	var angle = atan2(velocity.y, velocity.x)
+	if sprite:
+		sprite.rotation = angle
+		sprite.flip_v = Global.flip_v(angle)
+	else:
+		rotation = angle
 
 func get_obstacle_force() -> Vector2:
 	if not obstacle_view.has_overlapping_areas():
