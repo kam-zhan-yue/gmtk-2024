@@ -21,7 +21,16 @@ InputManager="*res://scripts/typing/input_manager.gd"
 Global="*res://scripts/helper/global.gd"
 BeatManager="*res://scripts/flow/beat_manager.gd"
 
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=800
+window/size/mode=2
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
 viewport/hdr_2d=true

@@ -5,6 +5,7 @@ extends Enemy
 @export var speed := 100.0
 @export var time_between_bites := 2.0
 @export var bite_damage := 10.0
+@onready var audio := $AudioStreamPlayer2D as AudioStreamPlayer2D
 
 func _ready() -> void:
 	on_init.connect(_on_init)
@@ -38,3 +39,4 @@ func bite_async() -> void:
 func bite() -> void:
 	print("Bite Player!")
 	game_state.player.damage(bite_damage)
+	audio.play()
