@@ -50,6 +50,9 @@ polygon = PackedVector2Array(144.72, 124.327, 88.7338, 118.2, 25.7001, 133.058, 
 
 [node name="MainScene" type="Node2D"]
 
+[node name="Background" parent="." instance=ExtResource("12_dvr37")]
+position = Vector2(1, -674)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
@@ -61,6 +64,10 @@ texture = ExtResource("13_pujpn")
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_vt02a")
+
+[node name="Spawner" type="Node2D" parent="GameManager"]
+unique_name_in_owner = true
+script = ExtResource("3_b1w3c")
 
 [node name="Submarine" type="Marker2D" parent="."]
 unique_name_in_owner = true
@@ -74,10 +81,6 @@ position = Vector2(0, -896)
 position = Vector2(0, 167)
 zoom = Vector2(3.21, 3.21)
 script = ExtResource("2_ra8cm")
-
-[node name="Spawner" type="Node2D" parent="."]
-unique_name_in_owner = true
-script = ExtResource("3_b1w3c")
 
 [node name="Player" parent="." instance=ExtResource("3_h8ik1")]
 unique_name_in_owner = true
@@ -120,8 +123,6 @@ stream = ExtResource("8_1hva6")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"
-
-[node name="Background" parent="." instance=ExtResource("12_dvr37")]
 
 [node name="Lights" type="Node2D" parent="."]
 visible = false

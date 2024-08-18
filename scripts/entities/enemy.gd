@@ -3,7 +3,9 @@ extends Node2D
 
 @export var data: EnemyData
 @onready var type_entity := $TypeEntity as TypeEntity
+@onready var sprite := $Sprite2D as Sprite2D
 
+const FADE_OUT = 1.0
 var game_state: GameState
 signal on_init
 
@@ -16,6 +18,14 @@ func init(state: GameState) -> void:
 	on_init.emit()
 	
 func _on_complete() -> void:
+	game_state.enemy_dead(data)
+	var timer := 0.0
+	while timer < FADE_OUT:
+		var t := timer / FADE_OUT
+		sprite.modulate.a = 1-t
+		timer += get_process_delta_time()
+		await Global.frame()
+	await Global.seconds(1.0)
 	queue_free()
 
 func activate_type() -> void:
