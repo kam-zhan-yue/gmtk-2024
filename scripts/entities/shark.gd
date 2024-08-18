@@ -1,12 +1,11 @@
 class_name Shark
 extends Enemy
 
-@export var bite_range := 100.0
-@export var speed := 100.0
-@export var bite_time := 2.0
+@export var bite_range := 50.0
+@export var speed := 50.0
+@export var bite_time := 3.0
 @export var bite_damage := 10.0
 @onready var audio := $AudioStreamPlayer2D as AudioStreamPlayer2D
-@onready var sprite := $Sprite2D as Sprite2D
 
 enum State {SWIMMING, BITING, RETREATING}
 var state := State.SWIMMING
@@ -39,7 +38,7 @@ func move_to_player() -> void:
 		return
 	global_position += difference.normalized() * speed * get_process_delta_time()
 	var angle := atan2(direction.y, direction.x)
-	sprite.rotation = angle
+	rotation = angle
 	sprite.flip_v = Global.flip_v(angle)
 
 func bite_async() -> void:

@@ -1,7 +1,7 @@
 class_name TypePopup
 extends Control
 
-const OFFSET_Y = 60.0
+const OFFSET_Y = 30.0
 var entity: TypeEntity
 @onready var rich_text_label := $RichTextLabel as RichTextLabel
 var completed := false

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj8p3xn7wmel7"]
+
+[ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_cs8rg"]
+[ext_resource type="PackedScene" uid="uid://d2ee0urw0h25j" path="res://scenes/enemies/shark.tscn" id="2_mdn2x"]
+
+[node name="SpawnGroup" type="Node2D"]
+script = ExtResource("1_cs8rg")
+
+[node name="Shark" parent="." instance=ExtResource("2_mdn2x")]
+position = Vector2(-494, -585)
+
+[node name="Shark2" parent="." instance=ExtResource("2_mdn2x")]
+position = Vector2(442, -374)
