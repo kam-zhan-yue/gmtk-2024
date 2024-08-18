@@ -8,14 +8,14 @@
 script = ExtResource("1_ic18x")
 
 [node name="BoidSpawner" type="Node2D" parent="."]
-position = Vector2(313, 37)
+position = Vector2(313, -829)
 script = ExtResource("2_2b8ps")
 boid_scene = ExtResource("3_a1n4c")
 start_direction = Vector2(-1, -0.5)
 spawn_count = 3
 
 [node name="BoidSpawner2" type="Node2D" parent="."]
-position = Vector2(-429, -26)
+position = Vector2(-429, -892)
 script = ExtResource("2_2b8ps")
 boid_scene = ExtResource("3_a1n4c")
 start_direction = Vector2(1, -0.5)
