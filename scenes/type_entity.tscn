@@ -1,51 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0en8pevtc4do"]
+[gd_scene load_steps=2 format=3 uid="uid://d0en8pevtc4do"]
 
 [ext_resource type="Script" path="res://scripts/typing/type_entity.gd" id="1_l5q5b"]
-[ext_resource type="RichTextEffect" uid="uid://bd55040ck41xd" path="res://scripts/ui/ghost_effect.tres" id="2_7jdg8"]
-[ext_resource type="Theme" uid="uid://d2jinjaboiehf" path="res://resources/ui/text.tres" id="2_lay36"]
 
 [node name="TypeEntity" type="Node2D"]
 script = ExtResource("1_l5q5b")
 target = "Tuna"
-
-[node name="Target" type="RichTextLabel" parent="."]
-visible = false
-offset_left = -36.0
-offset_top = 27.0
-offset_right = 44.0
-offset_bottom = 58.0
-bbcode_enabled = true
-text = "Apple Pie"
-scroll_active = false
-
-[node name="Display" type="RichTextLabel" parent="."]
-offset_left = -250.0
-offset_top = 12.0
-offset_right = 249.0
-offset_bottom = 68.0
-theme = ExtResource("2_lay36")
-bbcode_enabled = true
-text = "[center]Test[/center]"
-fit_content = true
-scroll_active = false
-custom_effects = [ExtResource("2_7jdg8")]
-
-[node name="State" type="RichTextLabel" parent="."]
-visible = false
-offset_left = -36.0
-offset_top = 85.0
-offset_right = 146.0
-offset_bottom = 116.0
-bbcode_enabled = true
-text = "State"
-scroll_active = false
-
-[node name="Index" type="RichTextLabel" parent="."]
-visible = false
-offset_left = -36.0
-offset_top = 112.0
-offset_right = 44.0
-offset_bottom = 143.0
-bbcode_enabled = true
-text = "State"
-scroll_active = false

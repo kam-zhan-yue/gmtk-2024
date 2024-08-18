@@ -2,10 +2,6 @@ class_name TypeEntity
 extends Node2D
 
 @export var target: String
-@onready var target_display := $Target as RichTextLabel
-@onready var display := $Display as RichTextLabel
-@onready var state_display := $State as RichTextLabel
-@onready var index_display := $Index as RichTextLabel
 
 var input: String = ""
 
@@ -14,6 +10,7 @@ var state := TypeState.INACTIVE
 var index := 0
 var incorrect := 0
 
+signal on_update(text: String)
 signal on_complete
 
 func _ready() -> void:
@@ -75,8 +72,12 @@ func _on_backspace() -> void:
 
 
 func update_state() -> void:
+	var display_string := get_display_string()
+	on_update.emit(display_string)
+
+func get_display_string() -> String:
 	var total = index + incorrect
-	var overflow = total - target.length()
+	var overflow = total - len(target)
 	
 	var correct_input := target.left(index)
 	var incorrect_input := target.right(len(target)-index) if overflow >= 0 else target.substr(index, incorrect)
@@ -88,10 +89,7 @@ func update_state() -> void:
 	var remainder_str = str('[color=WHITE]', remainder_input, '[/color]')
 	var overflow_str = str('[color=DARK_RED]', overflow_input, '[/color]')
 	var final = str(correct_str, incorrect_str, remainder_str, overflow_str)
-	display.text = str('[center]', final,'[/center]')
-	state_display.text = TypeState.keys()[state]
-	target_display.text = target
-	index_display.text = str(index)
+	return str('[center]', final,'[/center]')
 
 func check_complete() -> void:
 	if index == target.length():
