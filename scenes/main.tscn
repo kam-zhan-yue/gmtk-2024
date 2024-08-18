@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=10 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/spawner.gd" id="3_b1w3c"]
 [ext_resource type="PackedScene" uid="uid://gwlgluwanmdk" path="res://scenes/player.tscn" id="3_h8ik1"]
-[ext_resource type="Script" path="res://scripts/typing/input_debugger.gd" id="4_mjtn7"]
+[ext_resource type="Script" path="res://scripts/ui/game_popup.gd" id="4_ppoco"]
+[ext_resource type="PackedScene" uid="uid://batev7ywylosh" path="res://scenes/ui/pause_popup.tscn" id="5_pbgb8"]
 [ext_resource type="PackedScene" uid="uid://cpwt2a2pobxi3" path="res://scenes/projectiles/laser.tscn" id="5_ubpky"]
 [ext_resource type="AudioStream" uid="uid://mslsyewum0vl" path="res://audio/music/Rolemusic - The White Frame.mp3" id="6_0ta0t"]
+[ext_resource type="PackedScene" uid="uid://ctyl0s7l3md6s" path="res://scenes/ui/debugger_popup.tscn" id="6_he2se"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
@@ -32,40 +34,22 @@ unique_name_in_owner = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="UI"]
+[node name="GamePopup" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_mjtn7")
+script = ExtResource("4_ppoco")
 
-[node name="CenterContainer" type="CenterContainer" parent="UI/Control"]
+[node name="DebuggerPopup" parent="UI/GamePopup" instance=ExtResource("6_he2se")]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -79.0
-offset_right = -4.0
-offset_bottom = 3.0
-grow_horizontal = 2
-grow_vertical = 0
 
-[node name="Display" type="RichTextLabel" parent="UI/Control"]
-visible = false
+[node name="PausePopup" parent="UI/GamePopup" instance=ExtResource("5_pbgb8")]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -44.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "INput Debugger
-"
 
 [node name="Laser" parent="." instance=ExtResource("5_ubpky")]
 
