@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4unria6tgwpq"]
 
-[ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/enemies/type_entity.tscn" id="1_3gu8f"]
+[ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="1_3gu8f"]
 [ext_resource type="Script" path="res://scripts/entities/enemy.gd" id="1_de61x"]
 [ext_resource type="Texture2D" uid="uid://cfawm8u4nsf5y" path="res://assets/sprites/apple-pie.png" id="2_ix3ca"]
 

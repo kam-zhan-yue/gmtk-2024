@@ -25,7 +25,6 @@ BeatManager="*res://scripts/flow/beat_manager.gd"
 
 window/size/viewport_width=800
 window/size/viewport_height=800
-window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 

@@ -1,16 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dobyj1tgprhue"]
+[gd_scene load_steps=3 format=3 uid="uid://d12p1oj0k7sxg"]
 
-[ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_s7i4o"]
-[ext_resource type="PackedScene" uid="uid://d2ee0urw0h25j" path="res://scenes/enemies/shark.tscn" id="2_n27v6"]
+[ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_dvd3a"]
+[ext_resource type="PackedScene" uid="uid://b6tdx7n4gfhfr" path="res://scenes/patterns/flock.tscn" id="2_qbpcl"]
 
 [node name="SpawnGroup" type="Node2D"]
-script = ExtResource("1_s7i4o")
+script = ExtResource("1_dvd3a")
 
-[node name="Shark" parent="." instance=ExtResource("2_n27v6")]
-position = Vector2(-393, 603)
-
-[node name="Shark2" parent="." instance=ExtResource("2_n27v6")]
-position = Vector2(1225, -7)
-
-[node name="Shark3" parent="." instance=ExtResource("2_n27v6")]
-position = Vector2(531, -623)
+[node name="Flock" parent="." instance=ExtResource("2_qbpcl")]
