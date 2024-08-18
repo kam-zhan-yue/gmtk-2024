@@ -47,4 +47,4 @@ func spawn() -> void:
 	
 	# Add the entity to the scene tree as a child of the current node
 	add_child(entity)
-	entity.init(game_state, random[randi_range(0, len(random)-1)])
+	entity.init(game_state)

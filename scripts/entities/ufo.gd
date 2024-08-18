@@ -5,7 +5,7 @@ extends Enemy
 @export var speed := 300.0
 @export var time_between_rockets := 2.0
 @export var rocket_speed := 10.0
-@export var rocket_name := "Rocket"
+@export var rocket_data: EnemyData
 const ROCKET = preload("res://scenes/projectiles/rocket.tscn")
 
 func _ready() -> void:
@@ -40,4 +40,5 @@ func shoot_async() -> void:
 func spawn_rocket() -> void:
 	var rocket = ROCKET.instantiate() as Rocket
 	add_child(rocket)
-	rocket.init(game_state, rocket_name, rocket_speed)
+	rocket.data = rocket_data
+	rocket.init(game_state)

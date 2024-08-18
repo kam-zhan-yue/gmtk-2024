@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2ee0urw0h25j"]
+[gd_scene load_steps=6 format=3 uid="uid://d2ee0urw0h25j"]
 
-[ext_resource type="Script" path="res://scenes/enemies/shark.gd" id="1_kfhs4"]
-[ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/enemies/type_entity.tscn" id="1_ug8yd"]
+[ext_resource type="Script" path="res://scripts/entities/shark.gd" id="1_kfhs4"]
+[ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="1_ug8yd"]
+[ext_resource type="Resource" uid="uid://d1jegsr6206oa" path="res://resources/ocean/shark.tres" id="2_0qhvb"]
 [ext_resource type="Texture2D" uid="uid://bqko507q16dd8" path="res://assets/textures/white_ring.png" id="2_eka2d"]
 [ext_resource type="AudioStream" uid="uid://jhtmfyxpx8oo" path="res://audio/effects/crate_break.wav" id="4_rkr32"]
 
 [node name="Shark" type="Node2D"]
 script = ExtResource("1_kfhs4")
+data = ExtResource("2_0qhvb")
 
 [node name="TypeEntity" parent="." instance=ExtResource("1_ug8yd")]
 unique_name_in_owner = true
