@@ -15,9 +15,12 @@ var game_state: GameState
 
 func _ready() -> void:
 	game_state = GameState.new(player)
+	ui.init(game_state)
+	game_state.on_start.connect(_on_start)
+
+func _on_start() -> void:
 	camera_controller.init(game_state)
 	spawner.init(game_state)
-	ui.init(game_state)
 	BeatManager.on_beat.connect(_on_beat)
 	BeatManager.start()
 	submarine_setup()

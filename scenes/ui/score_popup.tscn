@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cytkq8vljbki0"]
 
-[ext_resource type="Script" path="res://scenes/ui/score_popup.gd" id="1_wa7u0"]
+[ext_resource type="Script" path="res://scripts/ui/score_popup.gd" id="1_wa7u0"]
 [ext_resource type="Theme" uid="uid://d2jinjaboiehf" path="res://resources/ui/text.tres" id="2_g1ptw"]
 
 [node name="ScorePopup" type="Control"]

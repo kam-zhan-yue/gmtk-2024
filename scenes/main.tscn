@@ -78,13 +78,11 @@ unique_name_in_owner = true
 script = ExtResource("3_b1w3c")
 
 [node name="CameraController" type="Camera2D" parent="."]
-position = Vector2(0, 167)
 zoom = Vector2(3.21, 3.21)
 script = ExtResource("2_ra8cm")
 
 [node name="Player" parent="." instance=ExtResource("3_h8ik1")]
 unique_name_in_owner = true
-position = Vector2(0, -70)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bgy46")

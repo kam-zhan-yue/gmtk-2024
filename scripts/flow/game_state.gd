@@ -10,10 +10,15 @@ var score := 0.0
 signal on_combo(value: int)
 signal on_score(value: float)
 signal on_damage(value: float)
+signal on_start
 
 func _init(p: Player = null) -> void:
 	player = p
 	player.on_damage.connect(_on_damage)
+
+func start() -> void:
+	player.start()
+	on_start.emit()
 
 func init_type_entity(entity: TypeEntity) -> void:
 	init_entity.emit(entity)
