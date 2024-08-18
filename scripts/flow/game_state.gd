@@ -9,10 +9,11 @@ var combo := 1
 var score := 0.0
 signal on_combo(value: int)
 signal on_score(value: float)
+signal on_damage(value: float)
 
 func _init(p: Player = null) -> void:
-	self.player = p
-
+	player = p
+	player.on_damage.connect(_on_damage)
 
 func init_type_entity(entity: TypeEntity) -> void:
 	init_entity.emit(entity)
@@ -23,3 +24,8 @@ func enemy_dead(data: EnemyData) -> void:
 	combo += 1
 	on_combo.emit(combo)
 	on_score.emit(score)
+
+func _on_damage(value: float) -> void:
+	combo = 0
+	on_combo.emit(combo)
+	on_damage.emit(value)	

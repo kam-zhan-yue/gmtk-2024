@@ -5,6 +5,7 @@ extends Area2D
 var health := 0.0
 var dead := false
 
+signal on_damage(value:  float)
 signal on_dead
 
 func init() -> void:
@@ -16,6 +17,7 @@ func damage(amount: float) -> void:
 		return
 	print(str('Took damage for ', amount, ' points!'))
 	health -= amount
+	on_damage.emit(amount)
 	if health <= 0:
 		dead = true
 		on_dead.emit()

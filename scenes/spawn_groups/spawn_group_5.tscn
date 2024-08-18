@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://u5h8oe0nqbrr"]
+[gd_scene load_steps=4 format=3 uid="uid://cwm7o84aws4k7"]
 
 [ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_45ei2"]
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="2_mh8rh"]

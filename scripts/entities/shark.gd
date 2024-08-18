@@ -2,8 +2,8 @@ class_name Shark
 extends Enemy
 
 @export var bite_range := 50.0
-@export var speed := 50.0
-@export var bite_time := 3.0
+@export var speed := 75.0
+@export var bite_time := 2.0
 @export var bite_damage := 10.0
 @onready var audio := $AudioStreamPlayer2D as AudioStreamPlayer2D
 
@@ -11,6 +11,8 @@ enum State {SWIMMING, BITING, RETREATING}
 var state := State.SWIMMING
 
 func _process(delta: float) -> void:
+	if completed:
+		return
 	if not game_state:
 		return
 	if state == State.SWIMMING:
@@ -36,7 +38,7 @@ func move_to_player() -> void:
 	var direction := difference.normalized()
 	if difference.length() <= bite_range:
 		return
-	global_position += difference.normalized() * speed * get_process_delta_time()
+	global_position += direction * speed * get_process_delta_time()
 	var angle := atan2(direction.y, direction.x)
 	rotation = angle
 	sprite.flip_v = Global.flip_v(angle)
@@ -44,6 +46,8 @@ func move_to_player() -> void:
 func bite_async() -> void:
 	state = State.BITING
 	await Global.seconds(bite_time)
+	if completed:
+		return
 	print("Bite Player!")
 	game_state.player.damage(bite_damage)
 	audio.play()
@@ -53,4 +57,11 @@ func bite() -> void:
 	move_to_player()
 
 func retreat() -> void:
-	pass
+	var start_pos := global_position
+	var player_pos := game_state.player.global_position
+	var difference := start_pos - player_pos
+	var direction := difference.normalized()
+	global_position += direction * speed * get_process_delta_time()
+	var angle := atan2(direction.y, direction.x)
+	rotation = angle
+	sprite.flip_v = Global.flip_v(angle)

@@ -7,6 +7,7 @@ extends Node2D
 
 const FADE_OUT = 1.0
 var game_state: GameState
+var completed := false
 signal on_init
 
 func init(state: GameState) -> void:
@@ -18,6 +19,7 @@ func init(state: GameState) -> void:
 	on_init.emit()
 	
 func _on_complete() -> void:
+	completed = true
 	game_state.enemy_dead(data)
 	var timer := 0.0
 	while timer < FADE_OUT:

@@ -24,10 +24,10 @@ texture = ExtResource("4_c8eml")
 stream = ExtResource("4_rkr32")
 bus = &"Effects"
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
+[node name="Visible" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visible"]
 shape = SubResource("RectangleShape2D_hfwce")
 debug_color = Color(0.968416, 0.131352, 0.310305, 0.42)

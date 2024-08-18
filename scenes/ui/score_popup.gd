@@ -10,9 +10,13 @@ func init(state: GameState) -> void:
 	state.on_combo.connect(_on_combo)
 
 func _on_score(value: float) -> void:
-	score_label.text = str("Score: ",value)
+	score_label.text = str(value)
 	pass
 
 func _on_combo(value: int) -> void:
-	combo_label.text = str("Combo: ", value, "x")
+	if value == 0:
+		Global.set_inactive(combo_label)
+	else:
+		Global.set_active(combo_label)
+		combo_label.text = str("Combo: ", value, "x")
 	pass
