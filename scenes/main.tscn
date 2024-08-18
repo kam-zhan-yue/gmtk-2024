@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=22 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -11,6 +11,29 @@
 [ext_resource type="Script" path="res://scripts/ui/entity_popup.gd" id="6_mm841"]
 [ext_resource type="AudioStream" uid="uid://u7jl40fk83o4" path="res://audio/music/bgm.mp3" id="8_1hva6"]
 [ext_resource type="Texture2D" uid="uid://dqs5ehgjusgtc" path="res://assets/background/background.png" id="9_vjgvk"]
+[ext_resource type="Shader" path="res://scripts/shaders/distortion.gdshader" id="12_cd0p2"]
+[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="13_pujpn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jf1mw"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_auxj2"]
+seamless = true
+noise = SubResource("FastNoiseLite_jf1mw")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aaysv"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_deji5"]
+seamless = true
+noise = SubResource("FastNoiseLite_aaysv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1hch"]
+shader = ExtResource("12_cd0p2")
+shader_parameter/distortion_strength = 0.01
+shader_parameter/offset1 = Vector2(0.1, 0.1)
+shader_parameter/offset2 = Vector2(0.2, 0.2)
+shader_parameter/noise_texture1 = SubResource("NoiseTexture2D_auxj2")
+shader_parameter/noise_texture2 = SubResource("NoiseTexture2D_deji5")
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
@@ -27,6 +50,15 @@ polygon = PackedVector2Array(-184.08, 922.588, -196.008, 890.561, -190.893, 839.
 polygon = PackedVector2Array(144.72, 124.327, 88.7338, 118.2, 25.7001, 133.058, -56.3673, 162.873, -79.4303, 190.822, -90.5114, 226.797, -85.5881, 260.808, -96.7413, 328.783, -104.777, 344.765, -92.8405, 372.792, -76.9127, 404.828, -66.9803, 434.85, -20.0435, 462.956, -19.0909, 483.958, -47.1787, 522.895, -90.253, 555.798, -99.2688, 562.778, -103.289, 571.769, -102.325, 587.771, -94.3589, 602.789, -77.3995, 620.827, -62.4289, 633.861, -64.4807, 656.856, -67.5258, 676.85, -73.5573, 690.836, -84.5979, 708.811, -95.6136, 715.786, -106.65, 731.762, -118.663, 737.734, -121.686, 747.728, -121.738, 770.728, -118.767, 783.734, -118.841, 816.734, -118.904, 844.734, -120.94, 860.73, -133.97, 873.7, -152.997, 885.658, -166.035, 902.628, -179.075, 920.599, -181.571, 1140.59, 143.428, 1141.33)
 
 [node name="MainScene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_f1hch")
+position = Vector2(1.5, -261)
+scale = Vector2(4.71094, 8.04688)
+texture = ExtResource("13_pujpn")
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_vt02a")
