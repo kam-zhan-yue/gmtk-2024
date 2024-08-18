@@ -31,13 +31,11 @@ func _on_key_pressed(key: String) -> void:
 		index = 1
 		incorrect = 0
 		state = TypeState.ACTIVE
-		check_complete()
 	elif state == TypeState.ACTIVE:
 		# If correct, then increase the index
 		if target[index] == key:
 			input += key
 			index += 1
-			check_complete()
 		# If incorrect, then set to wrong
 		else:
 			input += key
@@ -55,6 +53,7 @@ func _on_key_pressed(key: String) -> void:
 			input += key
 			incorrect += 1
 	update_state()
+	check_complete()
 
 func _on_backspace() -> void:
 	if state == TypeState.ACTIVE and index > 0:
@@ -67,9 +66,7 @@ func _on_backspace() -> void:
 		incorrect -= 1
 		if incorrect == 0:
 			state = TypeState.ACTIVE
-			check_complete()
 	update_state()
-
 
 func update_state() -> void:
 	var display_string := get_display_string()

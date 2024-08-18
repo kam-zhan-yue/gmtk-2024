@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/ui/type_popup.gd" id="1_kbkpp"]
 
 [node name="TypePopup" type="Control"]
-custom_minimum_size = Vector2(300, 30)
+custom_minimum_size = Vector2(300, 50)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,9 +24,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_i1kmc")
 bbcode_enabled = true
-text = "[center]Test[/center]"
+text = "
+[center]Test[/center]"
 scroll_active = false
