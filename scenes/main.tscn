@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=15 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
+[ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
 [ext_resource type="Script" path="res://scripts/flow/spawner.gd" id="3_b1w3c"]
 [ext_resource type="PackedScene" uid="uid://gwlgluwanmdk" path="res://scenes/player.tscn" id="3_h8ik1"]
 [ext_resource type="Script" path="res://scripts/ui/game_popup.gd" id="4_ppoco"]
@@ -30,6 +31,11 @@ polygon = PackedVector2Array(144.72, 124.327, 88.7338, 118.2, 25.7001, 133.058, 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_vt02a")
 
+[node name="CameraController" type="Camera2D" parent="."]
+position = Vector2(0, 167)
+zoom = Vector2(3.21, 3.21)
+script = ExtResource("2_ra8cm")
+
 [node name="Spawner" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_b1w3c")
@@ -37,9 +43,6 @@ script = ExtResource("3_b1w3c")
 [node name="Player" parent="." instance=ExtResource("3_h8ik1")]
 unique_name_in_owner = true
 position = Vector2(0, 167)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3.21, 3.21)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -96,7 +99,6 @@ color = Color(0.676879, 0.676879, 0.676879, 1)
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="Lights"]
 position = Vector2(153, -805)
 rotation = -0.00225399
-scale = Vector2(1, 1)
 occluder = SubResource("OccluderPolygon2D_d3kd3")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lights"]
@@ -107,5 +109,4 @@ shadow_enabled = true
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Lights"]
 position = Vector2(153, -805)
 rotation = -0.00225399
-scale = Vector2(1, 1)
 occluder = SubResource("OccluderPolygon2D_xthpy")
