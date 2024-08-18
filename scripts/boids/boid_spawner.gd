@@ -1,8 +1,7 @@
 class_name BoidSpawner
 extends Node2D
 
-const BOID = preload("res://scenes/boids/boid.tscn")
-
+@export var boid_scene: PackedScene
 @export var start_direction := Vector2.UP
 @export var spawn_radius := 100.0
 @export var spawn_count := 50
@@ -12,7 +11,7 @@ func _ready() -> void:
 		var angle := randf() * 2 * PI
 		var radius := randf() * spawn_radius
 		var spawn_point := Vector2(radius * cos(angle), radius * sin(angle))
-		var boid := BOID.instantiate() as Boid
+		var boid := boid_scene.instantiate() as Boid
 		add_child(boid)
 		boid.global_position = global_position + spawn_point
 		boid.direction = start_direction

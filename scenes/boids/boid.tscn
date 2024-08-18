@@ -1,10 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://xts3yovv7os5"]
+[gd_scene load_steps=3 format=3 uid="uid://xts3yovv7os5"]
 
 [ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_7ophj"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gvnb2"]
+radius = 39.0512
+
 [node name="Boid" type="Node2D"]
-position = Vector2(-119, -137)
 script = ExtResource("1_7ophj")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(0, -9, 5, 6, -5, 6)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gvnb2")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d12p1oj0k7sxg"]
+
+[ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_y4ekc"]
+[ext_resource type="PackedScene" uid="uid://b6tdx7n4gfhfr" path="res://scenes/patterns/flock.tscn" id="2_v2tsb"]
+
+[node name="SpawnGroup" type="Node2D"]
+script = ExtResource("1_y4ekc")
+
+[node name="Flock" parent="." instance=ExtResource("2_v2tsb")]

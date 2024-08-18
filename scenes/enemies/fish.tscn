@@ -1,16 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuu4wvac46q6j"]
+[gd_scene load_steps=6 format=3 uid="uid://cuu4wvac46q6j"]
 
+[ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_kxmmy"]
 [ext_resource type="Script" path="res://scripts/entities/fish.gd" id="1_o6y6s"]
 [ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="1_vkt2a"]
-[ext_resource type="Texture2D" uid="uid://c7orveas36s2l" path="res://assets/sprites/apple.png" id="2_b6bis"]
 [ext_resource type="Resource" uid="uid://cnhj5lby3wnkf" path="res://resources/ocean/fish.tres" id="2_wmrci"]
 
-[node name="Fish" type="PathFollow2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fg2gp"]
+radius = 58.3095
+
+[node name="FishBoid" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_kxmmy")
+
+[node name="FishEnemy" type="Node2D" parent="."]
 script = ExtResource("1_o6y6s")
 data = ExtResource("2_wmrci")
 
-[node name="TypeEntity" parent="." instance=ExtResource("1_vkt2a")]
+[node name="TypeEntity" parent="FishEnemy" instance=ExtResource("1_vkt2a")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("2_b6bis")
+[node name="Polygon2D" type="Polygon2D" parent="FishEnemy"]
+position = Vector2(0, 4)
+scale = Vector2(0.430769, 0.380952)
+polygon = PackedVector2Array(0, -60, 34, 24, -31, 24)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_fg2gp")
