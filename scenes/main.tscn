@@ -1,16 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=8 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/spawner.gd" id="3_b1w3c"]
 [ext_resource type="PackedScene" uid="uid://gwlgluwanmdk" path="res://scenes/player.tscn" id="3_h8ik1"]
 [ext_resource type="Script" path="res://scripts/typing/input_debugger.gd" id="4_mjtn7"]
 [ext_resource type="PackedScene" uid="uid://cpwt2a2pobxi3" path="res://scenes/projectiles/laser.tscn" id="5_ubpky"]
+[ext_resource type="AudioStream" uid="uid://mslsyewum0vl" path="res://audio/music/Rolemusic - The White Frame.mp3" id="6_0ta0t"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
 glow_enabled = true
 glow_strength = 1.21
+glow_bloom = 0.2
 glow_blend_mode = 0
+glow_hdr_threshold = 0.5
 glow_hdr_luminance_cap = 3.0
 
 [node name="MainScene" type="Node2D"]
@@ -68,3 +71,9 @@ text = "INput Debugger
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bgy46")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_0ta0t")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
