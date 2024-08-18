@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_5ygn5")
 min_speed = 50.0
-max_speed = 125.0
-max_steer_force = 200.0
+max_speed = 75.0
+max_steer_force = 25.0
 vision_radius = 100.0
 obstacle_vision_radius = 50.0
 separation_weight = 3.0

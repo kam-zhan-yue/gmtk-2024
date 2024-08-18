@@ -97,4 +97,4 @@ debug_color = Color(0.925347, 4.20663e-05, 0.676581, 0.42)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4d37c")
 animation = &"diver_swim"
-frame_progress = 0.878717
+frame_progress = 0.45589
