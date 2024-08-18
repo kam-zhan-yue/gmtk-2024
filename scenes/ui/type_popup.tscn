@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b12c7e7rietjh"]
+[gd_scene load_steps=5 format=3 uid="uid://b12c7e7rietjh"]
 
 [ext_resource type="Theme" uid="uid://d2jinjaboiehf" path="res://resources/ui/text.tres" id="1_i1kmc"]
 [ext_resource type="Script" path="res://scenes/ui/type_popup.gd" id="1_kbkpp"]
+[ext_resource type="Shader" path="res://scripts/shaders/type_popup.gdshader" id="2_o86t1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27ws8"]
+shader = ExtResource("2_o86t1")
 
 [node name="TypePopup" type="Control"]
 custom_minimum_size = Vector2(300, 50)
@@ -20,6 +24,7 @@ grow_vertical = 2
 script = ExtResource("1_kbkpp")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+material = SubResource("ShaderMaterial_27ws8")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

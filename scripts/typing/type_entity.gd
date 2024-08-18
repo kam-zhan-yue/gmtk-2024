@@ -83,7 +83,7 @@ func get_display_string() -> String:
 	
 	var correct_str = str('[color=FOREST_GREEN]', correct_input, '[/color]')
 	var incorrect_str = str('[color=ORANGE_RED]', incorrect_input, '[/color]')
-	var remainder_str = str('[color=WHITE]', remainder_input, '[/color]')
+	var remainder_str = str('[color=#333639]', remainder_input, '[/color]')
 	var overflow_str = str('[color=DARK_RED]', overflow_input, '[/color]')
 	var final = str(correct_str, incorrect_str, remainder_str, overflow_str)
 	return str('[center]', final,'[/center]')

@@ -21,7 +21,6 @@ func _process(delta: float) -> void:
 	var camera := get_viewport().get_camera_2d()
 	var screen_center := camera.get_screen_center_position()
 	var difference = entity.global_position - screen_center
-	print(str("Difference is: ", difference))
 	var screen_position = get_screen_center() + difference * Global.SCALE
 	var offset_position = Vector2(screen_position.x, screen_position.y + OFFSET_Y)
 	position = offset_position
