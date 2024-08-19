@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuu4wvac46q6j"]
+[gd_scene load_steps=6 format=3 uid="uid://cuu4wvac46q6j"]
 
 [ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_kxmmy"]
+[ext_resource type="Script" path="res://scenes/boids/boid_fade.gd" id="2_5lmq3"]
 [ext_resource type="Texture2D" uid="uid://lp1pybhxsg78" path="res://assets/sprites/fish.png" id="5_g513x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fg2gp"]
@@ -21,6 +22,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_fg2gp")
 
 [node name="FishBody" type="Node2D" parent="."]
+script = ExtResource("2_5lmq3")
 
 [node name="Sprite2D" type="Sprite2D" parent="FishBody"]
 unique_name_in_owner = true

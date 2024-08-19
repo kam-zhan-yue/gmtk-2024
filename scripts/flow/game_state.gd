@@ -10,13 +10,17 @@ var score := 0.0
 signal on_combo(value: int)
 signal on_score(value: float)
 signal on_damage(value: float)
+signal on_pause(value: bool)
 signal on_start
+var started := false
 
 func _init(p: Player = null) -> void:
 	player = p
 	player.on_damage.connect(_on_damage)
+	started = false
 
 func start() -> void:
+	started = true
 	player.start()
 	on_start.emit()
 
@@ -34,3 +38,6 @@ func _on_damage(value: float) -> void:
 	combo = 0
 	on_combo.emit(combo)
 	on_damage.emit(value)	
+
+func pause(value: bool) -> void:
+	on_pause.emit(value)

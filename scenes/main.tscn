@@ -95,6 +95,12 @@ spawn_radius = 150.0
 spawn_count = 25
 spawn_on_ready = false
 
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="GameManager"]
+unique_name_in_owner = true
+stream = ExtResource("8_1hva6")
+volume_db = -20.0
+bus = &"Music"
+
 [node name="CameraController" type="Camera2D" parent="."]
 position = Vector2(0, -300)
 zoom = Vector2(3.21, 3.21)
@@ -106,9 +112,3 @@ position = Vector2(0, -138)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bgy46")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_1hva6")
-volume_db = -20.0
-autoplay = true
-bus = &"Music"

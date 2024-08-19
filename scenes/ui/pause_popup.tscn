@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://batev7ywylosh"]
+[gd_scene load_steps=3 format=3 uid="uid://batev7ywylosh"]
 
 [ext_resource type="Script" path="res://scripts/ui/pause_popup.gd" id="1_khx07"]
+[ext_resource type="Theme" uid="uid://d2jinjaboiehf" path="res://resources/ui/text.tres" id="2_fvodb"]
 
 [node name="PausePopup" type="Control"]
 layout_mode = 3
@@ -20,19 +21,26 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.063, 0.063, 0.063, 0.553)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 250
-theme_override_constants/margin_right = 250
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_fvodb")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]PAUSED[/center]"
+fit_content = true
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -42,9 +50,11 @@ columns = 2
 
 [node name="MusicLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+theme = ExtResource("2_fvodb")
 text = "Music"
 
 [node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -54,15 +64,21 @@ value = 1.0
 
 [node name="EffectsLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+theme = ExtResource("2_fvodb")
 text = "Effects"
 
 [node name="EffectsSlider" type="HSlider" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
 value = 1.0
+
+[node name="RestartButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/GridContainer/EffectsSlider" to="." method="_on_effects_slider_value_changed"]

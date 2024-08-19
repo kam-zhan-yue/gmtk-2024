@@ -10,6 +10,8 @@ func init(state: GameState):
 func _input(event: InputEvent):
 	if started:
 		return
+	if event.is_action_pressed("ui_cancel"):
+		return
 	if event is InputEventMouseButton or event is InputEventKey:
 		started = true
 		game_state.start()
