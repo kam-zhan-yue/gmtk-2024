@@ -46,5 +46,5 @@ func _on_restart() -> void:
 	timeline.init(game_state)
 	spawner.init(game_state)
 	
-	#await Global.seconds(1.0)
+	await timeline.restart()
 	game_state.start()

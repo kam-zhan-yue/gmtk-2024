@@ -10,7 +10,6 @@ func _ready() -> void:
 	original_pos = position
 
 func init(state: GameState) -> void:
-	position = original_pos
 	game_state = state
 	follow()
 

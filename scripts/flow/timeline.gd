@@ -49,5 +49,4 @@ func balloon_setup() -> void:
 	game_state.player.speed = target_speed
 
 func restart() -> void:
-	submarine_setup()
-	game_state.player.start()
+	await camera_controller.lerp_to(camera_controller.original_pos)
