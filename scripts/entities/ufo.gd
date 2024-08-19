@@ -38,7 +38,8 @@ func shoot_async() -> void:
 		spawn_rocket()
 
 func spawn_rocket() -> void:
-	var rocket = ROCKET.instantiate() as Rocket
+	var rocket := ROCKET.instantiate() as Rocket
+	rocket.global_position = global_position
 	EntityManager.add_node(rocket)
 	rocket.data = rocket_data
 	rocket.init(game_state)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0svp52oq2dud"]
+
+[ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_q8leh"]
+[ext_resource type="PackedScene" uid="uid://ckrlsacuunj2h" path="res://scenes/enemies/ufo.tscn" id="2_vaoyo"]
+
+[node name="SpawnGroup2" type="Node2D"]
+script = ExtResource("1_q8leh")
+
+[node name="UFO2" parent="." instance=ExtResource("2_vaoyo")]
+position = Vector2(679, -440)
+orbit_radius = 100.0

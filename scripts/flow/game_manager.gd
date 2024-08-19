@@ -35,6 +35,7 @@ func _on_start() -> void:
 func _on_restart() -> void:
 	music_player.stop()
 	# Clear up references
+	BeatManager.stop()
 	BoidManager.restart()
 	EntityManager.restart()
 	await player.restart()

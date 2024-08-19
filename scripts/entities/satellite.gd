@@ -49,6 +49,6 @@ func shoot_async() -> void:
 	while(true):
 		await Global.seconds(1.0)
 		var laser := LASER.instantiate() as Laser
-		EntityManager.add_node(laser)
+		add_child(laser)
 		laser.activate(self, game_state.player, 0.2)
 		game_state.player.damage(laser_damage)

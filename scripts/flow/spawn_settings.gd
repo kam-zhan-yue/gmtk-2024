@@ -5,7 +5,7 @@ extends Resource
 @export var end_beat := 100
 @export var bpm := 100.0
 
-const PREFIX = "res://scenes/spawn_groups/spawn_group_"
+const PREFIX = "res://scenes/spawn_groups/"
 
 func beat() -> float:
 	return 60 / bpm
