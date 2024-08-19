@@ -17,8 +17,8 @@ func _on_init() -> void:
 	shoot_async()
 
 func lerp_async() -> void:
-	var start_pos := global_position
-	var player_pos := game_state.player.global_position
+	var start_pos := position
+	var player_pos := game_state.player.position
 	var direction := (player_pos - start_pos).normalized()
 	var target_pos := player_pos - direction * orbit_radius
 	var time_to_target := (start_pos - target_pos).length() / speed
@@ -33,8 +33,8 @@ func lerp_async() -> void:
 	position = target_pos
 
 func orbit_async() -> void:
-	var player_pos := game_state.player.global_position
-	var difference := global_position - player_pos
+	var player_pos := game_state.player.position
+	var difference := position - player_pos
 	var current_angle := atan2(difference.y, difference.x)
 	var angle_increment := 2 * PI / orbit_period
 	print(str("Current angle is: ", rad_to_deg(current_angle)))

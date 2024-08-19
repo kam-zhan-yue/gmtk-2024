@@ -9,4 +9,12 @@ parent_to_player = true
 
 [node name="Satellite" parent="." instance=ExtResource("2_2otup")]
 position = Vector2(-719, 322)
-orbit_radius = 200.0
+orbit_radius = 100.0
+
+[node name="Satellite2" parent="." instance=ExtResource("2_2otup")]
+position = Vector2(341, 288)
+orbit_radius = 100.0
+
+[node name="Satellite3" parent="." instance=ExtResource("2_2otup")]
+position = Vector2(543, -180)
+orbit_radius = 100.0
