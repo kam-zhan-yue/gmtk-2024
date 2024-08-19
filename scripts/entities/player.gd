@@ -15,7 +15,7 @@ enum State { SUBMARINE, DIVER, WALKER, BALLOON }
 var state := State.SUBMARINE
 
 func _ready() -> void:
-	anim.play("diver_swim")
+	Global.set_inactive(anim)
 	health.init()
 	health.on_damage.connect(_on_damage)
 	health.on_dead.connect(_on_dead)
@@ -29,6 +29,14 @@ func start() -> void:
 
 func _on_dead() -> void:
 	print("Player is dead")
+
+func dive_anim() -> void:
+	Global.set_active(anim)
+	anim.play("diver")
+
+func walk_anim() -> void:
+	Global.set_active(anim)
+	anim.play("walker")
 
 func damage(amount: float) -> void:
 	health.damage(amount)

@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://b8oghapvwoati"]
+[gd_resource type="SpriteFrames" load_steps=22 format=3 uid="uid://b8oghapvwoati"]
 
 [ext_resource type="Texture2D" uid="uid://b2wagc5foi73g" path="res://assets/sheets/diver.png" id="1_38pde"]
+[ext_resource type="Texture2D" uid="uid://6ta7yswnvnxy" path="res://assets/background/walking_man.png" id="2_jpn4d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmhv6"]
 atlas = ExtResource("1_38pde")
@@ -34,6 +35,50 @@ region = Rect2(108, 0, 18, 47)
 atlas = ExtResource("1_38pde")
 region = Rect2(126, 0, 18, 47)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xns6l"]
+atlas = ExtResource("2_jpn4d")
+region = Rect2(0, 0, 18, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0gkl"]
+atlas = ExtResource("2_jpn4d")
+region = Rect2(18, 0, 18, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2x4p"]
+atlas = ExtResource("2_jpn4d")
+region = Rect2(36, 0, 18, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrnag"]
+atlas = ExtResource("2_jpn4d")
+region = Rect2(54, 0, 18, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bs64q"]
+atlas = ExtResource("2_jpn4d")
+region = Rect2(72, 0, 18, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt07d"]
+atlas = ExtResource("2_jpn4d")
+region = Rect2(90, 0, 18, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xi8p8"]
+atlas = ExtResource("2_jpn4d")
+region = Rect2(108, 0, 18, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2w1nd"]
+atlas = ExtResource("2_jpn4d")
+region = Rect2(126, 0, 18, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31cko"]
+atlas = ExtResource("2_jpn4d")
+region = Rect2(144, 0, 18, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utmol"]
+atlas = ExtResource("2_jpn4d")
+region = Rect2(162, 0, 18, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24thu"]
+atlas = ExtResource("2_jpn4d")
+region = Rect2(180, 0, 18, 34)
+
 [resource]
 animations = [{
 "frames": [{
@@ -62,6 +107,44 @@ animations = [{
 "texture": SubResource("AtlasTexture_nates")
 }],
 "loop": true,
-"name": &"diver_swim",
+"name": &"diver",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xns6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0gkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2x4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrnag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bs64q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt07d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi8p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2w1nd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31cko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utmol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24thu")
+}],
+"loop": true,
+"name": &"walker",
+"speed": 5.0
 }]

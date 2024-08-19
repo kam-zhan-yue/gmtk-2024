@@ -49,15 +49,15 @@ shader_parameter/noise_texture2 = SubResource("NoiseTexture2D_deji5")
 
 [sub_resource type="Curve2D" id="Curve2D_dpbqk"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1, 420, 0, 0, 0, 0, 1, -359)
+"points": PackedVector2Array(0, 0, 0, 0, -1, 420, 0, 0, 0, 0, -2, -249)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_gw13f"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1, -358, -57.5262, 19.0819, 57.5262, -19.0819, 64, -423, -42.5132, 4.48985, 42.5132, -4.48985, 196, -429, 0, 0, 0, 0, 267, -457, 0, 0, 0, 0, 279, -482)
+"points": PackedVector2Array(0, 0, 0, 0, -1, -246, 0, 0, 0, 0, 8, -273, 0, 0, 0, 0, 20, -297, 0, 0, 0, 0, 53, -323, 0, 0, 0, 0, 88, -350, 0, 0, 0, 0, 120, -376, 0, 0, 0, 0, 171, -400, 0, 0, 0, 0, 243, -416, 0, 0, 0, 0, 307, -436, 0, 0, 0, 0, 391, -453)
 }
-point_count = 5
+point_count = 10
 
 [sub_resource type="Curve2D" id="Curve2D_q5d3b"]
 _data = {
@@ -101,7 +101,7 @@ follow_viewport_enabled = true
 
 [node name="Distortion" type="Sprite2D" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_f1hch")
-position = Vector2(4, 21.5)
+position = Vector2(1, 31)
 scale = Vector2(4.875, 7.41406)
 texture = ExtResource("13_pujpn")
 
@@ -167,16 +167,20 @@ curve = SubResource("Curve2D_gw13f")
 
 [node name="DiverFollow" type="PathFollow2D" parent="GameManager/Timeline/DiverPath"]
 unique_name_in_owner = true
-position = Vector2(1, -358)
-rotation = -0.801022
+position = Vector2(-1, -246)
+rotation = -1.24905
+rotates = false
 
 [node name="WalkerPath" type="Path2D" parent="GameManager/Timeline"]
+position = Vector2(-29.798, 72.485)
+scale = Vector2(1.51376, 1.10876)
 curve = SubResource("Curve2D_q5d3b")
 
 [node name="WalkerFollow" type="PathFollow2D" parent="GameManager/Timeline/WalkerPath"]
 unique_name_in_owner = true
 position = Vector2(276, -480)
 rotation = 3.14159
+rotates = false
 
 [node name="BalloonPath" type="Path2D" parent="GameManager/Timeline"]
 curve = SubResource("Curve2D_0yf8g")
@@ -188,7 +192,7 @@ rotation = -1.70238
 rotates = false
 
 [node name="AirBalloon" type="Sprite2D" parent="GameManager/Timeline/BalloonPath/BalloonFollow"]
-position = Vector2(77.8505, 6.26887)
+position = Vector2(66.6832, 6.80797)
 rotation = 1.70238
 texture = ExtResource("14_has2t")
 

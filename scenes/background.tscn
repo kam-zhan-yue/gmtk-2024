@@ -67,7 +67,7 @@ position = Vector2(0, 399)
 shape = SubResource("RectangleShape2D_avv3c")
 
 [node name="Lighthouse" type="Node2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(0, 15)
 
 [node name="LighthouseIsland" type="Sprite2D" parent="Lighthouse"]
 position = Vector2(0, -581)

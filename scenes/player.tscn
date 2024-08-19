@@ -40,5 +40,4 @@ unique_name_in_owner = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = ExtResource("4_e2dbu")
-animation = &"diver_swim"
-frame_progress = 0.45589
+animation = &"walker"
