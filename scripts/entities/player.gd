@@ -11,6 +11,9 @@ const FADE_OUT = 1.0
 var started := false
 signal on_damage(value: float)
 
+enum State { SUBMARINE, DIVER, WALKER, BALLOON }
+var state := State.SUBMARINE
+
 func _ready() -> void:
 	anim.play("diver_swim")
 	health.init()
@@ -23,10 +26,6 @@ func start() -> void:
 	point_light_2d.enabled = true
 	anim.modulate.a = 1
 	point_light_2d.energy = 1.0
-
-func _process(delta: float) -> void:
-	if not started: return
-	global_position.y -= speed * delta
 
 func _on_dead() -> void:
 	print("Player is dead")
@@ -41,6 +40,7 @@ func add_node(node: Node2D) -> void:
 	spawns.add_child(node)
 
 func restart() -> void:
+	started = false
 	for node in spawns.get_children():
 		node.queue_free()
 	await release()

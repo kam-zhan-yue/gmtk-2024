@@ -34,10 +34,11 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_j5h8s")
 debug_color = Color(0.925347, 4.20663e-05, 0.676581, 0.42)
 
+[node name="Spawns" type="Node2D" parent="."]
+unique_name_in_owner = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 sprite_frames = ExtResource("4_e2dbu")
 animation = &"diver_swim"
 frame_progress = 0.45589
-
-[node name="Spawns" type="Node2D" parent="."]
-unique_name_in_owner = true

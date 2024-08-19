@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=27 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -12,7 +12,9 @@
 [ext_resource type="Shader" path="res://scripts/shaders/distortion.gdshader" id="12_cd0p2"]
 [ext_resource type="PackedScene" uid="uid://dtbawr3acmc0s" path="res://scenes/background.tscn" id="12_dvr37"]
 [ext_resource type="Script" path="res://scripts/flow/timeline.gd" id="12_xvfn4"]
+[ext_resource type="SpriteFrames" uid="uid://c81e2cel8mkye" path="res://scenes/animations/submarine.tres" id="13_j364a"]
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="13_pujpn"]
+[ext_resource type="Texture2D" uid="uid://by06nbo5lkik8" path="res://assets/background/air_balloon.png" id="14_has2t"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
@@ -21,6 +23,8 @@ glow_strength = 1.21
 glow_blend_mode = 0
 glow_hdr_threshold = 2.0
 glow_hdr_luminance_cap = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_stg6b"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_jf1mw"]
 noise_type = 3
@@ -43,37 +47,62 @@ shader_parameter/offset2 = Vector2(0.2, 0.2)
 shader_parameter/noise_texture1 = SubResource("NoiseTexture2D_auxj2")
 shader_parameter/noise_texture2 = SubResource("NoiseTexture2D_deji5")
 
+[sub_resource type="Curve2D" id="Curve2D_dpbqk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, 420, 0, 0, 0, 0, 1, -359)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_gw13f"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, -358, -57.5262, 19.0819, 57.5262, -19.0819, 64, -423, -42.5132, 4.48985, 42.5132, -4.48985, 196, -429, 0, 0, 0, 0, 267, -457, 0, 0, 0, 0, 279, -482)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_q5d3b"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 276, -480, 38.1126, 2.51984, -38.1126, -2.51984, 188, -480, 22.0486, 13.8591, -22.0486, -13.8591, 123, -495, 0, 0, 0, 0, 58, -505)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_0yf8g"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 55, -502, 9.91068, 92.9716, -9.91068, -92.9716, 46, -570, 10.3826, 67.9589, -10.3826, -67.9589, 0, -688, 0, 0, 0, 0, 1, -1266)
+}
+point_count = 4
+
 [node name="MainScene" type="Node2D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bgy46")
 
 [node name="Background" parent="." instance=ExtResource("12_dvr37")]
-position = Vector2(1, -934)
 
-[node name="Start" type="Marker2D" parent="Background"]
+[node name="StartMarker" type="Marker2D" parent="Background"]
 unique_name_in_owner = true
-position = Vector2(0, 793)
+position = Vector2(1, 410)
 
-[node name="Submarine" type="Marker2D" parent="Background"]
+[node name="SubmarineMarker" type="Marker2D" parent="Background"]
 unique_name_in_owner = true
-position = Vector2(-1, -19)
+position = Vector2(0, -343)
 
-[node name="HotAirBalloon" type="Marker2D" parent="Background"]
+[node name="BalloonMarker" type="Marker2D" parent="Background"]
 unique_name_in_owner = true
-position = Vector2(-1, -228)
+position = Vector2(0, -595)
+
+[node name="Path2D" type="Path2D" parent="Background"]
+curve = SubResource("Curve2D_stg6b")
 
 [node name="UI" parent="." instance=ExtResource("8_uw3fq")]
 unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 follow_viewport_enabled = true
 
 [node name="Distortion" type="Sprite2D" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_f1hch")
-position = Vector2(1.5, -391.5)
-scale = Vector2(4.71094, 6.00781)
+position = Vector2(4, 21.5)
+scale = Vector2(4.875, 7.41406)
 texture = ExtResource("13_pujpn")
 
 [node name="GameManager" type="Node2D" parent="."]
@@ -87,7 +116,7 @@ script = ExtResource("3_b1w3c")
 script = ExtResource("7_5dx1o")
 
 [node name="BoidSpawner1" type="Node2D" parent="GameManager/StartSpawner"]
-position = Vector2(-176, -256)
+position = Vector2(-176, 258)
 script = ExtResource("8_egxth")
 boid_scene = ExtResource("9_rtuln")
 start_direction = Vector2(1, -0.2)
@@ -96,7 +125,7 @@ spawn_count = 25
 spawn_on_ready = false
 
 [node name="BoidSpawner2" type="Node2D" parent="GameManager/StartSpawner"]
-position = Vector2(172, -397)
+position = Vector2(172, 117)
 script = ExtResource("8_egxth")
 boid_scene = ExtResource("9_rtuln")
 start_direction = Vector2(-1, 0.2)
@@ -115,10 +144,54 @@ script = ExtResource("12_xvfn4")
 
 [node name="CameraController" type="Camera2D" parent="GameManager/Timeline"]
 unique_name_in_owner = true
-position = Vector2(0, -300)
-zoom = Vector2(3.21, 3.21)
+position = Vector2(0, 183)
+zoom = Vector2(3, 3)
 script = ExtResource("2_ra8cm")
+
+[node name="SubmarinePath" type="Path2D" parent="GameManager/Timeline"]
+curve = SubResource("Curve2D_dpbqk")
+
+[node name="SubmarineFollow" type="PathFollow2D" parent="GameManager/Timeline/SubmarinePath"]
+unique_name_in_owner = true
+position = Vector2(-1, 420)
+rotation = -1.56823
+rotates = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameManager/Timeline/SubmarinePath/SubmarineFollow"]
+rotation = 1.5708
+sprite_frames = ExtResource("13_j364a")
+animation = &"idle"
+
+[node name="DiverPath" type="Path2D" parent="GameManager/Timeline"]
+curve = SubResource("Curve2D_gw13f")
+
+[node name="DiverFollow" type="PathFollow2D" parent="GameManager/Timeline/DiverPath"]
+unique_name_in_owner = true
+position = Vector2(1, -358)
+rotation = -0.801022
+
+[node name="WalkerPath" type="Path2D" parent="GameManager/Timeline"]
+curve = SubResource("Curve2D_q5d3b")
+
+[node name="WalkerFollow" type="PathFollow2D" parent="GameManager/Timeline/WalkerPath"]
+unique_name_in_owner = true
+position = Vector2(276, -480)
+rotation = 3.14159
+
+[node name="BalloonPath" type="Path2D" parent="GameManager/Timeline"]
+curve = SubResource("Curve2D_0yf8g")
+
+[node name="BalloonFollow" type="PathFollow2D" parent="GameManager/Timeline/BalloonPath"]
+unique_name_in_owner = true
+position = Vector2(55, -502)
+rotation = -1.70238
+rotates = false
+
+[node name="AirBalloon" type="Sprite2D" parent="GameManager/Timeline/BalloonPath/BalloonFollow"]
+position = Vector2(77.8505, 6.26887)
+rotation = 1.70238
+texture = ExtResource("14_has2t")
 
 [node name="Player" parent="." instance=ExtResource("3_h8ik1")]
 unique_name_in_owner = true
-position = Vector2(0, -138)
+position = Vector2(0, 421)
