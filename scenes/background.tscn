@@ -109,37 +109,49 @@ motion_scale = Vector2(1, 0.9)
 [node name="Sprite2D" type="Sprite2D" parent="Sky/MainMountain"]
 texture = ExtResource("7_e730v")
 
-[node name="Ocean" type="ParallaxBackground" parent="."]
+[node name="Water" type="ParallaxBackground" parent="."]
 
-[node name="Water" type="ParallaxLayer" parent="Ocean"]
+[node name="Water" type="ParallaxLayer" parent="Water"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Ocean/Water"]
+[node name="Sprite2D" type="Sprite2D" parent="Water/Water"]
 texture = ExtResource("3_u8h6g")
 
-[node name="Distortion" type="Sprite2D" parent="Ocean/Water"]
+[node name="Distortion" type="Sprite2D" parent="Water/Water"]
 material = SubResource("ShaderMaterial_33mok")
 texture = ExtResource("3_u8h6g")
 
-[node name="Cavern" type="ParallaxLayer" parent="Ocean"]
-position = Vector2(16, 0)
-motion_scale = Vector2(1, 1.1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ocean/Cavern"]
-texture = ExtResource("5_nhxmj")
-
-[node name="Mountain" type="ParallaxLayer" parent="Ocean"]
-motion_scale = Vector2(1, 1.2)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ocean/Mountain"]
-texture = ExtResource("4_krqt6")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="Ocean"]
+[node name="CanvasModulate" type="CanvasModulate" parent="Water"]
 visible = false
 color = Color(0.444843, 0.444843, 0.444843, 1)
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Ocean"]
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Water"]
 position = Vector2(120, -548)
 rotation = -0.233833
+
+[node name="Distortion" type="ParallaxBackground" parent="."]
+layer = 10
+
+[node name="Water" type="ParallaxLayer" parent="Distortion"]
+
+[node name="Distortion" type="Sprite2D" parent="Distortion/Water"]
+material = SubResource("ShaderMaterial_33mok")
+texture = ExtResource("3_u8h6g")
+
+[node name="Caverns" type="ParallaxBackground" parent="."]
+layer = 20
+
+[node name="Cavern" type="ParallaxLayer" parent="Caverns"]
+position = Vector2(16, 0)
+motion_scale = Vector2(1, 1.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caverns/Cavern"]
+texture = ExtResource("5_nhxmj")
+
+[node name="Mountain" type="ParallaxLayer" parent="Caverns"]
+motion_scale = Vector2(1, 1.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caverns/Mountain"]
+texture = ExtResource("4_krqt6")
 
 [connection signal="area_entered" from="VisibleAreas/Area2D" to="VisibleAreas/Area2D" method="_on_area_entered"]
 [connection signal="area_exited" from="VisibleAreas/Area2D" to="VisibleAreas/Area2D" method="_on_area_exited"]

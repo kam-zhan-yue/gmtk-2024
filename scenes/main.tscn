@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=22 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -9,12 +9,10 @@
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="8_egxth"]
 [ext_resource type="PackedScene" uid="uid://beiyw255u1oxm" path="res://scenes/ui/ui.tscn" id="8_uw3fq"]
 [ext_resource type="PackedScene" uid="uid://cuu4wvac46q6j" path="res://scenes/enemies/fish.tscn" id="9_rtuln"]
-[ext_resource type="Shader" path="res://scripts/shaders/distortion.gdshader" id="12_cd0p2"]
 [ext_resource type="PackedScene" uid="uid://dtbawr3acmc0s" path="res://scenes/background.tscn" id="12_dvr37"]
 [ext_resource type="Script" path="res://scripts/flow/spawn_trigger.gd" id="12_j6dic"]
 [ext_resource type="Script" path="res://scripts/flow/timeline.gd" id="12_xvfn4"]
 [ext_resource type="SpriteFrames" uid="uid://c81e2cel8mkye" path="res://scenes/animations/submarine.tres" id="13_j364a"]
-[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="13_pujpn"]
 [ext_resource type="Texture2D" uid="uid://by06nbo5lkik8" path="res://assets/background/air_balloon.png" id="14_has2t"]
 [ext_resource type="PackedScene" uid="uid://bbstso6ny83n4" path="res://scenes/spawn_groups/1_boids.tscn" id="17_h6jyu"]
 
@@ -27,27 +25,6 @@ glow_hdr_threshold = 2.0
 glow_hdr_luminance_cap = 3.0
 
 [sub_resource type="Curve2D" id="Curve2D_stg6b"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_jf1mw"]
-noise_type = 3
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_auxj2"]
-seamless = true
-noise = SubResource("FastNoiseLite_jf1mw")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_aaysv"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_deji5"]
-seamless = true
-noise = SubResource("FastNoiseLite_aaysv")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1hch"]
-shader = ExtResource("12_cd0p2")
-shader_parameter/distortion_strength = 0.00500005
-shader_parameter/offset1 = Vector2(0.1, 0.1)
-shader_parameter/offset2 = Vector2(0.2, 0.2)
-shader_parameter/noise_texture1 = SubResource("NoiseTexture2D_auxj2")
-shader_parameter/noise_texture2 = SubResource("NoiseTexture2D_deji5")
 
 [sub_resource type="Curve2D" id="Curve2D_dpbqk"]
 _data = {
@@ -97,16 +74,7 @@ curve = SubResource("Curve2D_stg6b")
 
 [node name="UI" parent="." instance=ExtResource("8_uw3fq")]
 unique_name_in_owner = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-follow_viewport_enabled = true
-
-[node name="Distortion" type="Sprite2D" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_f1hch")
-position = Vector2(1, 31)
-scale = Vector2(4.875, 7.41406)
-texture = ExtResource("13_pujpn")
+layer = 100
 
 [node name="Timeline" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -181,16 +149,16 @@ position = Vector2(-176, 258)
 script = ExtResource("8_egxth")
 boid_scene = ExtResource("9_rtuln")
 start_direction = Vector2(1, -0.2)
-spawn_radius = 150.0
-spawn_count = 25
+spawn_radius = 200.0
+spawn_count = 15
 
 [node name="BoidSpawner2" type="Node2D" parent="GameManager/StartSpawner"]
 position = Vector2(172, 117)
 script = ExtResource("8_egxth")
 boid_scene = ExtResource("9_rtuln")
 start_direction = Vector2(-1, 0.2)
-spawn_radius = 150.0
-spawn_count = 25
+spawn_radius = 200.0
+spawn_count = 15
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="GameManager"]
 unique_name_in_owner = true
@@ -207,5 +175,40 @@ unique_name_in_owner = true
 
 [node name="Tuna" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 364)
+script = ExtResource("12_j6dic")
+group = ExtResource("17_h6jyu")
+
+[node name="Tuna2" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, 263)
+script = ExtResource("12_j6dic")
+group = ExtResource("17_h6jyu")
+
+[node name="Tuna3" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, 168)
+script = ExtResource("12_j6dic")
+group = ExtResource("17_h6jyu")
+
+[node name="Tuna4" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, 85)
+script = ExtResource("12_j6dic")
+group = ExtResource("17_h6jyu")
+
+[node name="Tuna5" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -27)
+script = ExtResource("12_j6dic")
+group = ExtResource("17_h6jyu")
+
+[node name="Tuna6" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -120)
+script = ExtResource("12_j6dic")
+group = ExtResource("17_h6jyu")
+
+[node name="Tuna7" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -218)
+script = ExtResource("12_j6dic")
+group = ExtResource("17_h6jyu")
+
+[node name="Tuna8" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -292)
 script = ExtResource("12_j6dic")
 group = ExtResource("17_h6jyu")

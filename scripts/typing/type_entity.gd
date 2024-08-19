@@ -35,6 +35,7 @@ func deactivate() -> void:
 	state = TypeState.INACTIVE
 	active = false
 	on_active.emit(false)
+	update_state()
 
 func _on_key_pressed(key: String) -> void:
 	if not active: return
