@@ -53,7 +53,7 @@ func dive_async() -> void:
 	game_state.player.dive_anim()
 	
 	camera_controller.lerp_to(submarine.global_position)
-	
+	camera_controller.zoom_to(2.0);
 	# Lerp the diver path
 	await lerp_path(diver_follow, SUBMARINE_BEAT, DIVER_BEAT)
 

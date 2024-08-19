@@ -1,6 +1,6 @@
 extends Node
 
-const SCALE = 3.0
+var zoom := 3.0
 
 func seconds(time: float) -> void:
 	await get_tree().create_timer(time).timeout

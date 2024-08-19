@@ -1,7 +1,7 @@
 class_name TypePopup
 extends Control
 
-const OFFSET_Y = 30.0
+const OFFSET_Y = 10.0
 var entity: TypeEntity
 @onready var rich_text_label := $RichTextLabel as RichTextLabel
 var completed := false
@@ -25,8 +25,8 @@ func _process(delta: float) -> void:
 	var camera := get_viewport().get_camera_2d()
 	var screen_center := camera.get_screen_center_position()
 	var difference := entity.global_position - screen_center
-	var screen_position := get_screen_center() + difference * Global.SCALE
-	var offset_position := Vector2(screen_position.x, screen_position.y + OFFSET_Y)
+	var screen_position := get_screen_center() + difference * Global.zoom
+	var offset_position := Vector2(screen_position.x, screen_position.y + OFFSET_Y * Global.zoom)
 	position = offset_position
 
 func get_screen_center() -> Vector2:

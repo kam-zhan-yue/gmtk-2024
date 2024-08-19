@@ -8,6 +8,7 @@ var original_pos: Vector2
 
 func _ready() -> void:
 	original_pos = position
+	Global.zoom = zoom.x
 
 func init(state: GameState) -> void:
 	game_state = state
@@ -36,6 +37,19 @@ func lerp_to(target: Vector2, lerp_time: float = 1.0) -> void:
 		timer += delta
 		await Global.frame()
 	camera_state = State.STOP
+
+func zoom_to(target: float, lerp_time: float = 1.0) -> void:
+	var timer := 0.0
+	var original_zoom := zoom
+	while timer < lerp_time:
+		var t := timer / lerp_time
+		var x = lerp(original_zoom.x, target, Global.ease_out_sin(t))
+		zoom = Vector2(x, x)
+		Global.zoom = x
+		timer += get_process_delta_time()
+		await Global.frame()
+	zoom = Vector2(target, target)
+	Global.zoom = target
 
 func follow() -> void:
 	camera_state = State.FOLLOW
