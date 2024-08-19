@@ -35,6 +35,8 @@ func _on_start() -> void:
 func _on_restart() -> void:
 	music_player.stop()
 	# Clear up references
+	BoidManager.restart()
+	EntityManager.restart()
 	
 	game_state = GameState.new(player)
 	game_state.on_pause.connect(_on_pause)

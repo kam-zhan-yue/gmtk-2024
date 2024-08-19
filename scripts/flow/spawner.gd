@@ -5,9 +5,11 @@ const CONFIG = preload("res://resources/spawn_settings.tres")
 
 var game_state: GameState
 
+func _ready() -> void:
+	BeatManager.on_beat.connect(_on_beat)
+
 func init(state: GameState) -> void:
 	self.game_state = state
-	BeatManager.on_beat.connect(_on_beat)
 
 func _on_beat(beat: int) -> void:
 	var spawn_group = CONFIG.spawn(beat)

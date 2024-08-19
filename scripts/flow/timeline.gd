@@ -1,5 +1,5 @@
 class_name Timeline
-extends Node
+extends Node2D
 
 const SUBMARINE_BEAT = 50
 const BALLOON_BEAT = 100

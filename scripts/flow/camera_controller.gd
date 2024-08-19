@@ -4,9 +4,13 @@ extends Camera2D
 enum State { IDLE, FOLLOW, LERP, STOP }
 var game_state: GameState
 var camera_state := State.IDLE
+var original_pos: Vector2
 
+func _ready() -> void:
+	original_pos = position
 
 func init(state: GameState) -> void:
+	position = original_pos
 	game_state = state
 	follow()
 
