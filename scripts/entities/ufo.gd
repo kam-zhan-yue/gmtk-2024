@@ -47,9 +47,10 @@ func orbit() -> void:
 	pass
 
 func shoot_async() -> void:
-	while(true):
-		await Global.seconds(time_between_rockets)
+	await Global.seconds(time_between_rockets)
+	while not completed:
 		spawn_rocket()
+		await Global.seconds(time_between_rockets)
 
 func spawn_rocket() -> void:
 	var rocket := ROCKET.instantiate() as Rocket

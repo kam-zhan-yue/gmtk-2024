@@ -38,7 +38,7 @@ func _on_restart() -> void:
 	BeatManager.stop()
 	BoidManager.restart()
 	EntityManager.restart()
-	await player.restart()
+	await timeline.restart()
 	
 	game_state = GameState.new(player)
 	game_state.on_pause.connect(_on_pause)
@@ -47,6 +47,4 @@ func _on_restart() -> void:
 	ui.init(game_state)
 	timeline.init(game_state)
 	spawner.init(game_state)
-	
-	await timeline.restart()
 	game_state.start()

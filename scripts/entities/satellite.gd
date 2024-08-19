@@ -47,9 +47,10 @@ func orbit(delta: float) -> void:
 	pass
 
 func shoot_async() -> void:
-	while(true):
-		await Global.seconds(1.0)
+	await Global.seconds(1.0)
+	while not completed:
 		var laser := LASER.instantiate() as Laser
 		add_child(laser)
 		laser.activate(self, game_state.player, 0.2)
 		game_state.player.damage(laser_damage)
+		await Global.seconds(1.0)

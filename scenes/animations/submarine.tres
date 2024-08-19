@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://c81e2cel8mkye"]
+
+[ext_resource type="Texture2D" uid="uid://65awht6mk88l" path="res://assets/background/submarine.png" id="1_qtvd4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4o4h5"]
+atlas = ExtResource("1_qtvd4")
+region = Rect2(0, 0, 82, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqhh8"]
+atlas = ExtResource("1_qtvd4")
+region = Rect2(82, 0, 82, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmdte"]
+atlas = ExtResource("1_qtvd4")
+region = Rect2(164, 0, 82, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2hwl"]
+atlas = ExtResource("1_qtvd4")
+region = Rect2(246, 0, 82, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0f7m"]
+atlas = ExtResource("1_qtvd4")
+region = Rect2(328, 0, 82, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agujx"]
+atlas = ExtResource("1_qtvd4")
+region = Rect2(410, 0, 82, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpuv4"]
+atlas = ExtResource("1_qtvd4")
+region = Rect2(492, 0, 82, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7gf0"]
+atlas = ExtResource("1_qtvd4")
+region = Rect2(574, 0, 82, 58)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4o4h5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqhh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmdte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2hwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0f7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agujx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpuv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7gf0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
