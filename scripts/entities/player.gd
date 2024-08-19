@@ -5,6 +5,7 @@ extends Node2D
 @onready var health := %Health as Health
 @onready var anim := $AnimatedSprite2D as AnimatedSprite2D
 @onready var point_light_2d := $PointLight2D as PointLight2D
+@onready var spawns: Node2D = %Spawns
 
 var started := false
 signal on_damage(value: float)
@@ -32,3 +33,7 @@ func damage(amount: float) -> void:
 
 func _on_damage(value: float) -> void:
 	on_damage.emit(value)
+	
+
+func add_node(node: Node2D) -> void:
+	spawns.add_child(node)

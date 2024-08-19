@@ -18,7 +18,7 @@ func spawn() -> void:
 		var radius := randf() * spawn_radius
 		var spawn_point := Vector2(radius * cos(angle), radius * sin(angle))
 		var boid := boid_scene.instantiate() as Boid
-		add_child(boid)
+		EntityManager.add_node(boid)
 		boid.global_position = global_position + spawn_point
 		boid.direction = start_direction
 		boid.init()
