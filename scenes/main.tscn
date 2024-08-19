@@ -1,10 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=24 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
 [ext_resource type="Script" path="res://scripts/flow/spawner.gd" id="3_b1w3c"]
 [ext_resource type="PackedScene" uid="uid://gwlgluwanmdk" path="res://scenes/player.tscn" id="3_h8ik1"]
-[ext_resource type="Texture2D" uid="uid://cd7xvjxurbgda" path="res://assets/textures/white_glowing_circle.png" id="6_wcvl1"]
+[ext_resource type="Texture2D" uid="uid://c1qj3u4hvqn2n" path="res://assets/textures/dot.png" id="5_625j7"]
 [ext_resource type="Script" path="res://scripts/flow/start_spawner.gd" id="7_5dx1o"]
 [ext_resource type="AudioStream" uid="uid://u7jl40fk83o4" path="res://audio/music/bgm.mp3" id="8_1hva6"]
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="8_egxth"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/flow/timeline.gd" id="12_xvfn4"]
 [ext_resource type="SpriteFrames" uid="uid://c81e2cel8mkye" path="res://scenes/animations/submarine.tres" id="13_j364a"]
 [ext_resource type="Texture2D" uid="uid://by06nbo5lkik8" path="res://assets/background/air_balloon.png" id="14_has2t"]
+[ext_resource type="PackedScene" uid="uid://ws4sqa3xys6o" path="res://scenes/spawn_groups/salmon_boids.tscn" id="17_8mpy1"]
 [ext_resource type="PackedScene" uid="uid://bbstso6ny83n4" path="res://scenes/spawn_groups/1_boids.tscn" id="17_h6jyu"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
@@ -97,11 +98,11 @@ rotation = -1.56823
 rotates = false
 
 [node name="PointLight2D" type="PointLight2D" parent="Timeline/SubmarinePath/SubmarineFollow"]
-visible = false
+position = Vector2(-3.00769, -2.99229)
+color = Color(1, 1, 1, 0.451)
 range_layer_min = -100
 range_layer_max = 10
-texture = ExtResource("6_wcvl1")
-texture_scale = 3.0
+texture = ExtResource("5_625j7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Timeline/SubmarinePath/SubmarineFollow"]
 light_mask = 0
@@ -187,10 +188,10 @@ position = Vector2(-1, 364)
 script = ExtResource("12_j6dic")
 group = ExtResource("17_h6jyu")
 
-[node name="Tuna2" type="Marker2D" parent="SpawnGroups"]
+[node name="Salmon" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 263)
 script = ExtResource("12_j6dic")
-group = ExtResource("17_h6jyu")
+group = ExtResource("17_8mpy1")
 
 [node name="Tuna3" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 168)

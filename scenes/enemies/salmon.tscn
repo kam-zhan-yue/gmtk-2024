@@ -32,6 +32,7 @@ unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="SalmonBody"]
 unique_name_in_owner = true
+modulate = Color(1, 2, 3, 1)
 texture = ExtResource("5_v3o83")
 
 [node name="Visible" type="Area2D" parent="SalmonBody"]
