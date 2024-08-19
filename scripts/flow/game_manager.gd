@@ -33,4 +33,16 @@ func _on_start() -> void:
 	BeatManager.start()
 
 func _on_restart() -> void:
-	pass
+	music_player.stop()
+	# Clear up references
+	
+	game_state = GameState.new(player)
+	game_state.on_pause.connect(_on_pause)
+	game_state.on_start.connect(_on_start)
+	game_state.on_restart.connect(_on_restart)
+	ui.init(game_state)
+	timeline.init(game_state)
+	spawner.init(game_state)
+	
+	#await Global.seconds(1.0)
+	game_state.start()

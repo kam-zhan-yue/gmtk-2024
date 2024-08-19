@@ -22,7 +22,6 @@ func _init(p: Player = null) -> void:
 
 func start() -> void:
 	started = true
-	player.start()
 	on_start.emit()
 
 func init_type_entity(entity: TypeEntity) -> void:

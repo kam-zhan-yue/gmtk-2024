@@ -8,6 +8,7 @@ const BALLOON_BEAT = 100
 @onready var camera_controller := %CameraController as CameraController
 @onready var submarine := %Submarine as Marker2D
 @onready var balloon := %HotAirBalloon as Marker2D
+@onready var start_marker := %Start as Marker2D
 
 var game_state: GameState
 
@@ -20,6 +21,7 @@ func _ready() -> void:
 
 func start() -> void:
 	submarine_setup()
+	game_state.player.start()
 
 func _on_beat(beat: int) -> void:
 	match(beat):
@@ -31,6 +33,7 @@ func _on_beat(beat: int) -> void:
 
 
 func submarine_setup() -> void:
+	game_state.player.global_position = start_marker.global_position
 	camera_controller.follow()
 	var difference := submarine.global_position - game_state.player.global_position
 	var distance := difference.length()
@@ -45,5 +48,6 @@ func balloon_setup() -> void:
 	var target_speed := distance / beat_time
 	game_state.player.speed = target_speed
 
-func _on_restart() -> void:
-	pass
+func restart() -> void:
+	submarine_setup()
+	game_state.player.start()
