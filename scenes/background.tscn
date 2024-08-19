@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dtbawr3acmc0s"]
+[gd_scene load_steps=20 format=3 uid="uid://dtbawr3acmc0s"]
 
 [ext_resource type="Script" path="res://scripts/entities/visible.gd" id="2_ybn17"]
 [ext_resource type="Script" path="res://scripts/boids/boid_remover.gd" id="3_ete7q"]
@@ -37,11 +37,13 @@ shader_parameter/offset2 = Vector2(0.2, 0.2)
 shader_parameter/noise_texture1 = SubResource("NoiseTexture2D_lv72p")
 shader_parameter/noise_texture2 = SubResource("NoiseTexture2D_ces5y")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8s7ep"]
+polygon = PackedVector2Array(304, -462, 242, -466, 201, -458, 169, -447, 127, -434, 93, -421, 77, -404, 66, -373, 60, -360, 63, -314, 55, -275, 53, -249, 49, -237, 56, -222, 84, -155, 106, -139, 133, -117, 118, -78, 90, -55, 54, -27, 48, -7, 52, 11, 78, 39, 328, 45)
+
 [node name="Background" type="Node2D"]
 z_index = -1
 
 [node name="VisibleAreas" type="Node2D" parent="."]
-visible = false
 position = Vector2(2, -450)
 
 [node name="Area2D" type="Area2D" parent="VisibleAreas"]
@@ -54,7 +56,6 @@ script = ExtResource("2_ybn17")
 polygon = PackedVector2Array(-27, 117, 23, 56, 39, 48, 33, -35, 31, -59, 83, -116, 94, -172, 53, -211, 48, -233, 58, -250, 87, -264, 131, -313, 136, -334, 127, -345, 96, -363, 66, -425, 48, -457, 65, -548, 80, -627, 107, -647, 212, -679, 244, -686, 276, -685, 299, -685, 302, -1606, -298, -1607, -301, -700, -101, -640, -61, -553, -54, -468, -62, -422, -74, -395, -71, -338, -57, -268, -67, -219, -36, -138, -65, -91, -85, -65, -82, -30, -52, 3, -38, 33, -44, 77)
 
 [node name="BoidRemover" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, -443)
 script = ExtResource("3_ete7q")
 
@@ -120,13 +121,20 @@ texture = ExtResource("3_u8h6g")
 material = SubResource("ShaderMaterial_33mok")
 texture = ExtResource("3_u8h6g")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="Water"]
-visible = false
-color = Color(0.444843, 0.444843, 0.444843, 1)
+[node name="Node2D" type="Node2D" parent="Water/Water"]
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Water"]
-position = Vector2(120, -548)
-rotation = -0.233833
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Water/Water"]
+position = Vector2(527, -820)
+rotation = 0.788417
+energy = 0.45
+range_layer_min = -100
+range_layer_max = 10
+shadow_enabled = true
+
+[node name="Lighting" type="Node2D" parent="Water/Water"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Water/Water/Lighting"]
+color = Color(0.800491, 0.800491, 0.800491, 1)
 
 [node name="Distortion" type="ParallaxBackground" parent="."]
 layer = 10
@@ -146,6 +154,12 @@ motion_scale = Vector2(1, 1.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Caverns/Cavern"]
 texture = ExtResource("5_nhxmj")
+
+[node name="LightOccluders" type="Node2D" parent="Caverns/Cavern"]
+position = Vector2(-16, 0)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Caverns/Cavern/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_8s7ep")
 
 [node name="Mountain" type="ParallaxLayer" parent="Caverns"]
 motion_scale = Vector2(1, 1.2)

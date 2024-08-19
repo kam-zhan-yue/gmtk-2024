@@ -12,7 +12,8 @@ func init(state: GameState):
 func _process(delta: float) -> void:
 	if not game_state: return
 	if spawned: return
-	if game_state.player.global_position.y <= global_position.y:
+	var player_y = game_state.player.global_position.y
+	if player_y <= global_position.y and player_y > global_position.y - 50.0:
 		spawn()
 
 func spawn() -> void:

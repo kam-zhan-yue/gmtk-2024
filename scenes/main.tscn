@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=23 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
 [ext_resource type="Script" path="res://scripts/flow/spawner.gd" id="3_b1w3c"]
 [ext_resource type="PackedScene" uid="uid://gwlgluwanmdk" path="res://scenes/player.tscn" id="3_h8ik1"]
+[ext_resource type="Texture2D" uid="uid://cd7xvjxurbgda" path="res://assets/textures/white_glowing_circle.png" id="6_wcvl1"]
 [ext_resource type="Script" path="res://scripts/flow/start_spawner.gd" id="7_5dx1o"]
 [ext_resource type="AudioStream" uid="uid://u7jl40fk83o4" path="res://audio/music/bgm.mp3" id="8_1hva6"]
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="8_egxth"]
@@ -95,7 +96,15 @@ position = Vector2(-1, 420)
 rotation = -1.56823
 rotates = false
 
+[node name="PointLight2D" type="PointLight2D" parent="Timeline/SubmarinePath/SubmarineFollow"]
+visible = false
+range_layer_min = -100
+range_layer_max = 10
+texture = ExtResource("6_wcvl1")
+texture_scale = 3.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Timeline/SubmarinePath/SubmarineFollow"]
+light_mask = 0
 rotation = 1.5708
 sprite_frames = ExtResource("13_j364a")
 animation = &"idle"

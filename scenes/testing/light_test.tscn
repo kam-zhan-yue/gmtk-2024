@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://buret0q6br2h5"]
+
+[ext_resource type="Texture2D" uid="uid://bbtvt5h0rfj2u" path="res://assets/background/sky/red_mountain.png" id="1_w8yc2"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vngi6"]
+polygon = PackedVector2Array(160, 351, 160, 457, 386, 393, 518, 283, 436, 233, 162, 333)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.385493, 0.385492, 0.385492, 1)
+
+[node name="RedMountain" type="Sprite2D" parent="."]
+position = Vector2(968, 749)
+texture = ExtResource("1_w8yc2")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(81, 203)
+shadow_enabled = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_vngi6")
