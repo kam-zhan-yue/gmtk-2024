@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=20 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -11,7 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://cuu4wvac46q6j" path="res://scenes/enemies/fish.tscn" id="9_rtuln"]
 [ext_resource type="Shader" path="res://scripts/shaders/distortion.gdshader" id="12_cd0p2"]
 [ext_resource type="PackedScene" uid="uid://dtbawr3acmc0s" path="res://scenes/background.tscn" id="12_dvr37"]
+[ext_resource type="Script" path="res://scripts/flow/timeline.gd" id="12_xvfn4"]
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="13_pujpn"]
+
+[sub_resource type="Environment" id="Environment_bgy46"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 1.21
+glow_blend_mode = 0
+glow_hdr_threshold = 2.0
+glow_hdr_luminance_cap = 3.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_jf1mw"]
 noise_type = 3
@@ -34,15 +43,10 @@ shader_parameter/offset2 = Vector2(0.2, 0.2)
 shader_parameter/noise_texture1 = SubResource("NoiseTexture2D_auxj2")
 shader_parameter/noise_texture2 = SubResource("NoiseTexture2D_deji5")
 
-[sub_resource type="Environment" id="Environment_bgy46"]
-background_mode = 3
-glow_enabled = true
-glow_strength = 1.21
-glow_blend_mode = 0
-glow_hdr_threshold = 2.0
-glow_hdr_luminance_cap = 3.0
-
 [node name="MainScene" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bgy46")
 
 [node name="Background" parent="." instance=ExtResource("12_dvr37")]
 position = Vector2(1, -934)
@@ -101,14 +105,15 @@ stream = ExtResource("8_1hva6")
 volume_db = -20.0
 bus = &"Music"
 
-[node name="CameraController" type="Camera2D" parent="."]
+[node name="CameraController" type="Camera2D" parent="GameManager"]
+unique_name_in_owner = true
 position = Vector2(0, -300)
 zoom = Vector2(3.21, 3.21)
 script = ExtResource("2_ra8cm")
 
+[node name="Timeline" type="Node2D" parent="GameManager"]
+script = ExtResource("12_xvfn4")
+
 [node name="Player" parent="." instance=ExtResource("3_h8ik1")]
 unique_name_in_owner = true
 position = Vector2(0, -138)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_bgy46")

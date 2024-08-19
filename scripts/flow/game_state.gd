@@ -12,6 +12,7 @@ signal on_score(value: float)
 signal on_damage(value: float)
 signal on_pause(value: bool)
 signal on_start
+signal on_restart
 var started := false
 
 func _init(p: Player = null) -> void:
@@ -41,3 +42,6 @@ func _on_damage(value: float) -> void:
 
 func pause(value: bool) -> void:
 	on_pause.emit(value)
+
+func restart() -> void:
+	on_restart.emit()
