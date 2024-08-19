@@ -37,6 +37,7 @@ func _on_restart() -> void:
 	# Clear up references
 	BoidManager.restart()
 	EntityManager.restart()
+	await player.restart()
 	
 	game_state = GameState.new(player)
 	game_state.on_pause.connect(_on_pause)

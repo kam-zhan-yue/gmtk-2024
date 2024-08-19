@@ -7,6 +7,7 @@ extends Node2D
 @onready var point_light_2d := $PointLight2D as PointLight2D
 @onready var spawns: Node2D = %Spawns
 
+const FADE_OUT = 1.0
 var started := false
 signal on_damage(value: float)
 
@@ -20,6 +21,8 @@ func _ready() -> void:
 func start() -> void:
 	started = true
 	point_light_2d.enabled = true
+	anim.modulate.a = 1
+	point_light_2d.energy = 1.0
 
 func _process(delta: float) -> void:
 	if not started: return
@@ -33,7 +36,22 @@ func damage(amount: float) -> void:
 
 func _on_damage(value: float) -> void:
 	on_damage.emit(value)
-	
 
 func add_node(node: Node2D) -> void:
 	spawns.add_child(node)
+
+func restart() -> void:
+	for node in spawns.get_children():
+		node.queue_free()
+	await release()
+
+func release() -> void:
+	var timer := 0.0
+	while timer < FADE_OUT:
+		var t := timer / FADE_OUT
+		anim.modulate.a = 1-t
+		point_light_2d.energy = 1-t
+		timer += get_process_delta_time()
+		await Global.frame()
+	point_light_2d.enabled = false
+	point_light_2d.energy = 0.0
