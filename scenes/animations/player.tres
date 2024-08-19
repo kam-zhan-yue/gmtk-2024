@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://b8oghapvwoati"]
+
+[ext_resource type="Texture2D" uid="uid://b2wagc5foi73g" path="res://assets/sheets/diver.png" id="1_38pde"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmhv6"]
+atlas = ExtResource("1_38pde")
+region = Rect2(0, 0, 18, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlbgi"]
+atlas = ExtResource("1_38pde")
+region = Rect2(18, 0, 18, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf4pg"]
+atlas = ExtResource("1_38pde")
+region = Rect2(36, 0, 18, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdc05"]
+atlas = ExtResource("1_38pde")
+region = Rect2(54, 0, 18, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3fnp"]
+atlas = ExtResource("1_38pde")
+region = Rect2(72, 0, 18, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f5fq"]
+atlas = ExtResource("1_38pde")
+region = Rect2(90, 0, 18, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6wts"]
+atlas = ExtResource("1_38pde")
+region = Rect2(108, 0, 18, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nates"]
+atlas = ExtResource("1_38pde")
+region = Rect2(126, 0, 18, 47)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmhv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlbgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf4pg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdc05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3fnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f5fq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6wts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nates")
+}],
+"loop": true,
+"name": &"diver_swim",
+"speed": 12.0
+}]

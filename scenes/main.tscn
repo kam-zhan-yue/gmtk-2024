@@ -67,6 +67,7 @@ position = Vector2(-1, -228)
 unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 follow_viewport_enabled = true
 
 [node name="Distortion" type="Sprite2D" parent="CanvasLayer"]

@@ -1,8 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtbawr3acmc0s"]
+[gd_scene load_steps=18 format=3 uid="uid://dtbawr3acmc0s"]
 
-[ext_resource type="Texture2D" uid="uid://dqs5ehgjusgtc" path="res://assets/background/background.png" id="1_k10ia"]
 [ext_resource type="Script" path="res://scripts/entities/visible.gd" id="2_ybn17"]
 [ext_resource type="Script" path="res://scripts/boids/boid_remover.gd" id="3_ete7q"]
+[ext_resource type="SpriteFrames" uid="uid://c81e2cel8mkye" path="res://scenes/animations/submarine.tres" id="3_mle6j"]
+[ext_resource type="Texture2D" uid="uid://bj8ibwi80ledu" path="res://assets/background/ocean/water.png" id="3_u8h6g"]
+[ext_resource type="Texture2D" uid="uid://kspwkc64iq2u" path="res://assets/background/ocean/mountain.png" id="4_krqt6"]
+[ext_resource type="Texture2D" uid="uid://d0r14pr4gmh1l" path="res://assets/background/sky/red2_mountain.png" id="4_myvpw"]
+[ext_resource type="Texture2D" uid="uid://nsmypwfg2i62" path="res://assets/background/sky/red3_mountain.png" id="5_dxom7"]
+[ext_resource type="Texture2D" uid="uid://3whi06gf73tq" path="res://assets/background/ocean/cavern.png" id="5_nhxmj"]
+[ext_resource type="Texture2D" uid="uid://bbtvt5h0rfj2u" path="res://assets/background/sky/red_mountain.png" id="6_cyjm7"]
+[ext_resource type="Texture2D" uid="uid://bmdpgfudjp7li" path="res://assets/background/sky/gradient_to_space.png" id="6_d8em3"]
+[ext_resource type="Texture2D" uid="uid://b2liahtmr41dl" path="res://assets/background/sky/main_mountain.png" id="7_e730v"]
+[ext_resource type="Texture2D" uid="uid://cmmmriydvrp0" path="res://assets/background/sky/closer_clouds.png" id="10_dpe4x"]
+[ext_resource type="Texture2D" uid="uid://by06nbo5lkik8" path="res://assets/background/air_balloon.png" id="11_uh7wb"]
+[ext_resource type="Texture2D" uid="uid://dqvskjwyyutv1" path="res://assets/background/lighthouse_island.png" id="12_43gme"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sy58l"]
 polygon = PackedVector2Array(-184.08, 922.588, -196.008, 890.561, -190.893, 839.572, -195.848, 819.561, -229.746, 774.484, -241.721, 763.457, -239.661, 736.462, -199.571, 696.552, -186.521, 674.581, -191.48, 656.57, -220.332, 590.505, -215.246, 552.516, -208.219, 540.532, -218.086, 481.51, -226.926, 410.49, -224.901, 399.494, -203.818, 362.542, -203.761, 337.542, -214.691, 306.517, -210.619, 274.526, -212.581, 257.522, -210.565, 250.526, -228.5, 221.486, -229.482, 213.483, -236.446, 197.468, -254.378, 167.427, -305.328, 145.312, -417.26, 115.06, -453.251, 110.979, -454.393, 1060.98, -187.389, 1059.58)
@@ -13,12 +24,11 @@ polygon = PackedVector2Array(144.72, 124.327, 88.7338, 118.2, 25.7001, 133.058, 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avv3c"]
 size = Vector2(600, 834)
 
-[node name="Background" type="Sprite2D"]
+[node name="Background" type="Node2D"]
 z_index = -1
-position = Vector2(0, -674)
-texture = ExtResource("1_k10ia")
 
 [node name="VisibleAreas" type="Node2D" parent="."]
+visible = false
 
 [node name="Area2D" type="Area2D" parent="VisibleAreas"]
 position = Vector2(0, 674)
@@ -53,6 +63,7 @@ rotation = -0.00225399
 occluder = SubResource("OccluderPolygon2D_o3yjb")
 
 [node name="BoidRemover" type="Node2D" parent="."]
+visible = false
 script = ExtResource("3_ete7q")
 
 [node name="Area2D" type="Area2D" parent="BoidRemover"]
@@ -62,6 +73,85 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BoidRemover/Area2D"]
 position = Vector2(0, 399)
 shape = SubResource("RectangleShape2D_avv3c")
+
+[node name="Submarine" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -354)
+sprite_frames = ExtResource("3_mle6j")
+animation = &"idle"
+
+[node name="Lighthouse" type="Node2D" parent="."]
+position = Vector2(0, 6)
+
+[node name="AirBalloon" type="Sprite2D" parent="Lighthouse"]
+position = Vector2(52, -587)
+texture = ExtResource("11_uh7wb")
+
+[node name="LighthouseIsland" type="Sprite2D" parent="Lighthouse"]
+position = Vector2(0, -581)
+texture = ExtResource("12_43gme")
+
+[node name="Sky" type="ParallaxBackground" parent="."]
+
+[node name="Gradient" type="ParallaxLayer" parent="Sky"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky/Gradient"]
+position = Vector2(0, -894)
+texture = ExtResource("6_d8em3")
+
+[node name="RedMountain3" type="ParallaxLayer" parent="Sky"]
+motion_scale = Vector2(1, 1.05)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky/RedMountain3"]
+position = Vector2(8, -623)
+texture = ExtResource("5_dxom7")
+
+[node name="RedMountain2" type="ParallaxLayer" parent="Sky"]
+motion_scale = Vector2(1, 1.04)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky/RedMountain2"]
+position = Vector2(8, -623)
+texture = ExtResource("4_myvpw")
+
+[node name="RedMountain1" type="ParallaxLayer" parent="Sky"]
+motion_scale = Vector2(1, 1.03)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky/RedMountain1"]
+position = Vector2(8, -623)
+texture = ExtResource("6_cyjm7")
+
+[node name="Clouds" type="ParallaxLayer" parent="Sky"]
+motion_scale = Vector2(1, 1.02)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky/Clouds"]
+position = Vector2(8, -623)
+texture = ExtResource("10_dpe4x")
+
+[node name="MainMountain" type="ParallaxLayer" parent="Sky"]
+motion_scale = Vector2(1, 1.01)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky/MainMountain"]
+position = Vector2(8, -623)
+texture = ExtResource("7_e730v")
+
+[node name="Ocean" type="ParallaxBackground" parent="."]
+
+[node name="Water" type="ParallaxLayer" parent="Ocean"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ocean/Water"]
+texture = ExtResource("3_u8h6g")
+
+[node name="Cavern" type="ParallaxLayer" parent="Ocean"]
+position = Vector2(16, 0)
+motion_scale = Vector2(1, 1.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ocean/Cavern"]
+texture = ExtResource("5_nhxmj")
+
+[node name="Mountain" type="ParallaxLayer" parent="Ocean"]
+motion_scale = Vector2(1, 1.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ocean/Mountain"]
+texture = ExtResource("4_krqt6")
 
 [connection signal="area_entered" from="VisibleAreas/Area2D" to="VisibleAreas/Area2D" method="_on_area_entered"]
 [connection signal="area_exited" from="VisibleAreas/Area2D" to="VisibleAreas/Area2D" method="_on_area_exited"]
