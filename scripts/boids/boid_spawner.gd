@@ -5,8 +5,14 @@ extends Node2D
 @export var start_direction := Vector2.UP
 @export var spawn_radius := 100.0
 @export var spawn_count := 50
+@export var spawn_on_ready := true
 
 func _ready() -> void:
+	if not spawn_on_ready:
+		return
+	spawn()
+
+func spawn() -> void:
 	for i in spawn_count:
 		var angle := randf() * 2 * PI
 		var radius := randf() * spawn_radius

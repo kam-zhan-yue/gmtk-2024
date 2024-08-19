@@ -9,8 +9,10 @@ var alignment: Vector2
 var cohesion: Vector2
 var obstacle: Vector2
 
-@onready var obstacle_view: Area2D = $Area2D
+@onready var obstacle_view: Area2D = %ObstacleArea
 @onready var sprite: Sprite2D = %Sprite2D
+
+signal on_uninit
 
 func can_see(pos: Vector2) -> bool:
 	var difference = (pos - global_position).length()
@@ -64,4 +66,7 @@ func get_obstacle_force() -> Vector2:
 		var difference := area.global_position - global_position
 		obstacle_force -= difference.normalized() / difference.length_squared()
 	return obstacle_force
-		
+
+func uninit() -> void:
+	BoidManager.uninit(self)
+	on_uninit.emit()

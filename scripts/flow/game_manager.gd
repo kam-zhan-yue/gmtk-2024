@@ -1,7 +1,7 @@
 class_name GameManager
 extends Node
 
-const SUBMARINE_BEAT = 30
+const SUBMARINE_BEAT = 50
 const BALLOON_BEAT = 100
 
 @onready var player := %Player as Player
@@ -10,6 +10,7 @@ const BALLOON_BEAT = 100
 @onready var submarine := %Submarine as Marker2D
 @onready var balloon := %HotAirBalloon as Marker2D
 @onready var ui := %UI as UI
+@onready var start_spawner: StartSpawner = $StartSpawner
 
 var game_state: GameState
 
@@ -17,6 +18,7 @@ func _ready() -> void:
 	game_state = GameState.new(player)
 	ui.init(game_state)
 	game_state.on_start.connect(_on_start)
+	start_spawner.start_spawning()
 
 func _on_start() -> void:
 	camera_controller.init(game_state)
@@ -24,6 +26,7 @@ func _on_start() -> void:
 	BeatManager.on_beat.connect(_on_beat)
 	BeatManager.start()
 	submarine_setup()
+	start_spawner.stop_spawning()
 
 func submarine_setup() -> void:
 	var difference = submarine.global_position - player.global_position

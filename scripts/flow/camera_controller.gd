@@ -15,7 +15,10 @@ func _process(delta: float) -> void:
 	
 	match(camera_state):
 		State.FOLLOW:
-			global_position = game_state.player.global_position
+			var player_pos := game_state.player.global_position
+			# if the player is still above, then follow
+			if player_pos.y < global_position.y:
+				global_position = game_state.player.global_position
 
 func lerp_to(target: Vector2, lerp_time: float = 1.0) -> void:
 	camera_state = State.LERP

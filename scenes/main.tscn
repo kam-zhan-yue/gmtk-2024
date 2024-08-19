@@ -1,11 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=19 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
 [ext_resource type="Script" path="res://scripts/flow/spawner.gd" id="3_b1w3c"]
 [ext_resource type="PackedScene" uid="uid://gwlgluwanmdk" path="res://scenes/player.tscn" id="3_h8ik1"]
+[ext_resource type="Script" path="res://scripts/flow/start_spawner.gd" id="7_5dx1o"]
 [ext_resource type="AudioStream" uid="uid://u7jl40fk83o4" path="res://audio/music/bgm.mp3" id="8_1hva6"]
+[ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="8_egxth"]
 [ext_resource type="PackedScene" uid="uid://beiyw255u1oxm" path="res://scenes/ui/ui.tscn" id="8_uw3fq"]
+[ext_resource type="PackedScene" uid="uid://cuu4wvac46q6j" path="res://scenes/enemies/fish.tscn" id="9_rtuln"]
 [ext_resource type="Shader" path="res://scripts/shaders/distortion.gdshader" id="12_cd0p2"]
 [ext_resource type="PackedScene" uid="uid://dtbawr3acmc0s" path="res://scenes/background.tscn" id="12_dvr37"]
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="13_pujpn"]
@@ -39,12 +42,6 @@ glow_blend_mode = 0
 glow_hdr_threshold = 2.0
 glow_hdr_luminance_cap = 3.0
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_d3kd3"]
-polygon = PackedVector2Array(-184.08, 922.588, -196.008, 890.561, -190.893, 839.572, -195.848, 819.561, -229.746, 774.484, -241.721, 763.457, -239.661, 736.462, -199.571, 696.552, -186.521, 674.581, -191.48, 656.57, -220.332, 590.505, -215.246, 552.516, -208.219, 540.532, -218.086, 481.51, -226.926, 410.49, -224.901, 399.494, -203.818, 362.542, -203.761, 337.542, -214.691, 306.517, -210.619, 274.526, -212.581, 257.522, -210.565, 250.526, -228.5, 221.486, -229.482, 213.483, -236.446, 197.468, -254.378, 167.427, -305.328, 145.312, -417.26, 115.06, -453.251, 110.979, -454.393, 1060.98, -187.389, 1059.58)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xthpy"]
-polygon = PackedVector2Array(144.72, 124.327, 88.7338, 118.2, 25.7001, 133.058, -56.3673, 162.873, -79.4303, 190.822, -90.5114, 226.797, -85.5881, 260.808, -96.7413, 328.783, -104.777, 344.765, -92.8405, 372.792, -76.9127, 404.828, -66.9803, 434.85, -20.0435, 462.956, -19.0909, 483.958, -47.1787, 522.895, -90.253, 555.798, -99.2688, 562.778, -103.289, 571.769, -102.325, 587.771, -94.3589, 602.789, -77.3995, 620.827, -62.4289, 633.861, -64.4807, 656.856, -67.5258, 676.85, -73.5573, 690.836, -84.5979, 708.811, -95.6136, 715.786, -106.65, 731.762, -118.663, 737.734, -121.686, 747.728, -121.738, 770.728, -118.767, 783.734, -118.841, 816.734, -118.904, 844.734, -120.94, 860.73, -133.97, 873.7, -152.997, 885.658, -166.035, 902.628, -179.075, 920.599, -181.571, 1140.59, 143.428, 1141.33)
-
 [node name="MainScene" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("12_dvr37")]
@@ -77,12 +74,35 @@ script = ExtResource("1_vt02a")
 unique_name_in_owner = true
 script = ExtResource("3_b1w3c")
 
+[node name="StartSpawner" type="Node2D" parent="GameManager"]
+script = ExtResource("7_5dx1o")
+
+[node name="BoidSpawner1" type="Node2D" parent="GameManager/StartSpawner"]
+position = Vector2(-176, -256)
+script = ExtResource("8_egxth")
+boid_scene = ExtResource("9_rtuln")
+start_direction = Vector2(1, -0.2)
+spawn_radius = 150.0
+spawn_count = 25
+spawn_on_ready = false
+
+[node name="BoidSpawner2" type="Node2D" parent="GameManager/StartSpawner"]
+position = Vector2(172, -397)
+script = ExtResource("8_egxth")
+boid_scene = ExtResource("9_rtuln")
+start_direction = Vector2(-1, 0.2)
+spawn_radius = 150.0
+spawn_count = 25
+spawn_on_ready = false
+
 [node name="CameraController" type="Camera2D" parent="."]
+position = Vector2(0, -300)
 zoom = Vector2(3.21, 3.21)
 script = ExtResource("2_ra8cm")
 
 [node name="Player" parent="." instance=ExtResource("3_h8ik1")]
 unique_name_in_owner = true
+position = Vector2(0, -138)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bgy46")
@@ -92,25 +112,3 @@ stream = ExtResource("8_1hva6")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"
-
-[node name="Lights" type="Node2D" parent="."]
-visible = false
-
-[node name="CanvasModulate" type="CanvasModulate" parent="Lights"]
-scale = Vector2(2, 2)
-color = Color(0.676879, 0.676879, 0.676879, 1)
-
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="Lights"]
-position = Vector2(153, -805)
-rotation = -0.00225399
-occluder = SubResource("OccluderPolygon2D_d3kd3")
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lights"]
-position = Vector2(190, -911)
-rotation = 0.217944
-shadow_enabled = true
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Lights"]
-position = Vector2(153, -805)
-rotation = -0.00225399
-occluder = SubResource("OccluderPolygon2D_xthpy")

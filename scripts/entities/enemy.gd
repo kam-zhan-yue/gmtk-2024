@@ -21,6 +21,9 @@ func init(state: GameState) -> void:
 func _on_complete() -> void:
 	completed = true
 	game_state.enemy_dead(data)
+	release()
+
+func release() -> void:
 	var timer := 0.0
 	while timer < FADE_OUT:
 		var t := timer / FADE_OUT
