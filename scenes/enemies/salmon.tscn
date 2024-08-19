@@ -28,6 +28,7 @@ script = ExtResource("2_4u07c")
 data = ExtResource("3_pj77m")
 
 [node name="TypeEntity" parent="SalmonBody" instance=ExtResource("4_l4buw")]
+unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="SalmonBody"]
 unique_name_in_owner = true

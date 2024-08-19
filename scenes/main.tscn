@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=29 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -11,10 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://cuu4wvac46q6j" path="res://scenes/enemies/fish.tscn" id="9_rtuln"]
 [ext_resource type="Shader" path="res://scripts/shaders/distortion.gdshader" id="12_cd0p2"]
 [ext_resource type="PackedScene" uid="uid://dtbawr3acmc0s" path="res://scenes/background.tscn" id="12_dvr37"]
+[ext_resource type="Script" path="res://scripts/flow/spawn_trigger.gd" id="12_j6dic"]
 [ext_resource type="Script" path="res://scripts/flow/timeline.gd" id="12_xvfn4"]
 [ext_resource type="SpriteFrames" uid="uid://c81e2cel8mkye" path="res://scenes/animations/submarine.tres" id="13_j364a"]
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="13_pujpn"]
 [ext_resource type="Texture2D" uid="uid://by06nbo5lkik8" path="res://assets/background/air_balloon.png" id="14_has2t"]
+[ext_resource type="PackedScene" uid="uid://bbstso6ny83n4" path="res://scenes/spawn_groups/1_boids.tscn" id="17_h6jyu"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
@@ -97,6 +99,7 @@ curve = SubResource("Curve2D_stg6b")
 unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 follow_viewport_enabled = true
 
 [node name="Distortion" type="Sprite2D" parent="CanvasLayer"]
@@ -104,6 +107,64 @@ material = SubResource("ShaderMaterial_f1hch")
 position = Vector2(1, 31)
 scale = Vector2(4.875, 7.41406)
 texture = ExtResource("13_pujpn")
+
+[node name="Timeline" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("12_xvfn4")
+
+[node name="CameraController" type="Camera2D" parent="Timeline"]
+unique_name_in_owner = true
+position = Vector2(0, 183)
+zoom = Vector2(3, 3)
+script = ExtResource("2_ra8cm")
+
+[node name="SubmarinePath" type="Path2D" parent="Timeline"]
+curve = SubResource("Curve2D_dpbqk")
+
+[node name="SubmarineFollow" type="PathFollow2D" parent="Timeline/SubmarinePath"]
+unique_name_in_owner = true
+position = Vector2(-1, 420)
+rotation = -1.56823
+rotates = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Timeline/SubmarinePath/SubmarineFollow"]
+rotation = 1.5708
+sprite_frames = ExtResource("13_j364a")
+animation = &"idle"
+
+[node name="DiverPath" type="Path2D" parent="Timeline"]
+curve = SubResource("Curve2D_gw13f")
+
+[node name="DiverFollow" type="PathFollow2D" parent="Timeline/DiverPath"]
+unique_name_in_owner = true
+position = Vector2(-1, -246)
+rotation = -1.24905
+rotates = false
+
+[node name="WalkerPath" type="Path2D" parent="Timeline"]
+position = Vector2(-29.798, 72.485)
+scale = Vector2(1.51376, 1.10876)
+curve = SubResource("Curve2D_q5d3b")
+
+[node name="WalkerFollow" type="PathFollow2D" parent="Timeline/WalkerPath"]
+unique_name_in_owner = true
+position = Vector2(276, -480)
+rotation = 3.14159
+rotates = false
+
+[node name="BalloonPath" type="Path2D" parent="Timeline"]
+curve = SubResource("Curve2D_0yf8g")
+
+[node name="BalloonFollow" type="PathFollow2D" parent="Timeline/BalloonPath"]
+unique_name_in_owner = true
+position = Vector2(55, -502)
+rotation = -1.70238
+rotates = false
+
+[node name="AirBalloon" type="Sprite2D" parent="Timeline/BalloonPath/BalloonFollow"]
+position = Vector2(66.6832, 6.80797)
+rotation = 1.70238
+texture = ExtResource("14_has2t")
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_vt02a")
@@ -122,7 +183,6 @@ boid_scene = ExtResource("9_rtuln")
 start_direction = Vector2(1, -0.2)
 spawn_radius = 150.0
 spawn_count = 25
-spawn_on_ready = false
 
 [node name="BoidSpawner2" type="Node2D" parent="GameManager/StartSpawner"]
 position = Vector2(172, 117)
@@ -131,7 +191,6 @@ boid_scene = ExtResource("9_rtuln")
 start_direction = Vector2(-1, 0.2)
 spawn_radius = 150.0
 spawn_count = 25
-spawn_on_ready = false
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="GameManager"]
 unique_name_in_owner = true
@@ -139,63 +198,14 @@ stream = ExtResource("8_1hva6")
 volume_db = -20.0
 bus = &"Music"
 
-[node name="Timeline" type="Node2D" parent="GameManager"]
-script = ExtResource("12_xvfn4")
-
-[node name="CameraController" type="Camera2D" parent="GameManager/Timeline"]
-unique_name_in_owner = true
-position = Vector2(0, 183)
-zoom = Vector2(3, 3)
-script = ExtResource("2_ra8cm")
-
-[node name="SubmarinePath" type="Path2D" parent="GameManager/Timeline"]
-curve = SubResource("Curve2D_dpbqk")
-
-[node name="SubmarineFollow" type="PathFollow2D" parent="GameManager/Timeline/SubmarinePath"]
-unique_name_in_owner = true
-position = Vector2(-1, 420)
-rotation = -1.56823
-rotates = false
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameManager/Timeline/SubmarinePath/SubmarineFollow"]
-rotation = 1.5708
-sprite_frames = ExtResource("13_j364a")
-animation = &"idle"
-
-[node name="DiverPath" type="Path2D" parent="GameManager/Timeline"]
-curve = SubResource("Curve2D_gw13f")
-
-[node name="DiverFollow" type="PathFollow2D" parent="GameManager/Timeline/DiverPath"]
-unique_name_in_owner = true
-position = Vector2(-1, -246)
-rotation = -1.24905
-rotates = false
-
-[node name="WalkerPath" type="Path2D" parent="GameManager/Timeline"]
-position = Vector2(-29.798, 72.485)
-scale = Vector2(1.51376, 1.10876)
-curve = SubResource("Curve2D_q5d3b")
-
-[node name="WalkerFollow" type="PathFollow2D" parent="GameManager/Timeline/WalkerPath"]
-unique_name_in_owner = true
-position = Vector2(276, -480)
-rotation = 3.14159
-rotates = false
-
-[node name="BalloonPath" type="Path2D" parent="GameManager/Timeline"]
-curve = SubResource("Curve2D_0yf8g")
-
-[node name="BalloonFollow" type="PathFollow2D" parent="GameManager/Timeline/BalloonPath"]
-unique_name_in_owner = true
-position = Vector2(55, -502)
-rotation = -1.70238
-rotates = false
-
-[node name="AirBalloon" type="Sprite2D" parent="GameManager/Timeline/BalloonPath/BalloonFollow"]
-position = Vector2(66.6832, 6.80797)
-rotation = 1.70238
-texture = ExtResource("14_has2t")
-
 [node name="Player" parent="." instance=ExtResource("3_h8ik1")]
 unique_name_in_owner = true
 position = Vector2(0, 421)
+
+[node name="SpawnGroups" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Tuna" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, 364)
+script = ExtResource("12_j6dic")
+group = ExtResource("17_h6jyu")

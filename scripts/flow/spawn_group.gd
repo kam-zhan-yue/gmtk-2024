@@ -4,10 +4,12 @@ extends Node2D
 @export var parent_to_player := false
 
 func init(game_state: GameState) -> void:
+	print("INit")
 	init_recursive(self, game_state)
 
 func init_recursive(node: Node, game_state: GameState) -> void:
 	for n in node.get_children():
+		print(n.name)
 		if n is Enemy:
 			(n as Enemy).init(game_state)
 		else:

@@ -31,7 +31,7 @@ noise = SubResource("FastNoiseLite_d6owk")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_33mok"]
 shader = ExtResource("11_lqyho")
-shader_parameter/distortion_strength = 0.015
+shader_parameter/distortion_strength = 0.00300005
 shader_parameter/offset1 = Vector2(0.1, 0.1)
 shader_parameter/offset2 = Vector2(0.2, 0.2)
 shader_parameter/noise_texture1 = SubResource("NoiseTexture2D_lv72p")
@@ -117,7 +117,6 @@ texture = ExtResource("7_e730v")
 texture = ExtResource("3_u8h6g")
 
 [node name="Distortion" type="Sprite2D" parent="Ocean/Water"]
-visible = false
 material = SubResource("ShaderMaterial_33mok")
 texture = ExtResource("3_u8h6g")
 

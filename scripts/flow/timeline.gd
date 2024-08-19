@@ -86,7 +86,6 @@ func lerp_path(path_follow: PathFollow2D, start_beat: int, end_beat: int) -> voi
 	var timer := start * total_time
 	while timer < total_time and playing:
 		var t := timer / total_time
-		print(str("Evaluating ", path_follow.name, " at ", t))
 		path_follow.progress_ratio = t
 		timer += get_process_delta_time()
 		await Global.frame()

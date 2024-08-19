@@ -28,6 +28,7 @@ script = ExtResource("2_32spj")
 data = ExtResource("3_5aanl")
 
 [node name="TypeEntity" parent="TunaBody" instance=ExtResource("4_raqvn")]
+unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="TunaBody"]
 unique_name_in_owner = true

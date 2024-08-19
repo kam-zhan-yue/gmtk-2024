@@ -63,4 +63,6 @@ func readjust_cohesion(total: Vector2, original_pos: Vector2, nearby: int) -> Ve
 	return (total / nearby) - original_pos
 
 func restart() -> void:
+	for b in boids:
+		b.queue_free()
 	boids = []

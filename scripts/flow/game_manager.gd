@@ -9,7 +9,8 @@ const BALLOON_BEAT = 100
 @onready var ui := %UI as UI
 @onready var start_spawner: StartSpawner = $StartSpawner
 @onready var music_player := %MusicPlayer as AudioStreamPlayer2D
-@onready var timeline: Timeline = $Timeline
+@onready var timeline: Timeline = %Timeline
+@onready var spawn_groups: Node2D = %SpawnGroups
 
 var game_state: GameState
 
@@ -21,6 +22,9 @@ func _ready() -> void:
 	ui.init(game_state)
 	timeline.init(game_state)
 	spawner.init(game_state)
+	for group in spawn_groups.get_children():
+		if group is SpawnTrigger:
+			(group as SpawnTrigger).init(game_state)
 	start_spawner.start_spawning()
 
 func _on_pause(value: bool) -> void:
@@ -47,4 +51,7 @@ func _on_restart() -> void:
 	ui.init(game_state)
 	timeline.init(game_state)
 	spawner.init(game_state)
+	for group in spawn_groups.get_children():
+		if group is SpawnTrigger:
+			(group as SpawnTrigger).init(game_state)
 	game_state.start()
