@@ -1,17 +1,22 @@
-[gd_scene load_steps=20 format=3 uid="uid://dtbawr3acmc0s"]
+[gd_scene load_steps=25 format=3 uid="uid://dtbawr3acmc0s"]
 
 [ext_resource type="Script" path="res://scripts/entities/visible.gd" id="2_ybn17"]
 [ext_resource type="Script" path="res://scripts/boids/boid_remover.gd" id="3_ete7q"]
 [ext_resource type="Texture2D" uid="uid://bj8ibwi80ledu" path="res://assets/background/ocean/water.png" id="3_u8h6g"]
 [ext_resource type="Texture2D" uid="uid://kspwkc64iq2u" path="res://assets/background/ocean/mountain.png" id="4_krqt6"]
+[ext_resource type="SpriteFrames" uid="uid://uj314hdt765p" path="res://scenes/animations/lighthouse.tres" id="4_m14t6"]
 [ext_resource type="Texture2D" uid="uid://d0r14pr4gmh1l" path="res://assets/background/sky/red2_mountain.png" id="4_myvpw"]
 [ext_resource type="Texture2D" uid="uid://nsmypwfg2i62" path="res://assets/background/sky/red3_mountain.png" id="5_dxom7"]
 [ext_resource type="Texture2D" uid="uid://3whi06gf73tq" path="res://assets/background/ocean/cavern.png" id="5_nhxmj"]
+[ext_resource type="Script" path="res://scripts/entities/chimney_smoke.gd" id="5_sj3r0"]
 [ext_resource type="Texture2D" uid="uid://bbtvt5h0rfj2u" path="res://assets/background/sky/red_mountain.png" id="6_cyjm7"]
 [ext_resource type="Texture2D" uid="uid://bmdpgfudjp7li" path="res://assets/background/sky/gradient_to_space.png" id="6_d8em3"]
 [ext_resource type="Texture2D" uid="uid://b2liahtmr41dl" path="res://assets/background/sky/main_mountain.png" id="7_e730v"]
+[ext_resource type="Script" path="res://scenes/cloud_layer.gd" id="9_js5oi"]
+[ext_resource type="Texture2D" uid="uid://cmmmriydvrp0" path="res://assets/background/sky/closer_clouds.png" id="9_v7ua1"]
 [ext_resource type="Shader" path="res://scripts/shaders/distortion.gdshader" id="11_lqyho"]
 [ext_resource type="Texture2D" uid="uid://dqvskjwyyutv1" path="res://assets/background/lighthouse_island.png" id="12_43gme"]
+[ext_resource type="Texture2D" uid="uid://c1qj3u4hvqn2n" path="res://assets/textures/dot.png" id="12_dnxis"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avv3c"]
 size = Vector2(600, 834)
@@ -44,6 +49,7 @@ polygon = PackedVector2Array(304, -462, 242, -466, 201, -458, 169, -447, 127, -4
 z_index = -1
 
 [node name="VisibleAreas" type="Node2D" parent="."]
+visible = false
 position = Vector2(2, -450)
 
 [node name="Area2D" type="Area2D" parent="VisibleAreas"]
@@ -56,6 +62,7 @@ script = ExtResource("2_ybn17")
 polygon = PackedVector2Array(-27, 117, 23, 56, 39, 48, 33, -35, 31, -59, 83, -116, 94, -172, 53, -211, 48, -233, 58, -250, 87, -264, 131, -313, 136, -334, 127, -345, 96, -363, 66, -425, 48, -457, 65, -548, 80, -627, 107, -647, 212, -679, 244, -686, 276, -685, 299, -685, 302, -1606, -298, -1607, -301, -700, -101, -640, -61, -553, -54, -468, -62, -422, -74, -395, -71, -338, -57, -268, -67, -219, -36, -138, -65, -91, -85, -65, -82, -30, -52, 3, -38, 33, -44, 77)
 
 [node name="BoidRemover" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, -443)
 script = ExtResource("3_ete7q")
 
@@ -73,6 +80,13 @@ position = Vector2(0, 15)
 [node name="LighthouseIsland" type="Sprite2D" parent="Lighthouse"]
 position = Vector2(0, -581)
 texture = ExtResource("12_43gme")
+
+[node name="ChimneySmoke" type="AnimatedSprite2D" parent="Lighthouse"]
+position = Vector2(-205, -743)
+sprite_frames = ExtResource("4_m14t6")
+animation = &"smoke"
+frame_progress = 0.0116177
+script = ExtResource("5_sj3r0")
 
 [node name="Sky" type="ParallaxBackground" parent="."]
 
@@ -103,6 +117,16 @@ motion_scale = Vector2(1, 0.86)
 [node name="Sprite2D" type="Sprite2D" parent="Sky/RedMountain1"]
 texture = ExtResource("6_cyjm7")
 
+[node name="Clouds" type="ParallaxLayer" parent="Sky"]
+position = Vector2(0, -471)
+motion_mirroring = Vector2(602, 0)
+script = ExtResource("9_js5oi")
+cloud_speed = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky/Clouds"]
+position = Vector2(-9, -94)
+texture = ExtResource("9_v7ua1")
+
 [node name="MainMountain" type="ParallaxLayer" parent="Sky"]
 position = Vector2(-1, -471)
 motion_scale = Vector2(1, 0.9)
@@ -126,15 +150,22 @@ texture = ExtResource("3_u8h6g")
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Water/Water"]
 position = Vector2(527, -820)
 rotation = 0.788417
-energy = 0.45
+energy = 0.4
+blend_mode = 2
 range_layer_min = -100
-range_layer_max = 10
 shadow_enabled = true
 
 [node name="Lighting" type="Node2D" parent="Water/Water"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Water/Water/Lighting"]
 color = Color(0.800491, 0.800491, 0.800491, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="Water/Water"]
+position = Vector2(-7, -448)
+range_layer_min = -10
+range_layer_max = 10
+texture = ExtResource("12_dnxis")
+texture_scale = 3.0
 
 [node name="Distortion" type="ParallaxBackground" parent="."]
 layer = 10

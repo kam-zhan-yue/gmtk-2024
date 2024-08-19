@@ -212,13 +212,3 @@ group = ExtResource("17_h6jyu")
 position = Vector2(-1, -120)
 script = ExtResource("12_j6dic")
 group = ExtResource("17_h6jyu")
-
-[node name="Tuna7" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -218)
-script = ExtResource("12_j6dic")
-group = ExtResource("17_h6jyu")
-
-[node name="Tuna8" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -292)
-script = ExtResource("12_j6dic")
-group = ExtResource("17_h6jyu")

@@ -3,8 +3,8 @@ extends Node2D
 
 const SUBMARINE_BEAT = 50
 const DIVER_BEAT = 70
-const WALKER_BEAT = 100
-const BALLOON_BEAT = 120
+const WALKER_BEAT = 80
+const BALLOON_BEAT = 170
 
 @onready var spawner := %Spawner as Spawner
 @onready var camera_controller := %CameraController as CameraController
@@ -36,6 +36,7 @@ func start() -> void:
 	await balloon_async()
 
 func submarine_async() -> void:
+	if current_beat > SUBMARINE_BEAT: return
 	if not playing: return
 	# Reparent the player to the submarine and start camera tracking
 	game_state.player.reparent(submarine_follow)
@@ -46,6 +47,7 @@ func submarine_async() -> void:
 	await lerp_path(submarine_follow, 0, SUBMARINE_BEAT)
 
 func dive_async() -> void:
+	if current_beat > DIVER_BEAT: return
 	if not playing: return
 	# Reparent the player to the dive, but lerp camera to balloon
 	game_state.player.reparent(diver_follow)
@@ -53,11 +55,11 @@ func dive_async() -> void:
 	game_state.player.dive_anim()
 	
 	camera_controller.lerp_to(submarine.global_position)
-	camera_controller.zoom_to(2.0);
 	# Lerp the diver path
 	await lerp_path(diver_follow, SUBMARINE_BEAT, DIVER_BEAT)
 
 func walk_async() -> void:
+	if current_beat > WALKER_BEAT: return
 	if not playing: return
 	# Reparent the player to the dive, and keep camera tracking
 	game_state.player.reparent(walker_follow)
@@ -70,11 +72,13 @@ func walk_async() -> void:
 	await lerp_path(walker_follow, DIVER_BEAT, WALKER_BEAT)
 
 func balloon_async() -> void:
+	if current_beat > BALLOON_BEAT: return
 	if not playing: return
 	# Reparent the player to the dive, and keep camera tracking
 	game_state.player.reparent(balloon_follow)
 	game_state.player.position = Vector2.ZERO
 	camera_controller.follow()
+	camera_controller.zoom_to(2.0);
 	
 	# Lerp the diver path
 	await lerp_path(balloon_follow, WALKER_BEAT, BALLOON_BEAT)
@@ -91,14 +95,6 @@ func lerp_path(path_follow: PathFollow2D, start_beat: int, end_beat: int) -> voi
 		await Global.frame()
 	current_beat = end_beat
 
-#func _on_beat(beat: int) -> void:
-	#match(beat):
-		#SUBMARINE_BEAT:
-			#game_state.player.speed = 0.0
-			#camera_controller.lerp_to(submarine.global_position)
-		#BALLOON_BEAT:
-			#camera_controller.lerp_to(balloon.global_position)
-		
 func restart() -> void:
 	playing = false
 	await game_state.player.release()
