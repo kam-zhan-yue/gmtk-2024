@@ -9,3 +9,15 @@ script = ExtResource("1_v885v")
 [node name="Satellite" parent="." instance=ExtResource("2_2otup")]
 position = Vector2(-319, 148)
 orbit_radius = 100.0
+
+[node name="Satellite2" parent="." instance=ExtResource("2_2otup")]
+position = Vector2(307, -295)
+orbit_radius = 100.0
+
+[node name="Satellite3" parent="." instance=ExtResource("2_2otup")]
+position = Vector2(352, 233)
+orbit_radius = 100.0
+
+[node name="Satellite4" parent="." instance=ExtResource("2_2otup")]
+position = Vector2(-388, -337)
+orbit_radius = 100.0

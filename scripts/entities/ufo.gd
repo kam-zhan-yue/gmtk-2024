@@ -8,29 +8,43 @@ extends Enemy
 @export var rocket_data: EnemyData
 const ROCKET = preload("res://scenes/projectiles/rocket.tscn")
 
-func _ready() -> void:
-	on_init.connect(_on_init)
-	
-func _on_init() -> void:
-	await lerp_async()
-	shoot_async()
+enum State { MOVING, ORBITING }
+var state := State.MOVING
+var angle := 0.0
 
-func lerp_async() -> void:
+func _process(delta: float) -> void:
+	if not game_state:
+		return
+	if state == State.MOVING:
+		move()
+	elif state == State.ORBITING:
+		orbit()
+
+func move() -> void:
 	var start_pos := global_position
 	var player_pos := game_state.player.global_position
-	var direction := (player_pos - start_pos).normalized()
-	var target_pos := player_pos - direction * orbit_radius
-	var time_to_target := (start_pos - target_pos).length() / speed
-	var timer := 0.0
-	
-	while timer < time_to_target:
-		var time := timer / time_to_target
-		global_position = start_pos.lerp(target_pos, Global.ease_out_quart(time))
-		timer += get_process_delta_time()
-		await Global.frame()
-	
-	global_position = target_pos
+	var difference := player_pos - start_pos
+	var direction := difference.normalized()
+	if difference.length() <= orbit_radius:
+		start_orbit()
+		return
+	global_position += direction * speed * get_process_delta_time()
+	pass
 
+func start_orbit() -> void:
+	state = State.ORBITING
+	shoot_async()
+	var player_pos := game_state.player.global_position
+	var difference := global_position - player_pos
+	angle = atan2(difference.y, difference.x)
+	orbit()
+	
+func orbit() -> void:
+	var player_pos := game_state.player.global_position
+	var x := player_pos.x + cos(angle) * orbit_radius
+	var y := player_pos.y + sin(angle) * orbit_radius
+	global_position = Vector2(x, y)
+	pass
 
 func shoot_async() -> void:
 	while(true):
