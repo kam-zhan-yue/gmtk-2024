@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq3patfg1lj8n"]
+
+[ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_jha6l"]
+[ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="2_ek7af"]
+[ext_resource type="PackedScene" uid="uid://cuu4wvac46q6j" path="res://scenes/enemies/fish.tscn" id="3_xqtbc"]
+
+[node name="OceanLeftBoid" type="Node2D"]
+script = ExtResource("1_jha6l")
+
+[node name="BoidSpawner" type="Node2D" parent="."]
+position = Vector2(-380, 0)
+script = ExtResource("2_ek7af")
+boid_scene = ExtResource("3_xqtbc")
+start_y_direction = Vector2(-0.05, 0.05)
+spawn_radius = 50.0
+spawn_count = 15

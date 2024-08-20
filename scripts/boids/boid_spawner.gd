@@ -4,7 +4,8 @@ extends Node2D
 @export_enum("Circle", "Path") var spawn_type := 0
 @export_enum("Fish", "Tuna", "Bird", "Sparrow") var group := 0
 @export var boid_scene: PackedScene
-@export var start_direction := Vector2.UP
+@export var start_x_direction := Vector2.ONE
+@export var start_y_direction := Vector2.ONE
 @export var spawn_radius := 100.0
 @export var spawn_count := 50
 @export var spawn_on_ready := true
@@ -43,5 +44,7 @@ func spawn_boid(point: Vector2) -> void:
 		var boid := boid_scene.instantiate() as Boid
 		add_child(boid)
 		boid.global_position = global_position + point
-		boid.direction = start_direction
+		var random_x = randf_range(start_x_direction.x, start_x_direction.y)
+		var random_y = randf_range(start_y_direction.x, start_y_direction.y)
+		boid.direction = Vector2(random_x, random_y)
 		boid.init(group)

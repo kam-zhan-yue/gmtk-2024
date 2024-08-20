@@ -19,7 +19,6 @@ script = ExtResource("2_4q0qn")
 spawn_type = 1
 group = 2
 boid_scene = ExtResource("3_vmkfv")
-start_direction = Vector2(1, 0.05)
 spawn_count = 20
 
 [node name="Path2D" type="Path2D" parent="BoidSpawner"]

@@ -47,9 +47,10 @@ func move_to_player() -> void:
 	global_position += direction * speed * get_process_delta_time()
 
 func bite_async() -> void:
-	anim.play("bite")
 	state = State.BITING
-	await Global.seconds(bite_time)
+	await Global.seconds(bite_time - 0.1)
+	anim.play("bite")
+	await Global.seconds(0.1)
 	if completed:
 		return
 	game_state.player.damage(bite_damage)

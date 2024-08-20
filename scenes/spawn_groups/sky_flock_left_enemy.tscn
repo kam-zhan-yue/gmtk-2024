@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_twlcx"]
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="2_ionky"]
-[ext_resource type="PackedScene" uid="uid://cnsxb8lvmt2e1" path="res://scenes/enemies/bird.tscn" id="3_ver7f"]
+[ext_resource type="PackedScene" uid="uid://cyds4ly4a1xpe" path="res://scenes/enemies/bird_enemy.tscn" id="3_4f4yh"]
 
 [sub_resource type="Curve2D" id="Curve2D_vh0f0"]
 _data = {
@@ -18,8 +18,7 @@ position = Vector2(-180, -101)
 script = ExtResource("2_ionky")
 spawn_type = 1
 group = 2
-boid_scene = ExtResource("3_ver7f")
-start_direction = Vector2(1, 0.05)
+boid_scene = ExtResource("3_4f4yh")
 spawn_count = 20
 
 [node name="Path2D" type="Path2D" parent="BoidSpawner"]

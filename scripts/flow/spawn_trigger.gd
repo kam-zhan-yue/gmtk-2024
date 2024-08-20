@@ -1,7 +1,9 @@
 class_name SpawnTrigger
 extends Node2D
 
-@export var group: PackedScene
+@export var left_group: PackedScene
+@export var right_group: PackedScene
+@export var offset_y := -200.0
 @export var data: EnemyData
 
 var game_state: GameState
@@ -19,10 +21,18 @@ func _process(_delta: float) -> void:
 
 func spawn() -> void:
 	spawned = true
-	var spawn_group := group.instantiate() as SpawnGroup
+	spawn_group(left_group)
+	spawn_group(right_group)
+
+func spawn_group(scene: PackedScene) -> void:
+	if not scene:
+		return
+	
+	var group := scene.instantiate() as SpawnGroup
 	# Need to add as child (for positioning,
 	# then init to ensure recursive function
 	# then reparent for precision
 	print(str("Spawning: ", name))
-	add_child(spawn_group)
-	spawn_group.init(game_state, data)
+	add_child(group)
+	group.position.y += offset_y
+	group.init(game_state, data)

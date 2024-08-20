@@ -14,7 +14,6 @@ signal on_init
 func init(state: GameState, enemy_data: EnemyData) -> void:
 	game_state = state
 	data = enemy_data
-	print(str("Init: ", data.name))
 	type_entity.init(data.name)
 	type_entity.on_complete.connect(_on_complete)
 	

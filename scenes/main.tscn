@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=67 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -19,21 +19,25 @@
 [ext_resource type="Script" path="res://scripts/flow/timeline.gd" id="12_xvfn4"]
 [ext_resource type="SpriteFrames" uid="uid://c81e2cel8mkye" path="res://scenes/animations/submarine.tres" id="13_j364a"]
 [ext_resource type="Script" path="res://scripts/moon.gd" id="14_uf7jm"]
-[ext_resource type="PackedScene" uid="uid://bbstso6ny83n4" path="res://scenes/spawn_groups/ocean_tuna_boids.tscn" id="17_h6jyu"]
 [ext_resource type="AudioStream" uid="uid://k38gby8jrea5" path="res://audio/music/scale.mp3" id="20_wqr24"]
+[ext_resource type="PackedScene" uid="uid://dq3patfg1lj8n" path="res://scenes/spawn_groups/ocean_left_boid.tscn" id="22_qtl1v"]
+[ext_resource type="PackedScene" uid="uid://bb3fi04cw6lsi" path="res://scenes/spawn_groups/ocean_right_enemy.tscn" id="23_qpebw"]
 [ext_resource type="Resource" uid="uid://q4tad15ihnr2" path="res://resources/ocean/pressure.tres" id="25_ob3l5"]
 [ext_resource type="Resource" uid="uid://c2xsbdpaw8sdt" path="res://resources/ocean/sea.tres" id="25_y2lc6"]
+[ext_resource type="PackedScene" uid="uid://bqsowgr1hsxkh" path="res://scenes/spawn_groups/ocean_left_shark.tscn" id="26_4eq76"]
 [ext_resource type="Resource" uid="uid://i27dmdlqqw74" path="res://resources/ocean/feel.tres" id="26_5tfq4"]
 [ext_resource type="Resource" uid="uid://dl5wasagg3c4o" path="res://resources/ocean/tender.tres" id="26_6p0wx"]
 [ext_resource type="Resource" uid="uid://dsvgkep20n2rg" path="res://resources/ocean/touch.tres" id="26_pgetf"]
 [ext_resource type="Texture2D" uid="uid://dnsxixk661nv8" path="res://assets/background/space/moon.png" id="26_ux686"]
 [ext_resource type="Resource" uid="uid://b4ph3ghtcjrxc" path="res://resources/ocean/deep.tres" id="26_vfyke"]
 [ext_resource type="Resource" uid="uid://cro5ivex8jh1j" path="res://resources/ocean/cold.tres" id="27_331a2"]
+[ext_resource type="PackedScene" uid="uid://dwj8aco33m8sk" path="res://scenes/spawn_groups/ocean_right_shark.tscn" id="27_sah8c"]
 [ext_resource type="Resource" uid="uid://bmm2v5xywclmn" path="res://resources/ocean/ocean.tres" id="27_yffdo"]
+[ext_resource type="PackedScene" uid="uid://db7dylb51rxpl" path="res://scenes/spawn_groups/ocean_right_boid.tscn" id="28_onsfg"]
 [ext_resource type="Resource" uid="uid://bum6fkghge8bo" path="res://resources/ocean/see.tres" id="28_x6ge5"]
 [ext_resource type="Resource" uid="uid://cq7tfp7f1eniw" path="res://resources/ocean/listen.tres" id="29_vgcra"]
+[ext_resource type="PackedScene" uid="uid://s5wywhi6lrch" path="res://scenes/spawn_groups/ocean_left_enemy.tscn" id="30_av380"]
 [ext_resource type="Resource" uid="uid://cnydapsvld37u" path="res://resources/ocean/wish.tres" id="33_l2fur"]
-[ext_resource type="PackedScene" uid="uid://bdx1dmhm6eyvr" path="res://scenes/spawn_groups/sky_flock_left_enemy.tscn" id="34_awd2s"]
 [ext_resource type="Resource" uid="uid://q5uuknlqw2a1" path="res://resources/sky/endless.tres" id="35_62whc"]
 [ext_resource type="Resource" uid="uid://bfmbxk3u45bd5" path="res://resources/sky/lifting.tres" id="36_7riny"]
 [ext_resource type="Resource" uid="uid://d225787vy4hm6" path="res://resources/sky/freedom.tres" id="37_237bd"]
@@ -344,18 +348,19 @@ script = ExtResource("7_5dx1o")
 position = Vector2(-176, 258)
 script = ExtResource("8_egxth")
 boid_scene = ExtResource("9_rtuln")
-start_direction = Vector2(1, -0.2)
+start_y_direction = Vector2(-1, -1)
 spawn_radius = 200.0
-spawn_count = 15
+spawn_count = 30
 spawn_on_ready = false
 
 [node name="BoidSpawner2" type="Node2D" parent="GameManager/StartSpawner"]
 position = Vector2(172, 117)
 script = ExtResource("8_egxth")
 boid_scene = ExtResource("9_rtuln")
-start_direction = Vector2(-1, 0.2)
+start_x_direction = Vector2(-1, -1)
+start_y_direction = Vector2(0.5, 0.5)
 spawn_radius = 200.0
-spawn_count = 15
+spawn_count = 30
 spawn_on_ready = false
 
 [node name="Player" parent="." instance=ExtResource("3_h8ik1")]
@@ -366,103 +371,112 @@ position = Vector2(0, 421)
 unique_name_in_owner = true
 
 [node name="feel" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, 364)
+position = Vector2(-1, 388)
 script = ExtResource("12_j6dic")
-group = ExtResource("17_h6jyu")
+left_group = ExtResource("22_qtl1v")
+right_group = ExtResource("23_qpebw")
+offset_y = -250.0
 data = ExtResource("26_5tfq4")
 
 [node name="pressure" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 296)
 script = ExtResource("12_j6dic")
-group = ExtResource("17_h6jyu")
+left_group = ExtResource("22_qtl1v")
+right_group = ExtResource("23_qpebw")
+offset_y = -150.0
 data = ExtResource("25_ob3l5")
 
 [node name="sea" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 231)
 script = ExtResource("12_j6dic")
-group = ExtResource("17_h6jyu")
+left_group = ExtResource("22_qtl1v")
+right_group = ExtResource("23_qpebw")
+offset_y = -150.0
 data = ExtResource("25_y2lc6")
 
 [node name="deep" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 180)
 script = ExtResource("12_j6dic")
-group = ExtResource("17_h6jyu")
+left_group = ExtResource("26_4eq76")
+right_group = ExtResource("28_onsfg")
 data = ExtResource("26_vfyke")
 
 [node name="ocean" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, 52)
+position = Vector2(-1, 116)
 script = ExtResource("12_j6dic")
-group = ExtResource("17_h6jyu")
+left_group = ExtResource("30_av380")
+right_group = ExtResource("27_sah8c")
 data = ExtResource("27_yffdo")
 
 [node name="touch" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -14)
+position = Vector2(-1, 50)
 script = ExtResource("12_j6dic")
-group = ExtResource("17_h6jyu")
+left_group = ExtResource("22_qtl1v")
+right_group = ExtResource("23_qpebw")
 data = ExtResource("26_pgetf")
 
 [node name="cold" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -81)
+position = Vector2(-1, -9)
 script = ExtResource("12_j6dic")
-group = ExtResource("17_h6jyu")
+left_group = ExtResource("30_av380")
 data = ExtResource("27_331a2")
 
 [node name="tender" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -86)
+position = Vector2(-1, -14)
 script = ExtResource("12_j6dic")
-group = ExtResource("17_h6jyu")
+right_group = ExtResource("23_qpebw")
 data = ExtResource("26_6p0wx")
 
 [node name="see" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -201)
+position = Vector2(-1, -129)
 script = ExtResource("12_j6dic")
-group = ExtResource("17_h6jyu")
+left_group = ExtResource("26_4eq76")
+right_group = ExtResource("27_sah8c")
+offset_y = 0.0
 data = ExtResource("28_x6ge5")
 
 [node name="listen" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -250)
+position = Vector2(-1, -181)
 script = ExtResource("12_j6dic")
-group = ExtResource("17_h6jyu")
+left_group = ExtResource("22_qtl1v")
+right_group = ExtResource("23_qpebw")
+offset_y = 0.0
 data = ExtResource("29_vgcra")
 
 [node name="wish" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -246)
+position = Vector2(-1, -238)
 script = ExtResource("12_j6dic")
-group = ExtResource("17_h6jyu")
+left_group = ExtResource("30_av380")
+right_group = ExtResource("28_onsfg")
+offset_y = -10.0
 data = ExtResource("33_l2fur")
 
 [node name="endless" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, -480)
 script = ExtResource("12_j6dic")
-group = ExtResource("34_awd2s")
 data = ExtResource("35_62whc")
 
 [node name="lifting" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, -554)
 script = ExtResource("12_j6dic")
-group = ExtResource("34_awd2s")
 data = ExtResource("36_7riny")
 
 [node name="freedom" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -554)
+position = Vector2(-1, -682)
 script = ExtResource("12_j6dic")
-group = ExtResource("34_awd2s")
 data = ExtResource("37_237bd")
 
 [node name="infinite" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -554)
+position = Vector2(-1, -766)
 script = ExtResource("12_j6dic")
-group = ExtResource("34_awd2s")
 data = ExtResource("38_4c6k0")
 
 [node name="careless" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -554)
+position = Vector2(-1, -926)
 script = ExtResource("12_j6dic")
-group = ExtResource("34_awd2s")
 data = ExtResource("39_5fnet")
 
 [node name="floating" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -554)
+position = Vector2(-1, -1090)
 script = ExtResource("12_j6dic")
-group = ExtResource("34_awd2s")
 data = ExtResource("40_3yvr8")
