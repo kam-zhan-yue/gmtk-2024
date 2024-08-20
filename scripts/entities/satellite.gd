@@ -6,6 +6,8 @@ extends Enemy
 @export var speed := 350.0
 @export var laser_damage := 5.0
 
+const TIME_BEFORE_SHOOT = 3.0
+
 const LASER = preload("res://scenes/projectiles/laser.tscn")
 enum State { MOVING, ORBITING }
 var state := State.MOVING
@@ -48,7 +50,7 @@ func orbit(delta: float) -> void:
 	pass
 
 func shoot_async() -> void:
-	await Global.seconds(1.0)
+	await Global.seconds(TIME_BEFORE_SHOOT)
 	while not completed:
 		var laser := LASER.instantiate() as Laser
 		add_child(laser)

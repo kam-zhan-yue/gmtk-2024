@@ -12,6 +12,10 @@ func init(state: GameState) -> void:
 	state.on_score.connect(_on_score)
 	state.on_combo.connect(_on_combo)
 
+func hide_scores() -> void:
+	Global.set_inactive(score_label)
+	Global.set_inactive(combo_label)
+
 func _on_score(value: float) -> void:
 	if value <= 0.0:
 		Global.set_inactive(score_label)

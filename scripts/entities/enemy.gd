@@ -31,7 +31,7 @@ func release() -> void:
 		var t := timer / FADE_OUT
 		if not using_anim:
 			$Sprite2D.modulate.a = 1-t
-		else:
+		elif %AnimatedSprite2D:
 			%AnimatedSprite2D.modulate.a = 1-t
 		timer += get_process_delta_time()
 		await Global.frame()

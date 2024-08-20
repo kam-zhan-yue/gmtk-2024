@@ -14,4 +14,4 @@ group = 2
 boid_scene = ExtResource("3_c0sat")
 start_y_direction = Vector2(-0.05, 0.05)
 spawn_radius = 50.0
-spawn_count = 15
+spawn_count = 5

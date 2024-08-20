@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_uex33")
-name = "infinite"
+name = "infinity"
 score = 10.0
 damage = 10.0

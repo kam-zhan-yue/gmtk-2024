@@ -19,5 +19,6 @@ func fade_in() -> void:
 	await fade_popup.show_popup()
 
 func fade_out() -> void:
+	score_popup.hide_scores()
 	await fade_popup.hide_popup()
 	start_popup.show_popup()

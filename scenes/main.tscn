@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=114 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -34,6 +34,7 @@
 [ext_resource type="Resource" uid="uid://dsvgkep20n2rg" path="res://resources/ocean/touch.tres" id="26_pgetf"]
 [ext_resource type="Texture2D" uid="uid://dnsxixk661nv8" path="res://assets/background/space/moon.png" id="26_ux686"]
 [ext_resource type="Resource" uid="uid://b4ph3ghtcjrxc" path="res://resources/ocean/deep.tres" id="26_vfyke"]
+[ext_resource type="PackedScene" uid="uid://dj6gwjdqgefpc" path="res://scenes/spawn_groups/ocean_left_cod_boid.tscn" id="26_wk6sl"]
 [ext_resource type="Resource" uid="uid://cro5ivex8jh1j" path="res://resources/ocean/cold.tres" id="27_331a2"]
 [ext_resource type="PackedScene" uid="uid://dwj8aco33m8sk" path="res://scenes/spawn_groups/ocean_right_shark.tscn" id="27_sah8c"]
 [ext_resource type="Resource" uid="uid://bmm2v5xywclmn" path="res://resources/ocean/ocean.tres" id="27_yffdo"]
@@ -41,11 +42,15 @@
 [ext_resource type="Resource" uid="uid://bum6fkghge8bo" path="res://resources/ocean/see.tres" id="28_x6ge5"]
 [ext_resource type="Resource" uid="uid://cq7tfp7f1eniw" path="res://resources/ocean/listen.tres" id="29_vgcra"]
 [ext_resource type="PackedScene" uid="uid://s5wywhi6lrch" path="res://scenes/spawn_groups/ocean_left_enemy.tscn" id="30_av380"]
+[ext_resource type="PackedScene" uid="uid://drt4nb1n0gxbw" path="res://scenes/spawn_groups/ocean_right_tropical_enemy.tscn" id="30_kx4fv"]
+[ext_resource type="PackedScene" uid="uid://b4ym4uin2o5ly" path="res://scenes/spawn_groups/ocean_left_tropical_boid.tscn" id="32_wvvfs"]
 [ext_resource type="Resource" uid="uid://cnydapsvld37u" path="res://resources/ocean/wish.tres" id="33_l2fur"]
+[ext_resource type="PackedScene" uid="uid://cxghb45cc37dq" path="res://scenes/spawn_groups/ocean_right_cod_enemy.tscn" id="33_yax2u"]
 [ext_resource type="Resource" uid="uid://q5uuknlqw2a1" path="res://resources/sky/endless.tres" id="35_62whc"]
 [ext_resource type="Resource" uid="uid://bfmbxk3u45bd5" path="res://resources/sky/lifting.tres" id="36_7riny"]
 [ext_resource type="Resource" uid="uid://d225787vy4hm6" path="res://resources/sky/freedom.tres" id="37_237bd"]
 [ext_resource type="Resource" uid="uid://dqjnl1ry2ha3j" path="res://resources/sky/infinite.tres" id="38_4c6k0"]
+[ext_resource type="PackedScene" uid="uid://bnhjh6qkdl3en" path="res://scenes/spawn_groups/ocean_left_cod_enemy.tscn" id="38_qkjlc"]
 [ext_resource type="Resource" uid="uid://dg723hp2hx64j" path="res://resources/sky/careless.tres" id="39_5fnet"]
 [ext_resource type="PackedScene" uid="uid://cku8jw4nd7ahq" path="res://scenes/spawn_groups/sky_left_boid.tscn" id="39_sy2u7"]
 [ext_resource type="Resource" uid="uid://dvf4iwtdinjgl" path="res://resources/sky/floating.tres" id="40_3yvr8"]
@@ -487,7 +492,7 @@ unique_name_in_owner = true
 [node name="feel" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 388)
 script = ExtResource("12_j6dic")
-left_group = ExtResource("22_qtl1v")
+left_group = ExtResource("26_wk6sl")
 right_group = ExtResource("23_qpebw")
 offset_y = -250.0
 data = ExtResource("26_5tfq4")
@@ -496,15 +501,15 @@ data = ExtResource("26_5tfq4")
 position = Vector2(-1, 296)
 script = ExtResource("12_j6dic")
 left_group = ExtResource("22_qtl1v")
-right_group = ExtResource("23_qpebw")
+right_group = ExtResource("30_kx4fv")
 offset_y = -150.0
 data = ExtResource("25_ob3l5")
 
 [node name="sea" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 231)
 script = ExtResource("12_j6dic")
-left_group = ExtResource("22_qtl1v")
-right_group = ExtResource("23_qpebw")
+left_group = ExtResource("32_wvvfs")
+right_group = ExtResource("33_yax2u")
 offset_y = -150.0
 data = ExtResource("25_y2lc6")
 
@@ -518,7 +523,7 @@ data = ExtResource("26_vfyke")
 [node name="ocean" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 116)
 script = ExtResource("12_j6dic")
-left_group = ExtResource("30_av380")
+left_group = ExtResource("38_qkjlc")
 right_group = ExtResource("27_sah8c")
 data = ExtResource("27_yffdo")
 
@@ -526,7 +531,7 @@ data = ExtResource("27_yffdo")
 position = Vector2(-1, 50)
 script = ExtResource("12_j6dic")
 left_group = ExtResource("22_qtl1v")
-right_group = ExtResource("23_qpebw")
+right_group = ExtResource("30_kx4fv")
 data = ExtResource("26_pgetf")
 
 [node name="cold" type="Marker2D" parent="SpawnGroups"]
