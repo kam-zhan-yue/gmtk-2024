@@ -43,7 +43,6 @@ func start_waiting() -> void:
 	timer = 0.0
 	
 func wait(delta: float) -> void:
-	print('Waiting!')
 	timer += delta
 	if timer >= wait_time:
 		state = State.CHARGING
@@ -52,5 +51,4 @@ func wait(delta: float) -> void:
 		charge_direction = difference.normalized()
 
 func charge(delta: float) -> void:
-	print('Charge!')
 	global_position += charge_direction * charge_speed * delta

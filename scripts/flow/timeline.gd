@@ -2,20 +2,30 @@ class_name Timeline
 extends Node2D
 
 const SUBMARINE_BEAT = 50
-const DIVER_BEAT = 70
-const WALKER_BEAT = 80
-const BALLOON_BEAT = 170
+const DIVER_BEAT = 55
+const WALKER_BEAT = 60
+const BALLOON_BEAT = 70
+const WALKER_2_BEAT = 80
+const SPACESHIP_BEAT = 90
 
 @onready var spawner := %Spawner as Spawner
 @onready var camera_controller := %CameraController as CameraController
+
 @onready var submarine := %SubmarineMarker as Marker2D
 @onready var balloon := %BalloonMarker as Marker2D
 @onready var start_marker := %StartMarker as Marker2D
+@onready var spaceship_marker := %SpaceshipMarker as Marker2D
+
 @onready var submarine_follow := %SubmarineFollow as PathFollow2D
 @onready var diver_follow := %DiverFollow as PathFollow2D
 @onready var walker_follow := %WalkerFollow as PathFollow2D
 @onready var balloon_follow := %BalloonFollow as PathFollow2D
+@onready var walker_follow_2 := %WalkerFollow2 as PathFollow2D
+@onready var spaceship_follow := %SpaceshipFollow as PathFollow2D
+
+
 @onready var hot_air_balloon := %HotAirBalloon as HotAirBalloon
+@onready var spaceship := %Spaceship as Spaceship
 
 var game_state: GameState
 
@@ -35,9 +45,11 @@ func start() -> void:
 	await dive_async()
 	await walk_async()
 	await balloon_async()
+	await walk_2_async()
+	await spaceship_async()
 
 func submarine_async() -> void:
-	if current_beat > SUBMARINE_BEAT: return
+	if current_beat >= SUBMARINE_BEAT: return
 	if not playing: return
 	# Reparent the player to the submarine and start camera tracking
 	game_state.player.reparent(submarine_follow)
@@ -48,7 +60,7 @@ func submarine_async() -> void:
 	await lerp_path(submarine_follow, 0, SUBMARINE_BEAT)
 
 func dive_async() -> void:
-	if current_beat > DIVER_BEAT: return
+	if current_beat >= DIVER_BEAT: return
 	if not playing: return
 	# Reparent the player to the dive, but lerp camera to balloon
 	game_state.player.reparent(diver_follow)
@@ -60,7 +72,7 @@ func dive_async() -> void:
 	await lerp_path(diver_follow, SUBMARINE_BEAT, DIVER_BEAT)
 
 func walk_async() -> void:
-	if current_beat > WALKER_BEAT: return
+	if current_beat >= WALKER_BEAT: return
 	if not playing: return
 	# Reparent the player to the dive, and keep camera tracking
 	game_state.player.reparent(walker_follow)
@@ -73,7 +85,7 @@ func walk_async() -> void:
 	await lerp_path(walker_follow, DIVER_BEAT, WALKER_BEAT)
 
 func balloon_async() -> void:
-	if current_beat > BALLOON_BEAT: return
+	if current_beat >= BALLOON_BEAT: return
 	if not playing: return
 	# Reparent the player to the dive, and keep camera tracking
 	hot_air_balloon.activate()
@@ -85,6 +97,28 @@ func balloon_async() -> void:
 	# Lerp the diver path
 	await lerp_path(balloon_follow, WALKER_BEAT, BALLOON_BEAT)
 
+func walk_2_async() -> void:
+	if current_beat >= WALKER_2_BEAT: return
+	if not playing: return
+
+	hot_air_balloon.deactivate()
+	game_state.player.reparent(walker_follow_2)
+	game_state.player.position = Vector2.ZERO
+	camera_controller.lerp_to(spaceship_marker.global_position)
+	
+	await lerp_path(walker_follow_2, BALLOON_BEAT, WALKER_2_BEAT)
+
+func spaceship_async() -> void:
+	if current_beat >= SPACESHIP_BEAT: return
+	if not playing: return
+
+	spaceship.activate()
+	game_state.player.reparent(spaceship_follow)
+	game_state.player.position = Vector2.ZERO
+	camera_controller.follow()
+	camera_controller.zoom_to(1.0)
+	
+	await lerp_path(spaceship_follow, WALKER_2_BEAT, SPACESHIP_BEAT)
 
 func lerp_path(path_follow: PathFollow2D, start_beat: int, end_beat: int) -> void:
 	var start := float(current_beat - start_beat) / end_beat

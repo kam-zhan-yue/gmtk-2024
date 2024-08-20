@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwmr86huda0ws"
-path="res://.godot/imported/bridge.png-d4f0c906cd9a523525b9109bab6baee3.ctex"
+uid="uid://dq48vykm0s52w"
+path="res://.godot/imported/bridge_new.png-8eb796cd0ed9a611911e4fd44ae4b8b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/sky/bridge.png"
-dest_files=["res://.godot/imported/bridge.png-d4f0c906cd9a523525b9109bab6baee3.ctex"]
+source_file="res://assets/background/sky/bridge_new.png"
+dest_files=["res://.godot/imported/bridge_new.png-8eb796cd0ed9a611911e4fd44ae4b8b9.ctex"]
 
 [params]
 

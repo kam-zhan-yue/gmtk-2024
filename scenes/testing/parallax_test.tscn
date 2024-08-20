@@ -11,7 +11,7 @@ position = Vector2(5, 9)
 position = Vector2(0, 1)
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(0, 312)
+position = Vector2(45, -504)
 script = ExtResource("2_ufjwy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]

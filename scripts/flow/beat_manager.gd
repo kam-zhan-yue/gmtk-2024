@@ -33,3 +33,6 @@ func beats_to_seconds(beat: int) -> float:
 
 func get_start_beat() -> int:
 	return CONFIG.start_beat
+
+func get_end_beat() -> int:
+	return CONFIG.end_beat

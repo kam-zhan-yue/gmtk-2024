@@ -1,8 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://dtbawr3acmc0s"]
+[gd_scene load_steps=44 format=3 uid="uid://dtbawr3acmc0s"]
 
 [ext_resource type="Script" path="res://scripts/entities/visible.gd" id="2_ybn17"]
 [ext_resource type="Script" path="res://scripts/boids/boid_remover.gd" id="3_ete7q"]
-[ext_resource type="Texture2D" uid="uid://bwmr86huda0ws" path="res://assets/background/sky/bridge.png" id="3_py8di"]
+[ext_resource type="Texture2D" uid="uid://dq48vykm0s52w" path="res://assets/background/sky/bridge_new.png" id="3_u0pxl"]
 [ext_resource type="Texture2D" uid="uid://bj8ibwi80ledu" path="res://assets/background/ocean/water.png" id="3_u8h6g"]
 [ext_resource type="Texture2D" uid="uid://kspwkc64iq2u" path="res://assets/background/ocean/mountain.png" id="4_krqt6"]
 [ext_resource type="SpriteFrames" uid="uid://uj314hdt765p" path="res://scenes/animations/lighthouse.tres" id="4_m14t6"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bbtvt5h0rfj2u" path="res://assets/background/sky/red_mountain.png" id="6_cyjm7"]
 [ext_resource type="Texture2D" uid="uid://bmdpgfudjp7li" path="res://assets/background/sky/gradient_to_space.png" id="6_d8em3"]
 [ext_resource type="Texture2D" uid="uid://b2liahtmr41dl" path="res://assets/background/sky/main_mountain.png" id="7_e730v"]
+[ext_resource type="Texture2D" uid="uid://cj5oove4g60qj" path="res://assets/background/space/flat_colour_space.png" id="7_skp53"]
+[ext_resource type="Texture2D" uid="uid://cc8ujw5srayub" path="res://assets/background/space/moon.png" id="8_78rnb"]
 [ext_resource type="Texture2D" uid="uid://cg4uvm1pfepkg" path="res://assets/background/sky/back_clouds.png" id="8_g8rn3"]
 [ext_resource type="Script" path="res://scenes/cloud_layer.gd" id="9_js5oi"]
 [ext_resource type="Texture2D" uid="uid://cmmmriydvrp0" path="res://assets/background/sky/closer_clouds.png" id="9_v7ua1"]
@@ -169,11 +171,11 @@ collision_mask = 4
 position = Vector2(0, 399)
 shape = SubResource("RectangleShape2D_avv3c")
 
-[node name="Spaceship" type="Node2D" parent="."]
+[node name="Bridge" type="Node2D" parent="."]
 
-[node name="Bridge" type="Sprite2D" parent="Spaceship"]
-position = Vector2(-77, -1405)
-texture = ExtResource("3_py8di")
+[node name="Bridge" type="Sprite2D" parent="Bridge"]
+position = Vector2(-77, -1210)
+texture = ExtResource("3_u0pxl")
 
 [node name="Lighthouse" type="Node2D" parent="."]
 position = Vector2(0, 15)
@@ -189,6 +191,24 @@ animation = &"smoke"
 frame_progress = 0.871561
 script = ExtResource("18_gk4m4")
 anim_name = "smoke"
+
+[node name="Space" type="ParallaxBackground" parent="."]
+
+[node name="Flat" type="ParallaxLayer" parent="Space"]
+position = Vector2(-2, -469)
+
+[node name="Sprite2D" type="Sprite2D" parent="Space/Flat"]
+position = Vector2(-42, -2009)
+scale = Vector2(95.7239, 52.3391)
+texture = ExtResource("7_skp53")
+
+[node name="Moon" type="ParallaxLayer" parent="Space"]
+position = Vector2(-2, -469)
+motion_scale = Vector2(1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Space/Moon"]
+position = Vector2(-31, 438)
+texture = ExtResource("8_78rnb")
 
 [node name="Sky" type="ParallaxBackground" parent="."]
 
@@ -305,7 +325,7 @@ script = ExtResource("18_gk4m4")
 [node name="Mountain" type="ParallaxBackground" parent="."]
 
 [node name="Mountain" type="ParallaxLayer" parent="Mountain"]
-position = Vector2(0, -1064)
+position = Vector2(0, -1177)
 motion_scale = Vector2(1, 1.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Mountain/Mountain"]
