@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_hcqws")
-name = "Name"
+name = "entropy"
 score = 10.0
 damage = 10.0

@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_cqv1f")
-name = "Name"
+name = "tesseract"
 score = 10.0
 damage = 10.0

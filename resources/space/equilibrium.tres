@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_414li")
-name = "Name"
+name = "equilibrium"
 score = 10.0
 damage = 10.0

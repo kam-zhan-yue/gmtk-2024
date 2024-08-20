@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_tr1c2")
-name = "Name"
+name = "antimatter"
 score = 10.0
 damage = 10.0

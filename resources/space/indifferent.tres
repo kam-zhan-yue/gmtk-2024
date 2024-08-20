@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_gbyi1")
-name = "Name"
+name = "indifferent"
 score = 10.0
 damage = 10.0

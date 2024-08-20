@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_k7u5w")
-name = "Name"
+name = "parallax"
 score = 10.0
 damage = 10.0

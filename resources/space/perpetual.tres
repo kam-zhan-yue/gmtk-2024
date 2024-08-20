@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_2lv17")
-name = "Name"
+name = "perpetual"
 score = 10.0
 damage = 10.0

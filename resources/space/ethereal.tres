@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_3umfc")
-name = "Name"
+name = "ethereal"
 score = 10.0
 damage = 10.0
