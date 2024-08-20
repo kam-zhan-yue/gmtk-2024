@@ -8,7 +8,6 @@ func init(game_state: GameState) -> void:
 
 func init_recursive(node: Node, game_state: GameState) -> void:
 	for n in node.get_children():
-		print(n.name)
 		if n is Enemy:
 			(n as Enemy).init(game_state)
 		else:

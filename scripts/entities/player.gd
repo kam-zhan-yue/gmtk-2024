@@ -14,24 +14,21 @@ enum State { SUBMARINE, DIVER, WALKER, BALLOON }
 var state := State.SUBMARINE
 
 func _ready() -> void:
-	Global.set_inactive(anim)
 	health.init()
 	health.on_damage.connect(_on_damage)
 	health.on_dead.connect(_on_dead)
 
 func start() -> void:
 	started = true
-	anim.modulate.a = 1
+	anim.modulate.a = 0.0
 
 func _on_dead() -> void:
 	print("Player is dead")
 
 func dive_anim() -> void:
-	Global.set_active(anim)
 	anim.play("diver")
 
 func walk_anim() -> void:
-	Global.set_active(anim)
 	anim.play("walker")
 
 func damage(amount: float) -> void:
@@ -48,6 +45,28 @@ func restart() -> void:
 	for node in spawns.get_children():
 		node.queue_free()
 	await release()
+
+func fade_out(fade_time := 0.2) -> void:
+	print("Fade out player")
+	anim.modulate.a = 1.0
+	var timer := 0.0
+	while timer < fade_time:
+		var t := timer / fade_time
+		anim.modulate.a = 1-t
+		timer += get_process_delta_time()
+		await Global.frame()
+	anim.modulate.a = 0.0
+
+func fade_in(fade_time := 0.2) -> void:
+	print("Fade in player")
+	anim.modulate.a = 0.0
+	var timer := 0.0
+	while timer < fade_time:
+		var t := timer / fade_time
+		anim.modulate.a = t
+		timer += get_process_delta_time()
+		await Global.frame()
+	anim.modulate.a = 1.0
 
 func release() -> void:
 	var timer := 0.0

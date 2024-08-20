@@ -1,12 +1,12 @@
 class_name Timeline
 extends Node2D
 
-const SUBMARINE_BEAT = 50
-const DIVER_BEAT = 55
-const WALKER_BEAT = 60
-const BALLOON_BEAT = 70
-const WALKER_2_BEAT = 80
-const SPACESHIP_BEAT = 90
+const SUBMARINE_BEAT = 5
+const DIVER_BEAT = 10
+const WALKER_BEAT = 15
+const BALLOON_BEAT = 20
+const WALKER_2_BEAT = 25
+const SPACESHIP_BEAT = 30
 
 @onready var spawner := %Spawner as Spawner
 @onready var camera_controller := %CameraController as CameraController
@@ -65,6 +65,7 @@ func dive_async() -> void:
 	# Reparent the player to the dive, but lerp camera to balloon
 	game_state.player.reparent(diver_follow)
 	game_state.player.position = Vector2.ZERO
+	game_state.player.fade_in()
 	game_state.player.dive_anim()
 	
 	camera_controller.lerp_to(submarine.global_position)
@@ -75,6 +76,7 @@ func walk_async() -> void:
 	if current_beat >= WALKER_BEAT: return
 	if not playing: return
 	# Reparent the player to the dive, and keep camera tracking
+	print("Start Walking")
 	game_state.player.reparent(walker_follow)
 	game_state.player.position = Vector2.ZERO
 	game_state.player.walk_anim()
@@ -88,6 +90,7 @@ func balloon_async() -> void:
 	if current_beat >= BALLOON_BEAT: return
 	if not playing: return
 	# Reparent the player to the dive, and keep camera tracking
+	game_state.player.fade_out()
 	hot_air_balloon.activate()
 	game_state.player.reparent(balloon_follow)
 	game_state.player.position = Vector2.ZERO
@@ -102,8 +105,10 @@ func walk_2_async() -> void:
 	if not playing: return
 
 	hot_air_balloon.deactivate()
+	game_state.player.fade_in()
 	game_state.player.reparent(walker_follow_2)
 	game_state.player.position = Vector2.ZERO
+	game_state.player.walk_anim()
 	camera_controller.lerp_to(spaceship_marker.global_position)
 	
 	await lerp_path(walker_follow_2, BALLOON_BEAT, WALKER_2_BEAT)
@@ -113,6 +118,7 @@ func spaceship_async() -> void:
 	if not playing: return
 
 	spaceship.activate()
+	game_state.player.fade_out()
 	game_state.player.reparent(spaceship_follow)
 	game_state.player.position = Vector2.ZERO
 	camera_controller.follow()

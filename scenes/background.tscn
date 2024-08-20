@@ -198,8 +198,8 @@ anim_name = "smoke"
 position = Vector2(-2, -469)
 
 [node name="Sprite2D" type="Sprite2D" parent="Space/Flat"]
-position = Vector2(-42, -2009)
-scale = Vector2(95.7239, 52.3391)
+position = Vector2(-42, -4042.76)
+scale = Vector2(95.7239, 133.69)
 texture = ExtResource("7_skp53")
 
 [node name="Moon" type="ParallaxLayer" parent="Space"]

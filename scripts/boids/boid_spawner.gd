@@ -17,7 +17,6 @@ func _ready() -> void:
 	spawn()
 
 func spawn() -> void:
-	print("Spawn")
 	if spawn_type == 0:
 		spawn_circle()
 	elif spawn_type == 1:

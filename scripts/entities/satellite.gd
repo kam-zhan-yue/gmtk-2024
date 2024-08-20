@@ -36,7 +36,6 @@ func start_orbit() -> void:
 	var player_pos := game_state.player.global_position
 	var difference := global_position - player_pos
 	angle = atan2(difference.y, difference.x)
-	print('angle is: ', rad_to_deg(angle))
 	
 func orbit(delta: float) -> void:
 	var player_pos := game_state.player.global_position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=48 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -48,17 +48,23 @@ _data = {
 }
 point_count = 10
 
-[sub_resource type="Curve2D" id="Curve2D_q5d3b"]
+[sub_resource type="Curve2D" id="Curve2D_q0ptm"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 105.564, -1229.74, 0, 0, 0, 0, -24.5759, -1234.25)
+"points": PackedVector2Array(0, 0, 0, 0, 163.036, -483.86, 0, 0, 0, 0, 116.794, -486.566, 0, 0, 0, 0, 98.9576, -497.389, 0, 0, 0, 0, 48.7515, -503.702)
 }
-point_count = 2
+point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_0yf8g"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 6, -494, 7.57264, 65.9265, -7.57264, -65.9265, -57, -708, -10.2453, 52.1176, 10.2453, -52.1176, -43, -978, -9.79989, 22.2725, 9.79989, -22.2725, 34, -1152, 0, 0, 0, 0, 95, -1288)
 }
 point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_lbx3s"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 105.564, -1229.74, 0, 0, 0, 0, -25.2365, -1231.54)
+}
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_rc8ry"]
 _data = {
@@ -246,11 +252,11 @@ rotates = false
 [node name="WalkerPath" type="Path2D" parent="Timeline"]
 position = Vector2(-29.798, 72.485)
 scale = Vector2(1.51376, 1.10876)
-curve = SubResource("Curve2D_q5d3b")
+curve = SubResource("Curve2D_q0ptm")
 
 [node name="WalkerFollow" type="PathFollow2D" parent="Timeline/WalkerPath"]
 unique_name_in_owner = true
-position = Vector2(105.564, -1229.74)
+position = Vector2(163.036, -483.86)
 rotation = 3.14159
 rotates = false
 
@@ -273,12 +279,12 @@ animation = &"activate"
 frame_progress = 0.972902
 script = ExtResource("8_4vvab")
 
-[node name="WalkerPath2" type="Path2D" parent="Timeline"]
+[node name="SpaceshipWalkPath" type="Path2D" parent="Timeline"]
 position = Vector2(-29.798, 72.485)
 scale = Vector2(1.51376, 1.10876)
-curve = SubResource("Curve2D_q5d3b")
+curve = SubResource("Curve2D_lbx3s")
 
-[node name="WalkerFollow2" type="PathFollow2D" parent="Timeline/WalkerPath2"]
+[node name="WalkerFollow2" type="PathFollow2D" parent="Timeline/SpaceshipWalkPath"]
 unique_name_in_owner = true
 position = Vector2(105.564, -1229.74)
 rotation = 3.14159

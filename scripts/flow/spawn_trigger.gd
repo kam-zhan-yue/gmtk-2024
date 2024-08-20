@@ -18,7 +18,6 @@ func _process(delta: float) -> void:
 
 func spawn() -> void:
 	spawned = true
-	print(str("Spawning ", group.resource_name, "!"))
 	var spawn := group.instantiate() as SpawnGroup
 	# Need to add as child (for positioning,
 	# then init to ensure recursive function
