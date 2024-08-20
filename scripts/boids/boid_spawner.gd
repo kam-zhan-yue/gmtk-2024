@@ -9,11 +9,13 @@ extends Node2D
 @export var spawn_count := 50
 @export var spawn_on_ready := true
 
-@onready var path_follow := $Path2D/PathFollow2D as PathFollow2D
+@onready var path_follow: PathFollow2D
 
 func _ready() -> void:
 	if not spawn_on_ready:
 		return
+	if $Path2D/PathFollow2D:
+		path_follow = ($Path2D/PathFollow2D as PathFollow2D)
 	spawn()
 
 func spawn() -> void:

@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scripts/flow/start_spawner.gd" id="7_5dx1o"]
 [ext_resource type="SpriteFrames" uid="uid://du58r82pqp6de" path="res://scenes/animations/balloon.tres" id="7_jdpxv"]
 [ext_resource type="Script" path="res://scripts/entities/auto_play.gd" id="7_waiks"]
-[ext_resource type="AudioStream" uid="uid://u7jl40fk83o4" path="res://audio/music/bgm.mp3" id="8_1hva6"]
 [ext_resource type="Script" path="res://scripts/entities/hot_air_balloon.gd" id="8_4vvab"]
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="8_egxth"]
 [ext_resource type="PackedScene" uid="uid://beiyw255u1oxm" path="res://scenes/ui/ui.tscn" id="8_uw3fq"]
@@ -26,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cwm38q433b54v" path="res://scenes/spawn_groups/sky_flock_left.tscn" id="18_4jxoj"]
 [ext_resource type="PackedScene" uid="uid://from1behbxyq" path="res://scenes/spawn_groups/sky_eagle.tscn" id="19_7jlms"]
 [ext_resource type="PackedScene" uid="uid://c2beapl1a7h5d" path="res://scenes/spawn_groups/sky_flock_right.tscn" id="19_yfx1f"]
+[ext_resource type="AudioStream" uid="uid://k38gby8jrea5" path="res://audio/music/scale.mp3" id="20_wqr24"]
 [ext_resource type="Texture2D" uid="uid://dnsxixk661nv8" path="res://assets/background/space/moon.png" id="26_ux686"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
@@ -199,7 +199,7 @@ position = Vector2(0, -595)
 
 [node name="SpaceshipMarker" type="Marker2D" parent="Background"]
 unique_name_in_owner = true
-position = Vector2(0, -1476)
+position = Vector2(-68, -1476)
 
 [node name="Path2D" type="Path2D" parent="Background"]
 curve = SubResource("Curve2D_stg6b")
@@ -217,6 +217,12 @@ unique_name_in_owner = true
 position = Vector2(0, 183)
 zoom = Vector2(3, 3)
 script = ExtResource("2_ra8cm")
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="Timeline/CameraController"]
+unique_name_in_owner = true
+position = Vector2(0, -183)
+stream = ExtResource("20_wqr24")
+bus = &"Music"
 
 [node name="SubmarinePath" type="Path2D" parent="Timeline"]
 curve = SubResource("Curve2D_dpbqk")
@@ -310,7 +316,7 @@ script = ExtResource("10_5p2k0")
 
 [node name="Moon" type="Sprite2D" parent="Timeline"]
 z_index = -1
-position = Vector2(-81, -1571)
+position = Vector2(-68, -1571)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("26_ux686")
 script = ExtResource("14_uf7jm")
@@ -340,12 +346,6 @@ boid_scene = ExtResource("9_rtuln")
 start_direction = Vector2(-1, 0.2)
 spawn_radius = 200.0
 spawn_count = 15
-
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="GameManager"]
-unique_name_in_owner = true
-stream = ExtResource("8_1hva6")
-volume_db = -20.0
-bus = &"Music"
 
 [node name="Player" parent="." instance=ExtResource("3_h8ik1")]
 unique_name_in_owner = true

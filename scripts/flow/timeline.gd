@@ -1,12 +1,12 @@
 class_name Timeline
 extends Node2D
 
-const SUBMARINE_BEAT = 5
-const DIVER_BEAT = 10
-const WALKER_BEAT = 15
-const BALLOON_BEAT = 50
-const WALKER_2_BEAT = 60
-const SPACESHIP_BEAT = 70
+const SUBMARINE_BEAT = 70
+const DIVER_BEAT = 80
+const WALKER_BEAT = 85
+const BALLOON_BEAT = 156
+const WALKER_2_BEAT = 162
+const SPACESHIP_BEAT = 200
 
 @onready var spawner := %Spawner as Spawner
 @onready var camera_controller := %CameraController as CameraController
@@ -31,6 +31,7 @@ const SPACESHIP_BEAT = 70
 var game_state: GameState
 
 enum State { SUBMARINE, DIVER, WALKER, BALLOON }
+var previous_beat := 0
 var current_beat := 0
 var playing = false
 

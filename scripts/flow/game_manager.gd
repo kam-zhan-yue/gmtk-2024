@@ -1,8 +1,6 @@
 class_name GameManager
 extends Node
 
-const SUBMARINE_BEAT = 50
-const BALLOON_BEAT = 100
 
 @onready var player := %Player as Player
 @onready var spawner := %Spawner as Spawner
@@ -32,7 +30,9 @@ func _on_pause(value: bool) -> void:
 
 func _on_start() -> void:
 	start_spawner.stop_spawning()
-	music_player.play()
+	var start_beat := BeatManager.get_start_beat()
+	var start_second := BeatManager.beats_to_seconds(start_beat)
+	music_player.play(start_second)
 	timeline.start()
 	BeatManager.start()
 

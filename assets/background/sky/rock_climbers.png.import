@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm0ti86t7djsx"
-path="res://.godot/imported/bigger_bird_sprite_sheet.png-1057b284f1c1bba53786909f83bacd1d.ctex"
+uid="uid://drq01l3wa8p1"
+path="res://.godot/imported/rock_climbers.png-74fc1d682dfef0ddd2f6732e9672be60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/entities/bigger_bird_sprite_sheet.png"
-dest_files=["res://.godot/imported/bigger_bird_sprite_sheet.png-1057b284f1c1bba53786909f83bacd1d.ctex"]
+source_file="res://assets/background/sky/rock_climbers.png"
+dest_files=["res://.godot/imported/rock_climbers.png-74fc1d682dfef0ddd2f6732e9672be60.ctex"]
 
 [params]
 
