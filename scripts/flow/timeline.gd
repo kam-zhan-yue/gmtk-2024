@@ -54,6 +54,8 @@ func start() -> void:
 func submarine_async() -> void:
 	if current_beat >= SUBMARINE_BEAT: return
 	if not playing: return
+	
+	previous_beat = 0
 	# Reparent the player to the submarine and start camera tracking
 	game_state.player.reparent(submarine_follow)
 	game_state.player.position = Vector2.ZERO
@@ -65,6 +67,7 @@ func submarine_async() -> void:
 func dive_async() -> void:
 	if current_beat >= DIVER_BEAT: return
 	if not playing: return
+	previous_beat = SUBMARINE_BEAT
 	# Reparent the player to the dive, but lerp camera to balloon
 	game_state.player.reparent(diver_follow)
 	game_state.player.position = Vector2.ZERO
@@ -78,6 +81,8 @@ func dive_async() -> void:
 func walk_async() -> void:
 	if current_beat >= WALKER_BEAT: return
 	if not playing: return
+	
+	previous_beat = DIVER_BEAT
 	# Reparent the player to the dive, and keep camera tracking
 	print("Start Walking")
 	game_state.player.reparent(walker_follow)
@@ -92,7 +97,9 @@ func walk_async() -> void:
 func balloon_async() -> void:
 	if current_beat >= BALLOON_BEAT: return
 	if not playing: return
+	previous_beat = WALKER_BEAT
 	# Reparent the player to the dive, and keep camera tracking
+	
 	game_state.player.fade_out()
 	hot_air_balloon.activate()
 	game_state.player.reparent(balloon_follow)
@@ -107,6 +114,7 @@ func walk_2_async() -> void:
 	if current_beat >= WALKER_2_BEAT: return
 	if not playing: return
 
+	previous_beat = BALLOON_BEAT
 	hot_air_balloon.deactivate()
 	game_state.player.fade_in()
 	game_state.player.reparent(walker_follow_2)
@@ -120,6 +128,7 @@ func spaceship_async() -> void:
 	if current_beat >= SPACESHIP_BEAT: return
 	if not playing: return
 
+	previous_beat = WALKER_2_BEAT
 	moon.scale_aync(1.1, 10.0)
 	spaceship.activate()
 	game_state.player.fade_out()

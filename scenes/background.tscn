@@ -535,7 +535,6 @@ script = ExtResource("2_ybn17")
 polygon = PackedVector2Array(-27, 117, 23, 56, 39, 48, 33, -35, 31, -59, 83, -116, 94, -172, 53, -211, 48, -233, 58, -250, 87, -264, 131, -313, 136, -334, 127, -345, 96, -363, 66, -425, 48, -457, 65, -548, 80, -627, 107, -647, 212, -679, 244, -686, 276, -685, 193, -702, 335, -1995, 1137, -2059, 1278, -4589, -1396, -4501, -1165, -2128, -505, -1989, -310.587, -806.302, -306, -779, -312, -687, -101, -640, -61, -553, -54, -468, -62, -422, -74, -395, -71, -338, -57, -268, -67, -219, -36, -138, -65, -91, -85, -65, -82, -30, -52, 3, -38, 33, -44, 77)
 
 [node name="BoidRemover" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, -443)
 script = ExtResource("3_ete7q")
 
@@ -548,7 +547,6 @@ position = Vector2(0, 399)
 shape = SubResource("RectangleShape2D_avv3c")
 
 [node name="Bridge" type="Node2D" parent="."]
-visible = false
 z_index = 2
 
 [node name="Bridge" type="Sprite2D" parent="Bridge"]
@@ -740,9 +738,9 @@ sprite_frames = SubResource("SpriteFrames_85n8t")
 script = ExtResource("18_gk4m4")
 
 [node name="Waving" type="AnimatedSprite2D" parent="Mountain/Mountain"]
-position = Vector2(150, 113)
+position = Vector2(202, 142)
 sprite_frames = SubResource("SpriteFrames_5n3wl")
-frame_progress = 0.567856
+frame_progress = 0.940165
 script = ExtResource("18_gk4m4")
 
 [node name="Distortion" type="ParallaxBackground" parent="."]
