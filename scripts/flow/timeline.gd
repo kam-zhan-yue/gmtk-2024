@@ -9,6 +9,7 @@ const WALKER_2_BEAT = 163
 const SPACESHIP_BEAT = 166
 const SPACE_BEAT = 260
 
+@onready var camera_game: Marker2D = %CameraGame
 @onready var camera_controller := %CameraController as CameraController
 
 @onready var submarine := %SubmarineMarker as Marker2D
@@ -39,6 +40,9 @@ func init(state: GameState) -> void:
 	game_state = state
 	camera_controller.init(state)
 	moon.init(state)
+
+func start_camera() -> void:
+	await camera_controller.lerp_to(camera_game.global_position)
 
 func start() -> void:
 	playing = true
@@ -129,8 +133,8 @@ func spaceship_async() -> void:
 	if current_beat >= SPACESHIP_BEAT: return
 	if not playing: return
 
+	moon.scale_aync(1.1, 15.0)
 	previous_beat = WALKER_2_BEAT
-	moon.scale_aync(1.1, 10.0)
 	spaceship.activate()
 	game_state.player.fade_out()
 	game_state.player.reparent(spaceship_follow)
@@ -166,6 +170,11 @@ func restart() -> void:
 	playing = false
 	moon.restart()
 	await game_state.player.fade_out()
-	submarine_follow.progress_ratio = 0
-	diver_follow.progress_ratio = 0
+	submarine_follow.progress_ratio = 0.0
+	diver_follow.progress_ratio = 0.0
+	balloon_follow.progress_ratio = 0.0
+	walker_follow.progress_ratio = 0.0
+	walker_follow_2.progress_ratio = 0.0
+	spaceship_follow.progress_ratio = 0.0
+	space_follow.progress_ratio = 0.0
 	await camera_controller.lerp_to(camera_controller.original_pos)

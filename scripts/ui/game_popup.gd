@@ -12,6 +12,8 @@ func init(state: GameState) -> void:
 	game_state = state
 
 func _input(event: InputEvent) -> void:
+	if not game_state: 
+		return
 	if not game_state.started:
 		return
 	if event.is_action_pressed("ui_cancel"):

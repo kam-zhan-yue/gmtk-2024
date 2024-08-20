@@ -103,7 +103,7 @@ func get_display_string() -> String:
 	var remainder_str = str('[color=#333639]', remainder_input, '[/color]')
 	var overflow_str = str('[color=DARK_RED]', overflow_input, '[/color]')
 	var final = str(correct_str, incorrect_str, remainder_str, overflow_str)
-	return str('[center]', final,'[/center]')
+	return final
 
 func check_complete() -> void:
 	if index == target.length():

@@ -13,6 +13,10 @@ func init(state: GameState) -> void:
 	state.on_combo.connect(_on_combo)
 
 func _on_score(value: float) -> void:
+	if value <= 0.0:
+		Global.set_inactive(score_label)
+	else:
+		Global.set_active(score_label)
 	if score_tween:
 		score_tween.kill()
 	var current_score := float(score_label.text)

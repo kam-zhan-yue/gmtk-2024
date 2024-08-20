@@ -28,6 +28,7 @@ func _on_pause(value: bool) -> void:
 
 func _on_start() -> void:
 	start_spawner.stop_spawning()
+	await timeline.start_camera()
 	var start_beat := BeatManager.get_start_beat()
 	var start_second := BeatManager.beats_to_seconds(start_beat)
 	music_player.play(start_second)

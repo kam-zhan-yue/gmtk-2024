@@ -12,7 +12,7 @@ func _ready() -> void:
 func init(type_entity: TypeEntity) -> void:
 	position = Vector2(-100, -100)
 	entity = type_entity
-	rich_text_label.text = str('\n', entity.get_display_string())
+	set_text(entity.get_display_string())
 	entity.on_update.connect(_on_update)
 	entity.on_complete.connect(_on_complete)
 	entity.on_active.connect(_on_active)
@@ -38,7 +38,11 @@ func _on_active(active: bool) -> void:
 		Global.set_inactive(rich_text_label)
 
 func _on_update(text: String) -> void:
-	rich_text_label.text = str('\n', text)
+	set_text(text)
+
+func set_text(text: String) -> void:
+	var center = str('\n[center]', text, '[/center]')
+	rich_text_label.text = center
 
 func _on_complete() -> void:
 	completed = true

@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
 [ext_resource type="PackedScene" uid="uid://gwlgluwanmdk" path="res://scenes/player.tscn" id="3_h8ik1"]
 [ext_resource type="Texture2D" uid="uid://c1qj3u4hvqn2n" path="res://assets/textures/dot.png" id="5_625j7"]
+[ext_resource type="AudioStream" uid="uid://cue0rxq0b84pe" path="res://audio/music/tide.wav" id="5_dvf6b"]
 [ext_resource type="Script" path="res://scripts/flow/start_spawner.gd" id="7_5dx1o"]
 [ext_resource type="SpriteFrames" uid="uid://du58r82pqp6de" path="res://scenes/animations/balloon.tres" id="7_jdpxv"]
 [ext_resource type="Script" path="res://scripts/entities/auto_play.gd" id="7_waiks"]
@@ -19,7 +20,6 @@
 [ext_resource type="Script" path="res://scripts/flow/timeline.gd" id="12_xvfn4"]
 [ext_resource type="SpriteFrames" uid="uid://c81e2cel8mkye" path="res://scenes/animations/submarine.tres" id="13_j364a"]
 [ext_resource type="Script" path="res://scripts/moon.gd" id="14_uf7jm"]
-[ext_resource type="AudioStream" uid="uid://k38gby8jrea5" path="res://audio/music/scale.mp3" id="20_wqr24"]
 [ext_resource type="PackedScene" uid="uid://dq3patfg1lj8n" path="res://scenes/spawn_groups/ocean_left_boid.tscn" id="22_qtl1v"]
 [ext_resource type="PackedScene" uid="uid://bb3fi04cw6lsi" path="res://scenes/spawn_groups/ocean_right_enemy.tscn" id="23_qpebw"]
 [ext_resource type="Resource" uid="uid://q4tad15ihnr2" path="res://resources/ocean/pressure.tres" id="25_ob3l5"]
@@ -217,6 +217,10 @@ environment = SubResource("Environment_bgy46")
 
 [node name="Background" parent="." instance=ExtResource("12_dvr37")]
 
+[node name="CameraGame" type="Marker2D" parent="Background"]
+unique_name_in_owner = true
+position = Vector2(0, 183)
+
 [node name="StartMarker" type="Marker2D" parent="Background"]
 unique_name_in_owner = true
 position = Vector2(-4, 422)
@@ -246,14 +250,13 @@ script = ExtResource("12_xvfn4")
 
 [node name="CameraController" type="Camera2D" parent="Timeline"]
 unique_name_in_owner = true
-position = Vector2(0, 183)
+position = Vector2(-150, 183)
 zoom = Vector2(3, 3)
 script = ExtResource("2_ra8cm")
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="Timeline/CameraController"]
 unique_name_in_owner = true
-position = Vector2(0, -183)
-stream = ExtResource("20_wqr24")
+stream = ExtResource("5_dvf6b")
 bus = &"Music"
 
 [node name="SubmarinePath" type="Path2D" parent="Timeline"]
