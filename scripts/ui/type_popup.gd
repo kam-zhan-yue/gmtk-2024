@@ -42,7 +42,7 @@ func _on_update(text: String) -> void:
 
 func set_text(text: String) -> void:
 	var center = str('\n[center]', text, '[/center]')
-	rich_text_label = center
+	rich_text_label.text = center
 
 func _on_complete() -> void:
 	completed = true

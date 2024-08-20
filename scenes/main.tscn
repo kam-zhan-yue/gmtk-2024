@@ -217,6 +217,10 @@ environment = SubResource("Environment_bgy46")
 
 [node name="Background" parent="." instance=ExtResource("12_dvr37")]
 
+[node name="CameraGame" type="Marker2D" parent="Background"]
+unique_name_in_owner = true
+position = Vector2(0, 183)
+
 [node name="StartMarker" type="Marker2D" parent="Background"]
 unique_name_in_owner = true
 position = Vector2(-4, 422)
@@ -246,7 +250,7 @@ script = ExtResource("12_xvfn4")
 
 [node name="CameraController" type="Camera2D" parent="Timeline"]
 unique_name_in_owner = true
-position = Vector2(0, 183)
+position = Vector2(-150, 183)
 zoom = Vector2(3, 3)
 script = ExtResource("2_ra8cm")
 
