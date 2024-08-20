@@ -2,7 +2,7 @@ class_name CreditsPopup
 extends MarginContainer
 
 @onready var back_entity := %BackEntity as TypeEntity
-@onready var back_label := $VBoxContainer/BackLabel as TypeLabel
+@onready var back_label := %BackLabel as TypeLabel
 
 signal on_back
 

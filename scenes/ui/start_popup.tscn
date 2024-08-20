@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxrld8r6s1y8"]
+[gd_scene load_steps=8 format=3 uid="uid://cxrld8r6s1y8"]
 
 [ext_resource type="Script" path="res://scripts/ui/start_popup.gd" id="1_u5v8x"]
 [ext_resource type="Theme" uid="uid://d2jinjaboiehf" path="res://resources/ui/text.tres" id="1_x36ww"]
 [ext_resource type="Script" path="res://scripts/ui/title_popup.gd" id="3_0w53k"]
 [ext_resource type="Script" path="res://scenes/ui/type_label.gd" id="3_5j7nw"]
 [ext_resource type="Script" path="res://scripts/typing/type_entity.gd" id="3_lnit0"]
+[ext_resource type="Theme" uid="uid://ba44mb8f0qt6b" path="res://resources/ui/title.tres" id="4_bkido"]
 [ext_resource type="Script" path="res://scripts/ui/credits_popup.gd" id="5_t3sir"]
 
 [node name="StartPopup" type="Control"]
@@ -49,18 +50,25 @@ layout_mode = 2
 size_flags_vertical = 8
 
 [node name="TIDE" type="RichTextLabel" parent="TitlePopup/VBoxContainer"]
-custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_vertical = 8
-theme = ExtResource("1_x36ww")
-theme_override_font_sizes/normal_font_size = 70
+theme = ExtResource("4_bkido")
+theme_override_colors/default_color = Color(0.992157, 0.870588, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 200
 bbcode_enabled = true
-text = "tide."
+text = "TIDE"
 fit_content = true
 scroll_active = false
 script = ExtResource("3_5j7nw")
 
-[node name="Instruction" type="RichTextLabel" parent="TitlePopup/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TitlePopup/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitlePopup/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Instruction" type="RichTextLabel" parent="TitlePopup/VBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_vertical = 8
@@ -72,7 +80,7 @@ fit_content = true
 scroll_active = false
 script = ExtResource("3_5j7nw")
 
-[node name="PlayLabel" type="RichTextLabel" parent="TitlePopup/VBoxContainer"]
+[node name="PlayLabel" type="RichTextLabel" parent="TitlePopup/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
@@ -85,7 +93,7 @@ fit_content = true
 scroll_active = false
 script = ExtResource("3_5j7nw")
 
-[node name="CreditLabel" type="RichTextLabel" parent="TitlePopup/VBoxContainer"]
+[node name="CreditLabel" type="RichTextLabel" parent="TitlePopup/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
@@ -116,11 +124,17 @@ script = ExtResource("5_t3sir")
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="GridContainer" type="GridContainer" parent="CreditsPopup/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CreditsPopup/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPopup/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CreditsPopup/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="Programmer" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/GridContainer"]
+[node name="Programmer" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_vertical = 8
@@ -131,7 +145,7 @@ text = "programmer"
 fit_content = true
 scroll_active = false
 
-[node name="Alex" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/GridContainer"]
+[node name="Alex" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_vertical = 8
@@ -142,7 +156,7 @@ text = "Alexander Kam"
 fit_content = true
 scroll_active = false
 
-[node name="Artist" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/GridContainer"]
+[node name="Artist" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_vertical = 8
@@ -153,7 +167,7 @@ text = "artist"
 fit_content = true
 scroll_active = false
 
-[node name="Meryl" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/GridContainer"]
+[node name="Meryl" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_vertical = 8
@@ -164,7 +178,7 @@ text = "Meryl Gogolashvili"
 fit_content = true
 scroll_active = false
 
-[node name="Composer" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/GridContainer"]
+[node name="Composer" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_vertical = 8
@@ -175,7 +189,7 @@ text = "composer"
 fit_content = true
 scroll_active = false
 
-[node name="Josh" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/GridContainer"]
+[node name="Josh" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_vertical = 8
@@ -186,7 +200,8 @@ text = "JuiceGoose"
 fit_content = true
 scroll_active = false
 
-[node name="BackLabel" type="RichTextLabel" parent="CreditsPopup/VBoxContainer"]
+[node name="BackLabel" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_vertical = 8
