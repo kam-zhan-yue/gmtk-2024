@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=63 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -20,6 +20,7 @@
 [ext_resource type="SpriteFrames" uid="uid://c81e2cel8mkye" path="res://scenes/animations/submarine.tres" id="13_j364a"]
 [ext_resource type="Script" path="res://scripts/moon.gd" id="14_uf7jm"]
 [ext_resource type="PackedScene" uid="uid://bbstso6ny83n4" path="res://scenes/spawn_groups/ocean_tuna_boids.tscn" id="17_h6jyu"]
+[ext_resource type="PackedScene" uid="uid://cwm38q433b54v" path="res://scenes/spawn_groups/sky_flock_left.tscn" id="18_4jxoj"]
 [ext_resource type="AudioStream" uid="uid://k38gby8jrea5" path="res://audio/music/scale.mp3" id="20_wqr24"]
 [ext_resource type="Resource" uid="uid://q4tad15ihnr2" path="res://resources/ocean/pressure.tres" id="25_ob3l5"]
 [ext_resource type="Resource" uid="uid://c2xsbdpaw8sdt" path="res://resources/ocean/sea.tres" id="25_y2lc6"]
@@ -33,6 +34,12 @@
 [ext_resource type="Resource" uid="uid://bum6fkghge8bo" path="res://resources/ocean/see.tres" id="28_x6ge5"]
 [ext_resource type="Resource" uid="uid://cq7tfp7f1eniw" path="res://resources/ocean/listen.tres" id="29_vgcra"]
 [ext_resource type="Resource" uid="uid://cnydapsvld37u" path="res://resources/ocean/wish.tres" id="33_l2fur"]
+[ext_resource type="Resource" uid="uid://q5uuknlqw2a1" path="res://resources/sky/endless.tres" id="35_62whc"]
+[ext_resource type="Resource" uid="uid://bfmbxk3u45bd5" path="res://resources/sky/lifting.tres" id="36_7riny"]
+[ext_resource type="Resource" uid="uid://d225787vy4hm6" path="res://resources/sky/freedom.tres" id="37_237bd"]
+[ext_resource type="Resource" uid="uid://dqjnl1ry2ha3j" path="res://resources/sky/infinite.tres" id="38_4c6k0"]
+[ext_resource type="Resource" uid="uid://dg723hp2hx64j" path="res://resources/sky/careless.tres" id="39_5fnet"]
+[ext_resource type="Resource" uid="uid://dvf4iwtdinjgl" path="res://resources/sky/floating.tres" id="40_3yvr8"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
@@ -419,7 +426,43 @@ group = ExtResource("17_h6jyu")
 data = ExtResource("29_vgcra")
 
 [node name="wish" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -341)
+position = Vector2(-1, -246)
 script = ExtResource("12_j6dic")
 group = ExtResource("17_h6jyu")
 data = ExtResource("33_l2fur")
+
+[node name="endless" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -480)
+script = ExtResource("12_j6dic")
+group = ExtResource("18_4jxoj")
+data = ExtResource("35_62whc")
+
+[node name="lifting" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -554)
+script = ExtResource("12_j6dic")
+group = ExtResource("18_4jxoj")
+data = ExtResource("36_7riny")
+
+[node name="freedom" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -554)
+script = ExtResource("12_j6dic")
+group = ExtResource("18_4jxoj")
+data = ExtResource("37_237bd")
+
+[node name="infinite" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -554)
+script = ExtResource("12_j6dic")
+group = ExtResource("18_4jxoj")
+data = ExtResource("38_4c6k0")
+
+[node name="careless" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -554)
+script = ExtResource("12_j6dic")
+group = ExtResource("18_4jxoj")
+data = ExtResource("39_5fnet")
+
+[node name="floating" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -554)
+script = ExtResource("12_j6dic")
+group = ExtResource("18_4jxoj")
+data = ExtResource("40_3yvr8")
