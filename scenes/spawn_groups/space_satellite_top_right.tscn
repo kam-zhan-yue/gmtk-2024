@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7vkg3w8qjunw"]
+
+[ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_owjpe"]
+[ext_resource type="PackedScene" uid="uid://crm36gr4t0nin" path="res://scenes/enemies/satellite.tscn" id="2_cief5"]
+
+[node name="SpaceUFODiagonal4" type="Node2D"]
+script = ExtResource("1_owjpe")
+
+[node name="Satellite" parent="." instance=ExtResource("2_cief5")]
+position = Vector2(500, -500)

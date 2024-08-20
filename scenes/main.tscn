@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=80 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -53,8 +53,9 @@
 [ext_resource type="Resource" uid="uid://de7jjfhnr8v2i" path="res://resources/sky/caressing.tres" id="46_r2ivd"]
 [ext_resource type="Resource" uid="uid://552hlqxomdff" path="res://resources/sky/radiant.tres" id="49_d0b06"]
 [ext_resource type="Resource" uid="uid://cu1looefwjbwu" path="res://resources/sky/limitless.tres" id="50_owwli"]
-[ext_resource type="PackedScene" uid="uid://b0ym47i8n8apr" path="res://scenes/spawn_groups/space_ufo_4.tscn" id="54_vftrf"]
+[ext_resource type="PackedScene" uid="uid://b0ym47i8n8apr" path="res://scenes/spawn_groups/space_ufo_diagonal_4.tscn" id="54_vftrf"]
 [ext_resource type="Resource" uid="uid://b3t8hojvwokg1" path="res://resources/space/entropy.tres" id="55_r7vre"]
+[ext_resource type="PackedScene" uid="uid://b7vkg3w8qjunw" path="res://scenes/spawn_groups/space_satellite_top_right.tscn" id="56_pvswd"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
@@ -560,5 +561,12 @@ data = ExtResource("40_3yvr8")
 position = Vector2(-66, -2687)
 script = ExtResource("12_j6dic")
 left_group = ExtResource("54_vftrf")
+offset_y = 0.0
+data = ExtResource("55_r7vre")
+
+[node name="entropy2" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -2687)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("56_pvswd")
 offset_y = 0.0
 data = ExtResource("55_r7vre")

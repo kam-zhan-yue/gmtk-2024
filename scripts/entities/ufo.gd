@@ -1,9 +1,9 @@
 class_name UFO
 extends Enemy
 
-@export var orbit_radius := 350.0
+@export var orbit_radius := 450.0
 @export var speed := 300.0
-@export var time_between_rockets := 2.0
+@export var time_between_rockets := 3.0
 @export var rocket_speed := 10.0
 @export var rocket_data: EnemyData
 const ROCKET = preload("res://scenes/projectiles/rocket.tscn")

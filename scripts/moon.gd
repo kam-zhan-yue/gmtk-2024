@@ -2,7 +2,7 @@ class_name Moon
 extends Sprite2D
 
 var game_state: GameState
-const OFFSET_Y = 25.0
+const OFFSET_Y = -25.0
 
 enum State { IDLE, FOLLOW }
 var state := State.IDLE
