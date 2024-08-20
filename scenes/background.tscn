@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cvwph384mlu7i" path="res://assets/background/ocean/tentacle_lightest.png" id="23_hj1sh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avv3c"]
-size = Vector2(600, 834)
+size = Vector2(600, 688)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_crrxy"]
 load_path = "res://.godot/imported/moon.png-5b887c393e85c6610ab9312a634a977b.ctex"
@@ -543,7 +543,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BoidRemover/Area2D"]
-position = Vector2(0, 399)
+position = Vector2(0, 472)
 shape = SubResource("RectangleShape2D_avv3c")
 
 [node name="Bridge" type="Node2D" parent="."]
