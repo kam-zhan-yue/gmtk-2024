@@ -1,67 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnsxb8lvmt2e1"]
+[gd_scene load_steps=6 format=3 uid="uid://cnsxb8lvmt2e1"]
 
 [ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_rtttn"]
 [ext_resource type="Script" path="res://scenes/boids/boid_fade.gd" id="2_bqqge"]
-[ext_resource type="Texture2D" uid="uid://fimudfhhwoq8" path="res://assets/entities/bird_sprite_sheet.png" id="3_rukoq"]
+[ext_resource type="SpriteFrames" uid="uid://s2vbtes0k7sn" path="res://scenes/animations/bird.tres" id="3_2ydc6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fg2gp"]
-radius = 15.1327
+radius = 26.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ctcb"]
-size = Vector2(27, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vf0mo"]
-atlas = ExtResource("3_rukoq")
-region = Rect2(0, 0, 31, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qynyw"]
-atlas = ExtResource("3_rukoq")
-region = Rect2(0, 17, 31, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jaj4x"]
-atlas = ExtResource("3_rukoq")
-region = Rect2(0, 34, 31, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ynpp"]
-atlas = ExtResource("3_rukoq")
-region = Rect2(0, 51, 31, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7k30f"]
-atlas = ExtResource("3_rukoq")
-region = Rect2(0, 68, 31, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_81fk1"]
-atlas = ExtResource("3_rukoq")
-region = Rect2(0, 85, 31, 17)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_460nm"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vf0mo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qynyw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jaj4x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ynpp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7k30f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_81fk1")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+size = Vector2(32, 15)
 
 [node name="Bird" type="Node2D"]
 script = ExtResource("1_rtttn")
+using_anim = true
 
 [node name="ObstacleArea" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -71,16 +22,19 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleArea"]
 shape = SubResource("CircleShape2D_fg2gp")
 
-[node name="FishBody" type="Node2D" parent="."]
+[node name="BirdFade" type="Node2D" parent="."]
 script = ExtResource("2_bqqge")
+using_anim = true
 
-[node name="VisibleArea" type="Area2D" parent="FishBody"]
+[node name="VisibleArea" type="Area2D" parent="BirdFade"]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FishBody/VisibleArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BirdFade/VisibleArea"]
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_1ctcb")
 debug_color = Color(0.980901, 0, 0.375714, 0.42)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FishBody"]
-sprite_frames = SubResource("SpriteFrames_460nm")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("3_2ydc6")

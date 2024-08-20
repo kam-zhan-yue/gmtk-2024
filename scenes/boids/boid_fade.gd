@@ -1,16 +1,19 @@
 extends Node2D
 
 @onready var parent := $".." as Boid
-@onready var sprite := %Sprite2D as Sprite2D
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@export var using_anim := false
+var sprite: Sprite2D
+var animated_sprite_2d: AnimatedSprite2D
 
 const FADE_OUT = 1.0
 var timer := 0.0
 
 func _ready() -> void:
 	parent.on_uninit.connect(release)
-	if animated_sprite_2d:
-		animated_sprite_2d.play("default")
+	if not using_anim:
+		sprite = $Sprite2D as Sprite2D
+	else:
+		animated_sprite_2d = %AnimatedSprite2D as AnimatedSprite2D
 
 func release() -> void:
 	var timer := 0.0

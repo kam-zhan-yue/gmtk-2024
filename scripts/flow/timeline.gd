@@ -4,9 +4,9 @@ extends Node2D
 const SUBMARINE_BEAT = 5
 const DIVER_BEAT = 10
 const WALKER_BEAT = 15
-const BALLOON_BEAT = 20
-const WALKER_2_BEAT = 25
-const SPACESHIP_BEAT = 30
+const BALLOON_BEAT = 50
+const WALKER_2_BEAT = 60
+const SPACESHIP_BEAT = 70
 
 @onready var spawner := %Spawner as Spawner
 @onready var camera_controller := %CameraController as CameraController

@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_128pk")
-start_beat = 5
+start_beat = 15
 end_beat = 200
 bpm = 90.0
