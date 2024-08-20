@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://dtbawr3acmc0s"]
+[gd_scene load_steps=120 format=3 uid="uid://dtbawr3acmc0s"]
 
 [ext_resource type="Script" path="res://scripts/entities/visible.gd" id="2_ybn17"]
 [ext_resource type="Script" path="res://scripts/boids/boid_remover.gd" id="3_ete7q"]
@@ -15,8 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://b2liahtmr41dl" path="res://assets/background/sky/main_mountain.png" id="7_e730v"]
 [ext_resource type="Texture2D" uid="uid://cj5oove4g60qj" path="res://assets/background/space/flat_colour_space.png" id="7_skp53"]
 [ext_resource type="Texture2D" uid="uid://cg4uvm1pfepkg" path="res://assets/background/sky/back_clouds.png" id="8_g8rn3"]
+[ext_resource type="Texture2D" uid="uid://dege03ew88wjl" path="res://assets/background/space/smallest_stars.png" id="8_m6mlc"]
 [ext_resource type="Script" path="res://scenes/cloud_layer.gd" id="9_js5oi"]
+[ext_resource type="Texture2D" uid="uid://1werhmeo6bky" path="res://assets/background/space/smaller_stars.png" id="9_oa0h6"]
 [ext_resource type="Texture2D" uid="uid://cmmmriydvrp0" path="res://assets/background/sky/closer_clouds.png" id="9_v7ua1"]
+[ext_resource type="Texture2D" uid="uid://b4fdgjaiipc1d" path="res://assets/background/space/big_stars.png" id="10_5a23c"]
 [ext_resource type="Shader" path="res://scripts/shaders/distortion.gdshader" id="11_lqyho"]
 [ext_resource type="Texture2D" uid="uid://dqvskjwyyutv1" path="res://assets/background/lighthouse_island.png" id="12_43gme"]
 [ext_resource type="Texture2D" uid="uid://c1qj3u4hvqn2n" path="res://assets/textures/dot.png" id="12_dnxis"]
@@ -30,9 +33,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avv3c"]
 size = Vector2(600, 688)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_crrxy"]
-load_path = "res://.godot/imported/moon.png-5b887c393e85c6610ab9312a634a977b.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ob47d"]
 atlas = ExtResource("22_8g2kw")
@@ -698,15 +698,32 @@ position = Vector2(-42, -4042.76)
 scale = Vector2(95.7239, 133.69)
 texture = ExtResource("7_skp53")
 
-[node name="Moon" type="ParallaxLayer" parent="Space"]
-visible = false
-position = Vector2(-2, -469)
-motion_scale = Vector2(1, 0.1)
+[node name="SmallestStars" type="ParallaxLayer" parent="Space"]
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(0, 1080)
 
-[node name="Sprite2D" type="Sprite2D" parent="Space/Moon"]
+[node name="Sprite2D" type="Sprite2D" parent="Space/SmallestStars"]
 position = Vector2(-31, 438)
 scale = Vector2(2, 2)
-texture = SubResource("CompressedTexture2D_crrxy")
+texture = ExtResource("8_m6mlc")
+
+[node name="SmallerStars" type="ParallaxLayer" parent="Space"]
+motion_scale = Vector2(1, 0.05)
+motion_mirroring = Vector2(0, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="Space/SmallerStars"]
+position = Vector2(-31, 438)
+scale = Vector2(2, 2)
+texture = ExtResource("9_oa0h6")
+
+[node name="BigStars" type="ParallaxLayer" parent="Space"]
+motion_scale = Vector2(1, 0.1)
+motion_mirroring = Vector2(0, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="Space/BigStars"]
+position = Vector2(-31, 438)
+scale = Vector2(2, 2)
+texture = ExtResource("10_5a23c")
 
 [node name="Sky" type="ParallaxBackground" parent="."]
 
@@ -816,7 +833,7 @@ randomise = true
 position = Vector2(-16, 1)
 rotation = 0.129437
 sprite_frames = SubResource("SpriteFrames_hkxkf")
-frame_progress = 0.903452
+frame_progress = 0.335275
 script = ExtResource("18_gk4m4")
 randomise = true
 
@@ -872,6 +889,14 @@ position = Vector2(202, 142)
 sprite_frames = SubResource("SpriteFrames_5n3wl")
 frame_progress = 0.940165
 script = ExtResource("18_gk4m4")
+
+[node name="BaseMountain" type="ParallaxLayer" parent="Mountain"]
+z_index = 2
+position = Vector2(0, -1177)
+
+[node name="Sprite2D" type="Sprite2D" parent="Mountain/BaseMountain"]
+z_index = 2
+texture = ExtResource("4_krqt6")
 
 [node name="Distortion" type="ParallaxBackground" parent="."]
 layer = 10

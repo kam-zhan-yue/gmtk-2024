@@ -193,7 +193,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"activate",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -201,7 +201,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 24.0
 }]
 
 [node name="MainScene" type="Node2D"]
@@ -337,7 +337,8 @@ rotates = false
 unique_name_in_owner = true
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_ueylr")
-animation = &"idle"
+animation = &"activate"
+frame_progress = 0.700517
 script = ExtResource("10_5p2k0")
 
 [node name="Moon" type="Sprite2D" parent="Timeline"]
