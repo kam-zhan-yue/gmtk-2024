@@ -25,8 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://from1behbxyq" path="res://scenes/spawn_groups/sky_eagle.tscn" id="19_7jlms"]
 [ext_resource type="PackedScene" uid="uid://c2beapl1a7h5d" path="res://scenes/spawn_groups/sky_flock_right.tscn" id="19_yfx1f"]
 [ext_resource type="AudioStream" uid="uid://k38gby8jrea5" path="res://audio/music/scale.mp3" id="20_wqr24"]
-[ext_resource type="Resource" uid="uid://bt48h8vr03w5x" path="res://resources/ocean/tuna.tres" id="24_vipnl"]
 [ext_resource type="Resource" uid="uid://q4tad15ihnr2" path="res://resources/ocean/pressure.tres" id="25_ob3l5"]
+[ext_resource type="Resource" uid="uid://i27dmdlqqw74" path="res://resources/ocean/feel.tres" id="26_5tfq4"]
 [ext_resource type="Texture2D" uid="uid://dnsxixk661nv8" path="res://assets/background/space/moon.png" id="26_ux686"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
@@ -355,9 +355,15 @@ unique_name_in_owner = true
 position = Vector2(-1, 364)
 script = ExtResource("12_j6dic")
 group = ExtResource("17_h6jyu")
-data = ExtResource("24_vipnl")
+data = ExtResource("25_ob3l5")
 
 [node name="Pressure" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, 263)
+script = ExtResource("12_j6dic")
+group = ExtResource("17_8mpy1")
+data = ExtResource("25_ob3l5")
+
+[node name="danger" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 263)
 script = ExtResource("12_j6dic")
 group = ExtResource("17_8mpy1")
@@ -367,13 +373,148 @@ data = ExtResource("25_ob3l5")
 position = Vector2(-1, -581)
 script = ExtResource("12_j6dic")
 group = ExtResource("18_4jxoj")
+data = ExtResource("26_5tfq4")
 
 [node name="Birds3" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, -628)
 script = ExtResource("12_j6dic")
 group = ExtResource("19_7jlms")
+data = ExtResource("26_5tfq4")
 
 [node name="Birds2" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, -581)
 script = ExtResource("12_j6dic")
 group = ExtResource("19_yfx1f")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds4" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("18_4jxoj")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds5" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -628)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_7jlms")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds6" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_yfx1f")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds7" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("18_4jxoj")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds8" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -628)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_7jlms")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds9" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_yfx1f")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds10" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("18_4jxoj")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds11" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -628)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_7jlms")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds12" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_yfx1f")
+data = ExtResource("26_5tfq4")
+
+[node name="danger2" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, 263)
+script = ExtResource("12_j6dic")
+group = ExtResource("17_8mpy1")
+data = ExtResource("25_ob3l5")
+
+[node name="Birds13" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("18_4jxoj")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds14" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -628)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_7jlms")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds15" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_yfx1f")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds16" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("18_4jxoj")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds17" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -628)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_7jlms")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds18" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_yfx1f")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds19" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("18_4jxoj")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds20" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -628)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_7jlms")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds21" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_yfx1f")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds22" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("18_4jxoj")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds23" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -628)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_7jlms")
+data = ExtResource("26_5tfq4")
+
+[node name="Birds24" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_yfx1f")
+data = ExtResource("26_5tfq4")
