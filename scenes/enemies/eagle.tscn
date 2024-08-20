@@ -1,20 +1,69 @@
-[gd_scene load_steps=5 format=3 uid="uid://2uswan6bihns"]
+[gd_scene load_steps=13 format=3 uid="uid://2uswan6bihns"]
 
 [ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="1_6e1fg"]
 [ext_resource type="Script" path="res://scripts/entities/eagle.gd" id="1_x4rp6"]
-[ext_resource type="Texture2D" uid="uid://67fd3qx1r467" path="res://assets/sprites/shark.png" id="4_573b6"]
+[ext_resource type="Texture2D" uid="uid://hbd8llsm487e" path="res://assets/entities/eagle_hover.png" id="4_r5xbt"]
+[ext_resource type="Script" path="res://scripts/entities/auto_play.gd" id="5_2nfy5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l5b4"]
 size = Vector2(86, 36)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1myo"]
+atlas = ExtResource("4_r5xbt")
+region = Rect2(0, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjiml"]
+atlas = ExtResource("4_r5xbt")
+region = Rect2(50, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnxfa"]
+atlas = ExtResource("4_r5xbt")
+region = Rect2(100, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1rw1"]
+atlas = ExtResource("4_r5xbt")
+region = Rect2(150, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5chf"]
+atlas = ExtResource("4_r5xbt")
+region = Rect2(200, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d13eg"]
+atlas = ExtResource("4_r5xbt")
+region = Rect2(250, 0, 50, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_skx1b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1myo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjiml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnxfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1rw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5chf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d13eg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Eagle" type="Node2D"]
 script = ExtResource("1_x4rp6")
+using_anim = true
 
 [node name="TypeEntity" parent="." instance=ExtResource("1_6e1fg")]
 unique_name_in_owner = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("4_573b6")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
@@ -23,3 +72,8 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_6l5b4")
 debug_color = Color(0.952424, 5.77569e-07, 0.558715, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_skx1b")
+script = ExtResource("5_2nfy5")

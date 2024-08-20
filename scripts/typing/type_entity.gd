@@ -1,6 +1,7 @@
 class_name TypeEntity
 extends Node2D
 
+@export var offset_y := 10.0
 @export var target: String
 
 var input: String = ""

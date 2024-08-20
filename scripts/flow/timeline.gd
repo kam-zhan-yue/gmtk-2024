@@ -133,12 +133,12 @@ func spaceship_async() -> void:
 	if current_beat >= SPACESHIP_BEAT: return
 	if not playing: return
 
-	moon.scale_aync(1.1, 15.0)
+	moon.scale_aync(1.5, 5.0)
 	previous_beat = WALKER_2_BEAT
 	spaceship.activate()
 	game_state.player.fade_out()
 	game_state.player.reparent(spaceship_follow)
-	game_state.player.position = Vector2.ZERO
+	game_state.player.position = Vector2(100.0, 0.0)
 	camera_controller.follow()
 	camera_controller.zoom_to(1.0)
 	
@@ -151,6 +151,7 @@ func space_async() -> void:
 	previous_beat = SPACESHIP_BEAT
 	spaceship.reparent(space_follow)
 	game_state.player.reparent(space_follow)
+	game_state.player.position = Vector2(100.0, 0.0)
 	
 	await lerp_path(space_follow, SPACESHIP_BEAT, SPACE_BEAT)
 

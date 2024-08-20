@@ -49,6 +49,11 @@ func wait(delta: float) -> void:
 		var player_pos := game_state.player.global_position
 		var difference := player_pos - global_position
 		charge_direction = difference.normalized()
+		release_async()
 
 func charge(delta: float) -> void:
 	global_position += charge_direction * charge_speed * delta
+
+func release_async() -> void:
+	await Global.seconds(5.0)
+	queue_free()
