@@ -1,9 +1,9 @@
 class_name UFO
 extends Enemy
 
-@export var orbit_radius := 500.0
+@export var orbit_radius := 450.0
 @export var speed := 300.0
-@export var time_between_rockets := 2.0
+@export var time_between_rockets := 3.0
 @export var rocket_speed := 10.0
 @export var rocket_data: EnemyData
 const ROCKET = preload("res://scenes/projectiles/rocket.tscn")
@@ -56,5 +56,4 @@ func spawn_rocket() -> void:
 	var rocket := ROCKET.instantiate() as Rocket
 	rocket.global_position = global_position
 	EntityManager.add_node(rocket)
-	rocket.data = rocket_data
-	rocket.init(game_state)
+	rocket.init(game_state, rocket_data)

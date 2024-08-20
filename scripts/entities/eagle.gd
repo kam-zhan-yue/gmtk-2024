@@ -5,12 +5,14 @@ extends Enemy
 @export var speed := 50.0
 @export var charge_speed := 225.0
 @export var wait_time := 2.0
+@onready var anim: AnimatedSprite2D = %AnimatedSprite2D
 
 enum State { MOVING, TRANSITION, WAITING, CHARGING }
 var state := State.MOVING
 var angle := 0.0
 var timer := 0.0
 var charge_direction := Vector2.ZERO
+var previous_pos := Vector2.ZERO
 
 func _process(delta: float) -> void:
 	if not game_state:
@@ -35,6 +37,7 @@ func move() -> void:
 		var t := timer / time_to_target
 		global_position = start_pos.lerp(target_pos, Global.ease_out_quart(t))
 		timer += get_process_delta_time()
+		update_rotation()
 		await Global.frame()
 	start_waiting()
 
@@ -49,6 +52,16 @@ func wait(delta: float) -> void:
 		var player_pos := game_state.player.global_position
 		var difference := player_pos - global_position
 		charge_direction = difference.normalized()
+		release_async()
 
 func charge(delta: float) -> void:
 	global_position += charge_direction * charge_speed * delta
+	update_rotation()
+
+func update_rotation() -> void:
+	anim.flip_h = global_position.x <= previous_pos.x
+	previous_pos = global_position
+	
+func release_async() -> void:
+	await Global.seconds(5.0)
+	queue_free()

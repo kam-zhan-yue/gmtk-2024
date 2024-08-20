@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_3278l"]
 [ext_resource type="Script" path="res://scripts/entities/fish.gd" id="2_8kxep"]
 [ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="3_2emi7"]
-[ext_resource type="Texture2D" uid="uid://lp1pybhxsg78" path="res://assets/sprites/fish.png" id="4_75b4a"]
+[ext_resource type="Texture2D" uid="uid://lp1pybhxsg78" path="res://assets/entities/fish_darkest.png" id="4_75b4a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fg2gp"]
 radius = 45.0

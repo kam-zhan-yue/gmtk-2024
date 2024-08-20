@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqcsbkkayb3uw"]
+
+[ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_1kvuv"]
+[ext_resource type="Script" path="res://scripts/entities/fish.gd" id="2_ymbcj"]
+[ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="3_16nb4"]
+[ext_resource type="Texture2D" uid="uid://bhggdwjvalci4" path="res://assets/entities/fish_tropical.png" id="4_8i5mo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fg2gp"]
+radius = 45.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p64ym"]
+size = Vector2(53, 55)
+
+[node name="FishEnemy" type="Node2D"]
+script = ExtResource("1_1kvuv")
+
+[node name="ObstacleArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleArea"]
+shape = SubResource("CircleShape2D_fg2gp")
+
+[node name="FishBody" type="Node2D" parent="."]
+script = ExtResource("2_ymbcj")
+
+[node name="TypeEntity" parent="FishBody" instance=ExtResource("3_16nb4")]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="FishBody"]
+unique_name_in_owner = true
+texture = ExtResource("4_8i5mo")
+
+[node name="VisibleArea" type="Area2D" parent="FishBody"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishBody/VisibleArea"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_p64ym")
+debug_color = Color(0.817852, 3.85046e-07, 0.414628, 0.42)
+
+[connection signal="on_complete" from="FishBody/TypeEntity" to="FishBody" method="_on_type_entity_on_complete"]

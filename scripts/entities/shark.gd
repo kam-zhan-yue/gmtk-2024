@@ -1,12 +1,11 @@
 class_name Shark
 extends Enemy
 
-@export var bite_range := 50.0
+@export var bite_range := 100.0
 @export var speed := 75.0
 @export var retreat_speed := 25.0
 @export var bite_time := 2.0
 @export var bite_damage := 10.0
-@onready var audio := $AudioStreamPlayer2D as AudioStreamPlayer2D
 @onready var anim := %AnimatedSprite2D as AnimatedSprite2D
 
 enum State {SWIMMING, BITING, RETREATING}
@@ -54,7 +53,6 @@ func bite_async() -> void:
 	if completed:
 		return
 	game_state.player.damage(bite_damage)
-	audio.play()
 	state = State.RETREATING
 
 func bite() -> void:

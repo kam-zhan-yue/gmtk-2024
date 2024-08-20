@@ -5,14 +5,20 @@ enum State { IDLE, FOLLOW, LERP, STOP }
 var game_state: GameState
 var camera_state := State.IDLE
 var original_pos: Vector2
+var original_zoom: Vector2
 
 func _ready() -> void:
 	original_pos = position
+	original_zoom = zoom
 	Global.zoom = zoom.x
 
 func init(state: GameState) -> void:
 	game_state = state
 	follow()
+
+func reset_zoom() -> void:
+	zoom = original_zoom
+	Global.zoom = zoom.x
 
 func _process(_delta: float) -> void:
 	if camera_state == State.IDLE: return

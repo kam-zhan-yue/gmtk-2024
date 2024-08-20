@@ -40,10 +40,13 @@ func _on_damage(value: float) -> void:
 func add_node(node: Node2D) -> void:
 	spawns.add_child(node)
 
-func restart() -> void:
-	started = false
+func clear() -> void:
 	for node in spawns.get_children():
 		node.queue_free()
+
+func restart() -> void:
+	started = false
+	clear()
 	await fade_out()
 
 func fade_out(fade_time := 0.2) -> void:

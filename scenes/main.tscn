@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=114 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -20,7 +20,11 @@
 [ext_resource type="Script" path="res://scripts/flow/timeline.gd" id="12_xvfn4"]
 [ext_resource type="SpriteFrames" uid="uid://c81e2cel8mkye" path="res://scenes/animations/submarine.tres" id="13_j364a"]
 [ext_resource type="Script" path="res://scripts/moon.gd" id="14_uf7jm"]
+[ext_resource type="PackedScene" uid="uid://0oa3ab8tjhq0" path="res://scenes/enemies/fish_cod.tscn" id="20_lnpt7"]
+[ext_resource type="PackedScene" uid="uid://bhwac2n36agrt" path="res://scenes/enemies/fish_tropical.tscn" id="20_wngj2"]
+[ext_resource type="PackedScene" uid="uid://bc5vusb2i3xaq" path="res://scenes/enemies/fish_tropical_lightest.tscn" id="20_yfaim"]
 [ext_resource type="PackedScene" uid="uid://dq3patfg1lj8n" path="res://scenes/spawn_groups/ocean_left_boid.tscn" id="22_qtl1v"]
+[ext_resource type="PackedScene" uid="uid://ci0p0g0h2ghko" path="res://scenes/enemies/fish_cod_light.tscn" id="22_vs00x"]
 [ext_resource type="PackedScene" uid="uid://bb3fi04cw6lsi" path="res://scenes/spawn_groups/ocean_right_enemy.tscn" id="23_qpebw"]
 [ext_resource type="Resource" uid="uid://q4tad15ihnr2" path="res://resources/ocean/pressure.tres" id="25_ob3l5"]
 [ext_resource type="Resource" uid="uid://c2xsbdpaw8sdt" path="res://resources/ocean/sea.tres" id="25_y2lc6"]
@@ -30,6 +34,7 @@
 [ext_resource type="Resource" uid="uid://dsvgkep20n2rg" path="res://resources/ocean/touch.tres" id="26_pgetf"]
 [ext_resource type="Texture2D" uid="uid://dnsxixk661nv8" path="res://assets/background/space/moon.png" id="26_ux686"]
 [ext_resource type="Resource" uid="uid://b4ph3ghtcjrxc" path="res://resources/ocean/deep.tres" id="26_vfyke"]
+[ext_resource type="PackedScene" uid="uid://dj6gwjdqgefpc" path="res://scenes/spawn_groups/ocean_left_cod_boid.tscn" id="26_wk6sl"]
 [ext_resource type="Resource" uid="uid://cro5ivex8jh1j" path="res://resources/ocean/cold.tres" id="27_331a2"]
 [ext_resource type="PackedScene" uid="uid://dwj8aco33m8sk" path="res://scenes/spawn_groups/ocean_right_shark.tscn" id="27_sah8c"]
 [ext_resource type="Resource" uid="uid://bmm2v5xywclmn" path="res://resources/ocean/ocean.tres" id="27_yffdo"]
@@ -37,11 +42,15 @@
 [ext_resource type="Resource" uid="uid://bum6fkghge8bo" path="res://resources/ocean/see.tres" id="28_x6ge5"]
 [ext_resource type="Resource" uid="uid://cq7tfp7f1eniw" path="res://resources/ocean/listen.tres" id="29_vgcra"]
 [ext_resource type="PackedScene" uid="uid://s5wywhi6lrch" path="res://scenes/spawn_groups/ocean_left_enemy.tscn" id="30_av380"]
+[ext_resource type="PackedScene" uid="uid://drt4nb1n0gxbw" path="res://scenes/spawn_groups/ocean_right_tropical_enemy.tscn" id="30_kx4fv"]
+[ext_resource type="PackedScene" uid="uid://b4ym4uin2o5ly" path="res://scenes/spawn_groups/ocean_left_tropical_boid.tscn" id="32_wvvfs"]
 [ext_resource type="Resource" uid="uid://cnydapsvld37u" path="res://resources/ocean/wish.tres" id="33_l2fur"]
+[ext_resource type="PackedScene" uid="uid://cxghb45cc37dq" path="res://scenes/spawn_groups/ocean_right_cod_enemy.tscn" id="33_yax2u"]
 [ext_resource type="Resource" uid="uid://q5uuknlqw2a1" path="res://resources/sky/endless.tres" id="35_62whc"]
 [ext_resource type="Resource" uid="uid://bfmbxk3u45bd5" path="res://resources/sky/lifting.tres" id="36_7riny"]
 [ext_resource type="Resource" uid="uid://d225787vy4hm6" path="res://resources/sky/freedom.tres" id="37_237bd"]
 [ext_resource type="Resource" uid="uid://dqjnl1ry2ha3j" path="res://resources/sky/infinite.tres" id="38_4c6k0"]
+[ext_resource type="PackedScene" uid="uid://bnhjh6qkdl3en" path="res://scenes/spawn_groups/ocean_left_cod_enemy.tscn" id="38_qkjlc"]
 [ext_resource type="Resource" uid="uid://dg723hp2hx64j" path="res://resources/sky/careless.tres" id="39_5fnet"]
 [ext_resource type="PackedScene" uid="uid://cku8jw4nd7ahq" path="res://scenes/spawn_groups/sky_left_boid.tscn" id="39_sy2u7"]
 [ext_resource type="Resource" uid="uid://dvf4iwtdinjgl" path="res://resources/sky/floating.tres" id="40_3yvr8"]
@@ -53,6 +62,33 @@
 [ext_resource type="Resource" uid="uid://de7jjfhnr8v2i" path="res://resources/sky/caressing.tres" id="46_r2ivd"]
 [ext_resource type="Resource" uid="uid://552hlqxomdff" path="res://resources/sky/radiant.tres" id="49_d0b06"]
 [ext_resource type="Resource" uid="uid://cu1looefwjbwu" path="res://resources/sky/limitless.tres" id="50_owwli"]
+[ext_resource type="PackedScene" uid="uid://dpgv7tmwn2ea4" path="res://scenes/spawn_groups/space_ufo_top_left.tscn" id="54_mcens"]
+[ext_resource type="PackedScene" uid="uid://b0ym47i8n8apr" path="res://scenes/spawn_groups/space_ufo_diagonal_4.tscn" id="54_vftrf"]
+[ext_resource type="Resource" uid="uid://b3t8hojvwokg1" path="res://resources/space/entropy.tres" id="55_r7vre"]
+[ext_resource type="PackedScene" uid="uid://ba2ncyxp1321p" path="res://scenes/spawn_groups/space_ufo_bottom_right.tscn" id="56_hhisi"]
+[ext_resource type="PackedScene" uid="uid://b7vkg3w8qjunw" path="res://scenes/spawn_groups/space_satellite_top_right.tscn" id="56_pvswd"]
+[ext_resource type="Resource" uid="uid://duplwckuvlfth" path="res://resources/space/perpetual.tres" id="57_2r28y"]
+[ext_resource type="Resource" uid="uid://dykuhnakaywap" path="res://resources/space/ethereal.tres" id="57_7ac1m"]
+[ext_resource type="Resource" uid="uid://cc3tjujhesw1x" path="res://resources/space/interstellar.tres" id="58_xbeo4"]
+[ext_resource type="PackedScene" uid="uid://cst7evhaaj7y4" path="res://scenes/spawn_groups/space_ufo_bottom_left.tscn" id="60_2lh3b"]
+[ext_resource type="PackedScene" uid="uid://uxux6ygx78ul" path="res://scenes/spawn_groups/space_satellite_bottom_left.tscn" id="62_d8rhj"]
+[ext_resource type="Resource" uid="uid://bjyv5f35qoe0k" path="res://resources/space/pleasure.tres" id="63_sgitb"]
+[ext_resource type="PackedScene" uid="uid://c2bmv7tv4h48k" path="res://scenes/spawn_groups/space_ufo_diagonal_left_2.tscn" id="64_h62jh"]
+[ext_resource type="Resource" uid="uid://upvt4a0i3e1k" path="res://resources/space/parallax.tres" id="65_1q5ft"]
+[ext_resource type="Resource" uid="uid://d2qgifpsywxe6" path="res://resources/space/singularity.tres" id="65_egjex"]
+[ext_resource type="PackedScene" uid="uid://dnlvsrr7u4rvv" path="res://scenes/spawn_groups/space_ufo_diagonal_right_2.tscn" id="67_4dw3c"]
+[ext_resource type="Resource" uid="uid://dy2ugk0r53w8b" path="res://resources/space/universe.tres" id="68_ltqx7"]
+[ext_resource type="PackedScene" uid="uid://drjviyug48en5" path="res://scenes/spawn_groups/space_satellite_top_left.tscn" id="68_t0f2j"]
+[ext_resource type="Resource" uid="uid://dk5qj4hgwhcj2" path="res://resources/space/antimatter.tres" id="70_2xend"]
+[ext_resource type="PackedScene" uid="uid://c78mg11ukv7bc" path="res://scenes/spawn_groups/space_ufo_cross_4.tscn" id="71_vr5vq"]
+[ext_resource type="Resource" uid="uid://c2fpkkgjj7dw0" path="res://resources/space/indifferent.tres" id="72_c11gg"]
+[ext_resource type="Resource" uid="uid://dtbvkns3uxbhg" path="res://resources/space/vicious.tres" id="73_nj1s6"]
+[ext_resource type="Resource" uid="uid://bc8fktoytwb5g" path="res://resources/space/equilibrium.tres" id="73_sptqm"]
+[ext_resource type="PackedScene" uid="uid://tlcxep3vdyqp" path="res://scenes/spawn_groups/space_satellite_bottom_right.tscn" id="74_tv3ex"]
+[ext_resource type="Resource" uid="uid://cvxwwmhlpakay" path="res://resources/space/unfeeling.tres" id="76_pfgv6"]
+[ext_resource type="Resource" uid="uid://d4cipvo2ed4tl" path="res://resources/space/empty.tres" id="79_0bm1c"]
+[ext_resource type="Resource" uid="uid://cyb6v7ou2ik43" path="res://resources/space/meaning.tres" id="79_5b1q0"]
+[ext_resource type="Script" path="res://scripts/entities/enemy_data.gd" id="80_kb30k"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
@@ -72,9 +108,9 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_gw13f"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1, -246, 0, 0, 0, 0, 8, -273, 0, 0, 0, 0, 20, -297, 0, 0, 0, 0, 53, -323, 0, 0, 0, 0, 88, -350, 0, 0, 0, 0, 120, -376, 0, 0, 0, 0, 171, -400, 0, 0, 0, 0, 243, -416, 0, 0, 0, 0, 307, -436, 0, 0, 0, 0, 391, -453)
+"points": PackedVector2Array(0, 0, 0, 0, -2, -246, 0, 0, 0, 0, 12, -284, 0, 0, 0, 0, 61, -319, 0, 0, 0, 0, 129, -339, 0, 0, 0, 0, 225, -362, 0, 0, 0, 0, 322, -383)
 }
-point_count = 10
+point_count = 6
 
 [sub_resource type="Curve2D" id="Curve2D_q0ptm"]
 _data = {
@@ -210,12 +246,22 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Resource" id="Resource_8d1j8"]
+script = ExtResource("80_kb30k")
+name = "tide"
+score = 20.0
+damage = 10.0
+
 [node name="MainScene" type="Node2D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bgy46")
 
 [node name="Background" parent="." instance=ExtResource("12_dvr37")]
+
+[node name="CameraStart" type="Marker2D" parent="Background"]
+unique_name_in_owner = true
+position = Vector2(-150, 183)
 
 [node name="CameraGame" type="Marker2D" parent="Background"]
 unique_name_in_owner = true
@@ -288,7 +334,7 @@ curve = SubResource("Curve2D_gw13f")
 
 [node name="DiverFollow" type="PathFollow2D" parent="Timeline/DiverPath"]
 unique_name_in_owner = true
-position = Vector2(-1, -246)
+position = Vector2(-2, -246)
 rotation = -1.24905
 rotates = false
 
@@ -372,23 +418,68 @@ script = ExtResource("1_vt02a")
 [node name="StartSpawner" type="Node2D" parent="GameManager"]
 script = ExtResource("7_5dx1o")
 
-[node name="BoidSpawner1" type="Node2D" parent="GameManager/StartSpawner"]
-position = Vector2(-176, 258)
+[node name="FishSpawner" type="Node2D" parent="GameManager/StartSpawner"]
+position = Vector2(-271, 257)
 script = ExtResource("8_egxth")
+group = 1
 boid_scene = ExtResource("9_rtuln")
 start_y_direction = Vector2(-1, -1)
 spawn_radius = 200.0
-spawn_count = 30
+spawn_count = 6
 spawn_on_ready = false
 
-[node name="BoidSpawner2" type="Node2D" parent="GameManager/StartSpawner"]
-position = Vector2(172, 117)
+[node name="CodSpawner" type="Node2D" parent="GameManager/StartSpawner"]
+position = Vector2(216, 192)
 script = ExtResource("8_egxth")
-boid_scene = ExtResource("9_rtuln")
+group = 1
+boid_scene = ExtResource("20_lnpt7")
 start_x_direction = Vector2(-1, -1)
-start_y_direction = Vector2(0.5, 0.5)
+start_y_direction = Vector2(0, 0)
 spawn_radius = 200.0
-spawn_count = 30
+spawn_count = 3
+spawn_on_ready = false
+
+[node name="TropicalSpawner" type="Node2D" parent="GameManager/StartSpawner"]
+position = Vector2(254, 117)
+script = ExtResource("8_egxth")
+group = 2
+boid_scene = ExtResource("20_wngj2")
+start_x_direction = Vector2(-1, -1)
+start_y_direction = Vector2(0, 0)
+spawn_radius = 200.0
+spawn_count = 2
+spawn_on_ready = false
+
+[node name="TropicalLightSpawner" type="Node2D" parent="GameManager/StartSpawner"]
+position = Vector2(-216, 71)
+script = ExtResource("8_egxth")
+group = 2
+boid_scene = ExtResource("9_rtuln")
+start_y_direction = Vector2(0, 0.5)
+spawn_radius = 200.0
+spawn_count = 2
+spawn_on_ready = false
+
+[node name="CodLightSpawner" type="Node2D" parent="GameManager/StartSpawner"]
+position = Vector2(347, -9)
+script = ExtResource("8_egxth")
+group = 1
+boid_scene = ExtResource("22_vs00x")
+start_x_direction = Vector2(-1, -1)
+start_y_direction = Vector2(0, 0)
+spawn_radius = 200.0
+spawn_count = 3
+spawn_on_ready = false
+
+[node name="TropicalLightestSpawner" type="Node2D" parent="GameManager/StartSpawner"]
+position = Vector2(-270, 206)
+scale = Vector2(1, 0.993611)
+script = ExtResource("8_egxth")
+group = 2
+boid_scene = ExtResource("20_yfaim")
+start_y_direction = Vector2(0, 0)
+spawn_radius = 200.0
+spawn_count = 2
 spawn_on_ready = false
 
 [node name="Player" parent="." instance=ExtResource("3_h8ik1")]
@@ -401,7 +492,7 @@ unique_name_in_owner = true
 [node name="feel" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 388)
 script = ExtResource("12_j6dic")
-left_group = ExtResource("22_qtl1v")
+left_group = ExtResource("26_wk6sl")
 right_group = ExtResource("23_qpebw")
 offset_y = -250.0
 data = ExtResource("26_5tfq4")
@@ -410,15 +501,15 @@ data = ExtResource("26_5tfq4")
 position = Vector2(-1, 296)
 script = ExtResource("12_j6dic")
 left_group = ExtResource("22_qtl1v")
-right_group = ExtResource("23_qpebw")
+right_group = ExtResource("30_kx4fv")
 offset_y = -150.0
 data = ExtResource("25_ob3l5")
 
 [node name="sea" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 231)
 script = ExtResource("12_j6dic")
-left_group = ExtResource("22_qtl1v")
-right_group = ExtResource("23_qpebw")
+left_group = ExtResource("32_wvvfs")
+right_group = ExtResource("33_yax2u")
 offset_y = -150.0
 data = ExtResource("25_y2lc6")
 
@@ -432,7 +523,7 @@ data = ExtResource("26_vfyke")
 [node name="ocean" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 116)
 script = ExtResource("12_j6dic")
-left_group = ExtResource("30_av380")
+left_group = ExtResource("38_qkjlc")
 right_group = ExtResource("27_sah8c")
 data = ExtResource("27_yffdo")
 
@@ -440,7 +531,7 @@ data = ExtResource("27_yffdo")
 position = Vector2(-1, 50)
 script = ExtResource("12_j6dic")
 left_group = ExtResource("22_qtl1v")
-right_group = ExtResource("23_qpebw")
+right_group = ExtResource("30_kx4fv")
 data = ExtResource("26_pgetf")
 
 [node name="cold" type="Marker2D" parent="SpawnGroups"]
@@ -521,7 +612,7 @@ right_group = ExtResource("44_7bhjn")
 data = ExtResource("38_4c6k0")
 
 [node name="radiant" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -836)
+position = Vector2(-6, -841)
 script = ExtResource("12_j6dic")
 left_group = ExtResource("46_712h2")
 right_group = ExtResource("44_7bhjn")
@@ -530,7 +621,7 @@ data = ExtResource("49_d0b06")
 [node name="limitless" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, -836)
 script = ExtResource("12_j6dic")
-right_group = ExtResource("44_7bhjn")
+left_group = ExtResource("43_mxd5q")
 data = ExtResource("50_owwli")
 
 [node name="careless" type="Marker2D" parent="SpawnGroups"]
@@ -553,3 +644,122 @@ script = ExtResource("12_j6dic")
 left_group = ExtResource("46_712h2")
 right_group = ExtResource("40_j4awe")
 data = ExtResource("40_3yvr8")
+
+[node name="entropy" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -2648)
+script = ExtResource("12_j6dic")
+left_group = ExtResource("54_mcens")
+offset_y = 0.0
+data = ExtResource("55_r7vre")
+
+[node name="perpetual" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -2648)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("56_hhisi")
+offset_y = 0.0
+data = ExtResource("57_2r28y")
+
+[node name="interstellar" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -2804)
+script = ExtResource("12_j6dic")
+left_group = ExtResource("56_pvswd")
+offset_y = 0.0
+data = ExtResource("58_xbeo4")
+
+[node name="ethereal" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -2804)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("60_2lh3b")
+offset_y = 0.0
+data = ExtResource("57_7ac1m")
+
+[node name="tesseract" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -2973)
+script = ExtResource("12_j6dic")
+left_group = ExtResource("62_d8rhj")
+offset_y = 0.0
+data = ExtResource("58_xbeo4")
+
+[node name="pleasure" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -2973)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("56_pvswd")
+offset_y = 0.0
+data = ExtResource("63_sgitb")
+
+[node name="parallax" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3097)
+script = ExtResource("12_j6dic")
+left_group = ExtResource("64_h62jh")
+offset_y = 0.0
+data = ExtResource("65_1q5ft")
+
+[node name="singularity" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3097)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("56_pvswd")
+offset_y = 0.0
+data = ExtResource("65_egjex")
+
+[node name="universe" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3266)
+script = ExtResource("12_j6dic")
+left_group = ExtResource("67_4dw3c")
+offset_y = 0.0
+data = ExtResource("68_ltqx7")
+
+[node name="antimatter" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3266)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("68_t0f2j")
+offset_y = 0.0
+data = ExtResource("70_2xend")
+
+[node name="indifferent" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3438)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("71_vr5vq")
+offset_y = 0.0
+data = ExtResource("72_c11gg")
+
+[node name="vicious" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3612)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("71_vr5vq")
+offset_y = 0.0
+data = ExtResource("73_nj1s6")
+
+[node name="equilibrium" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3782)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("68_t0f2j")
+offset_y = 0.0
+data = ExtResource("73_sptqm")
+
+[node name="unfeeling" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3782)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("74_tv3ex")
+offset_y = 0.0
+data = ExtResource("76_pfgv6")
+
+[node name="swallow" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3959)
+script = ExtResource("12_j6dic")
+left_group = ExtResource("64_h62jh")
+offset_y = 0.0
+data = ExtResource("79_5b1q0")
+
+[node name="weightlessness" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3959)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("67_4dw3c")
+offset_y = 0.0
+data = ExtResource("79_0bm1c")
+
+[node name="tide" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -4045)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("54_vftrf")
+offset_y = 0.0
+data = SubResource("Resource_8d1j8")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_kxmmy"]
 [ext_resource type="Script" path="res://scenes/boids/boid_fade.gd" id="2_5lmq3"]
-[ext_resource type="Texture2D" uid="uid://lp1pybhxsg78" path="res://assets/sprites/fish.png" id="5_g513x"]
+[ext_resource type="Texture2D" uid="uid://lp1pybhxsg78" path="res://assets/entities/fish_darkest.png" id="5_g513x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fg2gp"]
 radius = 15.1327

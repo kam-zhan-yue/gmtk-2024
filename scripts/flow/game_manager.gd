@@ -6,22 +6,26 @@ extends Node
 @onready var ui := %UI as UI
 @onready var start_spawner: StartSpawner = $StartSpawner
 @onready var music_player := %MusicPlayer as AudioStreamPlayer2D
-@onready var timeline: Timeline = %Timeline
-@onready var spawn_groups: Node2D = %SpawnGroups
+@onready var timeline := %Timeline as Timeline
+@onready var spawn_groups := %SpawnGroups as Node2D
 
 var game_state: GameState
 
 func _ready() -> void:
+	new_game()
+	start_spawner.start_spawning()
+
+func new_game() -> void:
 	game_state = GameState.new(player)
 	game_state.on_pause.connect(_on_pause)
 	game_state.on_start.connect(_on_start)
 	game_state.on_restart.connect(_on_restart)
+	game_state.on_end_game.connect(_on_end_game)
 	ui.init(game_state)
 	timeline.init(game_state)
 	for group in spawn_groups.get_children():
 		if group is SpawnTrigger:
 			(group as SpawnTrigger).init(game_state)
-	start_spawner.start_spawning()
 
 func _on_pause(value: bool) -> void:
 	music_player.stream_paused = value
@@ -38,18 +42,27 @@ func _on_start() -> void:
 func _on_restart() -> void:
 	music_player.stop()
 	# Clear up references
+	clear_references()
+	await timeline.restart()
+	
+	new_game()
+	game_state.start()
+
+func _on_end_game() -> void:
+	await ui.fade_in()
+	
+	music_player.stop()
+	
+	# Clear up references
+	clear_references()
+	await timeline.restart()
+	start_spawner.start_spawning()
+	await ui.fade_out()
+
+func clear_references() -> void:
 	BeatManager.stop()
 	BoidManager.restart()
 	EntityManager.restart()
-	await timeline.restart()
-	
-	game_state = GameState.new(player)
-	game_state.on_pause.connect(_on_pause)
-	game_state.on_start.connect(_on_start)
-	game_state.on_restart.connect(_on_restart)
-	ui.init(game_state)
-	timeline.init(game_state)
 	for group in spawn_groups.get_children():
 		if group is SpawnTrigger:
-			(group as SpawnTrigger).init(game_state)
-	game_state.start()
+			(group as SpawnTrigger).clear()

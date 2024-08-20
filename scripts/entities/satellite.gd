@@ -3,8 +3,10 @@ extends Enemy
 
 @export var orbit_radius := 100.0
 @export var orbit_period := 10.0
-@export var speed := 200.0
+@export var speed := 350.0
 @export var laser_damage := 5.0
+
+const TIME_BEFORE_SHOOT = 3.0
 
 const LASER = preload("res://scenes/projectiles/laser.tscn")
 enum State { MOVING, ORBITING }
@@ -20,6 +22,8 @@ func _process(delta: float) -> void:
 		orbit(delta)
 
 func move() -> void:
+	if completed: 
+		return
 	var start_pos := global_position
 	var player_pos := game_state.player.global_position
 	var difference := player_pos - start_pos
@@ -46,7 +50,7 @@ func orbit(delta: float) -> void:
 	pass
 
 func shoot_async() -> void:
-	await Global.seconds(1.0)
+	await Global.seconds(TIME_BEFORE_SHOOT)
 	while not completed:
 		var laser := LASER.instantiate() as Laser
 		add_child(laser)
