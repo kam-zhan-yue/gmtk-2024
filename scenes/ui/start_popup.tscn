@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxrld8r6s1y8"]
+[gd_scene load_steps=7 format=3 uid="uid://cxrld8r6s1y8"]
 
 [ext_resource type="Script" path="res://scripts/ui/start_popup.gd" id="1_u5v8x"]
 [ext_resource type="Theme" uid="uid://d2jinjaboiehf" path="res://resources/ui/text.tres" id="1_x36ww"]
+[ext_resource type="Script" path="res://scripts/ui/title_popup.gd" id="3_0w53k"]
+[ext_resource type="Script" path="res://scenes/ui/type_label.gd" id="3_5j7nw"]
+[ext_resource type="Script" path="res://scripts/typing/type_entity.gd" id="3_lnit0"]
+[ext_resource type="Script" path="res://scripts/ui/credits_popup.gd" id="5_t3sir"]
 
 [node name="StartPopup" type="Control"]
 layout_mode = 3
@@ -12,50 +16,184 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u5v8x")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="PlayEntity" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 980)
+script = ExtResource("3_lnit0")
+
+[node name="CreditEntity" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 980)
+script = ExtResource("3_lnit0")
+
+[node name="BackEntity" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-100, 752)
+script = ExtResource("3_lnit0")
+
+[node name="TitlePopup" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(800, 600)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 100
 theme_override_constants/margin_bottom = 100
+script = ExtResource("3_0w53k")
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TitlePopup"]
 layout_mode = 2
+size_flags_vertical = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
-custom_minimum_size = Vector2(1000, 0)
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/CenterContainer/VBoxContainer"]
+[node name="TIDE" type="RichTextLabel" parent="TitlePopup/VBoxContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
+size_flags_vertical = 8
 theme = ExtResource("1_x36ww")
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "[center]Press Anywhere to Start[/center]"
+text = "tide."
 fit_content = true
 scroll_active = false
+script = ExtResource("3_5j7nw")
 
-[node name="Footer" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(0, 100)
+[node name="Instruction" type="RichTextLabel" parent="TitlePopup/VBoxContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_x36ww")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "type 'play' to start"
+fit_content = true
+scroll_active = false
+script = ExtResource("3_5j7nw")
+
+[node name="PlayLabel" type="RichTextLabel" parent="TitlePopup/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_x36ww")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "play"
+fit_content = true
+scroll_active = false
+script = ExtResource("3_5j7nw")
+
+[node name="CreditLabel" type="RichTextLabel" parent="TitlePopup/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_x36ww")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "credits"
+fit_content = true
+scroll_active = false
+script = ExtResource("3_5j7nw")
+
+[node name="CreditsPopup" type="MarginContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(800, 600)
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_top = -40.0
+offset_right = 40.0
 grow_vertical = 0
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_bottom = 100
+script = ExtResource("5_t3sir")
 
-[node name="CenterContainer" type="CenterContainer" parent="Footer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPopup"]
 layout_mode = 2
+size_flags_vertical = 8
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Footer/CenterContainer"]
-custom_minimum_size = Vector2(1000, 24)
+[node name="GridContainer" type="GridContainer" parent="CreditsPopup/VBoxContainer"]
 layout_mode = 2
+columns = 2
+
+[node name="Programmer" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_vertical = 8
 theme = ExtResource("1_x36ww")
+theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
-text = "[center][i]A game by Alex Kam, JuiceGoose, Meryl Gogolashvili[/i][/center]"
+text = "programmer"
 fit_content = true
 scroll_active = false
+
+[node name="Alex" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_x36ww")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Alexander Kam"
+fit_content = true
+scroll_active = false
+
+[node name="Artist" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_x36ww")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "artist"
+fit_content = true
+scroll_active = false
+
+[node name="Meryl" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_x36ww")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Meryl Gogolashvili"
+fit_content = true
+scroll_active = false
+
+[node name="Composer" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_x36ww")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "composer"
+fit_content = true
+scroll_active = false
+
+[node name="Josh" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_x36ww")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "JuiceGoose"
+fit_content = true
+scroll_active = false
+
+[node name="BackLabel" type="RichTextLabel" parent="CreditsPopup/VBoxContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_x36ww")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "back"
+fit_content = true
+scroll_active = false
+script = ExtResource("3_5j7nw")
