@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_a1bkm")
 name = "Sparrow"
-score = 5.0
+score = 10.0
 damage = 10.0

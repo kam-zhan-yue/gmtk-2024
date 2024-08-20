@@ -5,9 +5,10 @@
 [ext_resource type="SpriteFrames" uid="uid://b8oghapvwoati" path="res://scenes/animations/player.tres" id="3_hgl8n"]
 
 [node name="TestParallax" type="Node2D"]
-position = Vector2(4, 9)
+position = Vector2(5, 9)
 
 [node name="Background" parent="." instance=ExtResource("1_a1s5c")]
+position = Vector2(0, 1)
 
 [node name="Player" type="Node2D" parent="."]
 position = Vector2(0, 312)

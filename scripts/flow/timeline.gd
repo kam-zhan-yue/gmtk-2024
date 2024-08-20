@@ -15,6 +15,7 @@ const BALLOON_BEAT = 170
 @onready var diver_follow := %DiverFollow as PathFollow2D
 @onready var walker_follow := %WalkerFollow as PathFollow2D
 @onready var balloon_follow := %BalloonFollow as PathFollow2D
+@onready var hot_air_balloon := %HotAirBalloon as HotAirBalloon
 
 var game_state: GameState
 
@@ -75,6 +76,7 @@ func balloon_async() -> void:
 	if current_beat > BALLOON_BEAT: return
 	if not playing: return
 	# Reparent the player to the dive, and keep camera tracking
+	hot_air_balloon.activate()
 	game_state.player.reparent(balloon_follow)
 	game_state.player.position = Vector2.ZERO
 	camera_controller.follow()
