@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=102 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -53,9 +53,31 @@
 [ext_resource type="Resource" uid="uid://de7jjfhnr8v2i" path="res://resources/sky/caressing.tres" id="46_r2ivd"]
 [ext_resource type="Resource" uid="uid://552hlqxomdff" path="res://resources/sky/radiant.tres" id="49_d0b06"]
 [ext_resource type="Resource" uid="uid://cu1looefwjbwu" path="res://resources/sky/limitless.tres" id="50_owwli"]
-[ext_resource type="PackedScene" uid="uid://b0ym47i8n8apr" path="res://scenes/spawn_groups/space_ufo_diagonal_4.tscn" id="54_vftrf"]
+[ext_resource type="PackedScene" uid="uid://dpgv7tmwn2ea4" path="res://scenes/spawn_groups/space_ufo_top_left.tscn" id="54_mcens"]
 [ext_resource type="Resource" uid="uid://b3t8hojvwokg1" path="res://resources/space/entropy.tres" id="55_r7vre"]
+[ext_resource type="PackedScene" uid="uid://ba2ncyxp1321p" path="res://scenes/spawn_groups/space_ufo_bottom_right.tscn" id="56_hhisi"]
 [ext_resource type="PackedScene" uid="uid://b7vkg3w8qjunw" path="res://scenes/spawn_groups/space_satellite_top_right.tscn" id="56_pvswd"]
+[ext_resource type="Resource" uid="uid://duplwckuvlfth" path="res://resources/space/perpetual.tres" id="57_2r28y"]
+[ext_resource type="Resource" uid="uid://dykuhnakaywap" path="res://resources/space/ethereal.tres" id="57_7ac1m"]
+[ext_resource type="Resource" uid="uid://cc3tjujhesw1x" path="res://resources/space/interstellar.tres" id="58_xbeo4"]
+[ext_resource type="PackedScene" uid="uid://cst7evhaaj7y4" path="res://scenes/spawn_groups/space_ufo_bottom_left.tscn" id="60_2lh3b"]
+[ext_resource type="PackedScene" uid="uid://uxux6ygx78ul" path="res://scenes/spawn_groups/space_satellite_bottom_left.tscn" id="62_d8rhj"]
+[ext_resource type="Resource" uid="uid://bjyv5f35qoe0k" path="res://resources/space/pleasure.tres" id="63_sgitb"]
+[ext_resource type="PackedScene" uid="uid://c2bmv7tv4h48k" path="res://scenes/spawn_groups/space_ufo_diagonal_left_2.tscn" id="64_h62jh"]
+[ext_resource type="Resource" uid="uid://upvt4a0i3e1k" path="res://resources/space/parallax.tres" id="65_1q5ft"]
+[ext_resource type="Resource" uid="uid://d2qgifpsywxe6" path="res://resources/space/singularity.tres" id="65_egjex"]
+[ext_resource type="PackedScene" uid="uid://dnlvsrr7u4rvv" path="res://scenes/spawn_groups/space_ufo_diagonal_right_2.tscn" id="67_4dw3c"]
+[ext_resource type="Resource" uid="uid://dy2ugk0r53w8b" path="res://resources/space/universe.tres" id="68_ltqx7"]
+[ext_resource type="PackedScene" uid="uid://drjviyug48en5" path="res://scenes/spawn_groups/space_satellite_top_left.tscn" id="68_t0f2j"]
+[ext_resource type="Resource" uid="uid://dk5qj4hgwhcj2" path="res://resources/space/antimatter.tres" id="70_2xend"]
+[ext_resource type="PackedScene" uid="uid://c78mg11ukv7bc" path="res://scenes/spawn_groups/space_ufo_cross_4.tscn" id="71_vr5vq"]
+[ext_resource type="Resource" uid="uid://c2fpkkgjj7dw0" path="res://resources/space/indifferent.tres" id="72_c11gg"]
+[ext_resource type="Resource" uid="uid://dtbvkns3uxbhg" path="res://resources/space/vicious.tres" id="73_nj1s6"]
+[ext_resource type="Resource" uid="uid://bc8fktoytwb5g" path="res://resources/space/equilibrium.tres" id="73_sptqm"]
+[ext_resource type="PackedScene" uid="uid://tlcxep3vdyqp" path="res://scenes/spawn_groups/space_satellite_bottom_right.tscn" id="74_tv3ex"]
+[ext_resource type="Resource" uid="uid://cvxwwmhlpakay" path="res://resources/space/unfeeling.tres" id="76_pfgv6"]
+[ext_resource type="Resource" uid="uid://d4cipvo2ed4tl" path="res://resources/space/empty.tres" id="79_0bm1c"]
+[ext_resource type="Resource" uid="uid://cyb6v7ou2ik43" path="res://resources/space/meaning.tres" id="79_5b1q0"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
@@ -558,15 +580,113 @@ right_group = ExtResource("40_j4awe")
 data = ExtResource("40_3yvr8")
 
 [node name="entropy" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-66, -2687)
+position = Vector2(-66, -2648)
 script = ExtResource("12_j6dic")
-left_group = ExtResource("54_vftrf")
+left_group = ExtResource("54_mcens")
 offset_y = 0.0
 data = ExtResource("55_r7vre")
 
-[node name="entropy2" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-66, -2687)
+[node name="perpetual" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -2648)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("56_hhisi")
+offset_y = 0.0
+data = ExtResource("57_2r28y")
+
+[node name="interstellar" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -2804)
+script = ExtResource("12_j6dic")
+left_group = ExtResource("56_pvswd")
+offset_y = 0.0
+data = ExtResource("58_xbeo4")
+
+[node name="ethereal" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -2804)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("60_2lh3b")
+offset_y = 0.0
+data = ExtResource("57_7ac1m")
+
+[node name="tesseract" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -2973)
+script = ExtResource("12_j6dic")
+left_group = ExtResource("62_d8rhj")
+offset_y = 0.0
+data = ExtResource("58_xbeo4")
+
+[node name="pleasure" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -2973)
 script = ExtResource("12_j6dic")
 right_group = ExtResource("56_pvswd")
 offset_y = 0.0
-data = ExtResource("55_r7vre")
+data = ExtResource("63_sgitb")
+
+[node name="parallax" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3097)
+script = ExtResource("12_j6dic")
+left_group = ExtResource("64_h62jh")
+offset_y = 0.0
+data = ExtResource("65_1q5ft")
+
+[node name="singularity" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3097)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("56_pvswd")
+offset_y = 0.0
+data = ExtResource("65_egjex")
+
+[node name="universe" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3266)
+script = ExtResource("12_j6dic")
+left_group = ExtResource("67_4dw3c")
+offset_y = 0.0
+data = ExtResource("68_ltqx7")
+
+[node name="antimatter" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3266)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("68_t0f2j")
+offset_y = 0.0
+data = ExtResource("70_2xend")
+
+[node name="indifferent" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3438)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("71_vr5vq")
+offset_y = 0.0
+data = ExtResource("72_c11gg")
+
+[node name="vicious" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3612)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("71_vr5vq")
+offset_y = 0.0
+data = ExtResource("73_nj1s6")
+
+[node name="equilibrium" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3782)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("68_t0f2j")
+offset_y = 0.0
+data = ExtResource("73_sptqm")
+
+[node name="unfeeling" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3782)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("74_tv3ex")
+offset_y = 0.0
+data = ExtResource("76_pfgv6")
+
+[node name="swallow" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3959)
+script = ExtResource("12_j6dic")
+left_group = ExtResource("64_h62jh")
+offset_y = 0.0
+data = ExtResource("79_5b1q0")
+
+[node name="weightlessness" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-66, -3959)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("67_4dw3c")
+offset_y = 0.0
+data = ExtResource("79_0bm1c")

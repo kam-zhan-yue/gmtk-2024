@@ -7,4 +7,4 @@
 script = ExtResource("1_owjpe")
 
 [node name="Satellite" parent="." instance=ExtResource("2_cief5")]
-position = Vector2(500, -500)
+position = Vector2(1080, -1080)

@@ -3,7 +3,7 @@ extends Enemy
 
 @export var orbit_radius := 100.0
 @export var orbit_period := 10.0
-@export var speed := 200.0
+@export var speed := 350.0
 @export var laser_damage := 5.0
 
 const LASER = preload("res://scenes/projectiles/laser.tscn")
@@ -20,6 +20,8 @@ func _process(delta: float) -> void:
 		orbit(delta)
 
 func move() -> void:
+	if completed: 
+		return
 	var start_pos := global_position
 	var player_pos := game_state.player.global_position
 	var difference := player_pos - start_pos

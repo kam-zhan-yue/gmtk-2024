@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_l0bcj")
 name = "interstellar"
-score = 10.0
+score = 20.0
 damage = 10.0

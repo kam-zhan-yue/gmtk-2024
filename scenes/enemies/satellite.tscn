@@ -9,7 +9,7 @@ size = Vector2(287, 288)
 
 [node name="Satellite" type="Node2D"]
 script = ExtResource("1_2opui")
-orbit_radius = 500.0
+orbit_radius = 400.0
 
 [node name="TypeEntity" parent="." instance=ExtResource("1_0wodp")]
 unique_name_in_owner = true

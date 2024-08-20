@@ -24,28 +24,6 @@ var is_casting: bool = false :
 func _ready():
 	is_casting = false
 
-#func _input(event):
-	#if event is InputEventMouseButton:
-		#if not is_casting:
-			#is_casting = true
-			#update_laser(Vector2.ZERO, get_global_mouse_position())
-			#await Global.seconds(1.0)
-			#is_casting = false
-
-#func _physics_process(delta: float) -> void:
-	#var cast_point := target_position
-	#force_raycast_update()
-#
-	#collision_particles.emitting = is_colliding()
-#
-	#if is_colliding():
-		#cast_point = to_local(get_collision_point())
-		#collision_particles.global_rotation = get_collision_normal().angle()
-		#collision_particles.position = cast_point
-#
-	#line.points[1] = cast_point
-	#beam_particles.position = cast_point * 0.5
-	#beam_particles.process_material.emission_box_extents.x = cast_point.length() * 0.5
 
 func activate(start: Node2D, end: Node2D, time: float) -> void:
 	is_casting = true
