@@ -24,6 +24,9 @@ func credits() -> void:
 	
 func show_popup():
 	Global.set_active(self)
+	play_entity.deactivate()
+	credit_entity.deactivate()
+	
 	play_entity.init("play")
 	credit_entity.init("credits")
 	

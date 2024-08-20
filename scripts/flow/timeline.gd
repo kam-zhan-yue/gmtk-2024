@@ -157,6 +157,10 @@ func space_async() -> void:
 	spaceship.reparent(space_follow)
 	game_state.player.reparent(space_follow)
 	game_state.player.position = Vector2(100.0, 0.0)
+	camera_controller.follow()
+	moon.scale = Vector2(1.6, 1.6)
+	camera_controller.zoom = Vector2(1.0, 1.0)
+	Global.zoom = 1.0
 	
 	await lerp_path(space_follow, SPACESHIP_BEAT, SPACE_BEAT)
 
@@ -180,7 +184,8 @@ func _on_beat(beat: int) -> void:
 		moon.scale_aync(0.0, 5.0)
 	
 func end_game() -> void:
-	game_state.end_game()
+	if playing:
+		game_state.end_game()
 
 func restart() -> void:
 	playing = false
@@ -193,7 +198,5 @@ func restart() -> void:
 	walker_follow_2.progress_ratio = 0.0
 	spaceship_follow.progress_ratio = 0.0
 	space_follow.progress_ratio = 0.0
+	camera_controller.reset_zoom()
 	await camera_controller.lerp_to(camera_controller.original_pos)
-
-func reset_camera() -> void:
-	camera_controller.global_position = camera_start.global_position

@@ -13,11 +13,11 @@ func init() -> void:
 	health = max_health
 
 func damage(amount: float) -> void:
-	if dead:
-		return
+	#if dead:
+		#return
 	print(str('Took damage for ', amount, ' points!'))
 	health -= amount
 	on_damage.emit(amount)
-	if health <= 0:
-		dead = true
-		on_dead.emit()
+	#if health <= 0:
+		#dead = true
+		#on_dead.emit()

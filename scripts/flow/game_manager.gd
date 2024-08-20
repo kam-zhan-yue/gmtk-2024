@@ -7,7 +7,7 @@ extends Node
 @onready var start_spawner: StartSpawner = $StartSpawner
 @onready var music_player := %MusicPlayer as AudioStreamPlayer2D
 @onready var timeline := %Timeline as Timeline
-@onready var spawn_groups := %SpawnGroups as GroupHolder
+@onready var spawn_groups := %SpawnGroups as Node2D
 
 var game_state: GameState
 
@@ -42,19 +42,27 @@ func _on_start() -> void:
 func _on_restart() -> void:
 	music_player.stop()
 	# Clear up references
-	BeatManager.stop()
-	BoidManager.restart()
-	EntityManager.restart()
+	clear_references()
 	await timeline.restart()
 	
 	new_game()
 	game_state.start()
 
 func _on_end_game() -> void:
-	print('end game!')
 	await ui.fade_in()
-	await timeline.reset_camera()
-	await ui.fade_out()
-	new_game()
-
 	
+	music_player.stop()
+	
+	# Clear up references
+	clear_references()
+	await timeline.restart()
+	start_spawner.start_spawning()
+	await ui.fade_out()
+
+func clear_references() -> void:
+	BeatManager.stop()
+	BoidManager.restart()
+	EntityManager.restart()
+	for group in spawn_groups.get_children():
+		if group is SpawnTrigger:
+			(group as SpawnTrigger).clear()

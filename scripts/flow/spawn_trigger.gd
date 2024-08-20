@@ -37,3 +37,7 @@ func spawn_group(scene: PackedScene) -> void:
 	add_child(group)
 	group.position.y += offset_y
 	group.init(game_state, data)
+
+func clear() -> void:
+	for n in get_children():
+		n.queue_free()

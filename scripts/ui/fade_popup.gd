@@ -24,7 +24,7 @@ func hide_popup():
 	while timer < FADE_TIME:
 		timer += get_process_delta_time()
 		var t := timer / FADE_TIME
-		color_rect.modulate.a = t
+		color_rect.modulate.a = 1-t
 		await Global.frame()
 	color_rect.modulate.a = 0.0
 	Global.set_inactive(self)

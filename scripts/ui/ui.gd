@@ -15,8 +15,9 @@ func init(state: GameState) -> void:
 	game_popup.init(state)
 
 func fade_in() -> void:
+	print('fade in!')
 	await fade_popup.show_popup()
 
 func fade_out() -> void:
-	start_popup.show_popup()
 	await fade_popup.hide_popup()
+	start_popup.show_popup()

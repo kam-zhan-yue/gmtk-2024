@@ -3,6 +3,7 @@ extends Control
 @onready var pause_popup := %PausePopup as PausePopup
 
 var game_state: GameState
+var can_pause := true
 
 func _ready() -> void:
 	Global.set_inactive(pause_popup)
@@ -10,13 +11,15 @@ func _ready() -> void:
 
 func init(state: GameState) -> void:
 	game_state = state
+	game_state.on_end_game.connect(_on_end_game)
+	can_pause = true
 
 func _input(event: InputEvent) -> void:
 	if not game_state: 
 		return
 	if not game_state.started:
 		return
-	if event.is_action_pressed("ui_cancel"):
+	if can_pause and event.is_action_pressed("ui_cancel"):
 		toggle_pause()
 
 func toggle_pause() -> void:
@@ -28,4 +31,6 @@ func toggle_pause() -> void:
 func _on_restart() -> void:
 	toggle_pause()
 	game_state.restart()
-	
+
+func _on_end_game() -> void:
+	can_pause = false
