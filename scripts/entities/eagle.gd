@@ -2,11 +2,11 @@ class_name Eagle
 extends Enemy
 
 @export var orbit_radius := 150.0
-@export var speed := 200.0
-@export var charge_speed := 300.0
+@export var speed := 50.0
+@export var charge_speed := 225.0
 @export var wait_time := 2.0
 
-enum State { MOVING, WAITING, CHARGING }
+enum State { MOVING, TRANSITION, WAITING, CHARGING }
 var state := State.MOVING
 var angle := 0.0
 var timer := 0.0
@@ -23,32 +23,34 @@ func _process(delta: float) -> void:
 		charge(delta)
 
 func move() -> void:
+	state = State.TRANSITION
 	var start_pos := global_position
 	var player_pos := game_state.player.global_position
 	var difference := player_pos - start_pos
 	var direction := difference.normalized()
-	if difference.length() <= orbit_radius:
-		start_waiting()
-		return
-	global_position += direction * speed * get_process_delta_time()
+	var target_pos := player_pos - direction * orbit_radius
+	var time_to_target := (target_pos - start_pos).length() / speed
+	var timer := 0.0
+	while not completed and timer < time_to_target:
+		var t := timer / time_to_target
+		global_position = start_pos.lerp(target_pos, Global.ease_out_quart(t))
+		timer += get_process_delta_time()
+		await Global.frame()
+	start_waiting()
 
 func start_waiting() -> void:
 	state = State.WAITING
-	var player_pos := game_state.player.global_position
-	var difference := global_position - player_pos
-	angle = atan2(difference.y, difference.x)
 	timer = 0.0
 	
 func wait(delta: float) -> void:
-	var player_pos := game_state.player.global_position
-	var x := player_pos.x + cos(angle) * orbit_radius
-	var y := player_pos.y + sin(angle) * orbit_radius
-	global_position = Vector2(x, y)
+	print('Waiting!')
 	timer += delta
 	if timer >= wait_time:
 		state = State.CHARGING
+		var player_pos := game_state.player.global_position
 		var difference := player_pos - global_position
 		charge_direction = difference.normalized()
 
 func charge(delta: float) -> void:
+	print('Charge!')
 	global_position += charge_direction * charge_speed * delta
