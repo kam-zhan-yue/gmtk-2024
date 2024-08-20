@@ -170,6 +170,11 @@ func restart() -> void:
 	playing = false
 	moon.restart()
 	await game_state.player.fade_out()
-	submarine_follow.progress_ratio = 0
-	diver_follow.progress_ratio = 0
+	submarine_follow.progress_ratio = 0.0
+	diver_follow.progress_ratio = 0.0
+	balloon_follow.progress_ratio = 0.0
+	walker_follow.progress_ratio = 0.0
+	walker_follow_2.progress_ratio = 0.0
+	spaceship_follow.progress_ratio = 0.0
+	space_follow.progress_ratio = 0.0
 	await camera_controller.lerp_to(camera_controller.original_pos)

@@ -11,6 +11,7 @@ var spawned := false
 
 func init(state: GameState):
 	game_state = state
+	spawned = false
 
 func _process(_delta: float) -> void:
 	if not game_state: return
