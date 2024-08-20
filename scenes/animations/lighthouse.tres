@@ -1,0 +1,88 @@
+[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://uj314hdt765p"]
+
+[ext_resource type="Texture2D" uid="uid://de3s4lyh2wefc" path="res://assets/background/chimney_smoke.png" id="1_yxlhf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nq4r"]
+atlas = ExtResource("1_yxlhf")
+region = Rect2(0, 0, 54, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmeu8"]
+atlas = ExtResource("1_yxlhf")
+region = Rect2(54, 0, 54, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihxi2"]
+atlas = ExtResource("1_yxlhf")
+region = Rect2(108, 0, 54, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pyab"]
+atlas = ExtResource("1_yxlhf")
+region = Rect2(162, 0, 54, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrec2"]
+atlas = ExtResource("1_yxlhf")
+region = Rect2(216, 0, 54, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tthh2"]
+atlas = ExtResource("1_yxlhf")
+region = Rect2(270, 0, 54, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co8ju"]
+atlas = ExtResource("1_yxlhf")
+region = Rect2(324, 0, 54, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkfuj"]
+atlas = ExtResource("1_yxlhf")
+region = Rect2(378, 0, 54, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4t4t"]
+atlas = ExtResource("1_yxlhf")
+region = Rect2(432, 0, 54, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5reqi"]
+atlas = ExtResource("1_yxlhf")
+region = Rect2(486, 0, 54, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bn3h"]
+atlas = ExtResource("1_yxlhf")
+region = Rect2(540, 0, 54, 86)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nq4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmeu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihxi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pyab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrec2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tthh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co8ju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkfuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4t4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5reqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bn3h")
+}],
+"loop": true,
+"name": &"smoke",
+"speed": 6.0
+}]

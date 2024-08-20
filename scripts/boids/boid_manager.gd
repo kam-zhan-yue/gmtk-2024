@@ -25,7 +25,7 @@ func get_nearby_boids(boid: Boid) -> Array[Boid]:
 	for b in boids:
 		if b == boid:
 			continue
-		if boid.can_see(b.global_position):
+		if boid.can_see(b):
 			nearby.push_back(b)
 	return nearby
 

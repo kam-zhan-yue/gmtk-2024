@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6tdx7n4gfhfr"]
 
-[ext_resource type="PackedScene" uid="uid://g22wq0e6n262" path="res://scenes/enemies/bird.tscn" id="1_s12hj"]
+[ext_resource type="PackedScene" uid="uid://g22wq0e6n262" path="res://scenes/enemies/bird_flock.tscn" id="1_s12hj"]
 
 [sub_resource type="Curve2D" id="Curve2D_4we0a"]
 _data = {
@@ -16,27 +16,32 @@ curve = SubResource("Curve2D_4we0a")
 [node name="Bird" parent="Path2D" instance=ExtResource("1_s12hj")]
 position = Vector2(-665, -339)
 rotation = 0.132203
+speed = 0.05
 
 [node name="Bird2" parent="Path2D" instance=ExtResource("1_s12hj")]
-position = Vector2(-732.755, -398.45)
+position = Vector2(-692.761, -357.824)
 rotation = 0.132203
-h_offset = -75.0
-v_offset = -50.0
+h_offset = -30.0
+v_offset = -15.0
+speed = 0.05
 
 [node name="Bird3" parent="Path2D" instance=ExtResource("1_s12hj")]
-position = Vector2(-745.936, -299.323)
+position = Vector2(-696.056, -333.042)
 rotation = 0.132203
-h_offset = -75.0
-v_offset = 50.0
+h_offset = -30.0
+v_offset = 10.0
+speed = 0.05
 
 [node name="Bird4" parent="Path2D" instance=ExtResource("1_s12hj")]
-position = Vector2(-803.805, -433.118)
+position = Vector2(-720.522, -376.647)
 rotation = 0.132203
-h_offset = -150.0
-v_offset = -75.0
+h_offset = -60.0
+v_offset = -30.0
+speed = 0.05
 
 [node name="Bird5" parent="Path2D" instance=ExtResource("1_s12hj")]
-position = Vector2(-823.577, -284.427)
+position = Vector2(-727.113, -327.084)
 rotation = 0.132203
-h_offset = -150.0
-v_offset = 75.0
+h_offset = -60.0
+v_offset = 20.0
+speed = 0.05

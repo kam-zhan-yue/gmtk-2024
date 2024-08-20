@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://from1behbxyq"]
+
+[ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_ml72j"]
+[ext_resource type="PackedScene" uid="uid://2uswan6bihns" path="res://scenes/enemies/eagle.tscn" id="2_wivw2"]
+
+[node name="SpawnGroup" type="Node2D"]
+script = ExtResource("1_ml72j")
+
+[node name="Eagle" parent="." instance=ExtResource("2_wivw2")]
+position = Vector2(479, -315)

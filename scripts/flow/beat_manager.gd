@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		return
 	if timer > CONFIG.beat():
 		timer = 0.0
-		print(str("Beat: ", beats))
+		#print(str("Beat: ", beats))
 		on_beat.emit(beats)
 		beats += 1
 	timer += delta
@@ -33,3 +33,6 @@ func beats_to_seconds(beat: int) -> float:
 
 func get_start_beat() -> int:
 	return CONFIG.start_beat
+
+func get_end_beat() -> int:
+	return CONFIG.end_beat

@@ -1,29 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnupciqnxp1yd"]
+[gd_scene load_steps=6 format=3 uid="uid://2uswan6bihns"]
 
 [ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="1_6e1fg"]
 [ext_resource type="Script" path="res://scripts/entities/eagle.gd" id="1_x4rp6"]
 [ext_resource type="Resource" uid="uid://bvgxi6diphtn1" path="res://resources/sky/eagle.tres" id="2_4mk0u"]
-[ext_resource type="Texture2D" uid="uid://cfawm8u4nsf5y" path="res://assets/sprites/apple-pie.png" id="2_trt6g"]
+[ext_resource type="Texture2D" uid="uid://67fd3qx1r467" path="res://assets/sprites/shark.png" id="4_573b6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktq2k"]
-size = Vector2(69, 62)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6l5b4"]
 
-[node name="Eagle" type="PathFollow2D"]
-rotates = false
+[node name="Eagle" type="Node2D"]
 script = ExtResource("1_x4rp6")
 data = ExtResource("2_4mk0u")
 
 [node name="TypeEntity" parent="." instance=ExtResource("1_6e1fg")]
-target = "pressure"
+unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("2_trt6g")
+texture = ExtResource("4_573b6")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_ktq2k")
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+shape = SubResource("RectangleShape2D_6l5b4")
+debug_color = Color(0.952424, 5.77569e-07, 0.558715, 0.42)

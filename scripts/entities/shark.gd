@@ -49,7 +49,6 @@ func bite_async() -> void:
 	await Global.seconds(bite_time)
 	if completed:
 		return
-	print("Bite Player!")
 	game_state.player.damage(bite_damage)
 	audio.play()
 	state = State.RETREATING
