@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=47 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -7,11 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://c1qj3u4hvqn2n" path="res://assets/textures/dot.png" id="5_625j7"]
 [ext_resource type="Script" path="res://scripts/flow/start_spawner.gd" id="7_5dx1o"]
 [ext_resource type="SpriteFrames" uid="uid://du58r82pqp6de" path="res://scenes/animations/balloon.tres" id="7_jdpxv"]
+[ext_resource type="Script" path="res://scripts/entities/auto_play.gd" id="7_waiks"]
 [ext_resource type="AudioStream" uid="uid://u7jl40fk83o4" path="res://audio/music/bgm.mp3" id="8_1hva6"]
 [ext_resource type="Script" path="res://scripts/entities/hot_air_balloon.gd" id="8_4vvab"]
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="8_egxth"]
 [ext_resource type="PackedScene" uid="uid://beiyw255u1oxm" path="res://scenes/ui/ui.tscn" id="8_uw3fq"]
 [ext_resource type="PackedScene" uid="uid://cuu4wvac46q6j" path="res://scenes/enemies/fish.tscn" id="9_rtuln"]
+[ext_resource type="Script" path="res://scripts/entities/spaceship.gd" id="10_5p2k0"]
+[ext_resource type="Texture2D" uid="uid://cvbia6bjs168a" path="res://assets/background/space/rocket_movement_sprite_sheet.png" id="10_x5nps"]
+[ext_resource type="Texture2D" uid="uid://b2madcyue34gr" path="res://assets/background/space/rocket_sprite_idle.png" id="11_m4hit"]
 [ext_resource type="PackedScene" uid="uid://dtbawr3acmc0s" path="res://scenes/background.tscn" id="12_dvr37"]
 [ext_resource type="Script" path="res://scripts/flow/spawn_trigger.gd" id="12_j6dic"]
 [ext_resource type="Script" path="res://scripts/flow/timeline.gd" id="12_xvfn4"]
@@ -46,15 +50,125 @@ point_count = 10
 
 [sub_resource type="Curve2D" id="Curve2D_q5d3b"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 276, -480, 38.1126, 2.51984, -38.1126, -2.51984, 188, -480, 22.0486, 13.8591, -22.0486, -13.8591, 123, -495, 0, 0, 0, 0, 58, -505)
+"points": PackedVector2Array(0, 0, 0, 0, 130.667, -1420.94, 0, 0, 0, 0, -21.9335, -1426.35)
 }
-point_count = 4
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_0yf8g"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 55, -502, 9.91068, 92.9716, -9.91068, -92.9716, 46, -570, 10.3826, 67.9589, -10.3826, -67.9589, 0, -688, 0, 0, 0, 0, 1, -1266)
+"points": PackedVector2Array(0, 0, 0, 0, 19, -485, 6.3496, 101.594, -6.3496, -101.594, -56, -882, -23.0173, 144.453, 23.0173, -144.453, -43, -1177, 0, 0, 0, 0, 135, -1502)
 }
 point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_rc8ry"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -63, -1514, 0, 0, 0, 0, -68, -3039)
+}
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip3tf"]
+atlas = ExtResource("10_x5nps")
+region = Rect2(0, 0, 166, 412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18fdv"]
+atlas = ExtResource("10_x5nps")
+region = Rect2(166, 0, 166, 412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah1fn"]
+atlas = ExtResource("10_x5nps")
+region = Rect2(332, 0, 166, 412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2v7r"]
+atlas = ExtResource("10_x5nps")
+region = Rect2(498, 0, 166, 412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2on58"]
+atlas = ExtResource("10_x5nps")
+region = Rect2(664, 0, 166, 412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31it1"]
+atlas = ExtResource("10_x5nps")
+region = Rect2(830, 0, 166, 412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wif4c"]
+atlas = ExtResource("10_x5nps")
+region = Rect2(996, 0, 166, 412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xadit"]
+atlas = ExtResource("10_x5nps")
+region = Rect2(1162, 0, 166, 412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5npd"]
+atlas = ExtResource("10_x5nps")
+region = Rect2(1328, 0, 166, 412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp0pi"]
+atlas = ExtResource("10_x5nps")
+region = Rect2(1494, 0, 166, 412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egedm"]
+atlas = ExtResource("10_x5nps")
+region = Rect2(1660, 0, 166, 412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iox2"]
+atlas = ExtResource("10_x5nps")
+region = Rect2(1826, 0, 166, 412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3d4j"]
+atlas = ExtResource("11_m4hit")
+region = Rect2(0, 0, 166, 412)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ueylr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip3tf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18fdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ah1fn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2v7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2on58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31it1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wif4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xadit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5npd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp0pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egedm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5iox2")
+}],
+"loop": true,
+"name": &"activate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3d4j")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="MainScene" type="Node2D"]
 
@@ -108,11 +222,13 @@ range_layer_min = -100
 range_layer_max = 10
 texture = ExtResource("5_625j7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Timeline/SubmarinePath/SubmarineFollow"]
+[node name="Submarine" type="AnimatedSprite2D" parent="Timeline/SubmarinePath/SubmarineFollow"]
 light_mask = 0
 rotation = 1.5708
 sprite_frames = ExtResource("13_j364a")
 animation = &"idle"
+script = ExtResource("7_waiks")
+anim_name = "idle"
 
 [node name="DiverPath" type="Path2D" parent="Timeline"]
 curve = SubResource("Curve2D_gw13f")
@@ -130,16 +246,18 @@ curve = SubResource("Curve2D_q5d3b")
 
 [node name="WalkerFollow" type="PathFollow2D" parent="Timeline/WalkerPath"]
 unique_name_in_owner = true
-position = Vector2(276, -480)
+position = Vector2(130.667, -1420.94)
 rotation = 3.14159
 rotates = false
 
 [node name="BalloonPath" type="Path2D" parent="Timeline"]
+unique_name_in_owner = true
+position = Vector2(36, -2)
 curve = SubResource("Curve2D_0yf8g")
 
 [node name="BalloonFollow" type="PathFollow2D" parent="Timeline/BalloonPath"]
 unique_name_in_owner = true
-position = Vector2(55, -502)
+position = Vector2(19, -485)
 rotation = -1.70238
 rotates = false
 
@@ -151,6 +269,33 @@ sprite_frames = ExtResource("7_jdpxv")
 animation = &"activate"
 frame_progress = 0.972902
 script = ExtResource("8_4vvab")
+
+[node name="WalkerPath2" type="Path2D" parent="Timeline"]
+unique_name_in_owner = true
+position = Vector2(-29.798, 72.485)
+scale = Vector2(1.51376, 1.10876)
+curve = SubResource("Curve2D_q5d3b")
+
+[node name="WalkerFollow" type="PathFollow2D" parent="Timeline/WalkerPath2"]
+position = Vector2(130.667, -1420.94)
+rotation = 3.14159
+rotates = false
+
+[node name="SpaceshipPath" type="Path2D" parent="Timeline"]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_rc8ry")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Timeline/SpaceshipPath"]
+position = Vector2(-63, -1514)
+rotation = -1.57407
+rotates = false
+
+[node name="Spaceship" type="AnimatedSprite2D" parent="Timeline/SpaceshipPath/PathFollow2D"]
+unique_name_in_owner = true
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_ueylr")
+animation = &"idle"
+script = ExtResource("10_5p2k0")
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_vt02a")
