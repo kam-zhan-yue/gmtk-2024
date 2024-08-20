@@ -208,6 +208,7 @@ motion_scale = Vector2(1, 0.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Space/Moon"]
 position = Vector2(-31, 438)
+scale = Vector2(2, 2)
 texture = ExtResource("8_78rnb")
 
 [node name="Sky" type="ParallaxBackground" parent="."]
@@ -246,14 +247,14 @@ cloud_speed = 8.0
 texture = ExtResource("8_g8rn3")
 
 [node name="LightOrangeMountain" type="ParallaxLayer" parent="Sky"]
-position = Vector2(-1, -8)
-motion_scale = Vector2(1, 0.5)
+position = Vector2(-39, -37)
+motion_scale = Vector2(1, 0.45)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sky/LightOrangeMountain"]
 texture = ExtResource("5_dxom7")
 
 [node name="OrangeMountain" type="ParallaxLayer" parent="Sky"]
-position = Vector2(-1, -67)
+position = Vector2(-1, -21)
 motion_scale = Vector2(1, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sky/OrangeMountain"]
