@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://67fd3qx1r467" path="res://assets/sprites/shark.png" id="4_573b6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l5b4"]
+size = Vector2(86, 36)
 
 [node name="Eagle" type="Node2D"]
 script = ExtResource("1_x4rp6")

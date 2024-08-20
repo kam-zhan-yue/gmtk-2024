@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=76 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -43,7 +43,16 @@
 [ext_resource type="Resource" uid="uid://d225787vy4hm6" path="res://resources/sky/freedom.tres" id="37_237bd"]
 [ext_resource type="Resource" uid="uid://dqjnl1ry2ha3j" path="res://resources/sky/infinite.tres" id="38_4c6k0"]
 [ext_resource type="Resource" uid="uid://dg723hp2hx64j" path="res://resources/sky/careless.tres" id="39_5fnet"]
+[ext_resource type="PackedScene" uid="uid://cku8jw4nd7ahq" path="res://scenes/spawn_groups/sky_left_boid.tscn" id="39_sy2u7"]
 [ext_resource type="Resource" uid="uid://dvf4iwtdinjgl" path="res://resources/sky/floating.tres" id="40_3yvr8"]
+[ext_resource type="PackedScene" uid="uid://urndwoy6wl7t" path="res://scenes/spawn_groups/sky_right_boid.tscn" id="40_j4awe"]
+[ext_resource type="PackedScene" uid="uid://lhkuj16f40en" path="res://scenes/spawn_groups/sky_right_enemy.tscn" id="41_2ben2"]
+[ext_resource type="PackedScene" uid="uid://yakuvwl58pl7" path="res://scenes/spawn_groups/sky_left_eagle.tscn" id="43_mxd5q"]
+[ext_resource type="PackedScene" uid="uid://dvuijx63rdp1d" path="res://scenes/spawn_groups/sky_right_eagle.tscn" id="44_7bhjn"]
+[ext_resource type="PackedScene" uid="uid://eyk65rycyerj" path="res://scenes/spawn_groups/sky_left_enemy.tscn" id="46_712h2"]
+[ext_resource type="Resource" uid="uid://de7jjfhnr8v2i" path="res://resources/sky/caressing.tres" id="46_r2ivd"]
+[ext_resource type="Resource" uid="uid://552hlqxomdff" path="res://resources/sky/radiant.tres" id="49_d0b06"]
+[ext_resource type="Resource" uid="uid://cu1looefwjbwu" path="res://resources/sky/limitless.tres" id="50_owwli"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
@@ -451,32 +460,77 @@ right_group = ExtResource("28_onsfg")
 offset_y = -10.0
 data = ExtResource("33_l2fur")
 
-[node name="endless" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -480)
+[node name="birbs" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -447)
 script = ExtResource("12_j6dic")
+left_group = ExtResource("39_sy2u7")
+offset_y = -250.0
+data = ExtResource("35_62whc")
+
+[node name="endless" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -481)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("41_2ben2")
+offset_y = -300.0
 data = ExtResource("35_62whc")
 
 [node name="lifting" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, -554)
 script = ExtResource("12_j6dic")
+left_group = ExtResource("46_712h2")
 data = ExtResource("36_7riny")
+
+[node name="caressing" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -1051)
+script = ExtResource("12_j6dic")
+left_group = ExtResource("43_mxd5q")
+right_group = ExtResource("40_j4awe")
+data = ExtResource("46_r2ivd")
 
 [node name="freedom" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, -682)
 script = ExtResource("12_j6dic")
+left_group = ExtResource("43_mxd5q")
+right_group = ExtResource("44_7bhjn")
 data = ExtResource("37_237bd")
 
 [node name="infinite" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, -766)
 script = ExtResource("12_j6dic")
+left_group = ExtResource("46_712h2")
+right_group = ExtResource("44_7bhjn")
 data = ExtResource("38_4c6k0")
 
-[node name="careless" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -926)
+[node name="radiant" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -836)
 script = ExtResource("12_j6dic")
+left_group = ExtResource("46_712h2")
+right_group = ExtResource("44_7bhjn")
+data = ExtResource("49_d0b06")
+
+[node name="limitless" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -836)
+script = ExtResource("12_j6dic")
+right_group = ExtResource("44_7bhjn")
+data = ExtResource("50_owwli")
+
+[node name="careless" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -901)
+script = ExtResource("12_j6dic")
+left_group = ExtResource("39_sy2u7")
+right_group = ExtResource("41_2ben2")
+data = ExtResource("39_5fnet")
+
+[node name="shimmer" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -956)
+script = ExtResource("12_j6dic")
+left_group = ExtResource("43_mxd5q")
+right_group = ExtResource("44_7bhjn")
 data = ExtResource("39_5fnet")
 
 [node name="floating" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -1090)
+position = Vector2(-1, -1014)
 script = ExtResource("12_j6dic")
+left_group = ExtResource("46_712h2")
+right_group = ExtResource("40_j4awe")
 data = ExtResource("40_3yvr8")
