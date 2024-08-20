@@ -13,6 +13,7 @@ signal on_damage(value: float)
 signal on_pause(value: bool)
 signal on_start
 signal on_restart
+signal on_end_game
 var started := false
 
 func _init(p: Player = null) -> void:
@@ -44,3 +45,9 @@ func pause(value: bool) -> void:
 
 func restart() -> void:
 	on_restart.emit()
+
+func end_game() -> void:
+	on_end_game.emit()
+
+func clear() -> void:
+	player.clear()

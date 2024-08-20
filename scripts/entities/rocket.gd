@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	var direction := (player.global_position - global_position).normalized()
 	global_position += direction * speed * delta
 	
-	var angle = atan2(direction.y, direction.x)
+	var angle := atan2(direction.y, direction.x)
 	sprite_2d.rotation = angle
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

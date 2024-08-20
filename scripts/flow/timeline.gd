@@ -9,7 +9,10 @@ const WALKER_2_BEAT = 163
 const SPACESHIP_BEAT = 166
 const SPACE_BEAT = 260
 
-@onready var camera_game: Marker2D = %CameraGame
+const FADE_OUT_BEAT = 240
+
+@onready var camera_start := %CameraStart as Marker2D
+@onready var camera_game := %CameraGame as Marker2D
 @onready var camera_controller := %CameraController as CameraController
 
 @onready var submarine := %SubmarineMarker as Marker2D
@@ -40,6 +43,7 @@ func init(state: GameState) -> void:
 	game_state = state
 	camera_controller.init(state)
 	moon.init(state)
+	BeatManager.on_beat.connect(_on_beat)
 
 func start_camera() -> void:
 	await camera_controller.lerp_to(camera_game.global_position)
@@ -55,6 +59,7 @@ func start() -> void:
 	await walk_2_async()
 	await spaceship_async()
 	await space_async()
+	end_game()
 
 func submarine_async() -> void:
 	if current_beat >= SUBMARINE_BEAT: return
@@ -167,6 +172,16 @@ func lerp_path(path_follow: PathFollow2D, start_beat: int, end_beat: int) -> voi
 	previous_beat = start_beat
 	current_beat = end_beat
 
+func _on_beat(beat: int) -> void:
+	if beat == FADE_OUT_BEAT:
+		BoidManager.restart()
+		EntityManager.restart()
+		game_state.clear()
+		moon.scale_aync(0.0, 5.0)
+	
+func end_game() -> void:
+	game_state.end_game()
+
 func restart() -> void:
 	playing = false
 	moon.restart()
@@ -179,3 +194,6 @@ func restart() -> void:
 	spaceship_follow.progress_ratio = 0.0
 	space_follow.progress_ratio = 0.0
 	await camera_controller.lerp_to(camera_controller.original_pos)
+
+func reset_camera() -> void:
+	camera_controller.global_position = camera_start.global_position

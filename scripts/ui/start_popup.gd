@@ -16,6 +16,10 @@ func init(state: GameState):
 	credits_popup.on_back.connect(show_title)
 	show_title()
 
+func show_popup() -> void:
+	Global.set_active(self)
+	show_title()
+
 func play_game() -> void:
 	started = true
 	game_state.start()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://beiyw255u1oxm"]
+[gd_scene load_steps=8 format=3 uid="uid://beiyw255u1oxm"]
 
 [ext_resource type="Script" path="res://scripts/ui/game_popup.gd" id="1_4umcj"]
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_68wk2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://batev7ywylosh" path="res://scenes/ui/pause_popup.tscn" id="4_kbx5t"]
 [ext_resource type="PackedScene" uid="uid://cytkq8vljbki0" path="res://scenes/ui/score_popup.tscn" id="4_qvdrv"]
 [ext_resource type="PackedScene" uid="uid://cxrld8r6s1y8" path="res://scenes/ui/start_popup.tscn" id="6_02m7e"]
+[ext_resource type="Script" path="res://scripts/ui/fade_popup.gd" id="7_dxxys"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_68wk2")
@@ -41,3 +42,21 @@ layout_mode = 1
 
 [node name="StartPopup" parent="." instance=ExtResource("6_02m7e")]
 unique_name_in_owner = true
+
+[node name="FadePopup" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_dxxys")
+
+[node name="ColorRect" type="ColorRect" parent="FadePopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180392, 0.133333, 0.184314, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=103 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://scripts/flow/timeline.gd" id="12_xvfn4"]
 [ext_resource type="SpriteFrames" uid="uid://c81e2cel8mkye" path="res://scenes/animations/submarine.tres" id="13_j364a"]
 [ext_resource type="Script" path="res://scripts/moon.gd" id="14_uf7jm"]
+[ext_resource type="Script" path="res://scripts/flow/group_holder.gd" id="21_s1pdk"]
 [ext_resource type="PackedScene" uid="uid://dq3patfg1lj8n" path="res://scenes/spawn_groups/ocean_left_boid.tscn" id="22_qtl1v"]
 [ext_resource type="PackedScene" uid="uid://bb3fi04cw6lsi" path="res://scenes/spawn_groups/ocean_right_enemy.tscn" id="23_qpebw"]
 [ext_resource type="Resource" uid="uid://q4tad15ihnr2" path="res://resources/ocean/pressure.tres" id="25_ob3l5"]
@@ -242,6 +243,10 @@ environment = SubResource("Environment_bgy46")
 
 [node name="Background" parent="." instance=ExtResource("12_dvr37")]
 
+[node name="CameraStart" type="Marker2D" parent="Background"]
+unique_name_in_owner = true
+position = Vector2(-150, 183)
+
 [node name="CameraGame" type="Marker2D" parent="Background"]
 unique_name_in_owner = true
 position = Vector2(0, 183)
@@ -422,6 +427,7 @@ position = Vector2(0, 421)
 
 [node name="SpawnGroups" type="Node2D" parent="."]
 unique_name_in_owner = true
+script = ExtResource("21_s1pdk")
 
 [node name="feel" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 388)
