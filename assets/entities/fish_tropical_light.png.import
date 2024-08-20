@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2mu4jj0ntgtx"
-path="res://.godot/imported/bread.png-c776e04ed053ccad4cd0b0cc5f3b4d66.ctex"
+uid="uid://cbmi1oiiu0vq1"
+path="res://.godot/imported/fish_tropical_light.png-192a49a37c96a34ebe9df209630d6753.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bread.png"
-dest_files=["res://.godot/imported/bread.png-c776e04ed053ccad4cd0b0cc5f3b4d66.ctex"]
+source_file="res://assets/entities/fish_tropical_light.png"
+dest_files=["res://.godot/imported/fish_tropical_light.png-192a49a37c96a34ebe9df209630d6753.ctex"]
 
 [params]
 

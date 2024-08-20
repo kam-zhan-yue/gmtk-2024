@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=109 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -20,7 +20,11 @@
 [ext_resource type="Script" path="res://scripts/flow/timeline.gd" id="12_xvfn4"]
 [ext_resource type="SpriteFrames" uid="uid://c81e2cel8mkye" path="res://scenes/animations/submarine.tres" id="13_j364a"]
 [ext_resource type="Script" path="res://scripts/moon.gd" id="14_uf7jm"]
+[ext_resource type="PackedScene" uid="uid://0oa3ab8tjhq0" path="res://scenes/enemies/fish_cod.tscn" id="20_lnpt7"]
+[ext_resource type="PackedScene" uid="uid://bhwac2n36agrt" path="res://scenes/enemies/fish_tropical.tscn" id="20_wngj2"]
+[ext_resource type="PackedScene" uid="uid://bc5vusb2i3xaq" path="res://scenes/enemies/fish_tropical_lightest.tscn" id="20_yfaim"]
 [ext_resource type="PackedScene" uid="uid://dq3patfg1lj8n" path="res://scenes/spawn_groups/ocean_left_boid.tscn" id="22_qtl1v"]
+[ext_resource type="PackedScene" uid="uid://ci0p0g0h2ghko" path="res://scenes/enemies/fish_cod_light.tscn" id="22_vs00x"]
 [ext_resource type="PackedScene" uid="uid://bb3fi04cw6lsi" path="res://scenes/spawn_groups/ocean_right_enemy.tscn" id="23_qpebw"]
 [ext_resource type="Resource" uid="uid://q4tad15ihnr2" path="res://resources/ocean/pressure.tres" id="25_ob3l5"]
 [ext_resource type="Resource" uid="uid://c2xsbdpaw8sdt" path="res://resources/ocean/sea.tres" id="25_y2lc6"]
@@ -409,23 +413,68 @@ script = ExtResource("1_vt02a")
 [node name="StartSpawner" type="Node2D" parent="GameManager"]
 script = ExtResource("7_5dx1o")
 
-[node name="BoidSpawner1" type="Node2D" parent="GameManager/StartSpawner"]
-position = Vector2(-176, 258)
+[node name="FishSpawner" type="Node2D" parent="GameManager/StartSpawner"]
+position = Vector2(-271, 257)
 script = ExtResource("8_egxth")
+group = 1
 boid_scene = ExtResource("9_rtuln")
 start_y_direction = Vector2(-1, -1)
 spawn_radius = 200.0
-spawn_count = 30
+spawn_count = 6
 spawn_on_ready = false
 
-[node name="BoidSpawner2" type="Node2D" parent="GameManager/StartSpawner"]
-position = Vector2(172, 117)
+[node name="CodSpawner" type="Node2D" parent="GameManager/StartSpawner"]
+position = Vector2(216, 192)
 script = ExtResource("8_egxth")
-boid_scene = ExtResource("9_rtuln")
+group = 1
+boid_scene = ExtResource("20_lnpt7")
 start_x_direction = Vector2(-1, -1)
-start_y_direction = Vector2(0.5, 0.5)
+start_y_direction = Vector2(0, 0)
 spawn_radius = 200.0
-spawn_count = 30
+spawn_count = 3
+spawn_on_ready = false
+
+[node name="TropicalSpawner" type="Node2D" parent="GameManager/StartSpawner"]
+position = Vector2(254, 117)
+script = ExtResource("8_egxth")
+group = 2
+boid_scene = ExtResource("20_wngj2")
+start_x_direction = Vector2(-1, -1)
+start_y_direction = Vector2(0, 0)
+spawn_radius = 200.0
+spawn_count = 2
+spawn_on_ready = false
+
+[node name="TropicalLightSpawner" type="Node2D" parent="GameManager/StartSpawner"]
+position = Vector2(-216, 71)
+script = ExtResource("8_egxth")
+group = 2
+boid_scene = ExtResource("9_rtuln")
+start_y_direction = Vector2(0, 0.5)
+spawn_radius = 200.0
+spawn_count = 2
+spawn_on_ready = false
+
+[node name="CodLightSpawner" type="Node2D" parent="GameManager/StartSpawner"]
+position = Vector2(347, -9)
+script = ExtResource("8_egxth")
+group = 1
+boid_scene = ExtResource("22_vs00x")
+start_x_direction = Vector2(-1, -1)
+start_y_direction = Vector2(0, 0)
+spawn_radius = 200.0
+spawn_count = 3
+spawn_on_ready = false
+
+[node name="TropicalLightestSpawner" type="Node2D" parent="GameManager/StartSpawner"]
+position = Vector2(-270, 206)
+scale = Vector2(1, 0.993611)
+script = ExtResource("8_egxth")
+group = 2
+boid_scene = ExtResource("20_yfaim")
+start_y_direction = Vector2(0, 0)
+spawn_radius = 200.0
+spawn_count = 2
 spawn_on_ready = false
 
 [node name="Player" parent="." instance=ExtResource("3_h8ik1")]

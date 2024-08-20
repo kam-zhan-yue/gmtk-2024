@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvmp5bgo2feks"
-path="res://.godot/imported/book_1.png-cc9c9d06ebd91fe6b5011c36eb3f12c0.ctex"
+uid="uid://lp1pybhxsg78"
+path="res://.godot/imported/fish_darkest.png-e2b27f48ba2f520e91f68eccd4bbe4f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/book_1.png"
-dest_files=["res://.godot/imported/book_1.png-cc9c9d06ebd91fe6b5011c36eb3f12c0.ctex"]
+source_file="res://assets/entities/fish_darkest.png"
+dest_files=["res://.godot/imported/fish_darkest.png-e2b27f48ba2f520e91f68eccd4bbe4f9.ctex"]
 
 [params]
 

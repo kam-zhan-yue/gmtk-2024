@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqabcyjhmgnkn"
-path="res://.godot/imported/lighter_bg_fish.png-eaabcf2e628431ecfb08a7395800f451.ctex"
+uid="uid://bhggdwjvalci4"
+path="res://.godot/imported/fish_tropical.png-7c6617656c4186b9d732563823c3a029.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/entities/lighter_bg_fish.png"
-dest_files=["res://.godot/imported/lighter_bg_fish.png-eaabcf2e628431ecfb08a7395800f451.ctex"]
+source_file="res://assets/entities/fish_tropical.png"
+dest_files=["res://.godot/imported/fish_tropical.png-7c6617656c4186b9d732563823c3a029.ctex"]
 
 [params]
 

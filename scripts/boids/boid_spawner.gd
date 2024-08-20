@@ -2,7 +2,7 @@ class_name BoidSpawner
 extends Node2D
 
 @export_enum("Circle", "Path") var spawn_type := 0
-@export_enum("Fish", "Tuna", "Bird", "Sparrow") var group := 0
+@export_enum("Fish", "Cod", "Tropical", "Bird", "Sparrow") var group := 0
 @export var boid_scene: PackedScene
 @export var start_x_direction := Vector2.ONE
 @export var start_y_direction := Vector2.ONE

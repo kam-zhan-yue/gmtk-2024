@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfawm8u4nsf5y"
-path="res://.godot/imported/apple-pie.png-c0be903c54ee0ec1ecffd3e7fb88cf1f.ctex"
+uid="uid://d2oar0y3d6eov"
+path="res://.godot/imported/fish_cod_darkest.png-765d8f2b98f823b65148e29f159ca107.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/apple-pie.png"
-dest_files=["res://.godot/imported/apple-pie.png-c0be903c54ee0ec1ecffd3e7fb88cf1f.ctex"]
+source_file="res://assets/entities/fish_cod_darkest.png"
+dest_files=["res://.godot/imported/fish_cod_darkest.png-765d8f2b98f823b65148e29f159ca107.ctex"]
 
 [params]
 

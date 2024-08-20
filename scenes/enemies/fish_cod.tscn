@@ -1,17 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuu4wvac46q6j"]
+[gd_scene load_steps=6 format=3 uid="uid://0oa3ab8tjhq0"]
 
-[ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_kxmmy"]
-[ext_resource type="Script" path="res://scenes/boids/boid_fade.gd" id="2_5lmq3"]
-[ext_resource type="Texture2D" uid="uid://lp1pybhxsg78" path="res://assets/entities/fish_darkest.png" id="5_g513x"]
+[ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_15wnd"]
+[ext_resource type="Script" path="res://scenes/boids/boid_fade.gd" id="2_7v066"]
+[ext_resource type="Texture2D" uid="uid://d2oar0y3d6eov" path="res://assets/entities/fish_cod_darkest.png" id="3_g41sa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fg2gp"]
-radius = 15.1327
+radius = 57.0088
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ctcb"]
-size = Vector2(27, 12)
+size = Vector2(90, 36)
 
 [node name="FishBoid" type="Node2D"]
-script = ExtResource("1_kxmmy")
+script = ExtResource("1_15wnd")
 
 [node name="ObstacleArea" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -22,11 +22,11 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_fg2gp")
 
 [node name="FishBody" type="Node2D" parent="."]
-script = ExtResource("2_5lmq3")
+script = ExtResource("2_7v066")
 
 [node name="Sprite2D" type="Sprite2D" parent="FishBody"]
 unique_name_in_owner = true
-texture = ExtResource("5_g513x")
+texture = ExtResource("3_g41sa")
 
 [node name="VisibleArea" type="Area2D" parent="FishBody"]
 collision_layer = 4

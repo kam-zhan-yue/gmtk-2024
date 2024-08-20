@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhg0r5e7ocwyc"
-path="res://.godot/imported/pendant.png-f335318f76ceb11c6f5181b6370b7c00.ctex"
+uid="uid://benuvxapwlo0l"
+path="res://.godot/imported/fish_tropical_lightest.png-37a2e6e6db73265b0c47d210b0cb3a60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/pendant.png"
-dest_files=["res://.godot/imported/pendant.png-f335318f76ceb11c6f5181b6370b7c00.ctex"]
+source_file="res://assets/entities/fish_tropical_lightest.png"
+dest_files=["res://.godot/imported/fish_tropical_lightest.png-37a2e6e6db73265b0c47d210b0cb3a60.ctex"]
 
 [params]
 

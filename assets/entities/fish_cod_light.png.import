@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkrb74ddrldxq"
-path="res://.godot/imported/flower.png-dce3a79c1e84ec39689041a321e322b6.ctex"
+uid="uid://co3b5erxohtyn"
+path="res://.godot/imported/fish_cod_light.png-0b47cd6277c7931354e8a20f9a6443bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/flower.png"
-dest_files=["res://.godot/imported/flower.png-dce3a79c1e84ec39689041a321e322b6.ctex"]
+source_file="res://assets/entities/fish_cod_light.png"
+dest_files=["res://.godot/imported/fish_cod_light.png-0b47cd6277c7931354e8a20f9a6443bd.ctex"]
 
 [params]
 

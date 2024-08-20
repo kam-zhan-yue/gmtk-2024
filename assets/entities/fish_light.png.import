@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu6piw8oirgch"
-path="res://.godot/imported/spear.png-f826a167e1804a13724ad5bec61fdc82.ctex"
+uid="uid://cqabcyjhmgnkn"
+path="res://.godot/imported/fish_light.png-6b763c7a7a20e94626fc80d21b8059a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/spear.png"
-dest_files=["res://.godot/imported/spear.png-f826a167e1804a13724ad5bec61fdc82.ctex"]
+source_file="res://assets/entities/fish_light.png"
+dest_files=["res://.godot/imported/fish_light.png-6b763c7a7a20e94626fc80d21b8059a4.ctex"]
 
 [params]
 
