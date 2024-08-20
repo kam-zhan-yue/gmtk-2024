@@ -34,10 +34,15 @@ const FADE_OUT_BEAT = 240
 
 var game_state: GameState
 
-enum State { SUBMARINE, DIVER, WALKER, BALLOON }
+enum State { IDLE, SUBMARINE, DIVER, WALKER, BALLOON, WALKER_2, SPACESHIP, SPACE }
 var previous_beat := 0
 var current_beat := 0
 var playing = false
+
+var state := State.IDLE
+var current_path: PathFollow2D
+var timer := 0.0
+var time := 0.0
 
 func init(state: GameState) -> void:
 	game_state = state
@@ -52,14 +57,141 @@ func start() -> void:
 	playing = true
 	current_beat = BeatManager.get_start_beat()
 	game_state.player.start()
-	await submarine_async()
-	await dive_async()
-	await walk_async()
-	await balloon_async()
-	await walk_2_async()
-	await spaceship_async()
-	await space_async()
-	end_game()
+	submarine_state()
+	#await submarine_async()
+	#await dive_async()
+	#await walk_async()
+	#await balloon_async()
+	#await walk_2_async()
+	#await spaceship_async()
+	#await space_async()
+	#end_game()
+
+func next_state() -> void:
+	match(state):
+		State.IDLE:
+			submarine_state()
+		State.SUBMARINE:
+			diver_state()
+		State.DIVER:
+			walker_state()
+		State.WALKER:
+			balloon_state()
+		State.BALLOON:
+			walker_2_state()
+		State.WALKER_2:
+			spaceship_state()
+		State.SPACESHIP:
+			space_state()
+		State.SPACE:
+			end_game()
+
+func submarine_state() -> void:
+	# Entity Stuff
+	state = State.SUBMARINE
+	game_state.player.reparent(submarine_follow)
+	game_state.player.position = Vector2.ZERO
+	camera_controller.follow()
+	
+	# State Stuff
+	timer = 0.0
+	time = BeatManager.beats_to_seconds(SUBMARINE_BEAT - BeatManager.beats)
+	current_path = submarine_follow
+	
+func diver_state() -> void:
+	# Entity Stuff
+	state = State.DIVER
+	game_state.player.reparent(diver_follow)
+	game_state.player.position = Vector2.ZERO
+	game_state.player.fade_in()
+	game_state.player.dive_anim()
+	
+	# State Stuff
+	timer = 0.0
+	time = BeatManager.beats_to_seconds(DIVER_BEAT - BeatManager.beats)
+	current_path = diver_follow
+
+func walker_state() -> void:
+	# Entity Stuff
+	state = State.WALKER
+	game_state.player.reparent(walker_follow)
+	game_state.player.position = Vector2.ZERO
+	game_state.player.walk_anim()
+	
+	# State Stuff
+	timer = 0.0
+	time = BeatManager.beats_to_seconds(WALKER_BEAT - BeatManager.beats)
+	current_path = walker_follow
+	
+func balloon_state() -> void:
+	# Entity Stuff
+	state = State.BALLOON
+	game_state.player.fade_out()
+	hot_air_balloon.activate()
+	game_state.player.reparent(balloon_follow)
+	game_state.player.position = Vector2.ZERO
+	camera_controller.follow()
+	camera_controller.zoom_to(2.0);
+	
+	# State Stuff
+	timer = 0.0
+	time = BeatManager.beats_to_seconds(BALLOON_BEAT - BeatManager.beats)
+	current_path = balloon_follow
+
+	
+func walker_2_state() -> void:
+	# Entity Stuff
+	state = State.WALKER_2
+	hot_air_balloon.deactivate()
+	game_state.player.fade_in()
+	game_state.player.reparent(walker_follow_2)
+	game_state.player.position = Vector2.ZERO
+	game_state.player.walk_anim()
+	camera_controller.lerp_to(spaceship_marker.global_position)
+	
+	# State Stuff
+	timer = 0.0
+	time = BeatManager.beats_to_seconds(WALKER_2_BEAT - BeatManager.beats)
+	current_path = walker_follow_2
+	
+	
+func spaceship_state() -> void:
+	# Entity Stuff
+	state = State.SPACESHIP
+	moon.scale_aync(1.6, 5.0)
+	spaceship.activate()
+	game_state.player.fade_out()
+	game_state.player.reparent(spaceship_follow)
+	game_state.player.position = Vector2(100.0, 0.0)
+	camera_controller.follow()
+	camera_controller.zoom_to(1.0)
+	
+	# State Stuff
+	timer = 0.0
+	time = BeatManager.beats_to_seconds(SPACESHIP_BEAT - BeatManager.beats)
+	current_path = spaceship_follow
+	
+func space_state() -> void:
+	# Entity Stuff
+	state = State.SPACE
+	spaceship.reparent(space_follow)
+	game_state.player.reparent(space_follow)
+	game_state.player.position = Vector2(100.0, 0.0)
+	camera_controller.follow()
+	
+	# State Stuff
+	timer = 0.0
+	time = BeatManager.beats_to_seconds(SPACE_BEAT - BeatManager.beats)
+	current_path = space_follow
+	
+func _process(delta: float) -> void:
+	if timer < time and playing:
+		var t :=  timer / time
+		current_path.progress_ratio = t
+		#print(str(current_path.name, " ", t))
+		timer += delta
+		if timer >= time:
+			next_state()
 
 func submarine_async() -> void:
 	if current_beat >= SUBMARINE_BEAT: return
@@ -138,8 +270,8 @@ func spaceship_async() -> void:
 	if current_beat >= SPACESHIP_BEAT: return
 	if not playing: return
 
-	moon.scale_aync(1.6, 5.0)
 	previous_beat = WALKER_2_BEAT
+	moon.scale_aync(1.6, 5.0)
 	spaceship.activate()
 	game_state.player.fade_out()
 	game_state.player.reparent(spaceship_follow)
@@ -184,10 +316,12 @@ func _on_beat(beat: int) -> void:
 		moon.scale_aync(0.0, 5.0)
 	
 func end_game() -> void:
+	state = State.IDLE
 	if playing:
 		game_state.end_game()
 
 func restart() -> void:
+	state = State.IDLE
 	playing = false
 	moon.restart()
 	await game_state.player.fade_out()
