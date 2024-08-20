@@ -1,11 +1,8 @@
 class_name GameManager
 extends Node
 
-const SUBMARINE_BEAT = 50
-const BALLOON_BEAT = 100
 
 @onready var player := %Player as Player
-@onready var spawner := %Spawner as Spawner
 @onready var ui := %UI as UI
 @onready var start_spawner: StartSpawner = $StartSpawner
 @onready var music_player := %MusicPlayer as AudioStreamPlayer2D
@@ -21,7 +18,6 @@ func _ready() -> void:
 	game_state.on_restart.connect(_on_restart)
 	ui.init(game_state)
 	timeline.init(game_state)
-	spawner.init(game_state)
 	for group in spawn_groups.get_children():
 		if group is SpawnTrigger:
 			(group as SpawnTrigger).init(game_state)
@@ -32,7 +28,9 @@ func _on_pause(value: bool) -> void:
 
 func _on_start() -> void:
 	start_spawner.stop_spawning()
-	music_player.play()
+	var start_beat := BeatManager.get_start_beat()
+	var start_second := BeatManager.beats_to_seconds(start_beat)
+	music_player.play(start_second)
 	timeline.start()
 	BeatManager.start()
 
@@ -50,7 +48,6 @@ func _on_restart() -> void:
 	game_state.on_restart.connect(_on_restart)
 	ui.init(game_state)
 	timeline.init(game_state)
-	spawner.init(game_state)
 	for group in spawn_groups.get_children():
 		if group is SpawnTrigger:
 			(group as SpawnTrigger).init(game_state)

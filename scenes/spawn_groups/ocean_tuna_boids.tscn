@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="2_aot1r"]
 [ext_resource type="PackedScene" uid="uid://du6ntqp5jmx20" path="res://scenes/enemies/tuna.tscn" id="4_ctfhk"]
 
-[node name="SpawnGroup2" type="Node2D"]
+[node name="SpawnGroup" type="Node2D"]
 script = ExtResource("1_ddes6")
 
 [node name="BoidSpawner3" type="Node2D" parent="."]
@@ -14,22 +14,8 @@ boid_scene = ExtResource("4_ctfhk")
 start_direction = Vector2(1, 0)
 spawn_count = 10
 
-[node name="BoidSpawner5" type="Node2D" parent="."]
-position = Vector2(-260, -181)
-script = ExtResource("2_aot1r")
-boid_scene = ExtResource("4_ctfhk")
-start_direction = Vector2(1, 0)
-spawn_count = 10
-
 [node name="BoidSpawner2" type="Node2D" parent="."]
 position = Vector2(267, -115)
-script = ExtResource("2_aot1r")
-boid_scene = ExtResource("4_ctfhk")
-start_direction = Vector2(-1, 0)
-spawn_count = 25
-
-[node name="BoidSpawner4" type="Node2D" parent="."]
-position = Vector2(267, -198)
 script = ExtResource("2_aot1r")
 boid_scene = ExtResource("4_ctfhk")
 start_direction = Vector2(-1, 0)

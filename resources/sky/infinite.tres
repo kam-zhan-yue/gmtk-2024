@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://dqjnl1ry2ha3j"]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_data.gd" id="1_uex33"]
+
+[resource]
+script = ExtResource("1_uex33")
+name = "infinite"
+score = 10.0
+damage = 10.0

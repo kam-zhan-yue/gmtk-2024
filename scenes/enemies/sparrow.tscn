@@ -1,19 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyds4ly4a1xpe"]
+[gd_scene load_steps=7 format=3 uid="uid://cyds4ly4a1xpe"]
 
 [ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_13pxo"]
 [ext_resource type="Script" path="res://scripts/entities/fish.gd" id="2_g1vaq"]
-[ext_resource type="Texture2D" uid="uid://lp1pybhxsg78" path="res://assets/sprites/fish.png" id="3_8n2vp"]
-[ext_resource type="Resource" uid="uid://vbulpe6unmkq" path="res://resources/ocean/sparrow.tres" id="3_127kg"]
 [ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="4_kup8i"]
+[ext_resource type="SpriteFrames" uid="uid://br2u7kgr1kx66" path="res://scenes/animations/sparrow.tres" id="5_qfltn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fg2gp"]
 radius = 45.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p64ym"]
-size = Vector2(26, 12)
+size = Vector2(46, 22)
 
 [node name="Sparrow" type="Node2D"]
 script = ExtResource("1_13pxo")
+using_anim = true
 
 [node name="ObstacleArea" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -23,23 +23,24 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleArea"]
 shape = SubResource("CircleShape2D_fg2gp")
 
-[node name="TunaBody" type="Node2D" parent="."]
+[node name="Enemy" type="Node2D" parent="."]
 script = ExtResource("2_g1vaq")
-data = ExtResource("3_127kg")
+using_anim = true
 
-[node name="TypeEntity" parent="TunaBody" instance=ExtResource("4_kup8i")]
+[node name="TypeEntity" parent="Enemy" instance=ExtResource("4_kup8i")]
 unique_name_in_owner = true
 
-[node name="Sprite2D" type="Sprite2D" parent="TunaBody"]
-unique_name_in_owner = true
-texture = ExtResource("3_8n2vp")
-
-[node name="VisibleArea" type="Area2D" parent="TunaBody"]
+[node name="VisibleArea" type="Area2D" parent="Enemy"]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TunaBody/VisibleArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/VisibleArea"]
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_p64ym")
 debug_color = Color(0.817852, 3.85046e-07, 0.414628, 0.42)
 
-[connection signal="on_complete" from="TunaBody/TypeEntity" to="TunaBody" method="_on_type_entity_on_complete"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
+unique_name_in_owner = true
+sprite_frames = ExtResource("5_qfltn")
+
+[connection signal="on_complete" from="Enemy/TypeEntity" to="Enemy" method="_on_type_entity_on_complete"]

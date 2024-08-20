@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://bjyv5f35qoe0k"]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_data.gd" id="1_yy3yo"]
+
+[resource]
+script = ExtResource("1_yy3yo")
+name = "pleasure"
+score = 10.0
+damage = 10.0

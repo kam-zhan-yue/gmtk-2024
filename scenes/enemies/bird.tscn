@@ -2,16 +2,17 @@
 
 [ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_rtttn"]
 [ext_resource type="Script" path="res://scenes/boids/boid_fade.gd" id="2_bqqge"]
-[ext_resource type="Texture2D" uid="uid://lp1pybhxsg78" path="res://assets/sprites/fish.png" id="3_khddp"]
+[ext_resource type="SpriteFrames" uid="uid://s2vbtes0k7sn" path="res://scenes/animations/bird.tres" id="3_2ydc6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fg2gp"]
-radius = 15.1327
+radius = 26.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ctcb"]
-size = Vector2(27, 12)
+size = Vector2(32, 15)
 
 [node name="Bird" type="Node2D"]
 script = ExtResource("1_rtttn")
+using_anim = true
 
 [node name="ObstacleArea" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -21,17 +22,19 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleArea"]
 shape = SubResource("CircleShape2D_fg2gp")
 
-[node name="FishBody" type="Node2D" parent="."]
+[node name="BirdFade" type="Node2D" parent="."]
 script = ExtResource("2_bqqge")
+using_anim = true
 
-[node name="Sprite2D" type="Sprite2D" parent="FishBody"]
-unique_name_in_owner = true
-texture = ExtResource("3_khddp")
-
-[node name="VisibleArea" type="Area2D" parent="FishBody"]
+[node name="VisibleArea" type="Area2D" parent="BirdFade"]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FishBody/VisibleArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BirdFade/VisibleArea"]
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_1ctcb")
 debug_color = Color(0.980901, 0, 0.375714, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("3_2ydc6")

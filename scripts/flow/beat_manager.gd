@@ -1,6 +1,6 @@
 extends Node2D
 
-const CONFIG = preload("res://resources/spawn_settings.tres")
+const CONFIG = preload("res://resources/beat_settings.tres")
 
 var beats := 0
 
@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		return
 	if timer > CONFIG.beat():
 		timer = 0.0
-		#print(str("Beat: ", beats))
+		print(str("Beat: ", beats))
 		on_beat.emit(beats)
 		beats += 1
 	timer += delta

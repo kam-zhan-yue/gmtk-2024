@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://bmm2v5xywclmn"]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_data.gd" id="1_f1sv4"]
+
+[resource]
+script = ExtResource("1_f1sv4")
+name = "ocean"
+score = 1.0
+damage = 0.0

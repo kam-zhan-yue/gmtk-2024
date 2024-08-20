@@ -10,10 +10,22 @@ var cohesion: Vector2
 var obstacle: Vector2
 var group: int
 
-@onready var obstacle_view: Area2D = %ObstacleArea
-@onready var sprite: Sprite2D = %Sprite2D
+@export var using_anim := false
+@onready var obstacle_view := %ObstacleArea as Area2D
+var sprite: Sprite2D
+var animated_sprite_2d: AnimatedSprite2D
 
 signal on_uninit
+
+func _ready() -> void:
+	if not using_anim:
+		sprite = %Sprite2D as Sprite2D
+	else:
+		animated_sprite_2d = %AnimatedSprite2D as AnimatedSprite2D
+		var frames := animated_sprite_2d.sprite_frames.get_frame_count("default")
+		var random_frame := randi() % frames
+		animated_sprite_2d.frame = random_frame
+		animated_sprite_2d.play("default")
 
 func can_see(other: Boid) -> bool:
 	if other.group != group:
@@ -23,9 +35,8 @@ func can_see(other: Boid) -> bool:
 
 func init(boid_group: int) -> void:
 	group = boid_group
-	var min := BoidManager.SETTINGS.min_speed
-	var max := BoidManager.SETTINGS.max_speed
-	velocity = (min + max * 0.5) * direction.normalized()
+	var middle := (BoidManager.SETTINGS.min_speed + BoidManager.SETTINGS.max_speed) * 0.5
+	velocity = middle * direction.normalized()
 	BoidManager.init(self)
 
 func simulate() -> void:
@@ -58,8 +69,6 @@ func update_rotation() -> void:
 	if sprite:
 		sprite.rotation = angle
 		sprite.flip_v = Global.flip_v(angle)
-	else:
-		rotation = angle
 
 func get_obstacle_force() -> Vector2:
 	if not obstacle_view.has_overlapping_areas():

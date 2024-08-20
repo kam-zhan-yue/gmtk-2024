@@ -10,7 +10,7 @@ func init(boid: Boid) -> void:
 func uninit(boid: Boid) -> void:
 	boids.erase(boid)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	for boid in boids:
 		if boid:
 			simulate(boid)
