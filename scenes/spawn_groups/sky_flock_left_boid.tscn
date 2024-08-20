@@ -14,7 +14,7 @@ point_count = 3
 script = ExtResource("1_f8bg0")
 
 [node name="BoidSpawner" type="Node2D" parent="."]
-position = Vector2(-502, -245)
+position = Vector2(-180, -101)
 script = ExtResource("2_4q0qn")
 spawn_type = 1
 group = 2

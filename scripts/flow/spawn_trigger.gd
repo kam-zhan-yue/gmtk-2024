@@ -23,5 +23,6 @@ func spawn() -> void:
 	# Need to add as child (for positioning,
 	# then init to ensure recursive function
 	# then reparent for precision
+	print(str("Spawning: ", name))
 	add_child(spawn_group)
 	spawn_group.init(game_state, data)
