@@ -17,7 +17,6 @@ data = ExtResource("2_4mk0u")
 target = "pressure"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
 texture = ExtResource("2_trt6g")
 
 [node name="Area2D" type="Area2D" parent="."]

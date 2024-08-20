@@ -49,7 +49,6 @@ polygon = PackedVector2Array(304, -462, 242, -466, 201, -458, 169, -447, 127, -4
 z_index = -1
 
 [node name="VisibleAreas" type="Node2D" parent="."]
-visible = false
 position = Vector2(2, -450)
 
 [node name="Area2D" type="Area2D" parent="VisibleAreas"]
@@ -59,10 +58,9 @@ collision_mask = 4
 script = ExtResource("2_ybn17")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisibleAreas/Area2D"]
-polygon = PackedVector2Array(-27, 117, 23, 56, 39, 48, 33, -35, 31, -59, 83, -116, 94, -172, 53, -211, 48, -233, 58, -250, 87, -264, 131, -313, 136, -334, 127, -345, 96, -363, 66, -425, 48, -457, 65, -548, 80, -627, 107, -647, 212, -679, 244, -686, 276, -685, 299, -685, 302, -1606, -298, -1607, -301, -700, -101, -640, -61, -553, -54, -468, -62, -422, -74, -395, -71, -338, -57, -268, -67, -219, -36, -138, -65, -91, -85, -65, -82, -30, -52, 3, -38, 33, -44, 77)
+polygon = PackedVector2Array(-27, 117, 23, 56, 39, 48, 33, -35, 31, -59, 83, -116, 94, -172, 53, -211, 48, -233, 58, -250, 87, -264, 131, -313, 136, -334, 127, -345, 96, -363, 66, -425, 48, -457, 65, -548, 80, -627, 107, -647, 212, -679, 244, -686, 276, -685, 705, -686, 1311, -2540, -1344, -2558, -862, -758, -101, -640, -61, -553, -54, -468, -62, -422, -74, -395, -71, -338, -57, -268, -67, -219, -36, -138, -65, -91, -85, -65, -82, -30, -52, 3, -38, 33, -44, 77)
 
 [node name="BoidRemover" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, -443)
 script = ExtResource("3_ete7q")
 
@@ -82,10 +80,10 @@ position = Vector2(0, -581)
 texture = ExtResource("12_43gme")
 
 [node name="ChimneySmoke" type="AnimatedSprite2D" parent="Lighthouse"]
-position = Vector2(-205, -743)
+position = Vector2(-116, -598)
 sprite_frames = ExtResource("4_m14t6")
 animation = &"smoke"
-frame_progress = 0.0116177
+frame_progress = 0.871561
 script = ExtResource("5_sj3r0")
 
 [node name="Sky" type="ParallaxBackground" parent="."]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://from1behbxyq"]
+
+[ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_ml72j"]
+[ext_resource type="PackedScene" uid="uid://dnupciqnxp1yd" path="res://scenes/enemies/eagle.tscn" id="2_wivw2"]
+
+[sub_resource type="Curve2D" id="Curve2D_r7beq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, -471, 0, 0, 0, 0, -278, -434, 0, 0, 0, 0, -362, -374, 0, 0, 0, 0, -217, -327, 0, 0, 0, 0, 63, -312, 0, 0, 0, 0, 475, -348, 0, 0, 0, 0, 451, -422, 0, 0, 0, 0, 145, -436, 0, 0, 0, 0, 1, -471)
+}
+point_count = 9
+
+[node name="SpawnGroup" type="Node2D"]
+script = ExtResource("1_ml72j")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_r7beq")
+
+[node name="Eagle" parent="Path2D" instance=ExtResource("2_wivw2")]
+position = Vector2(1, -471)
+air_time = 10.0

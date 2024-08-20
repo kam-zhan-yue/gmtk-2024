@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=27 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -15,8 +15,11 @@
 [ext_resource type="Script" path="res://scripts/flow/timeline.gd" id="12_xvfn4"]
 [ext_resource type="SpriteFrames" uid="uid://c81e2cel8mkye" path="res://scenes/animations/submarine.tres" id="13_j364a"]
 [ext_resource type="Texture2D" uid="uid://by06nbo5lkik8" path="res://assets/background/air_balloon.png" id="14_has2t"]
-[ext_resource type="PackedScene" uid="uid://ws4sqa3xys6o" path="res://scenes/spawn_groups/salmon_boids.tscn" id="17_8mpy1"]
-[ext_resource type="PackedScene" uid="uid://bbstso6ny83n4" path="res://scenes/spawn_groups/1_boids.tscn" id="17_h6jyu"]
+[ext_resource type="PackedScene" uid="uid://ws4sqa3xys6o" path="res://scenes/spawn_groups/ocean_salmon_boids.tscn" id="17_8mpy1"]
+[ext_resource type="PackedScene" uid="uid://bbstso6ny83n4" path="res://scenes/spawn_groups/ocean_tuna_boids.tscn" id="17_h6jyu"]
+[ext_resource type="PackedScene" uid="uid://cwm38q433b54v" path="res://scenes/spawn_groups/sky_flock_left.tscn" id="18_4jxoj"]
+[ext_resource type="PackedScene" uid="uid://from1behbxyq" path="res://scenes/spawn_groups/sky_eagle.tscn" id="19_7jlms"]
+[ext_resource type="PackedScene" uid="uid://c2beapl1a7h5d" path="res://scenes/spawn_groups/sky_flock_right.tscn" id="19_yfx1f"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
@@ -212,3 +215,18 @@ group = ExtResource("17_h6jyu")
 position = Vector2(-1, -120)
 script = ExtResource("12_j6dic")
 group = ExtResource("17_h6jyu")
+
+[node name="Birds1" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("18_4jxoj")
+
+[node name="Birds3" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -628)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_7jlms")
+
+[node name="Birds2" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -581)
+script = ExtResource("12_j6dic")
+group = ExtResource("19_yfx1f")
