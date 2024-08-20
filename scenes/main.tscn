@@ -99,9 +99,9 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_gw13f"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1, -246, 0, 0, 0, 0, 8, -273, 0, 0, 0, 0, 20, -297, 0, 0, 0, 0, 53, -323, 0, 0, 0, 0, 88, -350, 0, 0, 0, 0, 120, -376, 0, 0, 0, 0, 171, -400, 0, 0, 0, 0, 243, -416, 0, 0, 0, 0, 307, -436, 0, 0, 0, 0, 391, -453)
+"points": PackedVector2Array(0, 0, 0, 0, -2, -246, 0, 0, 0, 0, 12, -284, 0, 0, 0, 0, 61, -319, 0, 0, 0, 0, 129, -339, 0, 0, 0, 0, 225, -362, 0, 0, 0, 0, 322, -383)
 }
-point_count = 10
+point_count = 6
 
 [sub_resource type="Curve2D" id="Curve2D_q0ptm"]
 _data = {
@@ -325,7 +325,7 @@ curve = SubResource("Curve2D_gw13f")
 
 [node name="DiverFollow" type="PathFollow2D" parent="Timeline/DiverPath"]
 unique_name_in_owner = true
-position = Vector2(-1, -246)
+position = Vector2(-2, -246)
 rotation = -1.24905
 rotates = false
 
@@ -558,7 +558,7 @@ right_group = ExtResource("44_7bhjn")
 data = ExtResource("38_4c6k0")
 
 [node name="radiant" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -836)
+position = Vector2(-6, -841)
 script = ExtResource("12_j6dic")
 left_group = ExtResource("46_712h2")
 right_group = ExtResource("44_7bhjn")
@@ -567,7 +567,7 @@ data = ExtResource("49_d0b06")
 [node name="limitless" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, -836)
 script = ExtResource("12_j6dic")
-right_group = ExtResource("44_7bhjn")
+left_group = ExtResource("43_mxd5q")
 data = ExtResource("50_owwli")
 
 [node name="careless" type="Marker2D" parent="SpawnGroups"]

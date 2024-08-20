@@ -866,7 +866,7 @@ sprite_frames = SubResource("SpriteFrames_njldn")
 script = ExtResource("18_gk4m4")
 
 [node name="Mountain" type="ParallaxBackground" parent="."]
-layer = 100
+layer = 10
 
 [node name="Mountain" type="ParallaxLayer" parent="Mountain"]
 z_index = 2

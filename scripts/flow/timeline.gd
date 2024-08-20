@@ -5,8 +5,8 @@ const SUBMARINE_BEAT = 70
 const DIVER_BEAT = 80
 const WALKER_BEAT = 85
 const BALLOON_BEAT = 156
-const WALKER_2_BEAT = 163
-const SPACESHIP_BEAT = 166
+const WALKER_2_BEAT = 160
+const SPACESHIP_BEAT = 163
 const SPACE_BEAT = 260
 
 const FADE_OUT_BEAT = 240
@@ -158,9 +158,9 @@ func space_async() -> void:
 	game_state.player.reparent(space_follow)
 	game_state.player.position = Vector2(100.0, 0.0)
 	camera_controller.follow()
-	moon.scale = Vector2(1.6, 1.6)
-	camera_controller.zoom = Vector2(1.0, 1.0)
-	Global.zoom = 1.0
+	#moon.scale = Vector2(1.6, 1.6)
+	#camera_controller.zoom = Vector2(1.0, 1.0)
+	#Global.zoom = 1.0
 	
 	await lerp_path(space_follow, SPACESHIP_BEAT, SPACE_BEAT)
 

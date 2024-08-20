@@ -30,10 +30,14 @@ func init_type_entity(entity: TypeEntity) -> void:
 
 func enemy_dead(data: EnemyData) -> void:
 	on_enemy_dead.emit(data)
-	score += data.score
+	score += data.score * get_multiplier()
 	combo += 1
 	on_combo.emit(combo)
 	on_score.emit(score)
+
+func get_multiplier() -> float:
+	var combo_tier = combo / 10
+	return min(combo_tier + 1, 10)
 
 func _on_damage(value: float) -> void:
 	combo = 0
