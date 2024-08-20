@@ -26,6 +26,7 @@ const SPACESHIP_BEAT = 30
 
 @onready var hot_air_balloon := %HotAirBalloon as HotAirBalloon
 @onready var spaceship := %Spaceship as Spaceship
+@onready var moon := $Moon as Moon
 
 var game_state: GameState
 
@@ -36,6 +37,7 @@ var playing = false
 func init(state: GameState) -> void:
 	game_state = state
 	camera_controller.init(state)
+	moon.init(state)
 
 func start() -> void:
 	playing = true
@@ -117,6 +119,7 @@ func spaceship_async() -> void:
 	if current_beat >= SPACESHIP_BEAT: return
 	if not playing: return
 
+	moon.scale_aync(1.1, 10.0)
 	spaceship.activate()
 	game_state.player.fade_out()
 	game_state.player.reparent(spaceship_follow)
@@ -139,7 +142,8 @@ func lerp_path(path_follow: PathFollow2D, start_beat: int, end_beat: int) -> voi
 
 func restart() -> void:
 	playing = false
-	await game_state.player.release()
+	moon.restart()
+	await game_state.player.fade_out()
 	submarine_follow.progress_ratio = 0
 	diver_follow.progress_ratio = 0
 	await camera_controller.lerp_to(camera_controller.original_pos)

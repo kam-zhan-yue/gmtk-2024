@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=50 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -20,11 +20,13 @@
 [ext_resource type="Script" path="res://scripts/flow/spawn_trigger.gd" id="12_j6dic"]
 [ext_resource type="Script" path="res://scripts/flow/timeline.gd" id="12_xvfn4"]
 [ext_resource type="SpriteFrames" uid="uid://c81e2cel8mkye" path="res://scenes/animations/submarine.tres" id="13_j364a"]
+[ext_resource type="Script" path="res://scripts/moon.gd" id="14_uf7jm"]
 [ext_resource type="PackedScene" uid="uid://ws4sqa3xys6o" path="res://scenes/spawn_groups/ocean_salmon_boids.tscn" id="17_8mpy1"]
 [ext_resource type="PackedScene" uid="uid://bbstso6ny83n4" path="res://scenes/spawn_groups/ocean_tuna_boids.tscn" id="17_h6jyu"]
 [ext_resource type="PackedScene" uid="uid://cwm38q433b54v" path="res://scenes/spawn_groups/sky_flock_left.tscn" id="18_4jxoj"]
 [ext_resource type="PackedScene" uid="uid://from1behbxyq" path="res://scenes/spawn_groups/sky_eagle.tscn" id="19_7jlms"]
 [ext_resource type="PackedScene" uid="uid://c2beapl1a7h5d" path="res://scenes/spawn_groups/sky_flock_right.tscn" id="19_yfx1f"]
+[ext_resource type="Texture2D" uid="uid://dnsxixk661nv8" path="res://assets/background/space/moon.png" id="26_ux686"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
@@ -185,7 +187,7 @@ environment = SubResource("Environment_bgy46")
 
 [node name="StartMarker" type="Marker2D" parent="Background"]
 unique_name_in_owner = true
-position = Vector2(1, 410)
+position = Vector2(-4, 422)
 
 [node name="SubmarineMarker" type="Marker2D" parent="Background"]
 unique_name_in_owner = true
@@ -305,6 +307,13 @@ rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_ueylr")
 animation = &"idle"
 script = ExtResource("10_5p2k0")
+
+[node name="Moon" type="Sprite2D" parent="Timeline"]
+z_index = -1
+position = Vector2(-81, -1571)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("26_ux686")
+script = ExtResource("14_uf7jm")
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_vt02a")

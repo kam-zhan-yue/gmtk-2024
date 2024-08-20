@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bmdpgfudjp7li" path="res://assets/background/sky/gradient_to_space.png" id="6_d8em3"]
 [ext_resource type="Texture2D" uid="uid://b2liahtmr41dl" path="res://assets/background/sky/main_mountain.png" id="7_e730v"]
 [ext_resource type="Texture2D" uid="uid://cj5oove4g60qj" path="res://assets/background/space/flat_colour_space.png" id="7_skp53"]
-[ext_resource type="Texture2D" uid="uid://cc8ujw5srayub" path="res://assets/background/space/moon.png" id="8_78rnb"]
 [ext_resource type="Texture2D" uid="uid://cg4uvm1pfepkg" path="res://assets/background/sky/back_clouds.png" id="8_g8rn3"]
 [ext_resource type="Script" path="res://scenes/cloud_layer.gd" id="9_js5oi"]
 [ext_resource type="Texture2D" uid="uid://cmmmriydvrp0" path="res://assets/background/sky/closer_clouds.png" id="9_v7ua1"]
@@ -26,6 +25,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avv3c"]
 size = Vector2(600, 834)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_crrxy"]
+load_path = "res://.godot/imported/moon.png-5b887c393e85c6610ab9312a634a977b.ctex"
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_557np"]
 noise_type = 3
@@ -172,20 +174,20 @@ position = Vector2(0, 399)
 shape = SubResource("RectangleShape2D_avv3c")
 
 [node name="Bridge" type="Node2D" parent="."]
+z_index = 2
 
 [node name="Bridge" type="Sprite2D" parent="Bridge"]
 position = Vector2(-77, -1210)
 texture = ExtResource("3_u0pxl")
 
 [node name="Lighthouse" type="Node2D" parent="."]
-position = Vector2(0, 15)
+position = Vector2(-24, -566)
 
 [node name="LighthouseIsland" type="Sprite2D" parent="Lighthouse"]
-position = Vector2(0, -581)
 texture = ExtResource("12_43gme")
 
 [node name="ChimneySmoke" type="AnimatedSprite2D" parent="Lighthouse"]
-position = Vector2(-116, -598)
+position = Vector2(-115, -17)
 sprite_frames = ExtResource("4_m14t6")
 animation = &"smoke"
 frame_progress = 0.871561
@@ -203,13 +205,14 @@ scale = Vector2(95.7239, 133.69)
 texture = ExtResource("7_skp53")
 
 [node name="Moon" type="ParallaxLayer" parent="Space"]
+visible = false
 position = Vector2(-2, -469)
 motion_scale = Vector2(1, 0.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Space/Moon"]
 position = Vector2(-31, 438)
 scale = Vector2(2, 2)
-texture = ExtResource("8_78rnb")
+texture = SubResource("CompressedTexture2D_crrxy")
 
 [node name="Sky" type="ParallaxBackground" parent="."]
 
@@ -225,12 +228,21 @@ texture = ExtResource("6_30jdl")
 position = Vector2(-2, -644)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sky/Gradient"]
-position = Vector2(0, -894)
+position = Vector2(0, -891)
 texture = ExtResource("6_d8em3")
 
+[node name="BackgroundClouds3" type="ParallaxLayer" parent="Sky"]
+position = Vector2(38, -913)
+motion_scale = Vector2(1, 0.89)
+script = ExtResource("9_js5oi")
+cloud_speed = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky/BackgroundClouds3"]
+texture = ExtResource("8_g8rn3")
+
 [node name="BackgroundClouds2" type="ParallaxLayer" parent="Sky"]
-position = Vector2(127, -803)
-motion_scale = Vector2(1, 0.9)
+position = Vector2(127, -770)
+motion_scale = Vector2(1, 0.89)
 script = ExtResource("9_js5oi")
 cloud_speed = 5.0
 
@@ -238,7 +250,7 @@ cloud_speed = 5.0
 texture = ExtResource("8_g8rn3")
 
 [node name="BackgroundClouds" type="ParallaxLayer" parent="Sky"]
-position = Vector2(-1, -636)
+position = Vector2(-1, -608)
 motion_scale = Vector2(1, 0.9)
 script = ExtResource("9_js5oi")
 cloud_speed = 8.0
@@ -248,21 +260,21 @@ texture = ExtResource("8_g8rn3")
 
 [node name="LightOrangeMountain" type="ParallaxLayer" parent="Sky"]
 position = Vector2(-39, -37)
-motion_scale = Vector2(1, 0.45)
+motion_scale = Vector2(1, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sky/LightOrangeMountain"]
 texture = ExtResource("5_dxom7")
 
 [node name="OrangeMountain" type="ParallaxLayer" parent="Sky"]
 position = Vector2(-1, -21)
-motion_scale = Vector2(1, 0.5)
+motion_scale = Vector2(1, 0.6)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sky/OrangeMountain"]
 texture = ExtResource("4_myvpw")
 
 [node name="RedMountain" type="ParallaxLayer" parent="Sky"]
 position = Vector2(112, -50)
-motion_scale = Vector2(1, 0.6)
+motion_scale = Vector2(1, 0.65)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sky/RedMountain"]
 texture = ExtResource("6_cyjm7")
@@ -272,7 +284,7 @@ position = Vector2(0, -266)
 motion_scale = Vector2(1, 0.8)
 motion_mirroring = Vector2(602, 0)
 script = ExtResource("9_js5oi")
-cloud_speed = 5.0
+cloud_speed = 7.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Sky/ForegroundClouds"]
 position = Vector2(-9, -94)
@@ -319,17 +331,20 @@ texture = ExtResource("12_dnxis")
 texture_scale = 3.0
 
 [node name="WaterRipple" type="AnimatedSprite2D" parent="Water/Water"]
-position = Vector2(0, -426)
+position = Vector2(0, -422)
 sprite_frames = SubResource("SpriteFrames_njldn")
 script = ExtResource("18_gk4m4")
 
 [node name="Mountain" type="ParallaxBackground" parent="."]
+layer = 100
 
 [node name="Mountain" type="ParallaxLayer" parent="Mountain"]
+z_index = 2
 position = Vector2(0, -1177)
 motion_scale = Vector2(1, 1.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Mountain/Mountain"]
+z_index = 2
 texture = ExtResource("4_krqt6")
 
 [node name="Distortion" type="ParallaxBackground" parent="."]

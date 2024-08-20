@@ -44,7 +44,7 @@ func restart() -> void:
 	started = false
 	for node in spawns.get_children():
 		node.queue_free()
-	await release()
+	await fade_out()
 
 func fade_out(fade_time := 0.2) -> void:
 	print("Fade out player")
@@ -67,11 +67,3 @@ func fade_in(fade_time := 0.2) -> void:
 		timer += get_process_delta_time()
 		await Global.frame()
 	anim.modulate.a = 1.0
-
-func release() -> void:
-	var timer := 0.0
-	while timer < FADE_OUT:
-		var t := timer / FADE_OUT
-		anim.modulate.a = 1-t
-		timer += get_process_delta_time()
-		await Global.frame()
