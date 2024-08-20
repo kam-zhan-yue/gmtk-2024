@@ -892,7 +892,7 @@ script = ExtResource("18_gk4m4")
 
 [node name="BaseMountain" type="ParallaxLayer" parent="Mountain"]
 z_index = 2
-position = Vector2(0, -1177)
+position = Vector2(0, -1124)
 
 [node name="Sprite2D" type="Sprite2D" parent="Mountain/BaseMountain"]
 z_index = 2

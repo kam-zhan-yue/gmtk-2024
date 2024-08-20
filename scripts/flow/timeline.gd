@@ -133,8 +133,8 @@ func spaceship_async() -> void:
 	if current_beat >= SPACESHIP_BEAT: return
 	if not playing: return
 
+	moon.scale_aync(1.1, 15.0)
 	previous_beat = WALKER_2_BEAT
-	moon.scale_aync(1.1, 10.0)
 	spaceship.activate()
 	game_state.player.fade_out()
 	game_state.player.reparent(spaceship_follow)
