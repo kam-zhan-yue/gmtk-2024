@@ -20,7 +20,7 @@ func init(game: GameState) -> void:
 	game_state = game
 	state = State.FOLLOW
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if state == State.IDLE: return
 	
 	match(state):

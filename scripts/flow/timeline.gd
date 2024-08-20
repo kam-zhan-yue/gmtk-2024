@@ -139,9 +139,9 @@ func spaceship_async() -> void:
 	await lerp_path(spaceship_follow, WALKER_2_BEAT, SPACESHIP_BEAT)
 
 func lerp_path(path_follow: PathFollow2D, start_beat: int, end_beat: int) -> void:
-	var start := float(current_beat - start_beat) / (end_beat - previous_beat)
+	var start_pos := float(current_beat - start_beat) / (end_beat - previous_beat)
 	var total_time := BeatManager.beats_to_seconds(end_beat - start_beat)
-	var timer := start * total_time
+	var timer := start_pos * total_time
 	while timer < total_time and playing:
 		var t := timer / total_time
 		path_follow.progress_ratio = t

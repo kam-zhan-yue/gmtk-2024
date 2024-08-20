@@ -14,7 +14,7 @@ func init(state: GameState) -> void:
 	game_state = state
 	follow()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if camera_state == State.IDLE: return
 	
 	match(camera_state):
@@ -27,7 +27,6 @@ func _process(delta: float) -> void:
 func lerp_to(target: Vector2, lerp_time: float = 1.0) -> void:
 	camera_state = State.LERP
 	var start := global_position
-	var direction := (target - start).normalized()
 	var timer := 0.0
 	
 	while timer < lerp_time:

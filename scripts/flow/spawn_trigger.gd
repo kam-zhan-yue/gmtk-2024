@@ -10,7 +10,7 @@ var spawned := false
 func init(state: GameState):
 	game_state = state
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not game_state: return
 	if spawned: return
 	var player_y := game_state.player.global_position.y
@@ -19,9 +19,9 @@ func _process(delta: float) -> void:
 
 func spawn() -> void:
 	spawned = true
-	var spawn := group.instantiate() as SpawnGroup
+	var spawn_group := group.instantiate() as SpawnGroup
 	# Need to add as child (for positioning,
 	# then init to ensure recursive function
 	# then reparent for precision
-	add_child(spawn)
-	spawn.init(game_state, data)
+	add_child(spawn_group)
+	spawn_group.init(game_state, data)

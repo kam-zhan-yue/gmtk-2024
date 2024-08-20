@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dixxj28sb0gs3"]
+[gd_scene load_steps=7 format=3 uid="uid://dixxj28sb0gs3"]
 
 [ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_dnixm"]
 [ext_resource type="Script" path="res://scripts/entities/fish.gd" id="2_4u07c"]
-[ext_resource type="Resource" uid="uid://ciweeoojx2i6c" path="res://resources/ocean/salmon.tres" id="3_pj77m"]
 [ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="4_l4buw"]
 [ext_resource type="Texture2D" uid="uid://lp1pybhxsg78" path="res://assets/sprites/fish.png" id="5_v3o83"]
 
@@ -25,7 +24,6 @@ shape = SubResource("CircleShape2D_fg2gp")
 
 [node name="SalmonBody" type="Node2D" parent="."]
 script = ExtResource("2_4u07c")
-data = ExtResource("3_pj77m")
 
 [node name="TypeEntity" parent="SalmonBody" instance=ExtResource("4_l4buw")]
 unique_name_in_owner = true

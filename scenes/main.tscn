@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=56 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -19,15 +19,20 @@
 [ext_resource type="Script" path="res://scripts/flow/timeline.gd" id="12_xvfn4"]
 [ext_resource type="SpriteFrames" uid="uid://c81e2cel8mkye" path="res://scenes/animations/submarine.tres" id="13_j364a"]
 [ext_resource type="Script" path="res://scripts/moon.gd" id="14_uf7jm"]
-[ext_resource type="PackedScene" uid="uid://ws4sqa3xys6o" path="res://scenes/spawn_groups/ocean_salmon_boids.tscn" id="17_8mpy1"]
 [ext_resource type="PackedScene" uid="uid://bbstso6ny83n4" path="res://scenes/spawn_groups/ocean_tuna_boids.tscn" id="17_h6jyu"]
-[ext_resource type="PackedScene" uid="uid://cwm38q433b54v" path="res://scenes/spawn_groups/sky_flock_left.tscn" id="18_4jxoj"]
-[ext_resource type="PackedScene" uid="uid://from1behbxyq" path="res://scenes/spawn_groups/sky_eagle.tscn" id="19_7jlms"]
-[ext_resource type="PackedScene" uid="uid://c2beapl1a7h5d" path="res://scenes/spawn_groups/sky_flock_right.tscn" id="19_yfx1f"]
 [ext_resource type="AudioStream" uid="uid://k38gby8jrea5" path="res://audio/music/scale.mp3" id="20_wqr24"]
 [ext_resource type="Resource" uid="uid://q4tad15ihnr2" path="res://resources/ocean/pressure.tres" id="25_ob3l5"]
+[ext_resource type="Resource" uid="uid://c2xsbdpaw8sdt" path="res://resources/ocean/sea.tres" id="25_y2lc6"]
 [ext_resource type="Resource" uid="uid://i27dmdlqqw74" path="res://resources/ocean/feel.tres" id="26_5tfq4"]
+[ext_resource type="Resource" uid="uid://dl5wasagg3c4o" path="res://resources/ocean/tender.tres" id="26_6p0wx"]
+[ext_resource type="Resource" uid="uid://dsvgkep20n2rg" path="res://resources/ocean/touch.tres" id="26_pgetf"]
 [ext_resource type="Texture2D" uid="uid://dnsxixk661nv8" path="res://assets/background/space/moon.png" id="26_ux686"]
+[ext_resource type="Resource" uid="uid://b4ph3ghtcjrxc" path="res://resources/ocean/deep.tres" id="26_vfyke"]
+[ext_resource type="Resource" uid="uid://cro5ivex8jh1j" path="res://resources/ocean/cold.tres" id="27_331a2"]
+[ext_resource type="Resource" uid="uid://bmm2v5xywclmn" path="res://resources/ocean/ocean.tres" id="27_yffdo"]
+[ext_resource type="Resource" uid="uid://bum6fkghge8bo" path="res://resources/ocean/see.tres" id="28_x6ge5"]
+[ext_resource type="Resource" uid="uid://cq7tfp7f1eniw" path="res://resources/ocean/listen.tres" id="29_vgcra"]
+[ext_resource type="Resource" uid="uid://cnydapsvld37u" path="res://resources/ocean/wish.tres" id="33_l2fur"]
 
 [sub_resource type="Environment" id="Environment_bgy46"]
 background_mode = 3
@@ -335,6 +340,7 @@ boid_scene = ExtResource("9_rtuln")
 start_direction = Vector2(1, -0.2)
 spawn_radius = 200.0
 spawn_count = 15
+spawn_on_ready = false
 
 [node name="BoidSpawner2" type="Node2D" parent="GameManager/StartSpawner"]
 position = Vector2(172, 117)
@@ -343,6 +349,7 @@ boid_scene = ExtResource("9_rtuln")
 start_direction = Vector2(-1, 0.2)
 spawn_radius = 200.0
 spawn_count = 15
+spawn_on_ready = false
 
 [node name="Player" parent="." instance=ExtResource("3_h8ik1")]
 unique_name_in_owner = true
@@ -351,170 +358,68 @@ position = Vector2(0, 421)
 [node name="SpawnGroups" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Tuna" type="Marker2D" parent="SpawnGroups"]
+[node name="feel" type="Marker2D" parent="SpawnGroups"]
 position = Vector2(-1, 364)
+script = ExtResource("12_j6dic")
+group = ExtResource("17_h6jyu")
+data = ExtResource("26_5tfq4")
+
+[node name="pressure" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, 296)
 script = ExtResource("12_j6dic")
 group = ExtResource("17_h6jyu")
 data = ExtResource("25_ob3l5")
 
-[node name="Pressure" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, 263)
+[node name="sea" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, 231)
 script = ExtResource("12_j6dic")
-group = ExtResource("17_8mpy1")
-data = ExtResource("25_ob3l5")
+group = ExtResource("17_h6jyu")
+data = ExtResource("25_y2lc6")
 
-[node name="danger" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, 263)
+[node name="deep" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, 180)
 script = ExtResource("12_j6dic")
-group = ExtResource("17_8mpy1")
-data = ExtResource("25_ob3l5")
+group = ExtResource("17_h6jyu")
+data = ExtResource("26_vfyke")
 
-[node name="Birds1" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
+[node name="ocean" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, 52)
 script = ExtResource("12_j6dic")
-group = ExtResource("18_4jxoj")
-data = ExtResource("26_5tfq4")
+group = ExtResource("17_h6jyu")
+data = ExtResource("27_yffdo")
 
-[node name="Birds3" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -628)
+[node name="touch" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -14)
 script = ExtResource("12_j6dic")
-group = ExtResource("19_7jlms")
-data = ExtResource("26_5tfq4")
+group = ExtResource("17_h6jyu")
+data = ExtResource("26_pgetf")
 
-[node name="Birds2" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
+[node name="cold" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -81)
 script = ExtResource("12_j6dic")
-group = ExtResource("19_yfx1f")
-data = ExtResource("26_5tfq4")
+group = ExtResource("17_h6jyu")
+data = ExtResource("27_331a2")
 
-[node name="Birds4" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
+[node name="tender" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -86)
 script = ExtResource("12_j6dic")
-group = ExtResource("18_4jxoj")
-data = ExtResource("26_5tfq4")
+group = ExtResource("17_h6jyu")
+data = ExtResource("26_6p0wx")
 
-[node name="Birds5" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -628)
+[node name="see" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -201)
 script = ExtResource("12_j6dic")
-group = ExtResource("19_7jlms")
-data = ExtResource("26_5tfq4")
+group = ExtResource("17_h6jyu")
+data = ExtResource("28_x6ge5")
 
-[node name="Birds6" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
+[node name="listen" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -250)
 script = ExtResource("12_j6dic")
-group = ExtResource("19_yfx1f")
-data = ExtResource("26_5tfq4")
+group = ExtResource("17_h6jyu")
+data = ExtResource("29_vgcra")
 
-[node name="Birds7" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
+[node name="wish" type="Marker2D" parent="SpawnGroups"]
+position = Vector2(-1, -341)
 script = ExtResource("12_j6dic")
-group = ExtResource("18_4jxoj")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds8" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -628)
-script = ExtResource("12_j6dic")
-group = ExtResource("19_7jlms")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds9" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
-script = ExtResource("12_j6dic")
-group = ExtResource("19_yfx1f")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds10" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
-script = ExtResource("12_j6dic")
-group = ExtResource("18_4jxoj")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds11" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -628)
-script = ExtResource("12_j6dic")
-group = ExtResource("19_7jlms")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds12" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
-script = ExtResource("12_j6dic")
-group = ExtResource("19_yfx1f")
-data = ExtResource("26_5tfq4")
-
-[node name="danger2" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, 263)
-script = ExtResource("12_j6dic")
-group = ExtResource("17_8mpy1")
-data = ExtResource("25_ob3l5")
-
-[node name="Birds13" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
-script = ExtResource("12_j6dic")
-group = ExtResource("18_4jxoj")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds14" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -628)
-script = ExtResource("12_j6dic")
-group = ExtResource("19_7jlms")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds15" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
-script = ExtResource("12_j6dic")
-group = ExtResource("19_yfx1f")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds16" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
-script = ExtResource("12_j6dic")
-group = ExtResource("18_4jxoj")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds17" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -628)
-script = ExtResource("12_j6dic")
-group = ExtResource("19_7jlms")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds18" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
-script = ExtResource("12_j6dic")
-group = ExtResource("19_yfx1f")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds19" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
-script = ExtResource("12_j6dic")
-group = ExtResource("18_4jxoj")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds20" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -628)
-script = ExtResource("12_j6dic")
-group = ExtResource("19_7jlms")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds21" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
-script = ExtResource("12_j6dic")
-group = ExtResource("19_yfx1f")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds22" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
-script = ExtResource("12_j6dic")
-group = ExtResource("18_4jxoj")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds23" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -628)
-script = ExtResource("12_j6dic")
-group = ExtResource("19_7jlms")
-data = ExtResource("26_5tfq4")
-
-[node name="Birds24" type="Marker2D" parent="SpawnGroups"]
-position = Vector2(-1, -581)
-script = ExtResource("12_j6dic")
-group = ExtResource("19_yfx1f")
-data = ExtResource("26_5tfq4")
+group = ExtResource("17_h6jyu")
+data = ExtResource("33_l2fur")

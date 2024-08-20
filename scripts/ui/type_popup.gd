@@ -17,11 +17,9 @@ func init(type_entity: TypeEntity) -> void:
 	entity.on_complete.connect(_on_complete)
 	entity.on_active.connect(_on_active)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if completed: return
 	if not entity: return
-	var global_position = entity.global_position
-	var viewport_rect := get_viewport_rect()
 	var camera := get_viewport().get_camera_2d()
 	var screen_center := camera.get_screen_center_position()
 	var difference := entity.global_position - screen_center

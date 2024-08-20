@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://bavqert6k3e22"]
-
-[ext_resource type="Script" path="res://scripts/entities/enemy_data.gd" id="1_xe2o5"]
-
-[resource]
-script = ExtResource("1_xe2o5")
-name = "depth"
-score = 1.0
-damage = 0.0

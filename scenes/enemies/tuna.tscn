@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://du6ntqp5jmx20"]
+[gd_scene load_steps=7 format=3 uid="uid://du6ntqp5jmx20"]
 
 [ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_14dwv"]
 [ext_resource type="Script" path="res://scripts/entities/fish.gd" id="2_32spj"]
-[ext_resource type="Resource" uid="uid://bt48h8vr03w5x" path="res://resources/ocean/tuna.tres" id="3_5aanl"]
 [ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="4_raqvn"]
 [ext_resource type="Texture2D" uid="uid://lp1pybhxsg78" path="res://assets/sprites/fish.png" id="5_mibqo"]
 
@@ -25,7 +24,6 @@ shape = SubResource("CircleShape2D_fg2gp")
 
 [node name="TunaBody" type="Node2D" parent="."]
 script = ExtResource("2_32spj")
-data = ExtResource("3_5aanl")
 
 [node name="TypeEntity" parent="TunaBody" instance=ExtResource("4_raqvn")]
 unique_name_in_owner = true

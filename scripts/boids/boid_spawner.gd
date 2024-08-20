@@ -14,7 +14,7 @@ extends Node2D
 func _ready() -> void:
 	if not spawn_on_ready:
 		return
-	if $Path2D/PathFollow2D:
+	if spawn_type == 1:
 		path_follow = ($Path2D/PathFollow2D as PathFollow2D)
 	spawn()
 

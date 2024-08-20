@@ -21,6 +21,7 @@ func _ready() -> void:
 	for group in spawn_groups.get_children():
 		if group is SpawnTrigger:
 			(group as SpawnTrigger).init(game_state)
+	start_spawner.start_spawning()
 
 func _on_pause(value: bool) -> void:
 	music_player.stream_paused = value
