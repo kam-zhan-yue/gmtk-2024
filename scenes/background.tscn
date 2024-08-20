@@ -833,7 +833,7 @@ randomise = true
 position = Vector2(-16, 1)
 rotation = 0.129437
 sprite_frames = SubResource("SpriteFrames_hkxkf")
-frame_progress = 0.335275
+frame_progress = 0.580715
 script = ExtResource("18_gk4m4")
 randomise = true
 

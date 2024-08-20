@@ -5,8 +5,9 @@ const SUBMARINE_BEAT = 70
 const DIVER_BEAT = 80
 const WALKER_BEAT = 85
 const BALLOON_BEAT = 156
-const WALKER_2_BEAT = 162
-const SPACESHIP_BEAT = 200
+const WALKER_2_BEAT = 163
+const SPACESHIP_BEAT = 166
+const SPACE_BEAT = 260
 
 @onready var camera_controller := %CameraController as CameraController
 
@@ -21,7 +22,7 @@ const SPACESHIP_BEAT = 200
 @onready var balloon_follow := %BalloonFollow as PathFollow2D
 @onready var walker_follow_2 := %WalkerFollow2 as PathFollow2D
 @onready var spaceship_follow := %SpaceshipFollow as PathFollow2D
-
+@onready var space_follow := %SpaceFollow as PathFollow2D
 
 @onready var hot_air_balloon := %HotAirBalloon as HotAirBalloon
 @onready var spaceship := %Spaceship as Spaceship
@@ -49,6 +50,7 @@ func start() -> void:
 	await balloon_async()
 	await walk_2_async()
 	await spaceship_async()
+	await space_async()
 
 func submarine_async() -> void:
 	if current_beat >= SUBMARINE_BEAT: return
@@ -137,6 +139,16 @@ func spaceship_async() -> void:
 	camera_controller.zoom_to(1.0)
 	
 	await lerp_path(spaceship_follow, WALKER_2_BEAT, SPACESHIP_BEAT)
+
+func space_async() -> void:
+	if current_beat >= SPACE_BEAT: return
+	if not playing: return
+
+	previous_beat = SPACESHIP_BEAT
+	spaceship.reparent(space_follow)
+	game_state.player.reparent(space_follow)
+	
+	await lerp_path(space_follow, SPACESHIP_BEAT, SPACE_BEAT)
 
 func lerp_path(path_follow: PathFollow2D, start_beat: int, end_beat: int) -> void:
 	var start_pos := float(current_beat - start_beat) / (end_beat - previous_beat)

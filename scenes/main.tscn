@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=77 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/flow/game_manager.gd" id="1_vt02a"]
 [ext_resource type="Script" path="res://scripts/flow/camera_controller.gd" id="2_ra8cm"]
@@ -96,7 +96,7 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_rc8ry"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -67, -1298, 0, 0, 0, 0, -83, -3566)
+"points": PackedVector2Array(0, 0, 0, 0, -67, -1298, 0, 0, 0, 0, -67, -2500)
 }
 point_count = 2
 
@@ -203,6 +203,12 @@ animations = [{
 "name": &"idle",
 "speed": 24.0
 }]
+
+[sub_resource type="Curve2D" id="Curve2D_dntb6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -67, -2500, 0, 0, 0, 0, -67, -5000)
+}
+point_count = 2
 
 [node name="MainScene" type="Node2D"]
 
@@ -340,6 +346,15 @@ sprite_frames = SubResource("SpriteFrames_ueylr")
 animation = &"activate"
 frame_progress = 0.700517
 script = ExtResource("10_5p2k0")
+
+[node name="SpacePath" type="Path2D" parent="Timeline"]
+curve = SubResource("Curve2D_dntb6")
+
+[node name="SpaceFollow" type="PathFollow2D" parent="Timeline/SpacePath"]
+unique_name_in_owner = true
+position = Vector2(-67, -2500)
+rotation = -1.57407
+rotates = false
 
 [node name="Moon" type="Sprite2D" parent="Timeline"]
 z_index = -1
