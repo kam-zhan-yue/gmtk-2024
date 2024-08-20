@@ -36,7 +36,7 @@ func _on_combo(value: int) -> void:
 		Global.set_inactive(combo_label)
 		return
 	Global.set_active(combo_label)
-	var combo := str("Combo: ", value, "x")
+	var combo := str("Combo:", value, "x")
 	var shake := str("[shake rate=",value," level=10 connected=1]", combo, "[/shake]")
 	combo_label.text = shake
 	if combo_tween:
