@@ -4,9 +4,10 @@
 [ext_resource type="Resource" uid="uid://cmw14e6yp78mp" path="res://resources/space/rocket.tres" id="2_03o4g"]
 [ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="2_lm5rs"]
 [ext_resource type="Resource" uid="uid://c05ngl5umjcqo" path="res://resources/space/ufo.tres" id="2_r3p7u"]
-[ext_resource type="Texture2D" uid="uid://brjtyogd5h43y" path="res://assets/sprites/avocado.png" id="3_qcx0j"]
+[ext_resource type="Texture2D" uid="uid://bqtsvypoxl82s" path="res://assets/entities/ufo.png" id="5_2ilqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l5b4"]
+size = Vector2(266, 126)
 
 [node name="UFO" type="Node2D"]
 script = ExtResource("1_85c3s")
@@ -17,7 +18,7 @@ data = ExtResource("2_r3p7u")
 unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_qcx0j")
+texture = ExtResource("5_2ilqu")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4

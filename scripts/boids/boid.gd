@@ -58,8 +58,6 @@ func update_rotation() -> void:
 	if sprite:
 		sprite.rotation = angle
 		sprite.flip_v = Global.flip_v(angle)
-	else:
-		rotation = angle
 
 func get_obstacle_force() -> Vector2:
 	if not obstacle_view.has_overlapping_areas():
