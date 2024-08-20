@@ -2,17 +2,18 @@ class_name Enemy
 extends Node2D
 
 @export var using_anim := false
-@export var data: EnemyData
 @onready var type_entity := $TypeEntity as TypeEntity
 
 const FADE_OUT = 1.0
 var game_state: GameState
+var data: EnemyData
 var completed := false
 signal on_init
 
 
-func init(state: GameState) -> void:
-	self.game_state = state
+func init(state: GameState, enemy_data: EnemyData) -> void:
+	game_state = state
+	data = enemy_data
 	type_entity.init(data.name)
 	type_entity.on_complete.connect(_on_complete)
 	

@@ -35,9 +35,8 @@ func can_see(other: Boid) -> bool:
 
 func init(boid_group: int) -> void:
 	group = boid_group
-	var min := BoidManager.SETTINGS.min_speed
-	var max := BoidManager.SETTINGS.max_speed
-	velocity = (min + max * 0.5) * direction.normalized()
+	var middle := (BoidManager.SETTINGS.min_speed + BoidManager.SETTINGS.max_speed) * 0.5
+	velocity = middle * direction.normalized()
 	BoidManager.init(self)
 
 func simulate() -> void:

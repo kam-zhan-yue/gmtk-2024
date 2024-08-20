@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_hwvsc")
-name = "Name"
+name = "pressure"
 score = 10.0
+damage = 10.0

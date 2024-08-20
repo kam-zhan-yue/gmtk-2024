@@ -1,6 +1,6 @@
 extends Node2D
 
-const CONFIG = preload("res://resources/spawn_settings.tres")
+const CONFIG = preload("res://resources/beat_settings.tres")
 
 var beats := 0
 

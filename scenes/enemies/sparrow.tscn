@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyds4ly4a1xpe"]
+[gd_scene load_steps=7 format=3 uid="uid://cyds4ly4a1xpe"]
 
 [ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_13pxo"]
 [ext_resource type="Script" path="res://scripts/entities/fish.gd" id="2_g1vaq"]
-[ext_resource type="Resource" uid="uid://vbulpe6unmkq" path="res://resources/ocean/sparrow.tres" id="3_127kg"]
 [ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="4_kup8i"]
 [ext_resource type="SpriteFrames" uid="uid://br2u7kgr1kx66" path="res://scenes/animations/sparrow.tres" id="5_qfltn"]
 
@@ -27,7 +26,6 @@ shape = SubResource("CircleShape2D_fg2gp")
 [node name="Enemy" type="Node2D" parent="."]
 script = ExtResource("2_g1vaq")
 using_anim = true
-data = ExtResource("3_127kg")
 
 [node name="TypeEntity" parent="Enemy" instance=ExtResource("4_kup8i")]
 unique_name_in_owner = true

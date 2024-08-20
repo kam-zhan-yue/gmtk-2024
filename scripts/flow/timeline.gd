@@ -8,7 +8,6 @@ const BALLOON_BEAT = 156
 const WALKER_2_BEAT = 162
 const SPACESHIP_BEAT = 200
 
-@onready var spawner := %Spawner as Spawner
 @onready var camera_controller := %CameraController as CameraController
 
 @onready var submarine := %SubmarineMarker as Marker2D

@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckrlsacuunj2h"]
+[gd_scene load_steps=6 format=3 uid="uid://ckrlsacuunj2h"]
 
 [ext_resource type="Script" path="res://scripts/entities/ufo.gd" id="1_85c3s"]
 [ext_resource type="Resource" uid="uid://cmw14e6yp78mp" path="res://resources/space/rocket.tres" id="2_03o4g"]
 [ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="2_lm5rs"]
-[ext_resource type="Resource" uid="uid://c05ngl5umjcqo" path="res://resources/space/ufo.tres" id="2_r3p7u"]
 [ext_resource type="Texture2D" uid="uid://bqtsvypoxl82s" path="res://assets/entities/ufo.png" id="5_2ilqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l5b4"]
@@ -11,8 +10,12 @@ size = Vector2(266, 126)
 
 [node name="UFO" type="Node2D"]
 script = ExtResource("1_85c3s")
+orbit_radius = null
+speed = null
+time_between_rockets = null
+rocket_speed = null
 rocket_data = ExtResource("2_03o4g")
-data = ExtResource("2_r3p7u")
+using_anim = null
 
 [node name="TypeEntity" parent="." instance=ExtResource("2_lm5rs")]
 unique_name_in_owner = true

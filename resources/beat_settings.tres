@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BeatSettings" load_steps=2 format=3 uid="uid://dyqjgvi82j70g"]
+
+[ext_resource type="Script" path="res://scripts/flow/spawn_settings.gd" id="1_n634t"]
+
+[resource]
+script = ExtResource("1_n634t")
+start_beat = 0
+end_beat = 300
+bpm = 90.0

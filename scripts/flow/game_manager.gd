@@ -3,7 +3,6 @@ extends Node
 
 
 @onready var player := %Player as Player
-@onready var spawner := %Spawner as Spawner
 @onready var ui := %UI as UI
 @onready var start_spawner: StartSpawner = $StartSpawner
 @onready var music_player := %MusicPlayer as AudioStreamPlayer2D
@@ -19,11 +18,9 @@ func _ready() -> void:
 	game_state.on_restart.connect(_on_restart)
 	ui.init(game_state)
 	timeline.init(game_state)
-	spawner.init(game_state)
 	for group in spawn_groups.get_children():
 		if group is SpawnTrigger:
 			(group as SpawnTrigger).init(game_state)
-	start_spawner.start_spawning()
 
 func _on_pause(value: bool) -> void:
 	music_player.stream_paused = value
@@ -50,7 +47,6 @@ func _on_restart() -> void:
 	game_state.on_restart.connect(_on_restart)
 	ui.init(game_state)
 	timeline.init(game_state)
-	spawner.init(game_state)
 	for group in spawn_groups.get_children():
 		if group is SpawnTrigger:
 			(group as SpawnTrigger).init(game_state)
