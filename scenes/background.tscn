@@ -641,27 +641,43 @@ polygon = PackedVector2Array(304, -462, 242, -466, 201, -458, 169, -447, 127, -4
 [node name="Background" type="Node2D"]
 z_index = -1
 
-[node name="VisibleAreas" type="Node2D" parent="."]
+[node name="Areas" type="Node2D" parent="."]
+visible = false
+
+[node name="VisibleAreas" type="Node2D" parent="Areas"]
 position = Vector2(2, -450)
 
-[node name="Area2D" type="Area2D" parent="VisibleAreas"]
+[node name="Area2D" type="Area2D" parent="Areas/VisibleAreas"]
 position = Vector2(0, 674)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("2_ybn17")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisibleAreas/Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/VisibleAreas/Area2D"]
 polygon = PackedVector2Array(-27, 117, 23, 56, 39, 48, 33, -35, 31, -59, 83, -116, 94, -172, 53, -211, 48, -233, 58, -250, 87, -264, 131, -313, 136, -334, 127, -345, 96, -363, 66, -425, 48, -457, 65, -548, 80, -627, 107, -647, 212, -679, 244, -686, 276, -685, 193, -702, 335, -1995, 1137, -2059, 2331, -8011, -2397, -8059, -1165, -2128, -505, -1989, -310.587, -806.302, -306, -779, -312, -687, -101, -640, -61, -553, -54, -468, -62, -422, -74, -395, -71, -338, -57, -268, -67, -219, -36, -138, -65, -91, -85, -65, -82, -30, -52, 3, -38, 33, -44, 77)
 
-[node name="BoidRemover" type="Node2D" parent="."]
+[node name="BoidRemoverOcean" type="Node2D" parent="Areas"]
 position = Vector2(0, -443)
 script = ExtResource("3_ete7q")
 
-[node name="Area2D" type="Area2D" parent="BoidRemover"]
+[node name="Area2D" type="Area2D" parent="Areas/BoidRemoverOcean"]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoidRemover/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/BoidRemoverOcean/Area2D"]
+position = Vector2(0, 472)
+shape = SubResource("RectangleShape2D_avv3c")
+
+[node name="BoidRemoverSky" type="Node2D" parent="Areas"]
+position = Vector2(0, -1337)
+scale = Vector2(3.76, 1)
+script = ExtResource("3_ete7q")
+
+[node name="Area2D" type="Area2D" parent="Areas/BoidRemoverSky"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/BoidRemoverSky/Area2D"]
 position = Vector2(0, 472)
 shape = SubResource("RectangleShape2D_avv3c")
 
@@ -793,7 +809,7 @@ position = Vector2(0, -266)
 motion_scale = Vector2(1, 0.8)
 motion_mirroring = Vector2(602, 0)
 script = ExtResource("9_js5oi")
-cloud_speed = 7.0
+cloud_speed = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="Sky/ForegroundClouds"]
 position = Vector2(-9, -94)
@@ -921,6 +937,7 @@ position = Vector2(-16, 0)
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Caverns/Cavern/LightOccluders"]
 occluder = SubResource("OccluderPolygon2D_8s7ep")
 
-[connection signal="area_entered" from="VisibleAreas/Area2D" to="VisibleAreas/Area2D" method="_on_area_entered"]
-[connection signal="area_exited" from="VisibleAreas/Area2D" to="VisibleAreas/Area2D" method="_on_area_exited"]
-[connection signal="area_exited" from="BoidRemover/Area2D" to="BoidRemover" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Areas/VisibleAreas/Area2D" to="Areas/VisibleAreas/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="Areas/VisibleAreas/Area2D" to="Areas/VisibleAreas/Area2D" method="_on_area_exited"]
+[connection signal="area_exited" from="Areas/BoidRemoverOcean/Area2D" to="Areas/BoidRemoverOcean" method="_on_area_2d_area_exited"]
+[connection signal="area_exited" from="Areas/BoidRemoverSky/Area2D" to="Areas/BoidRemoverSky" method="_on_area_2d_area_exited"]
