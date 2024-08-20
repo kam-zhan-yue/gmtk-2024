@@ -14,16 +14,14 @@ point_count = 3
 script = ExtResource("1_f8bg0")
 
 [node name="BoidSpawner" type="Node2D" parent="."]
-position = Vector2(-502, -245)
+position = Vector2(-118, 0)
 script = ExtResource("2_4q0qn")
 spawn_type = 1
 group = 2
 boid_scene = ExtResource("3_vmkfv")
-start_direction = Vector2(1, 0.05)
 spawn_count = 20
 
 [node name="Path2D" type="Path2D" parent="BoidSpawner"]
-position = Vector2(-1, 0)
 curve = SubResource("Curve2D_vh0f0")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="BoidSpawner/Path2D"]

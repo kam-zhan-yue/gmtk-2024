@@ -1,15 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://2uswan6bihns"]
+[gd_scene load_steps=5 format=3 uid="uid://2uswan6bihns"]
 
 [ext_resource type="PackedScene" uid="uid://d0en8pevtc4do" path="res://scenes/type_entity.tscn" id="1_6e1fg"]
 [ext_resource type="Script" path="res://scripts/entities/eagle.gd" id="1_x4rp6"]
-[ext_resource type="Resource" uid="uid://bvgxi6diphtn1" path="res://resources/sky/eagle.tres" id="2_4mk0u"]
 [ext_resource type="Texture2D" uid="uid://67fd3qx1r467" path="res://assets/sprites/shark.png" id="4_573b6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l5b4"]
+size = Vector2(86, 36)
 
 [node name="Eagle" type="Node2D"]
 script = ExtResource("1_x4rp6")
-data = ExtResource("2_4mk0u")
 
 [node name="TypeEntity" parent="." instance=ExtResource("1_6e1fg")]
 unique_name_in_owner = true

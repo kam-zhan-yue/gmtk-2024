@@ -20,4 +20,3 @@ animation = &"diver"
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 2)
-zoom = Vector2(2, 2)

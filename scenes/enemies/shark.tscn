@@ -107,6 +107,9 @@ animations = [{
 
 [node name="Shark" type="Node2D"]
 script = ExtResource("1_kfhs4")
+bite_range = 35.0
+speed = 50.0
+using_anim = true
 
 [node name="Visible" type="Area2D" parent="."]
 collision_layer = 4

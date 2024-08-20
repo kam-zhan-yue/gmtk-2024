@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cku8jw4nd7ahq"]
+
+[ext_resource type="Script" path="res://scripts/flow/spawn_group.gd" id="1_olghs"]
+[ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="2_f4urh"]
+[ext_resource type="PackedScene" uid="uid://cnsxb8lvmt2e1" path="res://scenes/enemies/bird.tscn" id="3_ibx4i"]
+
+[sub_resource type="Curve2D" id="Curve2D_qaj8t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -245, -89, 0, 0, 0, 0, 38, -29, 0, 0, 0, 0, 83, 1, 0, 0, 0, 0, 60, 18, 0, 0, 0, 0, -110, 24, 0, 0, 0, 0, -244, 30)
+}
+point_count = 6
+
+[node name="SkyLeftBoid" type="Node2D"]
+script = ExtResource("1_olghs")
+
+[node name="BoidSpawner" type="Node2D" parent="."]
+position = Vector2(-386, 0)
+script = ExtResource("2_f4urh")
+spawn_type = 1
+group = 2
+boid_scene = ExtResource("3_ibx4i")
+start_y_direction = Vector2(0, 0)
+spawn_count = 15
+
+[node name="Path2D" type="Path2D" parent="BoidSpawner"]
+curve = SubResource("Curve2D_qaj8t")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="BoidSpawner/Path2D"]
+position = Vector2(-245, -89)
+rotation = 0.239648
+rotates = false
