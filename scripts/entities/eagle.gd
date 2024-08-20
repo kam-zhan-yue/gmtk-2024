@@ -1,59 +1,54 @@
 class_name Eagle
 extends Enemy
 
-@export var speed := 0.1
-@export var swoop_speed := 300.0
-@export var air_time := 5.0
-@onready var path_follow := $"." as PathFollow2D
-@onready var sprite_2d := $Sprite2D as Sprite2D
+@export var orbit_radius := 150.0
+@export var speed := 200.0
+@export var charge_speed := 300.0
+@export var wait_time := 2.0
 
-var last_position := Vector2.ZERO
+enum State { MOVING, WAITING, CHARGING }
+var state := State.MOVING
+var angle := 0.0
+var timer := 0.0
+var charge_direction := Vector2.ZERO
 
-func _ready() -> void:
-	on_init.connect(_on_init)
-	
-func _on_init() -> void:
-	await fly_async()
-	await swoop_async()
-	queue_free()
+func _process(delta: float) -> void:
+	if not game_state:
+		return
+	if state == State.MOVING:
+		move()
+	elif state == State.WAITING:
+		wait(delta)
+	elif state == State.CHARGING:
+		charge(delta)
 
-func fly_async() -> void:
-	var timer := 0.0
-	print("Fly")
-	while timer < air_time:
-		var delta := get_process_delta_time()
-		timer += delta
-		path_follow.progress_ratio += delta * speed
-		check_flip()
-		await Global.frame()
-
-func swoop_async() -> void:
-	print("Swoop")
+func move() -> void:
 	var start_pos := global_position
 	var player_pos := game_state.player.global_position
-	var direction := (player_pos - start_pos).normalized()
-	var swoop_time := 5.0
-	var timer := 0.0
-	
-	while timer < swoop_time:
-		var delta := get_process_delta_time()
-		global_position += direction * swoop_speed * delta
-		timer += delta
-		check_flip()
-		await Global.frame()
-
-func check_flip() -> void:
-	if position.x < last_position.x:
-		sprite_2d.flip_h = false
-	else:
-		sprite_2d.flip_h = true
-	last_position = position
-
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area is not Health:
+	var difference := player_pos - start_pos
+	var direction := difference.normalized()
+	if difference.length() <= orbit_radius:
+		start_waiting()
 		return
-	var health = area as Health
-	type_entity.on_complete.disconnect(_on_complete)
-	health.damage(data.damage)
-	queue_free()
+	global_position += direction * speed * get_process_delta_time()
+
+func start_waiting() -> void:
+	state = State.WAITING
+	var player_pos := game_state.player.global_position
+	var difference := global_position - player_pos
+	angle = atan2(difference.y, difference.x)
+	timer = 0.0
+	
+func wait(delta: float) -> void:
+	var player_pos := game_state.player.global_position
+	var x := player_pos.x + cos(angle) * orbit_radius
+	var y := player_pos.y + sin(angle) * orbit_radius
+	global_position = Vector2(x, y)
+	timer += delta
+	if timer >= wait_time:
+		state = State.CHARGING
+		var difference := player_pos - global_position
+		charge_direction = difference.normalized()
+
+func charge(delta: float) -> void:
+	global_position += charge_direction * charge_speed * delta
