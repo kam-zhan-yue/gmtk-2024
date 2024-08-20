@@ -256,7 +256,6 @@ script = ExtResource("2_ra8cm")
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="Timeline/CameraController"]
 unique_name_in_owner = true
-position = Vector2(0, -183)
 stream = ExtResource("5_dvf6b")
 bus = &"Music"
 
