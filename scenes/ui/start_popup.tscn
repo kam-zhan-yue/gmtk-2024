@@ -167,14 +167,14 @@ text = "artist"
 fit_content = true
 scroll_active = false
 
-[node name="Meryl" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Josh" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("1_x36ww")
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
-text = "Meryl Gogolashvili"
+text = "JuiceGoose"
 fit_content = true
 scroll_active = false
 
@@ -189,14 +189,14 @@ text = "composer"
 fit_content = true
 scroll_active = false
 
-[node name="Josh" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Meryl" type="RichTextLabel" parent="CreditsPopup/VBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("1_x36ww")
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
-text = "JuiceGoose"
+text = "Meryl Gogolashvili"
 fit_content = true
 scroll_active = false
 
